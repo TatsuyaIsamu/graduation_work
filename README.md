@@ -29,11 +29,11 @@
 
 ## 実行手順
 
-$ git clone https://github.com/TatsuyaIsamu/graduation_work.git
-$ cd gracuation_work
-$ bundle install
-$ rails db:create && rails db:migrate
-$ rails s
+$ git clone https://github.com/TatsuyaIsamu/graduation_work.git  
+$ cd gracuation_work  
+$ bundle install  
+$ rails db:create && rails db:migrate  
+$ rails s  
 
 ## カタログ設計
 
@@ -49,7 +49,7 @@ https://cacoo.com/diagrams/oPSurOI6rX0gZX5P/574D6
 
 ## ER図
 
-[![Image from Gyazo](https://i.gyazo.com/1994fb296643a0a9271e0d3f74580f43.png)](https://gyazo.com/1994fb296643a0a9271e0d3f74580f43)
+[![Image from Gyazo](https://i.gyazo.com/2c3f3fd4142f5dec5d41d134fc5f15e9.png)](https://gyazo.com/2c3f3fd4142f5dec5d41d134fc5f15e9)
 
 ## 画面遷移図
 
