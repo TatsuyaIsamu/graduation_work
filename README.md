@@ -7,11 +7,8 @@
 
 ## 就業Termの技術
 
-- AWS EC2
-- Ajax を使った機能
-- devise
-- フォロー機能
-- メッセージ機能
+- devise 
+- フォロー機能 
 - お気に入り機能
 
 ## カリキュラム外の技術
@@ -19,13 +16,7 @@
 - geocoder
 - chartkick
 - ransack
-- simple_calendar
-- slim
-- Docker
 - aws S3
-- react-rails（余力があれば）
-- circle CI 環境の構築（余力があれば）
-- nokogiri(情報収集用)
 
 ## 実行手順
 
