@@ -40,7 +40,7 @@ https://cacoo.com/diagrams/oPSurOI6rX0gZX5P/574D6
 
 ## ER図
 
-[![Image from Gyazo](https://i.gyazo.com/2c3f3fd4142f5dec5d41d134fc5f15e9.png)](https://gyazo.com/2c3f3fd4142f5dec5d41d134fc5f15e9)
+[![Image from Gyazo](https://i.gyazo.com/c4b59a2261dff08bb8c4e74cfaae8c25.png)](https://gyazo.com/c4b59a2261dff08bb8c4e74cfaae8c25)
 
 ## 画面遷移図
 
