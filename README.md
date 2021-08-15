@@ -32,7 +32,7 @@ https://docs.google.com/spreadsheets/d/1NJ2Dy1KI2wu31FM1h7kYqJw95OD9Y467HX9-wZsO
 
 ## テーブル定義書
 
-https://docs.google.com/spreadsheets/d/1NJ2Dy1KI2wu31FM1h7kYqJw95OD9Y467HX9-wZsO_gQ/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1ah8qrtO9VEpVHyeTVtaDN26hBRPXxHx5YbApVA2ahVY/edit?usp=sharing
 
 ## ワイヤーフレーム
 
