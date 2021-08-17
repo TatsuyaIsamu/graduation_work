@@ -21,7 +21,7 @@
 ## 実行手順
 ```
 $ git clone https://github.com/TatsuyaIsamu/graduation_work.git  
-$ cd gracuation_work  
+$ cd graduation_work  
 $ bundle install  
 $ rails db:create && rails db:migrate  
 $ rails s  
@@ -40,7 +40,7 @@ https://cacoo.com/diagrams/oPSurOI6rX0gZX5P/574D6
 
 ## ER図
 
-[![Image from Gyazo](https://i.gyazo.com/82fb8d205087997aa5942550af3f34ac.png)](https://gyazo.com/82fb8d205087997aa5942550af3f34ac)
+[![Image from Gyazo](https://i.gyazo.com/8534dbe7c3d064e56202343f2f9f381e.png)](https://gyazo.com/8534dbe7c3d064e56202343f2f9f381e)
 
 ## 画面遷移図
 
