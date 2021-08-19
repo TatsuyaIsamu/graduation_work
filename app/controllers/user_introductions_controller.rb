@@ -44,7 +44,7 @@ class UserIntroductionsController < ApplicationController
   def destroy
     @user_introduction.destroy
     respond_to do |format|
-      format.html { redirect_to user_introductions_url, notice: "User introduction was successfully destroyed." }
+      format.html { redirect_to tops_index_path, notice: "User introduction was successfully destroyed." }
       format.json { head :no_content }
     end
   end
