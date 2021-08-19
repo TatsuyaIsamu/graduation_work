@@ -1,0 +1,10 @@
+p#notice = notice
+
+p = @user_introduction.id
+p = @user_introduction.address
+p = @user_introduction.image
+p = @user_introduction.introduction
+= link_to 'Edit', edit_user_introduction_path(@user_introduction)
+br
+= link_to "Delete", user_introduction_path(@user_introduction.id), method: :delete
+
