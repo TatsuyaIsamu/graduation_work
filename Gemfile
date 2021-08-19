@@ -15,6 +15,7 @@ gem 'rubocop', require: false
 gem 'faker'
 gem 'slim-rails'
 gem 'devise'
+gem 'devise-i18n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
