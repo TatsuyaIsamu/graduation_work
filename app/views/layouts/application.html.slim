@@ -8,4 +8,15 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    - if user_signed_in?
+      li = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else 
+      li = link_to "ログイン", new_user_session_path
+      li = link_to "サインアップ", new_user_registration_path 
+    - if notice
+      p.alert.alert-notice 
+        = notice 
+    - if alert 
+      p.alert.alert-error 
+        = alert
     = yield
