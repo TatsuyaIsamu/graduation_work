@@ -42,5 +42,17 @@ RSpec.describe User, type: :system do
         expect(page).to have_content "ログインもしくはアカウント登録してください。"
       end
     end
+    context "ログインしているユーザーが" do
+      it "退会ボタンを押すことで退会される" do
+        user = build(:user)
+        user.save
+        visit new_user_session_path
+        fill_in "user[email]", with: "test@gmail"
+        fill_in "user[password]", with: "111111"
+        click_on "commit"
+        click_on "退会する"    
+        expect(User.first).to eq nil 
+      end
+    end
   end
 end
