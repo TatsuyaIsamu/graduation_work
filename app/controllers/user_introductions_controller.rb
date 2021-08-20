@@ -51,7 +51,7 @@ class UserIntroductionsController < ApplicationController
 
   private
   def set_user_introduction
-    @user_introduction = UserIntroduction.find(params[:id])
+    @user_introduction = UserIntroduction.find_by(user_id: params[:id])
   end
 
   def user_introduction_params
