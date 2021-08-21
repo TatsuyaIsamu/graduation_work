@@ -1,0 +1,2 @@
+class Shinto < ApplicationRecord
+end

@@ -15,6 +15,7 @@ html
     - else 
       li = link_to "ログイン", new_user_session_path
       li = link_to "サインアップ", new_user_registration_path 
+    li = link_to "神社を検索する", shintos_path
     - if notice
       p.alert.alert-notice 
         = notice 

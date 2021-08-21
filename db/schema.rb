@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_135550) do
+ActiveRecord::Schema.define(version: 2021_08_21_023340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "shintos", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "origin_shrine"
+    t.string "origin_term"
+    t.text "origin_history"
+    t.string "main_kamisama"
+    t.string "sub_kamisama1"
+    t.string "sub_kamisama2"
+    t.string "original_url"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shrines", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "origin_shrine"
+    t.string "origin_term"
+    t.text "origin_history"
+    t.string "main_kamisama"
+    t.string "sub_kamisama1"
+    t.string "sub_kamisama2"
+    t.string "original_url"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user_introductions", force: :cascade do |t|
     t.integer "address"

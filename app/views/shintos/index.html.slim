@@ -1,0 +1,19 @@
+h1 Listing shintos
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @shintos.each do |shinto|
+      tr
+        td = link_to 'Show', shinto
+        td = link_to 'Edit', edit_shinto_path(shinto)
+        td = link_to 'Destroy', shinto, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Shinto', new_shinto_path
