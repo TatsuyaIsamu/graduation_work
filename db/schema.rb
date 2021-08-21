@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 2021_08_21_122831) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shrines", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "origin_shrine"
+    t.string "origin_term"
+    t.text "origin_history"
+    t.string "main_kamisama"
+    t.string "sub_kamisama1"
+    t.string "sub_kamisama2"
+    t.string "original_url"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_introductions", force: :cascade do |t|
     t.integer "address"
     t.string "image"
