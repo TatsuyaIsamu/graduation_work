@@ -7,7 +7,6 @@ table
       th Weather
       th Memo
       th Image
-      th User
       th Shinto
       th
       th
@@ -20,8 +19,7 @@ table
         td = worship.weather
         td = worship.memo
         td = worship.image
-        td = worship.user
-        td = worship.shinto
+        td = worship.shinto.name
         td = link_to 'Show', worship
         td = link_to 'Edit', edit_worship_path(worship)
         td = link_to 'Destroy', worship, data: { confirm: 'Are you sure?' }, method: :delete

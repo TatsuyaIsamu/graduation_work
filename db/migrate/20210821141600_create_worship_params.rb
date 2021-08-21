@@ -4,7 +4,7 @@ class CreateWorshipParams < ActiveRecord::Migration[5.2]
       t.string :title
       t.integer :points
       t.text :memo
-      t.references :worships, foreign_key: true, null: false
+      t.references :worship, foreign_key: true, null: false
 
       t.timestamps
     end

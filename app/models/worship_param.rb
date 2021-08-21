@@ -1,3 +1,3 @@
 class WorshipParam < ApplicationRecord
-  belongs_to :worship_id
+  belongs_to :worship
 end

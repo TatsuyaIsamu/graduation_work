@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 2021_08_21_141600) do
     t.string "title"
     t.integer "points"
     t.text "memo"
-    t.bigint "worships_id", null: false
+    t.bigint "worship_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["worships_id"], name: "index_worship_params_on_worships_id"
+    t.index ["worship_id"], name: "index_worship_params_on_worship_id"
   end
 
   create_table "worships", force: :cascade do |t|
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_08_21_141600) do
   end
 
   add_foreign_key "user_introductions", "users"
-  add_foreign_key "worship_params", "worships", column: "worships_id"
+  add_foreign_key "worship_params", "worships"
   add_foreign_key "worships", "shintos"
   add_foreign_key "worships", "users"
 end
