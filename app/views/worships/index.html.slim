@@ -1,0 +1,31 @@
+h1 Listing worships
+
+table
+  thead
+    tr
+      th Worship day
+      th Weather
+      th Memo
+      th Image
+      th User
+      th Shinto
+      th
+      th
+      th
+
+  tbody
+    - @worships.each do |worship|
+      tr
+        td = worship.worship_day
+        td = worship.weather
+        td = worship.memo
+        td = worship.image
+        td = worship.user
+        td = worship.shinto
+        td = link_to 'Show', worship
+        td = link_to 'Edit', edit_worship_path(worship)
+        td = link_to 'Destroy', worship, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Worship', new_worship_path

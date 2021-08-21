@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :worships
   resources :shintos, only: %i[index show]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'tops/index'

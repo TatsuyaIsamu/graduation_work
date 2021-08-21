@@ -1,0 +1,29 @@
+p#notice = notice
+
+p
+  strong Worship day:
+  = @worship.worship_day
+
+p
+  strong Weather:
+  = @worship.weather
+
+p
+  strong Memo:
+  = @worship.memo
+
+p
+  strong Image:
+  = @worship.image
+
+p
+  strong User:
+  = @worship.user
+
+p
+  strong Shinto:
+  = @worship.shinto
+
+=> link_to 'Edit', edit_worship_path(@worship)
+'|
+=< link_to 'Back', worships_path
