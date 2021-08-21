@@ -21,9 +21,7 @@ class WorshipsController < ApplicationController
 
   # POST /worships or /worships.json
   def create
-    binding.pry
     @worship = Worship.new(worship_params)
-
     respond_to do |format|
       if @worship.save
         format.html { redirect_to @worship, notice: "Worship was successfully created." }
