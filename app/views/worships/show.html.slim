@@ -16,13 +16,21 @@ p
   strong Image:
   = @worship.image
 
-p
-  strong User:
-  = @worship.user
 
 p
   strong Shinto:
-  = @worship.shinto
+  = @worship.shinto.name
+
+p
+  strong title:
+  = @worship.worship_params[0].title
+p
+  strong points:
+  = @worship.worship_params[0].points
+p
+  strong memo:
+  = @worship.worship_params[0].memo
+
 
 => link_to 'Edit', edit_worship_path(@worship)
 '|

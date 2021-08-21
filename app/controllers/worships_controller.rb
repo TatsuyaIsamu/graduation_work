@@ -13,6 +13,7 @@ class WorshipsController < ApplicationController
   # GET /worships/new
   def new
     @worship = current_user.worships.build(shinto_id: params[:shinto_id])
+    @worship.worship_params.build
   end
 
   # GET /worships/1/edit
@@ -67,6 +68,6 @@ class WorshipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def worship_params
-      params.require(:worship).permit(:worship_day, :weather, :memo, :image, :user_id, :shinto_id)
+      params.require(:worship).permit(:worship_day, :weather, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo])
     end
 end
