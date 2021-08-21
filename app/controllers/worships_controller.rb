@@ -12,7 +12,7 @@ class WorshipsController < ApplicationController
 
   # GET /worships/new
   def new
-    @worship = Worship.new
+    @worship = current_user.worships.build(shinto_id: params[:shinto_id])
   end
 
   # GET /worships/1/edit
@@ -21,6 +21,7 @@ class WorshipsController < ApplicationController
 
   # POST /worships or /worships.json
   def create
+    binding.pry
     @worship = Worship.new(worship_params)
 
     respond_to do |format|
@@ -54,6 +55,10 @@ class WorshipsController < ApplicationController
       format.html { redirect_to worships_url, notice: "Worship was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @shintos = Shinto.all
   end
 
   private

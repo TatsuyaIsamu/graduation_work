@@ -18,10 +18,8 @@
   .field
     = f.label :image
     = f.text_field :image
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :shinto
-    = f.text_field :shinto
+  .field 
+    = f.hidden_field :user_id, value: @worship.user_id
+    = f.hidden_field :shinto_id, value: @worship.shinto_id
+
   .actions = f.submit
