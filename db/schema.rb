@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_023340) do
+ActiveRecord::Schema.define(version: 2021_08_21_122831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,5 +74,20 @@ ActiveRecord::Schema.define(version: 2021_08_21_023340) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "worships", force: :cascade do |t|
+    t.date "worship_day"
+    t.integer "weather"
+    t.text "memo"
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.bigint "shinto_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shinto_id"], name: "index_worships_on_shinto_id"
+    t.index ["user_id"], name: "index_worships_on_user_id"
+  end
+
   add_foreign_key "user_introductions", "users"
+  add_foreign_key "worships", "shintos"
+  add_foreign_key "worships", "users"
 end
