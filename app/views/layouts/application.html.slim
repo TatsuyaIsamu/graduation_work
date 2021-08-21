@@ -10,6 +10,7 @@ html
   body
     - if user_signed_in?
       li = link_to "プロフィール", user_introduction_path(current_user)
+      li = link_to "御朱印を認定する", search_worships_path
       li = link_to "ログアウト", destroy_user_session_path, method: :delete
       li = link_to "退会する",  user_registration_path, method: :delete
     - else 
