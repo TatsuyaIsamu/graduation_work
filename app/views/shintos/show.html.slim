@@ -1,5 +1,40 @@
 p#notice = notice
 
+p
+  strong 神社名:
+  = @shinto.name
 
-'|
-=< link_to 'Back', shintos_path
+p
+  strong 住所:
+  = @shinto.address
+
+p
+  strong 総本山:
+  = @shinto.origin_shrine
+
+p
+  strong 起源:
+  = @shinto.origin_term
+
+
+p
+  strong 由緒
+  = @shinto.origin_history
+
+p
+  strong 主祭神:
+  = @shinto.main_kamisama
+
+p
+  strong 相殿神:
+  = @shinto.sub_kamisama1
+
+p
+  strong 相殿神:
+  = @shinto.sub_kamisama2
+
+p
+  strong 公式URL:
+  = @shinto.original_url
+
+= link_to 'Back', shintos_path
