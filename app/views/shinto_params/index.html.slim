@@ -1,0 +1,27 @@
+h1 Listing shinto_params
+
+table
+  thead
+    tr
+      th Title
+      th Points
+      th Memo
+      th Favorite shinto
+      th
+      th
+      th
+
+  tbody
+    - @shinto_params.each do |shinto_param|
+      tr
+        td = shinto_param.title
+        td = shinto_param.points
+        td = shinto_param.memo
+        td = shinto_param.favorite_shinto
+        td = link_to 'Show', shinto_param
+        td = link_to 'Edit', edit_shinto_param_path(shinto_param)
+        td = link_to 'Destroy', shinto_param, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Shinto param', new_shinto_param_path

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shinto_params
   resources :worships do
     collection do
       get :search
