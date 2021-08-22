@@ -1,0 +1,21 @@
+= form_for @shinto_param do |f|
+  - if @shinto_param.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@shinto_param.errors.count, 'error')} prohibited this shinto_param from being saved:"
+      ul
+        - @shinto_param.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :points
+    = f.number_field :points
+  .field
+    = f.label :memo
+    = f.text_area :memo
+  .field
+    = f.label :favorite_shinto
+    = f.text_field :favorite_shinto
+  .actions = f.submit
