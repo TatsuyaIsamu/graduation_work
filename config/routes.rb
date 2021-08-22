@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :shinto_params
+  
   resources :worships do
     collection do
       get :search
@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  resources :favorite_shintos, only: %i[index create destroy]
+  resources :favorite_shintos, only: %i[index create destroy] do
+    resources :shinto_params, only: %i[new create destroy]
+  end
 
   root  "tops#index"
   resources :user_introductions, only: %i[show new create edit update destroy]

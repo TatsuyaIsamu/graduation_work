@@ -13,6 +13,7 @@ class ShintoParamsController < ApplicationController
   # GET /shinto_params/new
   def new
     @shinto_param = ShintoParam.new
+    @favorite_shinto = FavoriteShinto.find(params[:favorite_shinto_id])
   end
 
   # GET /shinto_params/1/edit
@@ -22,10 +23,10 @@ class ShintoParamsController < ApplicationController
   # POST /shinto_params or /shinto_params.json
   def create
     @shinto_param = ShintoParam.new(shinto_param_params)
-
+    @favorite_shinto = FavoriteShinto.find(params[:favorite_shinto_id])
     respond_to do |format|
       if @shinto_param.save
-        format.html { redirect_to @shinto_param, notice: "Shinto param was successfully created." }
+        format.html { redirect_to favorite_shintos_path, notice: "Shinto param was successfully created." }
         format.json { render :show, status: :created, location: @shinto_param }
       else
         format.html { render :new, status: :unprocessable_entity }

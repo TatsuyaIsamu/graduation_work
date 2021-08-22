@@ -17,7 +17,6 @@ class UserIntroductionsController < ApplicationController
 
   def create
     @user_introduction = UserIntroduction.new(user_introduction_params)
-
     respond_to do |format|
       if @user_introduction.save
         format.html { redirect_to @user_introduction, notice: "User introduction was successfully created." }

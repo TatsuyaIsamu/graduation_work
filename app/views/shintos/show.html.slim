@@ -37,4 +37,17 @@ p
   strong 公式URL:
   = @shinto.original_url
 
+- if current_user.favorite_shinto_shintos[0] == @shinto
+  strong 神社パラメーターを追加する:
+  = link_to "追加する", new_favorite_shinto_shinto_param_path(current_user.favorite_shintos[0].id) 
+br
+- if @shinto.favorite_shintos[0].shinto_params.present?
+  - @shinto.favorite_shintos[0].shinto_params.each do |shinto_param|
+    = shinto_param.title 
+    = shinto_param.points 
+    = shinto_param.memo 
+    br
+  
+br
+
 = link_to 'Back', shintos_path
