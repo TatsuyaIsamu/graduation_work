@@ -1,4 +1,4 @@
-= form_for @shinto_param do |f|
+= form_with(model: @shinto_param, url: favorite_shinto_shinto_params_path(@favorite_shinto,@shinto_param), local: true) do |f|
   - if @shinto_param.errors.any?
     #error_explanation
       h2 = "#{pluralize(@shinto_param.errors.count, 'error')} prohibited this shinto_param from being saved:"
@@ -16,6 +16,5 @@
     = f.label :memo
     = f.text_area :memo
   .field
-    = f.label :favorite_shinto
-    = f.text_field :favorite_shinto
+    = f.hidden_field :favorite_shinto_id, value: @shinto_id
   .actions = f.submit
