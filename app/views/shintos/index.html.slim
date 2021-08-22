@@ -1,17 +1,24 @@
-h1 Listing shintos
+h1 神社一覧
 
 table
   thead
     tr
-      th
-      th
-      th
+      th 神社名
+      th 住所
+      th 詳細
+      th お気に入り
 
   tbody
     - @shintos.each do |shinto|
       tr
-        td = link_to 'Show', shinto
-
+        td = shinto.name 
+        td = shinto.address
+        td = link_to 'Show', shinto, class: "btn btn-primary"
+        td
+          - if current_user.favorite_shintos.find_by(shinto_id: shinto.id).present?
+            = link_to "お気に入りを解除する", favorite_shinto_path(shinto.favorite_shintos[0].id), method: :delete, class: "btn btn-danger"
+          - else 
+            = link_to "お気に入りする", favorite_shintos_path(shinto_id: shinto.id), method: :post, class: "btn btn-danger"
 br
 
 
