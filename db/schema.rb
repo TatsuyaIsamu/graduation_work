@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_141600) do
+ActiveRecord::Schema.define(version: 2021_08_22_015247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorite_shintos", force: :cascade do |t|
+    t.bigint "user_id", default: 0
+    t.bigint "shinto_id", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shinto_id"], name: "index_favorite_shintos_on_shinto_id"
+    t.index ["user_id"], name: "index_favorite_shintos_on_user_id"
+  end
 
   create_table "shintos", force: :cascade do |t|
     t.string "name"
@@ -81,6 +90,8 @@ ActiveRecord::Schema.define(version: 2021_08_21_141600) do
     t.index ["user_id"], name: "index_worships_on_user_id"
   end
 
+  add_foreign_key "favorite_shintos", "shintos"
+  add_foreign_key "favorite_shintos", "users"
   add_foreign_key "user_introductions", "users"
   add_foreign_key "worship_params", "worships"
   add_foreign_key "worships", "shintos"

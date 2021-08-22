@@ -1,0 +1,9 @@
+= form_for @favorite_shinto do |f|
+  - if @favorite_shinto.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@favorite_shinto.errors.count, 'error')} prohibited this favorite_shinto from being saved:"
+      ul
+        - @favorite_shinto.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

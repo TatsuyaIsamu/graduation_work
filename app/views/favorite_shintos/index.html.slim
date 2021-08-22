@@ -1,0 +1,19 @@
+h1 Listing favorite_shintos
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @favorite_shintos.each do |favorite_shinto|
+      tr
+        td = link_to 'Show', favorite_shinto
+        td = link_to 'Edit', edit_favorite_shinto_path(favorite_shinto)
+        td = link_to 'Destroy', favorite_shinto, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Favorite shinto', new_favorite_shinto_path
