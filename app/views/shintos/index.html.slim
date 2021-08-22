@@ -1,16 +1,18 @@
-h1 Listing shintos
+h1 神社一覧
 
 table
   thead
     tr
-      th
-      th
-      th
+      th 神社名
+      th 住所
+      th 詳細
 
   tbody
     - @shintos.each do |shinto|
       tr
-        td = link_to 'Show', shinto
+        td = shinto.name 
+        td = shinto.address
+        td = link_to 'Show', shinto, class: "btn btn-primary"
 
 br
 
