@@ -16,5 +16,5 @@
     = f.label :memo
     = f.text_area :memo
   .field
-    = f.hidden_field :favorite_shinto_id, value: @shinto_id
+    = f.hidden_field :favorite_shinto_id, value: @favorite_shinto.id
   .actions = f.submit
