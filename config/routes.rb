@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+  resources :favorite_shintos, only: %i[index create destroy]
 
   root  "tops#index"
   resources :user_introductions, only: %i[show new create edit update destroy]
