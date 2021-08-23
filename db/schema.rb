@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_014646) do
+ActiveRecord::Schema.define(version: 2021_08_23_030818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,23 +22,6 @@ ActiveRecord::Schema.define(version: 2021_08_23_014646) do
     t.datetime "updated_at", null: false
     t.index ["shinto_id"], name: "index_favorite_shintos_on_shinto_id"
     t.index ["user_id"], name: "index_favorite_shintos_on_user_id"
-  end
-
-  create_table "ranking_items", force: :cascade do |t|
-    t.integer "rank"
-    t.bigint "shinto_id", null: false
-    t.bigint "ranking_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ranking_id"], name: "index_ranking_items_on_ranking_id"
-    t.index ["shinto_id"], name: "index_ranking_items_on_shinto_id"
-  end
-
-  create_table "rankings", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_rankings_on_user_id"
   end
 
   create_table "shinto_params", force: :cascade do |t|
@@ -119,9 +102,6 @@ ActiveRecord::Schema.define(version: 2021_08_23_014646) do
 
   add_foreign_key "favorite_shintos", "shintos"
   add_foreign_key "favorite_shintos", "users"
-  add_foreign_key "ranking_items", "rankings"
-  add_foreign_key "ranking_items", "shintos"
-  add_foreign_key "rankings", "users"
   add_foreign_key "shinto_params", "favorite_shintos"
   add_foreign_key "user_introductions", "users"
   add_foreign_key "worship_params", "worships"
