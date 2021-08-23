@@ -1,0 +1,15 @@
+= form_for @ranking_item do |f|
+  - if @ranking_item.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@ranking_item.errors.count, 'error')} prohibited this ranking_item from being saved:"
+      ul
+        - @ranking_item.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :shinto
+    = f.text_field :shinto
+  .field
+    = f.label :ranking
+    = f.text_field :ranking
+  .actions = f.submit

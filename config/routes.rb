@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :ranking_items
   resources :worships do
     collection do
       get :search
