@@ -1,0 +1,7 @@
+h1 テスト
+
+= form_with(scope: :ranking_item, url: new_ranking_item_path(@rank), method: :get, local: true) do |f|
+  - @shintos.each do |shinto|
+    = shinto.name 
+    = f.hidden_field :shinto_id, value: shinto.id
+    = f.submit "この神社"

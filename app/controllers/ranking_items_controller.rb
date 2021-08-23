@@ -12,7 +12,15 @@ class RankingItemsController < ApplicationController
 
   # GET /ranking_items/new
   def new
+    @rank = params[:rank]
+    if params[:format]
+      @rank = params[:format]
+    end
     @ranking_item = RankingItem.new
+    if params[:ranking_item].present?
+      @search = params[:ranking_item]
+      @shinto = Shinto.find(@search[:shinto_id])
+    end
   end
 
   # GET /ranking_items/1/edit
@@ -25,7 +33,7 @@ class RankingItemsController < ApplicationController
 
     respond_to do |format|
       if @ranking_item.save
-        format.html { redirect_to @ranking_item, notice: "Ranking item was successfully created." }
+        format.html { redirect_to user_introductions_path, notice: "Ranking item was successfully created." }
         format.json { render :show, status: :created, location: @ranking_item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,6 +64,11 @@ class RankingItemsController < ApplicationController
     end
   end
 
+  def search
+    @rank = params[:format]
+    @shintos = Shinto.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ranking_item
@@ -64,6 +77,6 @@ class RankingItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ranking_item_params
-      params.require(:ranking_item).permit(:rank, :shinto_id, :ranking_id)
+      params.require(:ranking_item).permit(:rank, :user_id, :shinto_id)
     end
 end

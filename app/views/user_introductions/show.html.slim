@@ -4,6 +4,14 @@ p = @user_introduction.id
 p = @user_introduction.address
 p = @user_introduction.image
 p = @user_introduction.introduction
+h2 好きな神社ランキング
+h3 ①位
+p = link_to "設定する", new_ranking_item_path(rank: 1)
+h3 ②位
+p = link_to "設定する", new_ranking_item_path(rank: 2)
+h3 ③位
+p = link_to "設定する", new_ranking_item_path(rank: 3)
+
 = link_to 'Edit', edit_user_introduction_path(@user_introduction)
 br
 = link_to "Delete", user_introduction_path(@user_introduction.id), method: :delete

@@ -4,8 +4,8 @@ table
   thead
     tr
       th Rank
+      th User
       th Shinto
-      th Ranking
       th
       th
       th
@@ -14,8 +14,8 @@ table
     - @ranking_items.each do |ranking_item|
       tr
         td = ranking_item.rank
+        td = ranking_item.user
         td = ranking_item.shinto
-        td = ranking_item.ranking
         td = link_to 'Show', ranking_item
         td = link_to 'Edit', edit_ranking_item_path(ranking_item)
         td = link_to 'Destroy', ranking_item, data: { confirm: 'Are you sure?' }, method: :delete

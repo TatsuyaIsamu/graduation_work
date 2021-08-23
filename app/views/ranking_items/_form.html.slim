@@ -7,12 +7,19 @@
           li = message
 
   .field
-    = f.label :rank
-    = f.number_field :rank
+    = f.hidden_field :rank, value: @rank
   .field
-    = f.label :shinto
-    = f.text_field :shinto
+    = f.hidden_field :user_id, value: current_user.id
   .field
-    = f.label :ranking
-    = f.text_field :ranking
+    - if @search.present?
+      p = @shinto.name
+      = f.hidden_field :shinto_id, value: @shinto.id
+      
+    
   .actions = f.submit
+
+p 神社を検索する
+= form_with(scope: :shinto, url: search_ranking_items_path(@rank), local: true, method: :get) do |search|
+  = search.text_field :search_field
+  = search.submit "検索"
+
