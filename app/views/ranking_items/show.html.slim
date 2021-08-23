@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong Rank:
+  = @ranking_item.rank
+
+p
+  strong Shinto:
+  = @ranking_item.shinto
+
+p
+  strong Ranking:
+  = @ranking_item.ranking
+
+=> link_to 'Edit', edit_ranking_item_path(@ranking_item)
+'|
+=< link_to 'Back', ranking_items_path
