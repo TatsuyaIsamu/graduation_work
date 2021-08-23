@@ -6,6 +6,7 @@ p = @user_introduction.image
 p = @user_introduction.introduction
 h2 好きな神社ランキング
 h3 ①位
+- if @user_introduction.user.ranking
 p = link_to "設定する", new_ranking_item_path(rank: 1)
 h3 ②位
 p = link_to "設定する", new_ranking_item_path(rank: 2)

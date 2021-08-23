@@ -33,7 +33,7 @@ class RankingItemsController < ApplicationController
 
     respond_to do |format|
       if @ranking_item.save
-        format.html { redirect_to user_introductions_path, notice: "Ranking item was successfully created." }
+        format.html { redirect_to user_introduction_path(@ranking_item.user_id), notice: "Ranking item was successfully created." }
         format.json { render :show, status: :created, location: @ranking_item }
       else
         format.html { render :new, status: :unprocessable_entity }
