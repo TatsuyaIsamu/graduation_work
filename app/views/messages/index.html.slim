@@ -1,0 +1,21 @@
+- if @over_ten
+  = link_to '以前のメッセージ', '?m=all'
+.ui.segment
+  - @messages.each do |message|
+    - if message.body.present?
+      .item
+        .content
+          .header
+            strong= message.user.name
+            = message.message_time
+          .list
+            .item
+              i.right.triangle.icon
+              = message.body
+              | 
+= form_with(model: [@conversation, @message]) do |f|
+  .field
+    = f.text_area :body, class: "form-control"
+  = f.text_field :user_id, value: current_user.id, type: "hidden"
+  div
+    = f.submit "メッセージを送る"
