@@ -1,2 +1,5 @@
-h1 Users#index
-p Find me in app/views/users/index.html.slim
+h2 
+  - @users.each do |user|
+    = user.name 
+    = user.email 
+    = render "follow_form", user: user
