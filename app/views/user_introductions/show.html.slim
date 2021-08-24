@@ -4,7 +4,8 @@ p = @user_introduction.id
 p = @user_introduction.address
 p = @user_introduction.image
 p = @user_introduction.introduction
-
+= link_to '編集する', edit_user_introduction_path(@user_introduction.id)
+br
 h3 ①位 
 = @ranking1.rank
 - if @ranking1.ranking_items[0].present?
@@ -31,9 +32,7 @@ h3 ③位
 br
 = link_to "追加する",  new_ranking_ranking_item_path(@ranking3.id)
 
-br
 
-= link_to 'Edit', edit_user_introduction_path(@user_introduction)
-br
-= link_to "Delete", user_introduction_path(@user_introduction.id), method: :delete
+
+
 

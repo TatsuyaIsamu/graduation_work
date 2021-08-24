@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  resources :user_introductions, only: %i[show new create edit update destroy]
+  resources :user_introductions, only: %i[show edit update]
 end

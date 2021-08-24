@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     - if user_signed_in?
-      li = link_to "プロフィール", user_introduction_path(current_user), class: "btn btn-info"
+      li = link_to "プロフィール", user_introduction_path(current_user.user_introduction.id), class: "btn btn-info"
       li = link_to "御朱印を認定する", search_worships_path, class: "btn btn-info"
       li = link_to "MyJinja", favorite_shintos_path, class: "btn btn-info"
       li = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-info"
