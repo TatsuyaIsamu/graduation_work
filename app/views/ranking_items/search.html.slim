@@ -1,0 +1,8 @@
+h1 テスト
+
+
+- @shintos.each do |shinto|
+  = shinto.name 
+  = link_to "この神社",new_ranking_ranking_item_path(@shinto_id, shinto.id)
+  br
+

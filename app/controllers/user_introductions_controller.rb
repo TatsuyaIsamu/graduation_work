@@ -6,6 +6,10 @@ class UserIntroductionsController < ApplicationController
   end
 
   def show
+    ranking_user_id = @user_introduction.user.id
+    @ranking1 = Ranking.find_by(user_id: ranking_user_id, rank: 1)
+    @ranking2 = Ranking.find_by(user_id: ranking_user_id, rank: 2)
+    @ranking3 = Ranking.find_by(user_id: ranking_user_id, rank: 3)
   end
 
   def new
