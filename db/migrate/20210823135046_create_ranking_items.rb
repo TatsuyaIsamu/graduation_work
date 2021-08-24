@@ -3,8 +3,7 @@ class CreateRankingItems < ActiveRecord::Migration[5.2]
     create_table :ranking_items do |t|
       t.references :shinto, foreign_key: true, null: false
       t.references :ranking, foreign_key: true, null: false
-      t.text :memo
-      t.string :image
+    
       t.timestamps
     end
   end
