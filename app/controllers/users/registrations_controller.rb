@@ -12,6 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    resource.rankings.build(rank: 1)
+    resource.rankings.build(rank: 2)
+    resource.rankings.build(rank: 3)
     resource.build_user_introduction
     resource.save
   end

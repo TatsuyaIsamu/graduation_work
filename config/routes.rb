@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  
-  resources :ranking_items
+    resources :rankings, only: %i[] do
+      resources :ranking_items
+    end
+
   resources :worships do
     collection do
       get :search
