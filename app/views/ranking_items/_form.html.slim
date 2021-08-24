@@ -1,15 +1,29 @@
-= form_for @ranking_item do |f|
+= form_with(scope: :search, url: search_ranking_ranking_items_path(@ranking_id), local: true, method: :get) do |search|
+  = search.text_field :shinto_name
+  = search.submit
+
+= form_with(model: [@ranking,@ranking_item], local: true) do |f|
   - if @ranking_item.errors.any?
     #error_explanation
       h2 = "#{pluralize(@ranking_item.errors.count, 'error')} prohibited this ranking_item from being saved:"
       ul
         - @ranking_item.errors.full_messages.each do |message|
           li = message
+  - if @shinto.present?
+    .field
+      = f.label :shinto
+      br
+      = @shinto.name
+      = f.hidden_field :shinto_id, value: @shinto.id
+  .field
+    = f.hidden_field :ranking_id, value: @ranking_id
+  
+  .field 
+    = f.label :memo
+    = f.text_field :memo
+  
+  .field 
+    = f.label :image
+    = f.text_field :image
 
-  .field
-    = f.label :shinto
-    = f.text_field :shinto
-  .field
-    = f.label :ranking
-    = f.text_field :ranking
   .actions = f.submit

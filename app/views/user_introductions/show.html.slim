@@ -7,13 +7,29 @@ p = @user_introduction.introduction
 
 h3 ①位 
 = @ranking1.rank
-= link_to "編集する",  new_ranking_ranking_item_path(@ranking1.id)
+- if @ranking1.ranking_items[0].present?
+  = @ranking1.ranking_items[0].shinto.name
+  = @ranking1.ranking_items[0].memo
+  = @ranking1.ranking_items[0].image
+br
+= link_to "追加する",  new_ranking_ranking_item_path(@ranking1.id)
+
 h3 ②位 
-/ = @ranking2.rank
-/ = link_to "編集する", new_ranking_item_path(@ranking2.id)
-/ h3 ③位 
-/ = @ranking3.rank
-/ = link_to "編集する", new_ranking_item_path(@ranking3.id)
+= @ranking2.rank
+- if @ranking2.ranking_items[0].present?
+  = @ranking2.ranking_items[0].shinto.name
+  = @ranking2.ranking_items[0].memo
+  = @ranking2.ranking_items[0].image
+br
+= link_to "追加する",  new_ranking_ranking_item_path(@ranking2.id)
+h3 ③位 
+= @ranking3.rank
+- if @ranking3.ranking_items[0].present?
+  = @ranking3.ranking_items[0].shinto.name
+  = @ranking3.ranking_items[0].memo
+  = @ranking3.ranking_items[0].image
+br
+= link_to "追加する",  new_ranking_ranking_item_path(@ranking3.id)
 
 br
 
