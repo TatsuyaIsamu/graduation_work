@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
     resources :rankings, only: %i[] do
-      resources :ranking_items do
-        collection do
+      resources :ranking_items, only: %i[edit update] do
+        member do
             get :search
         end
       end
@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  resources :user_introductions, only: %i[show new create edit update destroy]
+  resources :user_introductions, only: %i[show edit update]
 end

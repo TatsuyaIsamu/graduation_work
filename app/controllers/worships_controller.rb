@@ -68,6 +68,6 @@ class WorshipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def worship_params
-      params.require(:worship).permit(:worship_day, :weather, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo])
+      params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo]).merge(weather: params[:worship][:weather].to_i)
     end
 end
