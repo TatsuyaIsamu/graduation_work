@@ -1,4 +1,4 @@
 class RankingItem < ApplicationRecord
-  belongs_to :shinto
+  belongs_to :shinto, optional: true
   belongs_to :ranking
 end

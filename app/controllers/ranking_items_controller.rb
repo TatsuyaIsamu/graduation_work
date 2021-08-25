@@ -14,7 +14,8 @@ class RankingItemsController < ApplicationController
   def new
     @ranking_id = params[:ranking_id]
     @ranking = Ranking.find(@ranking_id)
-    @ranking_item = RankingItem.new
+    @ranking_item = RankingItem.find_by(ranking_id: @ranking_id)
+    binding.pry
     if params[:format]
       @shinto = Shinto.find(params[:format])
     end

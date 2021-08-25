@@ -1,11 +1,14 @@
 p#notice = notice
 
-p = @user_introduction.id
+p お住まい
 p = @user_introduction.address
+p 画像
 p = @user_introduction.image
+p 自己紹介
 p = @user_introduction.introduction
 = link_to '編集する', edit_user_introduction_path(@user_introduction.id)
 br
+h2 神社ランキング
 h3 ①位 
 = @ranking1.rank
 - if @ranking1.ranking_items[0].present?
