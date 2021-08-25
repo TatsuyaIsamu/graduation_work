@@ -10,32 +10,38 @@ p = @user_introduction.introduction
 br
 h2 神社ランキング
 h3 ①位 
-= @ranking1.rank
-- if @ranking1.ranking_items[0].present?
+- if @ranking1.ranking_items[0].shinto.present?
   = @ranking1.ranking_items[0].shinto.name
   = @ranking1.ranking_items[0].memo
   = @ranking1.ranking_items[0].image
+- else 
+  p 神社名
+  p メモ
+  p 画像
 br
-= link_to "追加する",  new_ranking_ranking_item_path(@ranking1.id)
-
+= link_to "編集する",  edit_ranking_ranking_item_path(@ranking1.id)
 h3 ②位 
-= @ranking2.rank
-- if @ranking2.ranking_items[0].present?
+- if @ranking2.ranking_items[0].shinto.present?
   = @ranking2.ranking_items[0].shinto.name
   = @ranking2.ranking_items[0].memo
   = @ranking2.ranking_items[0].image
+- else 
+  p 神社名
+  p メモ
+  p 画像
 br
-= link_to "追加する",  new_ranking_ranking_item_path(@ranking2.id)
+= link_to "編集する",  edit_ranking_ranking_item_path(@ranking2.id)
 h3 ③位 
-= @ranking3.rank
-- if @ranking3.ranking_items[0].present?
+- if @ranking3.ranking_items[0].shinto.present?
   = @ranking3.ranking_items[0].shinto.name
   = @ranking3.ranking_items[0].memo
   = @ranking3.ranking_items[0].image
+- else 
+  p 神社名
+  p メモ
+  p 画像
 br
-= link_to "追加する",  new_ranking_ranking_item_path(@ranking3.id)
-
-
+= link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
 
 
 

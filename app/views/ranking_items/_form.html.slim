@@ -1,7 +1,11 @@
-= form_with(scope: :search, url: search_ranking_ranking_items_path(@ranking_id), local: true, method: :get) do |search|
+br
+h2 神社を検索する
+= form_with(scope: :search, url: search_ranking_ranking_item_path(@ranking_id, @ranking_item.id), local: true, method: :get) do |search|
   = search.text_field :shinto_name
-  = search.submit
+  = search.submit "検索"
 
+br
+h2 神社の詳細
 = form_with(model: [@ranking,@ranking_item], local: true) do |f|
   - if @ranking_item.errors.any?
     #error_explanation
@@ -25,5 +29,5 @@
   .field 
     = f.label :image
     = f.text_field :image
-
+  br
   .actions = f.submit

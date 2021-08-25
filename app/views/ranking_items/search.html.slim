@@ -3,6 +3,6 @@ h1 テスト
 
 - @shintos.each do |shinto|
   = shinto.name 
-  = link_to "この神社",new_ranking_ranking_item_path(@shinto_id, shinto.id)
+  = link_to "この神社",edit_ranking_ranking_item_path(@ranking_id, @ranking_item_id, shinto.id)
   br
 

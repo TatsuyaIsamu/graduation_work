@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
     resources :rankings, only: %i[] do
       resources :ranking_items do
-        collection do
+        member do
             get :search
         end
       end
