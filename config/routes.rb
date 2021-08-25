@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
     resources :rankings, only: %i[] do
-      resources :ranking_items do
+      resources :ranking_items, only: %i[edit update] do
         member do
             get :search
         end
