@@ -7,14 +7,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     super
-  end
+  endb
 
   # POST /resource
   def create
     super
     a = resource.rankings.build(rank: 1)
     a.ranking_items.build.save
-    binding.pry
     b = resource.rankings.build(rank: 2)
     b.ranking_items.build.save
     c = resource.rankings.build(rank: 3)
