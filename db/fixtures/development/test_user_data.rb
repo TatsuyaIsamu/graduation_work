@@ -1,4 +1,6 @@
 
+# フォロー
+
 # user_id = [*1..100]
 
 # 50.times do |i|
@@ -16,6 +18,8 @@
 #     },
 #   )
 # end
+
+# 神社のお気に入り
 
 # shinto_id = [*1..100]
 
@@ -44,3 +48,30 @@
 #   )
 # end
 
+# 参拝
+
+# 200.times do |n|
+#   shinto_rand = rand(1..100)
+#   worshipday_rand = rand(1..1000)
+#   weather_rand = rand(1..3)
+#   Worship.seed(
+#     :id, {
+#       id: n + 1,
+#       user_id: 100,
+#       shinto_id: shinto_rand,
+#       worship_day: Date.today - worshipday_rand,
+#       weather: weather_rand,
+#       image: "",
+#       memo: Faker::JapaneseMedia::StudioGhibli.quote
+#     }
+#   )
+#   WorshipParam.seed(
+#     :id, {
+#       id: n + 1,
+#       worship_id: n + 1,
+#       title: Faker::Restaurant.name,
+#       points: rand(1..5),
+#       memo: Faker::JapaneseMedia::StudioGhibli.quote
+#     }
+#   )
+# end
