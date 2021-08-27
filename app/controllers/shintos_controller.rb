@@ -8,6 +8,8 @@ class ShintosController < ApplicationController
 
   # GET /shintos/1 or /shintos/1.json
   def show
+    @shinto.kamisama.gsub!(/\\n/, "<br/>")
+    @shinto.origin_shrine.gsub!(/\\n/, "<br/>")
   end
 
   private

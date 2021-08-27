@@ -6,7 +6,7 @@ p
 
 p
   strong 画像:
-  = @shinto.image
+  img src = "#{@shinto.image}.jpg"
 
 p
   strong 住所:
@@ -14,7 +14,7 @@ p
 
 p
   strong 総本山:
-  = @shinto.origin_shrine
+  = @shinto.origin_shrine.html_safe
 
 p
   strong 起源:
@@ -26,8 +26,8 @@ p
   = @shinto.origin_history
 
 p
-  strong 主祭神:
-  = @shinto.kamisama
+  strong 主祭神: 
+  = @shinto.kamisama.html_safe
 
 p
   strong 公式URL:
@@ -37,12 +37,13 @@ p
   strong 神社パラメーターを追加する:
   = link_to "追加する", new_favorite_shinto_shinto_param_path(current_user.favorite_shintos[0].id) 
 br
-- if @shinto.favorite_shintos[0].shinto_params.present?
-  - @shinto.favorite_shintos[0].shinto_params.each do |shinto_param|
-    = shinto_param.title 
-    = shinto_param.points 
-    = shinto_param.memo 
-    br
+- if @shinto.favorite_shintos[0].present?
+  - if @shinto.favorite_shintos[0].shinto_params.present?
+    - @shinto.favorite_shintos[0].shinto_params.each do |shinto_param|
+      = shinto_param.title 
+      = shinto_param.points 
+      = shinto_param.memo 
+      br
   
 br
 
