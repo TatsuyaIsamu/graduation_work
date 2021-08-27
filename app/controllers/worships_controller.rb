@@ -3,7 +3,13 @@ class WorshipsController < ApplicationController
 
   # GET /worships or /worships.json
   def index
-    @worships = Worship.all
+    unless params[:q].blank?
+      @q = Worship.ransack(params[:q])
+      @worships = @q.result(distinct: true)
+    else
+      @q = Worship.ransack(params[:q])
+      @worships = nil
+    end
   end
 
   # GET /worships/1 or /worships/1.json
@@ -57,7 +63,13 @@ class WorshipsController < ApplicationController
   end
 
   def search
-    @shintos = Shinto.all
+    unless params[:q].blank?
+      @q = Shinto.ransack(params[:q])
+      @shintos = @q.result(distinct: true)
+    else
+      @q = Shinto.ransack(params[:q])
+      @shintos = nil
+    end
   end
 
   private

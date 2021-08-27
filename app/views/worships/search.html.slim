@@ -1,15 +1,20 @@
-h1 神社を検索する
+h1 参拝した神社を検索する
 
-table
-  thead
-    tr
-      th 神社名
-      th アドレス
+= search_form_for @q, url: search_worships_path do |f|
+  = f.label :name, "神社を検索する"
+  = f.search_field :name_or_address_cont
+  = f.submit "検索"
 
-  tbody
-    - @shintos.each do |shinto|
+- unless @shintos == nil
+  table
+    thead
       tr
-        td = shinto.name
-        td = shinto.address
-        td = link_to "この神社", new_worship_path(shinto_id: shinto.id)
-br
+        th 神社名
+        th アドレス
+    tbody
+      - @shintos.each do |shinto|
+        tr
+          td = shinto.name
+          td = shinto.address
+          td = link_to "この神社", new_worship_path(shinto_id: shinto.id)
+  br

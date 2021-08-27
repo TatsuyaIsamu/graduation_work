@@ -1,24 +1,30 @@
 h1 神社一覧
 
-table
-  thead
-    tr
-      th 神社名
-      th 住所
-      th 詳細
-      th お気に入り
+= search_form_for @q do |f|
+  = f.label :name, "神社を検索する"
+  = f.search_field :name_or_address_or_kamisama_cont
+  = f.submit "検索"
 
-  tbody
-    - @shintos.each do |shinto|
+- unless @shintos == nil
+  table
+    thead
       tr
-        td = shinto.name 
-        td = shinto.address
-        td = link_to 'Show', shinto, class: "btn btn-primary"
-        td
-          - if current_user.favorite_shintos.find_by(shinto_id: shinto.id).present?
-            = link_to "お気に入りを解除する", favorite_shinto_path(shinto.favorite_shintos[0].id), method: :delete, class: "btn btn-danger"
-          - else 
-            = link_to "お気に入りする", favorite_shintos_path(shinto_id: shinto.id), method: :post, class: "btn btn-danger"
-br
+        th = sort_link(@q, :name, "神社名", hide_indicator: true)
+        th = sort_link(@q, :address, "住所", hide_indicator: true)
+        th 詳細
+        th お気に入り
+
+    tbody
+      - @shintos.each do |shinto|
+        tr
+          td = shinto.name 
+          td = shinto.address
+          td = link_to 'Show', shinto, class: "btn btn-primary"
+          td
+            - if current_user.favorite_shintos.find_by(shinto_id: shinto.id).present?
+              = link_to "お気に入りを解除する", favorite_shinto_path(shinto.favorite_shintos[0].id), method: :delete, class: "btn btn-danger"
+            - else 
+              = link_to "お気に入りする", favorite_shintos_path(shinto_id: shinto.id), method: :post, class: "btn btn-danger"
+  br
 
 

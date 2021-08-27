@@ -3,7 +3,13 @@ class ShintosController < ApplicationController
 
   # GET /shintos or /shintos.json
   def index
-    @shintos = Shinto.all
+    unless params[:q].blank?
+      @q = Shinto.ransack(params[:q])
+      @shintos = @q.result(distinct: true)
+    else
+      @q = Shinto.ransack(params[:q])
+      @shintos = nil
+    end
   end
 
   # GET /shintos/1 or /shintos/1.json
