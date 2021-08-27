@@ -75,3 +75,35 @@
 #     }
 #   )
 # end
+
+# 会話
+
+user_id = [*1..100]
+
+99.times do |n|
+  user_rand = rand(1..99 - n) + 1
+  if rand <= 0
+    rand = user_rand + n + 1
+  end
+  rand_id = user_id.slice!(user_rand)
+  conversation_user = [100, rand_id]
+  Conversation.seed(
+    :id, {
+      id: n+1,
+      sender_id: 100,
+      recipient_id: rand_id,
+    }
+  )
+  40.times do |s|
+    Message.seed(
+      :id, {
+        id: n*10+s+1,
+        body: Faker::JapaneseMedia::StudioGhibli.quote,
+        user_id: conversation_user[rand(2)],
+        conversation_id: n+1
+      }
+    )
+  end
+end
+
+
