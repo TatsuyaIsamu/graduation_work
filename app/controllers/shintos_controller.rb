@@ -16,6 +16,11 @@ class ShintosController < ApplicationController
   def show
     @shinto.kamisama.gsub!(/\\n/, "<br/>")
     @shinto.origin_shrine.gsub!(/\\n/, "<br/>")
+    @hash = Gmaps4rails.build_markers(@shinto) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+      marker.infowindow place.name
+    end
   end
 
   private
