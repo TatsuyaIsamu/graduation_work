@@ -13,7 +13,7 @@
 
 # # CSVファイルの取込
 # import_read('test_shinto.csv') do |line, idx|
-#   Shinto.seed do |s|
+#   Shinto.create do |s|
 #     s.id      = idx
 #     s.name = line[0]
 #     s.image = line[1]

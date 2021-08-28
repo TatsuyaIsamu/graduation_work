@@ -23,7 +23,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'seed-fu', '~> 2.3'
 gem 'ransack'
-
+gem "geocoder"
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,6 +33,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   gem 'launchy'
+  gem 'dotenv-rails'
 end
 
 group :development do

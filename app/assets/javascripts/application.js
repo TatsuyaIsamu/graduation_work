@@ -16,4 +16,6 @@
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
 //= require @fortawesome/fontawesome-free/js/all.js
+//= require underscore
+//= require gmaps/google
 //= require_tree .
