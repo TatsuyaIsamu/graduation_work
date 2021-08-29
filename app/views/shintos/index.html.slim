@@ -26,6 +26,6 @@ h1 神社一覧
             - else 
               = link_to "お気に入りする", favorite_shintos_path(shinto_id: shinto.id), method: :post, class: "btn btn-danger"
             br
-      = paginate @shintos
+  = paginate @shintos
 
 
