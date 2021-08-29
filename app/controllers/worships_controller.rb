@@ -3,13 +3,7 @@ class WorshipsController < ApplicationController
 
   # GET /worships or /worships.json
   def index
-    unless params[:q].blank?
-      @q = Worship.ransack(params[:q])
-      @worships = @q.result(distinct: true).page(params[:page]).per(7)
-    else
-      @q = Worship.ransack(params[:q])
-      @worships = nil
-    end
+    @worships = current_user.worships.page(params[:page]).per(10)
   end
 
   # GET /worships/1 or /worships/1.json
@@ -70,6 +64,10 @@ class WorshipsController < ApplicationController
       @q = Shinto.ransack(params[:q])
       @shintos = nil
     end
+  end
+
+  def calendar
+    @worships = current_user.worships
   end
 
   private
