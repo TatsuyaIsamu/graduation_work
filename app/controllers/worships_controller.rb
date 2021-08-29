@@ -5,7 +5,7 @@ class WorshipsController < ApplicationController
   def index
     unless params[:q].blank?
       @q = Worship.ransack(params[:q])
-      @worships = @q.result(distinct: true)
+      @worships = @q.result(distinct: true).page(params[:page]).per(7)
     else
       @q = Worship.ransack(params[:q])
       @worships = nil
@@ -65,7 +65,7 @@ class WorshipsController < ApplicationController
   def search
     unless params[:q].blank?
       @q = Shinto.ransack(params[:q])
-      @shintos = @q.result(distinct: true)
+      @shintos = @q.result(distinct: true).page(params[:page]).per(7)
     else
       @q = Shinto.ransack(params[:q])
       @shintos = nil

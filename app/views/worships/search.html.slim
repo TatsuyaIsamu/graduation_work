@@ -17,4 +17,4 @@ h1 参拝した神社を検索する
           td = shinto.name
           td = shinto.address
           td = link_to "この神社", new_worship_path(shinto_id: shinto.id)
-  br
+      = paginate @shintos

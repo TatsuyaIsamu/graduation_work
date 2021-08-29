@@ -25,6 +25,7 @@ h1 神社一覧
               = link_to "お気に入りを解除する", favorite_shinto_path(shinto.favorite_shintos[0].id), method: :delete, class: "btn btn-danger"
             - else 
               = link_to "お気に入りする", favorite_shintos_path(shinto_id: shinto.id), method: :post, class: "btn btn-danger"
-  br
+            br
+      = paginate @shintos
 
 
