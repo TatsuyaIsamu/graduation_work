@@ -5,7 +5,7 @@ class ShintosController < ApplicationController
   def index
     unless params[:q].blank?
       @q = Shinto.ransack(params[:q])
-      @shintos = @q.result(distinct: true)
+      @shintos = @q.result(distinct: true).page(params[:page]).per(7)
     else
       @q = Shinto.ransack(params[:q])
       @shintos = nil

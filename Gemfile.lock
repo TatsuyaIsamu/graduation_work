@@ -353,6 +353,7 @@ DEPENDENCIES
   gmaps4rails
   html2slim
   jbuilder (~> 2.5)
+  kaminari
   launchy
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

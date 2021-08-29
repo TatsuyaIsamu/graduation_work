@@ -3,7 +3,7 @@ class FavoriteShintosController < ApplicationController
 
   # GET /favorite_shintos or /favorite_shintos.json
   def index
-    @favorite_shintos = FavoriteShinto.all
+    @favorite_shintos = FavoriteShinto.page(params[:page]).per(7)
   end
 
 

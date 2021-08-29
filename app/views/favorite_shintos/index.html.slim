@@ -13,9 +13,6 @@ table
         td = favorite_shinto.shinto.name
         td = favorite_shinto.shinto.address
         td = link_to 'Show', shinto_path(favorite_shinto.shinto)
-        / td = link_to 'Edit', edit_favorite_shinto_path(favorite_shinto)
-        / td = link_to 'Destroy', favorite_shinto, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-/ = link_to 'New Favorite shinto', new_favorite_shinto_path
+        
+      
+= paginate @favorite_shintos
