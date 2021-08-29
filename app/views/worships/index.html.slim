@@ -1,4 +1,4 @@
-h1 Listing worships
+h1 参拝一覧
 
 table
   thead
@@ -25,5 +25,6 @@ table
         td = link_to 'Destroy', worship, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
+= paginate @worships
 
-= link_to 'New Worship', new_worship_path
+

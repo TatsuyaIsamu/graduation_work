@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :worships do
     collection do
       get :search
+      get :calendar
     end
   end
   resources :shintos, only: %i[index show]

@@ -18,6 +18,7 @@ html
       li = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-info"
       li = link_to "退会する",  user_registration_path, method: :delete, class: "btn btn-info"
       li = link_to "ユーザー一覧", users_path, class: "btn btn-info"
+      li = link_to "参拝一覧", worships_path, class: "btn btn-info"
     - else 
       li = link_to "ログイン", new_user_session_path, class: "btn btn-info"
       li = link_to "サインアップ", new_user_registration_path , class: "btn btn-info"
