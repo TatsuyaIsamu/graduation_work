@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :contacts, only: %i[new create show]
     resources :rankings, only: %i[] do
       resources :ranking_items, only: %i[edit update] do
         member do
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
         end
       end
     end
-
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :worships do
     collection do
       get :search
