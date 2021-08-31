@@ -22,6 +22,8 @@
 //= require @fortawesome/fontawesome-free/js/all.js
 //= require underscore
 //= require gmaps/google
+//= require chartkick
+//= require Chart.bundle
 
 
 //= require_tree .
