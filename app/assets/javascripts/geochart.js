@@ -24,7 +24,7 @@ function drawMap() {
 		displayMode: 'regions', // regions=塗りつぶし, markers=マーカー 
 		backgroundColor: '#ebf7fe', //背景色
 		resolution: 'provinces',
-		colors:['white','green'] //階層の色
+		colors:['white','green'], //階層の色
 	};
 	//出力するDivを指定して chart を生成
 	var chart = new google.visualization.GeoChart(document.getElementById('region-div'));
