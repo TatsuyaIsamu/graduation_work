@@ -15,8 +15,17 @@ class UserIntroductionsController < ApplicationController
       arr[1] = shinto[1].count
       @chart << arr
     end
-    @a = @user_introduction.user.worship_shintos[1].address
-    binding.irb
+    @mapping = []
+    @user_introduction.user.worship_shintos.map do |shinto|
+      a = shinto.address.match(/東京都|北海道|(?:京都|大阪)府|.{3}県/).to_s
+      unless a == "北海道"
+        a.chop!
+      end
+      if a[0] == "）"
+        a.slice!(0, 1)
+      end
+      @mapping << a
+    end
   end
   
   def edit
