@@ -26,6 +26,7 @@ class UserIntroductionsController < ApplicationController
       end
       @mapping << a
     end
+    gon.usermapping = @mapping
   end
   
   def edit

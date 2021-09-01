@@ -8,11 +8,15 @@ document.addEventListener("turbolinks:load", function(){
   
 })
 
-
+document.addEventListener("turbolinks:load", function(){
+  let map = gon.usermapping
+  $("#mapping").html(map);
+})
 
 
 function drawMap() {
   //都道府県単位のデータ
+  
   var data = [
       ["都道府県","回数"],
       ["北海", 5],
