@@ -9,29 +9,21 @@ document.addEventListener("turbolinks:load", function(){
 })
 
 document.addEventListener("turbolinks:load", function(){
-  let map = gon.usermapping
-  $("#mapping").html(map);
+  
 })
 
 
 function drawMap() {
   //都道府県単位のデータ
-  
-  var data = [
-      ["都道府県","回数"],
-      ["北海", 5],
-      ["青森",   2],
-      ["秋田",   0],
-      ["岩手",   1],
-      ["東京",   1],
-      
-  ];
+  let map = gon.usermapping
+  var data = map;
   var dt = google.visualization.arrayToDataTable(data);
   var options = {
     region: 'JP',  //地域
     displayMode: 'regions', // regions=塗りつぶし, markers=マーカー 
     backgroundColor: '#ebf7fe', //背景色
     resolution: 'provinces',
+    colorAxis: {colors: ["#CBDDC3", "#99E6B2", "#7AD2A8", "#5CBE9D", "#3DAA93", "#1F9688", "#00827E"], maxSize: 60 },
     colors:['white','green'], //階層の色
   };
   //出力するDivを指定して chart を生成
