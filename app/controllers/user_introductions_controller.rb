@@ -15,56 +15,22 @@ class UserIntroductionsController < ApplicationController
       arr[1] = shinto[1].count
       @chart << arr
     end
-    @a =
-    [
-      ['北海道', 3],
-      ['青森', 0],
-      ['岩手', 0],
-      ['宮城', 1],
-      ['秋田', 0],
-      ['山形', 0],
-      ['福島', 0],
-      ['茨城', 5],
-      ['栃木', 2],
-      ['群馬', 2],
-      ['埼玉', 29],
-      ['千葉', 33],
-      ['東京', 797],
-      ['神奈川', 50],
-      ['新潟', 1],
-      ['富山', 2],
-      ['石川', 1],
-      ['福井', 0],
-      ['山梨', 0],
-      ['長野', 1],
-      ['岐阜', 1],
-      ['静岡', 2],
-      ['愛知', 10],
-      ['三重', 1],
-      ['滋賀', 3],
-      ['京都', 18],
-      ['大阪', 49],
-      ['兵庫', 7],
-      ['奈良', 4],
-      ['和歌山', 2],
-      ['鳥取', 0],
-      ['島根', 5],
-      ['岡山', 0],
-      ['広島', 0],
-      ['山口', 1],
-      ['徳島', 0],
-      ['香川', 0],
-      ['愛媛', 0],
-      ['高知', 0],
-      ['福岡', 21],
-      ['佐賀', 0],
-      ['長崎', 0],
-      ['熊本', 0],
-      ['大分', 1],
-      ['宮崎', 1],
-      ['鹿児島', 0],
-      ['沖縄', 5]
-      ]
+    mapping_worship = []
+    @user_introduction.user.worship_shintos.map do |shinto|
+      a = shinto.address.match(/東京都|北海道|(?:京都|大阪)府|.{3}県/).to_s
+      unless a == "北海道"
+        a.chop!
+      end
+      if a[0] == "）"
+        a.slice!(0, 1)
+      end
+      mapping_worship << a
+    end
+
+    mapping_count = mapping_worship.group_by(&:itself).map{|key,value| [key,value.count]}
+    mapping_count.unshift(["都道府県","回数"])
+    gon.usermapping = mapping_count
+    # binding.irb
   end
   
   def edit
