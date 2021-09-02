@@ -1,4 +1,5 @@
 class Worship < ApplicationRecord
+  mount_uploader :image, ImageUploader
   belongs_to :user
   belongs_to :shinto
   has_many :worship_params, dependent: :destroy

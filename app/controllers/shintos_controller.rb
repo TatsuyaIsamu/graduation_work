@@ -1,7 +1,6 @@
 class ShintosController < ApplicationController
   before_action :set_shinto, only: %i[ show ]
 
-  # GET /shintos or /shintos.json
   def index
     unless params[:q].blank?
       @q = Shinto.ransack(params[:q])
@@ -12,7 +11,6 @@ class ShintosController < ApplicationController
     end
   end
 
-  # GET /shintos/1 or /shintos/1.json
   def show
     @shinto.kamisama.gsub!(/\\n/, "<br/>")
     @shinto.origin_shrine.gsub!(/\\n/, "<br/>")
@@ -24,13 +22,11 @@ class ShintosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shinto
-      @shinto = Shinto.find(params[:id])
-    end
+  def set_shinto
+    @shinto = Shinto.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def shinto_params
-      params.fetch(:shinto, {})
-    end
+  def shinto_params
+    params.fetch(:shinto, {})
+  end
 end
