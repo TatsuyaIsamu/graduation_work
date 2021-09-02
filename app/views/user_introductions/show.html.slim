@@ -13,7 +13,7 @@ h3 ①位
 - if @ranking1.ranking_items[0].shinto.present?
   = @ranking1.ranking_items[0].shinto.name
   = @ranking1.ranking_items[0].memo
-  = @ranking1.ranking_items[0].image
+  = image_tag @ranking1.ranking_items[0].image.url
 - else 
   p 神社名
   p メモ
@@ -24,7 +24,7 @@ h3 ②位
 - if @ranking2.ranking_items[0].shinto.present?
   = @ranking2.ranking_items[0].shinto.name
   = @ranking2.ranking_items[0].memo
-  = @ranking2.ranking_items[0].image
+  = image_tag @ranking2.ranking_items[0].image.url
 - else 
   p 神社名
   p メモ
@@ -35,7 +35,7 @@ h3 ③位
 - if @ranking3.ranking_items[0].shinto.present?
   = @ranking3.ranking_items[0].shinto.name
   = @ranking3.ranking_items[0].memo
-  = @ranking3.ranking_items[0].image
+  = image_tag @ranking3.ranking_items[0].image.url
 - else 
   p 神社名
   p メモ

@@ -1,4 +1,5 @@
 class RankingItemsController < ApplicationController
+
   # GET /ranking_items/1/edit
   def edit
     @ranking_id = params[:ranking_id]
