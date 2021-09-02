@@ -1,5 +1,12 @@
 h1 プロフィール
-#mapping
+
+.jumbotron
+  .container
+    h1.display-3 Hello, world!
+    p This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+    p
+      a.btn.btn-primary.btn-lg href="#" role="button"  Learn more »
+
 p お住まい  
 p = @user_introduction.address
 p 画像
@@ -10,6 +17,51 @@ p = @user_introduction.introduction
 = link_to '編集する', edit_user_introduction_path(@user_introduction.id)
 br
 h2 神社ランキング
+
+.row
+  .col-md-4
+    h3 一位
+    .card.mb-4.shadow-sm
+      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
+      .card-body
+        .card-title = @ranking1.ranking_items[0].shinto.name
+        ul.list-group.list-group-flush
+          li.list-group-item = @ranking1.ranking_items[0].memo
+          li.list-group-item = @ranking1.ranking_items[0].shinto.address
+          .d-flex.justify-content-between.align-items-center
+            .btn-group
+              button.btn.btn-sm.btn-outline-secondary type="button"  View
+              button.btn.btn-sm.btn-outline-secondary type="button"  Edit
+            small.text-muted 9 mins
+  .col-md-4
+    h3 二位
+    .card.mb-4.shadow-sm
+      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
+      .card-body
+        .card-title = @ranking2.ranking_items[0].shinto.name
+        ul.list-group.list-group-flush
+          li.list-group-item = @ranking2.ranking_items[0].memo
+          li.list-group-item = @ranking2.ranking_items[0].shinto.address
+          .d-flex.justify-content-between.align-items-center
+            .btn-group
+              button.btn.btn-sm.btn-outline-secondary type="button"  View
+              button.btn.btn-sm.btn-outline-secondary type="button"  Edit
+            small.text-muted 9 mins
+  .col-md-4
+    h3 三位
+    .card.mb-4.shadow-sm
+      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
+      .card-body
+        .card-title = @ranking3.ranking_items[0].shinto.name
+        ul.list-group.list-group-flush
+          li.list-group-item = @ranking3.ranking_items[0].memo
+          li.list-group-item = @ranking3.ranking_items[0].shinto.address
+          .d-flex.justify-content-between.align-items-center
+            .btn-group
+              button.btn.btn-sm.btn-outline-secondary type="button"  View
+              button.btn.btn-sm.btn-outline-secondary type="button"  Edit
+            small.text-muted 9 mins
+
 h3 ①位 
 - if @ranking1.ranking_items[0].shinto.present?
   = @ranking1.ranking_items[0].shinto.name

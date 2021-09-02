@@ -20,7 +20,6 @@ class RankingItemsController < ApplicationController
       else
         render :edit
       end
-    end
   end
 
   def search
