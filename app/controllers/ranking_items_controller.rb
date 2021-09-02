@@ -1,6 +1,5 @@
 class RankingItemsController < ApplicationController
 
-  # GET /ranking_items/1/edit
   def edit
     if params[:q].blank?
       @q = Shinto.ransack(params[:q])
@@ -14,7 +13,6 @@ class RankingItemsController < ApplicationController
     @ranking_item = RankingItem.find_by(ranking_id: @ranking_id)
   end
 
-  # PATCH/PUT /ranking_items/1 or /ranking_items/1.json
   def update
     @ranking_item = RankingItem.find(params[:id])
     respond_to do |format|
@@ -35,8 +33,7 @@ class RankingItemsController < ApplicationController
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def ranking_item_params
-      params.require(:ranking_item).permit(:shinto_id, :ranking_id, :image, :memo)
-    end
+  def ranking_item_params
+    params.require(:ranking_item).permit(:shinto_id, :ranking_id, :image, :memo)
+  end
 end

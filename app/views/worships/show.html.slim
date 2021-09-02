@@ -14,7 +14,8 @@ p
 
 p
   strong Image:
-  = @worship.image
+  - if @worship.image.present?
+    = image_tag @worship.image.url
 
 
 p

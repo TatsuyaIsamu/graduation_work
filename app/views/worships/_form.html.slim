@@ -17,7 +17,7 @@
     = f.text_area :memo
   .field
     = f.label :image
-    = f.text_field :image
+    = f.file_field :image
   .field 
     = f.hidden_field :user_id, value: @worship.user_id
     = f.hidden_field :shinto_id, value: @worship.shinto_id
