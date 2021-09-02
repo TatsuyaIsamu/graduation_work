@@ -2,12 +2,16 @@ class RankingItemsController < ApplicationController
 
   # GET /ranking_items/1/edit
   def edit
-    @ranking_id = params[:ranking_id]
-    @ranking = Ranking.find(@ranking_id)
-    @ranking_item = RankingItem.find_by(ranking_id: @ranking_id)
+    if params[:q].blank?
+      @q = Shinto.ransack(params[:q])
+      @shinto = nil
+    end
     if params[:format]
       @shinto = Shinto.find(params[:format])
     end
+    @ranking_id = params[:ranking_id]
+    @ranking = Ranking.find(@ranking_id)
+    @ranking_item = RankingItem.find_by(ranking_id: @ranking_id)
   end
 
   # PATCH/PUT /ranking_items/1 or /ranking_items/1.json
@@ -26,7 +30,8 @@ class RankingItemsController < ApplicationController
   def search
     @ranking_id = params[:ranking_id]
     @ranking_item_id = params[:id]
-    @shintos = Shinto.all
+    @q = Shinto.ransack(params[:q])
+    @shintos = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   private
