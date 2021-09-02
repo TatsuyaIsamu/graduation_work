@@ -15,8 +15,9 @@
 // = require turbolinks
 //= require jquery
 //= require moment 
+//= require popper
 //= require fullcalendar 
-//= require bootstrap/dist/js/bootstrap.min
+//= require bootstrap-sprockets
 //= require @fortawesome/fontawesome-free/js/all.js
 //= require underscore
 //= require gmaps/google

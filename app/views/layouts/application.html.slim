@@ -14,7 +14,6 @@ html
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
     
 
-  body 
 
   body
   header
@@ -52,8 +51,16 @@ html
           / strong Album
         button.navbar-toggler aria-controls="navbarHeader" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarHeader" data-toggle="collapse" type="button" 
           span.navbar-toggler-icon
+    .dropdown
+      button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
+        | Dropdown button
+      .dropdown-menu aria-labelledby="dropdownMenuButton" 
+        a.dropdown-item href="#"  Action
+        a.dropdown-item href="#"  Another action
+        a.dropdown-item href="#"  Something else here
 
-i.fas.fa-home
+
+    i.fas.fa-home
 
 
     - if notice
