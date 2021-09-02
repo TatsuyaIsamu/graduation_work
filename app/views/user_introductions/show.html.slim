@@ -1,9 +1,10 @@
 h1 プロフィール
 #mapping
-p お住まい
+p お住まい  
 p = @user_introduction.address
 p 画像
-p = image_tag @user_introduction.image.url
+- @user_introduction.image.present?
+  p = image_tag @user_introduction.image.url
 p 自己紹介
 p = @user_introduction.introduction
 = link_to '編集する', edit_user_introduction_path(@user_introduction.id)
@@ -13,7 +14,8 @@ h3 ①位
 - if @ranking1.ranking_items[0].shinto.present?
   = @ranking1.ranking_items[0].shinto.name
   = @ranking1.ranking_items[0].memo
-  = image_tag @ranking1.ranking_items[0].image.url
+  - if @ranking1.ranking_items[0].image.present?
+    = image_tag @ranking1.ranking_items[0].image.url
 - else 
   p 神社名
   p メモ
@@ -24,7 +26,8 @@ h3 ②位
 - if @ranking2.ranking_items[0].shinto.present?
   = @ranking2.ranking_items[0].shinto.name
   = @ranking2.ranking_items[0].memo
-  = image_tag @ranking2.ranking_items[0].image.url
+  - if @ranking2.ranking_items[0].image.present?
+    = image_tag @ranking2.ranking_items[0].image.url
 - else 
   p 神社名
   p メモ
@@ -35,7 +38,8 @@ h3 ③位
 - if @ranking3.ranking_items[0].shinto.present?
   = @ranking3.ranking_items[0].shinto.name
   = @ranking3.ranking_items[0].memo
-  = image_tag @ranking3.ranking_items[0].image.url
+  - if @ranking3.ranking_items[0].image.present?
+    = image_tag @ranking3.ranking_items[0].image.url
 - else 
   p 神社名
   p メモ
