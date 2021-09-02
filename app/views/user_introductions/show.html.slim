@@ -3,7 +3,7 @@ h1 プロフィール
 p お住まい
 p = @user_introduction.address
 p 画像
-p = @user_introduction.image
+p = image_tag @user_introduction.image.url
 p 自己紹介
 p = @user_introduction.introduction
 = link_to '編集する', edit_user_introduction_path(@user_introduction.id)
