@@ -1,20 +1,26 @@
-h1 プロフィール
+
 
 .jumbotron
   .container
-    h1.display-3 Hello, world!
-    p This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
-    p
-      a.btn.btn-primary.btn-lg href="#" role="button"  Learn more »
+    h1 プロフィール
+    .row
+      - if @user_introduction.image.present?
+        p.col-md-4 = image_tag @user_introduction.image.url
+      - else
+        img.col-md-4.profile_picture src="/profile_default.png"
+      .col-md-8 
+        h2 名前
+        p = @user_introduction.user.name
+        h2 お住まい
+        p = @user_introduction.address
+    .row 
+      h2 自己紹介
+      p = @user_introduction.introduction
+    .row 
+      = link_to edit_user_introduction_path(@user_introduction.id) do 
+        i.fas.fa-edit
+    / p.col-sm-4 = @user_introduction.name
 
-p お住まい  
-p = @user_introduction.address
-p 画像
-- @user_introduction.image.present?
-  p = image_tag @user_introduction.image.url
-p 自己紹介
-p = @user_introduction.introduction
-= link_to '編集する', edit_user_introduction_path(@user_introduction.id)
 br
 h2 神社ランキング
 
@@ -25,92 +31,79 @@ h2 神社ランキング
       .card-img-top alt=("Card image cap") 
       - if @ranking1.ranking_items[0].image.present? 
         = image_tag @ranking1.ranking_items[0].image.url
+      - else 
+        img src="/shrine_default.png"
       .card-body
         - if @ranking1.ranking_items[0].shinto.present?
           .card-title = @ranking1.ranking_items[0].shinto.name
+        - else 
+          .card-title ---------
         ul.list-group.list-group-flush
-          li.list-group-item = @ranking1.ranking_items[0].memo
-          li.list-group-item = @ranking1.ranking_items[0].shinto.address
+          - if @ranking1.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking1.ranking_items[0].memo
+            li.list-group-item = @ranking1.ranking_items[0].shinto.address
+          - else 
+            li.list-group-item ---------
+            li.list-group-item ---------
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
-              button.btn.btn-sm.btn-outline-secondary type="button" 
+              = link_to edit_ranking_ranking_item_path(@ranking1.id), class: "btn btn-sm btn-outline-secondary" do
                 i.fas.fa-edit
             small.text-muted 9 mins
+
   .col-md-4
     h3 二位
     .card.mb-4.shadow-sm
       .card-img-top alt=("Card image cap") 
-      - if @ranking2.ranking_item[0].present? 
-        = image_tag @ranking1.ranking_items[0].image.url
+      - if @ranking2.ranking_items[0].image.present? 
+        = image_tag @ranking2.ranking_items[0].image.url
+      - else 
+        img src="/shrine_default.png"
       .card-body
-        .card-title = @ranking2.ranking_items[0].shinto.name
+        - if @ranking2.ranking_items[0].shinto.present?
+          .card-title = @ranking2.ranking_items[0].shinto.name
+        - else 
+          .card-title ---------
         ul.list-group.list-group-flush
-          li.list-group-item = @ranking2.ranking_items[0].memo
-          li.list-group-item = @ranking2.ranking_items[0].shinto.address
+          - if @ranking2.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking2.ranking_items[0].memo
+            li.list-group-item = @ranking2.ranking_items[0].shinto.address
+          - else 
+            li.list-group-item ---------
+            li.list-group-item ---------
           .d-flex.justify-content-between.align-items-center
             .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"
-                i.far.fa-eye
-              button.btn.btn-sm.btn-outline-secondary type="button"
+              button.btn.btn-sm.btn-outline-secondary type="button"  View
+              = link_to edit_ranking_ranking_item_path(@ranking2.id), class: "btn btn-sm btn-outline-secondary" do
                 i.fas.fa-edit
             small.text-muted 9 mins
   .col-md-4
     h3 三位
     .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
+      .card-img-top alt=("Card image cap") 
+      - if @ranking3.ranking_items[0].image.present? 
+        = image_tag @ranking3.ranking_items[0].image.url
+      - else 
+        img src="/shrine_default.png"
       .card-body
-        .card-title 
-        - if @ranking3.ranking_item[0].image.present? 
-          = @ranking3.ranking_items[0].shinto.name
+        - if @ranking3.ranking_items[0].shinto.present?
+          .card-title = @ranking3.ranking_items[0].shinto.name
+        - else 
+          .card-title ---------
         ul.list-group.list-group-flush
-          li.list-group-item = @ranking3.ranking_items[0].memo
-          li.list-group-item = @ranking3.ranking_items[0].shinto.address
+          - if @ranking3.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking3.ranking_items[0].memo
+            li.list-group-item = @ranking3.ranking_items[0].shinto.address
+          - else 
+            li.list-group-item ---------
+            li.list-group-item ---------
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
-              button.btn.btn-sm.btn-outline-secondary type="button"
+              = link_to edit_ranking_ranking_item_path(@ranking3.id), class: "btn btn-sm btn-outline-secondary" do
                 i.fas.fa-edit
             small.text-muted 9 mins
-
-h3 ①位 
-- if @ranking1.ranking_items[0].shinto.present?
-  = @ranking1.ranking_items[0].shinto.name
-  = @ranking1.ranking_items[0].memo
-  - if @ranking1.ranking_items[0].image.present?
-    = image_tag @ranking1.ranking_items[0].image.url
-- else 
-  p 神社名
-  p メモ
-  p 画像
-br
-= link_to "編集する",  edit_ranking_ranking_item_path(@ranking1.id)
-h3 ②位 
-- if @ranking2.ranking_items[0].shinto.present?
-  = @ranking2.ranking_items[0].shinto.name
-  = @ranking2.ranking_items[0].memo
-  - if @ranking2.ranking_items[0].image.present?
-    = image_tag @ranking2.ranking_items[0].image.url
-- else 
-  p 神社名
-  p メモ
-  p 画像
-br
-= link_to "編集する",  edit_ranking_ranking_item_path(@ranking2.id)
-h3 ③位 
-- if @ranking3.ranking_items[0].shinto.present?
-  = @ranking3.ranking_items[0].shinto.name
-  = @ranking3.ranking_items[0].memo
-  - if @ranking3.ranking_items[0].image.present?
-    = image_tag @ranking3.ranking_items[0].image.url
-- else 
-  p 神社名
-  p メモ
-  p 画像
-br
-/ = binding.irb
-
-
 
 #region-div
 = pie_chart @chart, legend: false, title: "総本山パラメーター"
