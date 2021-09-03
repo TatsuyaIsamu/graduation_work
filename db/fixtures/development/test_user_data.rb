@@ -14,7 +14,7 @@ user_id = [*1..100]
     :id,{
       id: i+1,
       follower_id: rand_id,
-      followed_id: 100
+      followed_id: 101
     },
   )
 end
@@ -34,7 +34,7 @@ shinto_id = [*1..101]
     :id,{
       id: i+1,
       shinto_id: rand_id,
-      user_id: 100
+      user_id: 101
     },
   )
   ShintoParam.seed(
@@ -57,7 +57,7 @@ end
   Worship.seed(
     :id, {
       id: n + 1,
-      user_id: 100,
+      user_id: 101,
       shinto_id: shinto_rand,
       worship_day: Date.today - worshipday_rand,
       weather: weather_rand,
@@ -76,34 +76,35 @@ end
   )
 end
 
+
 # 会話
 
-user_id = [*1..100]
+# user_id = [*1..100]
 
-99.times do |n|
-  user_rand = rand(1..99 - n) + 1
-  if rand <= 0
-    rand = user_rand + n + 1
-  end
-  rand_id = user_id.slice!(user_rand)
-  conversation_user = [100, rand_id]
-  Conversation.seed(
-    :id, {
-      id: n+1,
-      sender_id: 100,
-      recipient_id: rand_id,
-    }
-  )
-  40.times do |s|
-    Message.seed(
-      :id, {
-        id: n*10+s+1,
-        body: Faker::JapaneseMedia::StudioGhibli.quote,
-        user_id: conversation_user[rand(2)],
-        conversation_id: n+1
-      }
-    )
-  end
-end
+# 99.times do |n|
+#   user_rand = rand(1..99 - n) + 1
+#   if rand <= 0
+#     rand = user_rand + n + 1
+#   end
+#   rand_id = user_id.slice!(user_rand)
+#   conversation_user = [101, rand_id]
+#   Conversation.seed(
+#     :id, {
+#       id: n+1,
+#       sender_id: 101,
+#       recipient_id: rand_id,
+#     }
+#   )
+#   40.times do |s|
+#     Message.seed(
+#       :id, {
+#         id: n*10+s+1,
+#         body: Faker::JapaneseMedia::StudioGhibli.quote,
+#         user_id: conversation_user[rand(2)],
+#         conversation_id: n+1
+#       }
+#     )
+#   end
+# end
 
 

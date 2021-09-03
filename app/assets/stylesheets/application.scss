@@ -1,0 +1,88 @@
+@import "fullcalendar";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+body {
+  margin: 60px;
+  color: black;
+  text-align: center;
+}
+
+.nav-item {
+  margin-right: 20px;
+  color: black;
+}
+
+.navbar-nav li{
+	font-size:1rem;
+  padding-top: 30px;
+  text-align: center;
+  margin-right: 20px;
+  & a {
+    text-decoration: none;
+    color: black;
+    height: 30px;
+  }
+}
+
+
+.navbar-nav li> a:before{/*ナビゲーションメニュー共通の設定*/
+	display: block;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-align: center;
+  margin-right: 15px;
+}
+
+.nav-item1 > a:before{/*各項目ごとのアイコン設定*/
+	content: '\f2bd';
+  font-size: 2.5rem;
+  height: 50px;
+}
+
+
+.nav-item2 > a:before{/*各項目ごとのアイコン設定*/
+  font-size: 2.5rem;
+  // font-family:  "Font Awesome 5 Free";
+  font-weight:  900;
+  content: "\f6a1";
+  height: 50px;
+}
+.nav-item3 > a:before{/*各項目ごとのアイコン設定*/
+	content: '\f0c0';
+  font-size: 2.5rem;
+  height: 50px;
+}
+.nav-item4 > a:before{/*各項目ごとのアイコン設定*/
+	content: '\f2f5';
+  font-size: 2.5rem;
+  height: 50px;
+}
+
+.nav-item1 {
+  padding-top: 30px;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.nav-item2 {
+  font-weight:  400;
+  padding-top: 30px;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+#dropdownMenuButton {
+  padding-top: 8px;
+  margin-top: 12px;
+  margin-left: 20px;
+}
+.dropdown {
+  padding-top: 8px;
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
