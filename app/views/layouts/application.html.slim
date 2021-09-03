@@ -23,10 +23,10 @@ html
           .col-sm-8.col-md-7.py-4
             h3.text-white
               - if user_signed_in?
-                li = link_to "プロフィール", user_introduction_path(current_user.user_introduction.id)
+                / li = link_to "プロフィール", 
                 li = link_to "御朱印を認定する", search_worships_path
-                li = link_to "MyJinja", favorite_shintos_path
-                li = link_to "ログアウト", destroy_user_session_path, method: :delete
+                / li = link_to "MyJinja", 
+                / li = link_to "ログアウト", 
                 
                 li = link_to "ユーザー一覧", users_path
                 li = link_to "参拝一覧", worships_path
@@ -42,31 +42,39 @@ html
                 li = link_to "お問い合わせ", new_contact_path
                 li = link_to "退会する",  user_registration_path, method: :delete
                 
-    .navbar.navbar-dark.bg-dark.shadow-sm
-      .container.d-flex.justify-content-between
-        img.navbar-brand.d-flex.align-items-center src="/logo.png"
-          / svg.mr-2 fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="20" xmlns="http://www.w3.org/2000/svg" 
-          /   path d=("M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z") 
-          /   circle cx="12" cy="13" r="4" 
-          / strong Album
-        button.navbar-toggler aria-controls="navbarHeader" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarHeader" data-toggle="collapse" type="button" 
-          span.navbar-toggler-icon
-    .dropdown
-      button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
-        | Dropdown button
-      .dropdown-menu aria-labelledby="dropdownMenuButton" 
-        a.dropdown-item href="#"  Action
-        a.dropdown-item href="#"  Another action
-        a.dropdown-item href="#"  Something else here
+    nav.navbar.navbar-light.bg-light.shadow-sm
+      .container.d-flex
+        ul.navbar-nav.navbar-expand-sm
+          li 
+            img.navbar-brand.d-flex.align-items-center src="/logo.png"
+        - if user_signed_in?
+          ul.navbar-nav.ml-auto.navbar-expand-sm
+            li.nav-item1  
+              = link_to "Profile", user_introduction_path(current_user.user_introduction.id)
+            li.nav-item2
+              = link_to "MyJinja", favorite_shintos_path
+            li.nav-item3
+              = link_to "Friends", root_path
+            li.nav-item4
+              = link_to "Logout", destroy_user_session_path, method: :delete
+        .dropdown
+          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
+            i.fas.fa-bars.fa-2x
+          ul.dropdown-menu aria-labelledby="dropdownMenuButton" 
+            li = link_to "神社を検索する", shintos_path, class: "dropdown-item" 
+            li = link_to "ユーザーを検索する", users_path, class: "dropdown-item"
+            li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
+            - if signed_in?
+              = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item" 
+          
+    
 
-
-    i.fas.fa-home
-
-
-    - if notice
-      p.alert.alert-notice 
-        = notice 
-    - if alert 
-      p.alert.alert-error 
-        = alert
-    = yield
+    .container
+      - if notice
+        p.alert.alert-notice 
+          = notice 
+      - if alert 
+        p.alert.alert-error 
+          = alert
+      
+      = yield

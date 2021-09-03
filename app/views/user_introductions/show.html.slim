@@ -18,49 +18,60 @@ p = @user_introduction.introduction
 br
 h2 神社ランキング
 
-.row
-  .col-md-4
-    h3 一位
-    .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
-      .card-body
-        .card-title = @ranking1.ranking_items[0].shinto.name
-        ul.list-group.list-group-flush
-          li.list-group-item = @ranking1.ranking_items[0].memo
-          li.list-group-item = @ranking1.ranking_items[0].shinto.address
-          .d-flex.justify-content-between.align-items-center
-            .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"  View
-              button.btn.btn-sm.btn-outline-secondary type="button"  Edit
-            small.text-muted 9 mins
-  .col-md-4
-    h3 二位
-    .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
-      .card-body
-        .card-title = @ranking2.ranking_items[0].shinto.name
-        ul.list-group.list-group-flush
-          li.list-group-item = @ranking2.ranking_items[0].memo
-          li.list-group-item = @ranking2.ranking_items[0].shinto.address
-          .d-flex.justify-content-between.align-items-center
-            .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"  View
-              button.btn.btn-sm.btn-outline-secondary type="button"  Edit
-            small.text-muted 9 mins
-  .col-md-4
-    h3 三位
-    .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
-      .card-body
-        .card-title = @ranking3.ranking_items[0].shinto.name
-        ul.list-group.list-group-flush
-          li.list-group-item = @ranking3.ranking_items[0].memo
-          li.list-group-item = @ranking3.ranking_items[0].shinto.address
-          .d-flex.justify-content-between.align-items-center
-            .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"  View
-              button.btn.btn-sm.btn-outline-secondary type="button"  Edit
-            small.text-muted 9 mins
+/ .row
+/   .col-md-4
+/     h3 一位
+/     .card.mb-4.shadow-sm
+/       .card-img-top alt=("Card image cap") 
+/       - if @ranking1.ranking_items[0].image.present? 
+/         = image_tag @ranking1.ranking_items[0].image.url
+/       .card-body
+/         - if @ranking1.ranking_items[0].shinto.present?
+/           .card-title = @ranking1.ranking_items[0].shinto.name
+/         ul.list-group.list-group-flush
+/           li.list-group-item = @ranking1.ranking_items[0].memo
+/           li.list-group-item = @ranking1.ranking_items[0].shinto.address
+/           .d-flex.justify-content-between.align-items-center
+/             .btn-group
+/               button.btn.btn-sm.btn-outline-secondary type="button"  View
+/               button.btn.btn-sm.btn-outline-secondary type="button" 
+/                 i.fas.fa-edit
+/             small.text-muted 9 mins
+/   .col-md-4
+/     h3 二位
+/     .card.mb-4.shadow-sm
+/       .card-img-top alt=("Card image cap") 
+/       - if @ranking2.ranking_item[0].present? 
+/         = image_tag @ranking1.ranking_items[0].image.url
+/       .card-body
+/         .card-title = @ranking2.ranking_items[0].shinto.name
+/         ul.list-group.list-group-flush
+/           li.list-group-item = @ranking2.ranking_items[0].memo
+/           li.list-group-item = @ranking2.ranking_items[0].shinto.address
+/           .d-flex.justify-content-between.align-items-center
+/             .btn-group
+/               button.btn.btn-sm.btn-outline-secondary type="button"
+/                 i.far.fa-eye
+/               button.btn.btn-sm.btn-outline-secondary type="button"
+/                 i.fas.fa-edit
+/             small.text-muted 9 mins
+/   .col-md-4
+/     h3 三位
+/     .card.mb-4.shadow-sm
+/       .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
+/       .card-body
+/         .card-title 
+/         - if @ranking3.ranking_item[0].image.present? 
+/           = @ranking3.ranking_items[0].shinto.name
+/         ul.list-group.list-group-flush
+/           li.list-group-item = @ranking3.ranking_items[0].memo
+/           li.list-group-item = @ranking3.ranking_items[0].shinto.address
+/           .d-flex.justify-content-between.align-items-center
+/             .btn-group
+/               button.btn.btn-sm.btn-outline-secondary type="button"  View
+/               button.btn.btn-sm.btn-outline-secondary type="button"
+/                 i.fas.fa-edit
+/             small.text-muted 9 mins
 
 h3 ①位 
 - if @ranking1.ranking_items[0].shinto.present?
