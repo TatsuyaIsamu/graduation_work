@@ -25,12 +25,20 @@ h2 神社ランキング
       .card-img-top alt=("Card image cap") 
       - if @ranking1.ranking_items[0].image.present? 
         = image_tag @ranking1.ranking_items[0].image.url
+      - else 
+        img src="/shrine_default.png"
       .card-body
         - if @ranking1.ranking_items[0].shinto.present?
           .card-title = @ranking1.ranking_items[0].shinto.name
+        - else 
+          .card-title ---------
         ul.list-group.list-group-flush
-          li.list-group-item = @ranking1.ranking_items[0].memo
-          li.list-group-item = @ranking1.ranking_items[0].shinto.address
+          - if @ranking1.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking1.ranking_items[0].memo
+            li.list-group-item = @ranking1.ranking_items[0].shinto.address
+          - else 
+            li.list-group-item ---------
+            li.list-group-item ---------
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
@@ -41,35 +49,52 @@ h2 神社ランキング
     h3 二位
     .card.mb-4.shadow-sm
       .card-img-top alt=("Card image cap") 
-      - if @ranking2.ranking_item[0].present? 
-        = image_tag @ranking1.ranking_items[0].image.url
+      - if @ranking2.ranking_items[0].image.present? 
+        = image_tag @ranking2.ranking_items[0].image.url
+      - else 
+        img src="/shrine_default.png"
       .card-body
-        .card-title = @ranking2.ranking_items[0].shinto.name
+        - if @ranking2.ranking_items[0].shinto.present?
+          .card-title = @ranking2.ranking_items[0].shinto.name
+        - else 
+          .card-title ---------
         ul.list-group.list-group-flush
-          li.list-group-item = @ranking2.ranking_items[0].memo
-          li.list-group-item = @ranking2.ranking_items[0].shinto.address
+          - if @ranking2.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking2.ranking_items[0].memo
+            li.list-group-item = @ranking2.ranking_items[0].shinto.address
+          - else 
+            li.list-group-item ---------
+            li.list-group-item ---------
           .d-flex.justify-content-between.align-items-center
             .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"
-                i.far.fa-eye
-              button.btn.btn-sm.btn-outline-secondary type="button"
+              button.btn.btn-sm.btn-outline-secondary type="button"  View
+              button.btn.btn-sm.btn-outline-secondary type="button" 
                 i.fas.fa-edit
             small.text-muted 9 mins
   .col-md-4
     h3 三位
     .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") = image_tag @ranking1.ranking_items[0].image.url
+      .card-img-top alt=("Card image cap") 
+      - if @ranking3.ranking_items[0].image.present? 
+        = image_tag @ranking3.ranking_items[0].image.url
+      - else 
+        img src="/shrine_default.png"
       .card-body
-        .card-title 
-        - if @ranking3.ranking_item[0].image.present? 
-          = @ranking3.ranking_items[0].shinto.name
+        - if @ranking3.ranking_items[0].shinto.present?
+          .card-title = @ranking3.ranking_items[0].shinto.name
+        - else 
+          .card-title ---------
         ul.list-group.list-group-flush
-          li.list-group-item = @ranking3.ranking_items[0].memo
-          li.list-group-item = @ranking3.ranking_items[0].shinto.address
+          - if @ranking3.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking3.ranking_items[0].memo
+            li.list-group-item = @ranking3.ranking_items[0].shinto.address
+          - else 
+            li.list-group-item ---------
+            li.list-group-item ---------
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
-              button.btn.btn-sm.btn-outline-secondary type="button"
+              button.btn.btn-sm.btn-outline-secondary type="button" 
                 i.fas.fa-edit
             small.text-muted 9 mins
 
@@ -94,7 +119,7 @@ h3 ②位
 - else 
   p 神社名
   p メモ
-  p 画像
+  img src="/shrine_default.png"
 br
 = link_to "編集する",  edit_ranking_ranking_item_path(@ranking2.id)
 h3 ③位 
