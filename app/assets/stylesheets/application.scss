@@ -5,8 +5,9 @@
 
 
 body {
-  margin: 40px;
+  margin: 60px;
   color: black;
+  text-align: center;
 }
 
 .nav-item {
@@ -38,7 +39,7 @@ body {
 .nav-item1 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f2bd';
   font-size: 2.5rem;
-  height: 60px;
+  height: 50px;
 }
 
 
@@ -47,17 +48,17 @@ body {
   // font-family:  "Font Awesome 5 Free";
   font-weight:  900;
   content: "\f6a1";
-  height: 60px;
+  height: 50px;
 }
 .nav-item3 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f0c0';
   font-size: 2.5rem;
-  height: 60px;
+  height: 50px;
 }
 .nav-item4 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f2f5';
   font-size: 2.5rem;
-  height: 60px;
+  height: 50px;
 }
 
 .nav-item1 {
@@ -68,7 +69,6 @@ body {
 }
 
 .nav-item2 {
-  font-family:  "Font Awesome 5 Free";
   font-weight:  400;
   padding-top: 30px;
   &:hover {

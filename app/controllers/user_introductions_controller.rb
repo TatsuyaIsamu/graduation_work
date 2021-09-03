@@ -30,7 +30,6 @@ class UserIntroductionsController < ApplicationController
     mapping_count = mapping_worship.group_by(&:itself).map{|key,value| [key,value.count]}
     mapping_count.unshift(["都道府県","回数"])
     gon.usermapping = mapping_count
-    # binding.irb
   end
   
   def edit
