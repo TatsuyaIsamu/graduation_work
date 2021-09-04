@@ -2,6 +2,7 @@ class WorshipsController < ApplicationController
   before_action :set_worship, only: %i[ show edit update destroy ]
 
   def index
+    # binding.irb
     @worships = current_user.worships.page(params[:page]).per(10)
   end
 

@@ -25,7 +25,10 @@
 //= require Chart.bundle
 
 //= require_tree .
+
+
 $(document).on('turbolinks:load', function () {
 
     $('.drawer').drawer();
 })
+
