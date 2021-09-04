@@ -85,12 +85,9 @@ html
             span.drawer-hamburger-icon
         nav.drawer-nav role="navigation" 
           ul.drawer-menu
-            li
-              a.drawer-brand href="#"  Brand
-            li
-              a.drawer-menu-item href="#"  Nav1
-            li
-              a.drawer-menu-item href="#"  Nav2
+            - 12.times do |i|
+              li
+                = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i))
       main role="main" 
           /! Page content
     - if notice
