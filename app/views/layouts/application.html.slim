@@ -6,75 +6,96 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = include_gon
+            
+    /! drawer.css
+    link href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css" rel="stylesheet" /
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "https://www.gstatic.com/charts/loader.js" 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    
+    /! jquery &amp; iScroll
+    / script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" 
+    script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js" 
+    /! drawer.js
+    script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js" 
     script src="//maps.google.com/maps/api/js?v=3.23&key=#{ENV['GEOCODER']}"
     script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
-    
-
 
   body
-  header
-    #navbarHeader.collapse.bg-dark
-      .container
-        .row
-          .col-sm-8.col-md-7.py-4
-            h3.text-white
-              - if user_signed_in?
-                / li = link_to "プロフィール", 
-                li = link_to "御朱印を認定する", search_worships_path
-                / li = link_to "MyJinja", 
-                / li = link_to "ログアウト", 
+    header
+      #navbarHeader.collapse.bg-dark
+        .container
+          .row
+            .col-sm-8.col-md-7.py-4
+              h3.text-white
+                - if user_signed_in?
+                  / li = link_to "プロフィール", 
+                  li = link_to "御朱印を認定する", search_worships_path
+                  / li = link_to "MyJinja", 
+                  / li = link_to "ログアウト", 
+                  
+                  li = link_to "ユーザー一覧", users_path
+                  li = link_to "参拝一覧", worships_path
                 
-                li = link_to "ユーザー一覧", users_path
-                li = link_to "参拝一覧", worships_path
-              
-                li = link_to "神社を検索する", shintos_path
-              - else 
-                li = link_to "ログイン", new_user_session_path, class: "btn btn-info"
-                li = link_to "サインアップ", new_user_registration_path , class: "btn btn-info"
-      
-          .col-sm-4.offset-md-1.py-4
-            h3.text-white 
-              ul.list-unstyled
-                li = link_to "お問い合わせ", new_contact_path
-                li = link_to "退会する",  user_registration_path, method: :delete
-                
-    nav.navbar.navbar-light.bg-light.shadow-sm
-      .container.d-flex
-        ul.navbar-nav.navbar-expand-sm
-          li 
-            img.navbar-brand.d-flex.align-items-center src="/logo.png"
-        - if user_signed_in?
-          ul.navbar-nav.ml-auto.navbar-expand-sm
-            li.nav-item1  
-              = link_to "Profile", user_introduction_path(current_user.user_introduction.id)
-            li.nav-item2
-              = link_to "MyJinja", favorite_shintos_path
-            li.nav-item3
-              = link_to "Friends", root_path
-            li.nav-item4
-              = link_to "Logout", destroy_user_session_path, method: :delete
-        .dropdown
-          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
-            i.fas.fa-bars.fa-2x
-          ul.dropdown-menu aria-labelledby="dropdownMenuButton" 
-            li = link_to "神社を検索する", shintos_path, class: "dropdown-item" 
-            li = link_to "ユーザーを検索する", users_path, class: "dropdown-item"
-            li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
-            - if signed_in?
-              = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item" 
+                  li = link_to "神社を検索する", shintos_path
+                - else 
+                  li = link_to "ログイン", new_user_session_path, class: "btn btn-info"
+                  li = link_to "サインアップ", new_user_registration_path , class: "btn btn-info"
+        
+            .col-sm-4.offset-md-1.py-4
+              h3.text-white 
+                ul.list-unstyled
+                  li = link_to "お問い合わせ", new_contact_path
+                  li = link_to "退会する",  user_registration_path, method: :delete
+                  
+      nav.navbar.navbar-light.bg-light.shadow-sm
+        .container.d-flex
+          ul.navbar-nav.navbar-expand-sm
+            li 
+              img.navbar-brand.d-flex.align-items-center src="/logo.png"
+          - if user_signed_in?
+            ul.navbar-nav.ml-auto.navbar-expand-sm
+              li.nav-item1  
+                = link_to "Profile", user_introduction_path(current_user.user_introduction.id)
+              li.nav-item2
+                = link_to "MyJinja", favorite_shintos_path
+              li.nav-item3
+                = link_to "Friends", root_path
+              li.nav-item4
+                = link_to "Logout", destroy_user_session_path, method: :delete
+          .dropdown
+            button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
+              i.fas.fa-bars.fa-2x
+            ul.dropdown-menu aria-labelledby="dropdownMenuButton" 
+              li = link_to "神社を検索する", shintos_path, class: "dropdown-item" 
+              li = link_to "ユーザーを検索する", users_path, class: "dropdown-item"
+              li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
+              - if signed_in?
+                = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item" 
           
     
+  
+    .drawer.drawer--left
+      .drawer-container role="banner" 
+        .drawer-navbar-header
+          button.drawer-toggle.drawer-hamburger type="button" 
+            span.sr-only toggle navigation
+            span.drawer-hamburger-icon
+        nav.drawer-nav role="navigation" 
+          ul.drawer-menu
+            - 12.times do |i|
+              li
+                = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month)
+      main role="main" 
+          /! Page content
+    - if notice
+      p.alert.alert-notice 
+        = notice 
+    - if alert 
+      p.alert.alert-error 
+        = alert
 
-    .container
-      - if notice
-        p.alert.alert-notice 
-          = notice 
-      - if alert 
-        p.alert.alert-error 
-          = alert
-      
-      = yield
+
+  = yield

@@ -35,4 +35,4 @@ p
 
 => link_to 'Edit', edit_worship_path(@worship)
 '|
-=< link_to 'Back', worships_path
+=< link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)

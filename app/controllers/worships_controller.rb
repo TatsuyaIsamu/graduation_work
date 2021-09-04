@@ -2,7 +2,9 @@ class WorshipsController < ApplicationController
   before_action :set_worship, only: %i[ show edit update destroy ]
 
   def index
-    @worships = current_user.worships.page(params[:page]).per(10)
+    a = params[:format].to_date
+    b = a.end_of_month
+    @worships = current_user.worships.where(worship_day: a..b).order(worship_day: :desc).page(params[:page]).per(10)
   end
 
   def show
