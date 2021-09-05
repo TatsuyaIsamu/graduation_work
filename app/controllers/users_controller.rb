@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def index
+    @users = current_user.followers.page(params[:page]).per(6)
+  end
   def search
     unless params[:q].blank?
       @q = User.ransack(params[:q])
