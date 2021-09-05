@@ -102,3 +102,15 @@ body {
   margin-left: 200px;
 }
 
+.worshipAdmin {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 40px;
+  margin-right: 60px;
+  margin-bottom: 60px;
+  z-index: 3;
+  border-radius: 50%;
+  background-color: lightblue;
+}
+
