@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root  "tops#index"
+  get "home", to: "homes#index"
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
