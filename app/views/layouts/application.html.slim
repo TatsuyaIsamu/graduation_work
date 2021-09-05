@@ -96,6 +96,7 @@ html
     - if alert 
       p.alert.alert-error 
         = alert
-
-
+  
+  .worshipAdmin 
+    = link_to image_tag("/worship_admin.png"), search_worships_path  
   = yield
