@@ -54,7 +54,7 @@ html
         .container.d-flex
           ul.navbar-nav.navbar-expand-sm
             li 
-              img.navbar-brand.d-flex.align-items-center src="/logo.png"
+              = link_to image_tag("/logo.png", class: "navbar-brand d-flex align-items-center"), root_path
           - if user_signed_in?
             ul.navbar-nav.ml-auto.navbar-expand-sm
               li.nav-item1  
@@ -62,7 +62,7 @@ html
               li.nav-item2
                 = link_to "MyJinja", favorite_shintos_path
               li.nav-item3
-                = link_to "Friends", root_path
+                = link_to "Friends", users_path
               li.nav-item4
                 = link_to "Logout", destroy_user_session_path, method: :delete
           .dropdown
@@ -70,7 +70,7 @@ html
               i.fas.fa-bars.fa-2x
             ul.dropdown-menu aria-labelledby="dropdownMenuButton" 
               li = link_to "神社を検索する", shintos_path, class: "dropdown-item" 
-              li = link_to "ユーザーを検索する", users_path, class: "dropdown-item"
+              li = link_to "ユーザーを検索する", search_users_path, class: "dropdown-item"
               li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
               - if signed_in?
                 = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item" 
@@ -89,7 +89,6 @@ html
               li
                 = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month)
       main role="main" 
-          /! Page content
     - if notice
       p.alert.alert-notice 
         = notice 

@@ -1,0 +1,16 @@
+h2 ユーザー
+
+= search_form_for @q, url: search_users_path do |f|
+  = f.label :name, "ユーザーを検索する"
+  = f.search_field :name_cont
+  = f.submit "検索"
+
+- unless @users == nil
+  - @users.each do |user|
+    - if user.id != current_user.id
+      li
+        .item
+          = link_to user.name, user_introduction_path(user)
+          = link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post
+      li= render 'follow_form', user: user
+  = paginate @users
