@@ -114,18 +114,23 @@ body {
   background-color: lightblue;
 }
 
-.form-signin {
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin: 0 auto;
-  max-width: 330px;
+
+.form-row {
+  min-width: 350px;
+  margin: 25px;
 }
 
-.login {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // margin: 50vh;
-  // height: 100%;
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}
+
+.loginOrSignin {
+  padding: 20px;
+}
+
+.loginOrSigninButton {
+  width: 150px;
 }
