@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def index
+  def search
     unless params[:q].blank?
       @q = User.ransack(params[:q])
       @users = @q.result(distinct: true).page(params[:page]).per(6)
@@ -8,5 +8,4 @@ class UsersController < ApplicationController
       @users = nil
     end
   end
-
 end

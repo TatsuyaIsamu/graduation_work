@@ -8,14 +8,18 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :user_introductions, only: %i[show edit update]
-  resources :users, only: [:index]
-    resources :rankings, only: %i[] do
-      resources :ranking_items, only: %i[edit update] do
-        member do
-            get :search
-        end
+  resources :users, only: [:index] do
+    collection do
+      get :search
+    end
+  end
+  resources :rankings, only: %i[] do
+    resources :ranking_items, only: %i[edit update] do
+      member do
+          get :search
       end
     end
+  end
   resources :contacts, only: %i[new create show]
   resources :worships do
     collection do
