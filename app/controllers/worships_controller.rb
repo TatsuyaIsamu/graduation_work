@@ -54,6 +54,12 @@ class WorshipsController < ApplicationController
     @worships = current_user.worships
   end
 
+  def add_worship_param
+    @worship = current_user.worships.build(shinto_id: params[:shinto_id][1])
+    @worship.worship_params.build.save
+    redirect_to new_worship_path(params[:shinto_id][1])
+  end
+
   private
   def set_worship
     @worship = Worship.find(params[:id])

@@ -8,7 +8,7 @@ body {
   margin: 60px;
   color: black;
   text-align: center;
-  background-image: url("/名称未設定のデザイン (12).png");
+  background-image: url("/名称未設定のデザイン.png");
   background-size: cover;
 }
 
@@ -17,6 +17,9 @@ body {
   color: black;
 }
 
+.navbar {
+  opacity: 0.9;
+}
 .navbar-nav li{
 	font-size:1rem;
   padding-top: 30px;
@@ -114,6 +117,7 @@ body {
   z-index: 3;
   border-radius: 50%;
   background-color: lightblue;
+  opacity: 0.8;
 }
 
 
