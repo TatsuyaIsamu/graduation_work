@@ -17,6 +17,9 @@
 //= require cocoon
 //= require moment 
 //= require popper
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/i18n/datepicker-ja
+//= require jquery_ujs
 //= require fullcalendar 
 //= require bootstrap-sprockets
 //= require @fortawesome/fontawesome-free/js/all.js
@@ -31,5 +34,6 @@
 $(document).on('turbolinks:load', function () {
 
     $('.drawer').drawer();
+    $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
 })
 

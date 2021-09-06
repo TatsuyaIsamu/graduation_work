@@ -8,10 +8,10 @@
   .form-group
     .field
       = f.label :worship_day
-      = f.date_select :worship_day
+      = f.text_field :worship_day, class: "datepicker"
     .field
       = f.label :weather
-      = f.select :weather, options_for_select(Worship.weathers), {prompt: "選択してください"}, class: "prefecture-select"
+      = f.select :weather, options_for_select(Worship.weathers), {prompt: "選択してください"}, class: "form-check-inline"
     .field
       = f.label :memo
       = f.text_area :memo
