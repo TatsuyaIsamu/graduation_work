@@ -1,0 +1,9 @@
+.nested-fields
+  .field
+    = f.text_field :title
+  .field
+    = f.text_field :points
+  .field
+    = f.text_field :memo
+  .field
+    = link_to_remove_association "#{icon 'fas', 'trash-alt'}".html_safe , f, class: 'js-log-remove-btn'

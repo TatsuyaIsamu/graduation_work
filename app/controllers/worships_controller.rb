@@ -66,6 +66,6 @@ class WorshipsController < ApplicationController
   end
 
   def worship_params
-    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo]).merge(weather: params[:worship][:weather].to_i)
+    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo _destroy]).merge(weather: params[:worship][:weather].to_i)
   end
 end
