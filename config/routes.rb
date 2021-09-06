@@ -26,7 +26,6 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :calendar
-      get :add_worship_param
     end
   end
   resources :shintos, only: %i[index show]
