@@ -8,6 +8,8 @@ body {
   margin: 60px;
   color: black;
   text-align: center;
+  background-image: url("/名称未設定のデザイン (12).png");
+  background-size: cover;
 }
 
 .nav-item {
@@ -133,4 +135,18 @@ body {
 
 .loginOrSigninButton {
   width: 150px;
+}
+
+.guestloginButton {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.topButton {
+  margin: 20px;
+  margin-top: 40px;
+}
+
+.topimg {
+  margin-top: 70px;
 }
