@@ -8,19 +8,24 @@
   .form-group
     .field
       = f.label :worship_day
-      = f.text_field :worship_day, class: "datepicker"
+      = f.text_field :worship_day, class: "datepicker", autocomplete: "off"
     .field
       = f.label :weather
       = f.select :weather, options_for_select(Worship.weathers), {prompt: "選択してください"}, class: "form-check-inline"
     .field
       = f.label :memo
       = f.text_area :memo
+    .input-group 
+      .custom-file 
+        = f.label :image, class: "custom-file-label", value: "ファイルを選択(ここにドロップすることもできます)"
+        = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)'
+      .input-group-append 
+        button.btn.btn-outline-secondary.input-group-text type="button"
+          |取消
     .field
-      = f.label :image
-      = f.file_field :image
-    .field 
       = f.hidden_field :user_id, value: @worship.user_id
       = f.hidden_field :shinto_id, value: @worship.shinto_id
+      = image_tag @worship.image.url, id: 'preview' 
     #worship
       = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
         = render 'worship_param_fields', f: worship
