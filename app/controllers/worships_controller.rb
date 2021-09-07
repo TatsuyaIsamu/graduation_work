@@ -13,6 +13,7 @@ class WorshipsController < ApplicationController
   def new
     @worship = current_user.worships.build(shinto_id: params[:shinto_id])
     @worship.worship_params.build
+    @shinto = Shinto.find_by(id: params[:shinto_id])
   end
   
   def edit
@@ -54,12 +55,18 @@ class WorshipsController < ApplicationController
     @worships = current_user.worships
   end
 
+  def add_worship_param
+    @worship = current_user.worships.build(shinto_id: params[:shinto_id][1])
+    @worship.worship_params.build.save
+    redirect_to new_worship_path(params[:shinto_id][1])
+  end
+
   private
   def set_worship
     @worship = Worship.find(params[:id])
   end
 
   def worship_params
-    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo]).merge(weather: params[:worship][:weather].to_i)
+    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo _destroy]).merge(weather: params[:worship][:weather].to_i)
   end
 end

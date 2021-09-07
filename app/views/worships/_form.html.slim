@@ -1,37 +1,68 @@
-= form_for @worship do |f|
+
+.card.mb-3 
+  .row.no-gutters
+    .col-md-4.my-auto
+      img.card-img src="#{@shinto.image}.jpg"
+    .col-md-8
+      .card-body
+        h5.card-title 神社情報
+        strong.d-inline-block.mb-2.text-primary
+          | 神社名
+        p.mb-0
+          = @shinto.name
+        strong.d-inline-block.mb-2.text-primary
+          | 住所
+        p.mb-0  = @shinto.address
+        strong.d-inline-block.mb-2.text-primary
+          | 起源
+        p.mb-0 = @shinto.origin_term
+        strong.d-inline-block.mb-2.text-primary
+          | 公式URL
+        p.mb-0 = @shinto.original_url
+            a.btn.btn-primary href="#"  Details
+
+
+
+
+= form_with(model: @worship, local: true) do |f|
   - if @worship.errors.any?
     #error_explanation
       h2 = "#{pluralize(@worship.errors.count, 'error')} prohibited this worship from being saved:"
       ul
         - @worship.errors.full_messages.each do |message|
           li = message
+  .form-group
+    .row
+      .col-md-6
+        .field
+          = f.label :worship_day
+          br
+          = f.text_field :worship_day, class: "datepicker", autocomplete: "off", placeholder: "日付を選択する"
+        .field.form-check
+          = f.label :weather
+          br
+          = f.collection_radio_buttons :weather, Worship.weathers, :last , :first do |b|
+            = b.label(class: "badge") { b.radio_button + b.text }
+        .field
+          = f.label :memo
+          br
+          = f.text_area :memo
+      .field.worshipImage.col-md-6
+        = f.hidden_field :user_id, value: @worship.user_id
+        = f.hidden_field :shinto_id, value: @worship.shinto_id
+        = image_tag @worship.image.url, id: 'preview' 
+        .input-group 
+          .custom-file 
+            = f.label :image, class: "custom-file-label", value: "ここにドロップすることもできます"
+            = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)'
+          .input-group-append 
+            button.btn.btn-outline-secondary.input-group-text type="button"
+              |取消
 
-  .field
-    = f.label :worship_day
-    = f.date_select :worship_day
-  .field
-    = f.label :weather
-    = f.select :weather, options_for_select(Worship.weathers), {prompt: "選択してください"}, class: "prefecture-select"
-  .field
-    = f.label :memo
-    = f.text_area :memo
-  .field
-    = f.label :image
-    = f.file_field :image
-  .field 
-    = f.hidden_field :user_id, value: @worship.user_id
-    = f.hidden_field :shinto_id, value: @worship.shinto_id
-
-  .field 
-    = f.fields_for :worship_params do |worship_param|
-      .field 
-        = f.label :title
-        = worship_param.text_field :title
-      .field 
-        = f.label :points
-        = worship_param.text_field :points
-      .field 
-        = f.label :memo
-        = worship_param.text_field :memo
-
+    #worship
+      = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
+        = render 'worship_param_fields', f: worship
+      .links
+        = link_to_add_association 'パラメーターを追加する', f, :worship_params
   .actions = f.submit
+
