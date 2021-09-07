@@ -6,7 +6,6 @@
     .row
       - if @user_introduction.image.present?
         p.col-md-4 = image_tag @user_introduction.image.url
-        = binding.irb
       - else
         img.col-md-4.profile_picture src="/profile_default.png"
       .col-md-8 
