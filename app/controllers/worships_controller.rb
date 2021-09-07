@@ -13,6 +13,7 @@ class WorshipsController < ApplicationController
   def new
     @worship = current_user.worships.build(shinto_id: params[:shinto_id])
     @worship.worship_params.build
+    @shinto = Shinto.find_by(id: params[:shinto_id])
   end
   
   def edit
