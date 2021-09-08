@@ -59,10 +59,9 @@
             button.btn.btn-outline-secondary.input-group-text type="button"
               |取消
 
-    #worship
+    #worships
       = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
         = render 'worship_param_fields', f: worship
       .links
         = link_to_add_association 'パラメーターを追加する', f, :worship_params
   .actions = f.submit
-

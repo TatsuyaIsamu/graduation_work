@@ -35,12 +35,27 @@ $(document).on('turbolinks:load', function () {
     $('.drawer').drawer();
     $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
     bsCustomFileInput.init();
-    $('#evaluate_stars').raty({
+    $('.evaluate_stars').raty({
         starOn: "/raty/star-on.png" ,
         starOff: "/raty/star-off.png",
         starHalf: "/raty/star-half.png ",
         scoreName: 'worship[worship_params_attributes][0][points]',
         half: true,
     });
+    
 })
 
+$(document).on('turbolinks:load', function () {
+    $("#worships")
+    .on('cocoon:after-insert', function(e, insertedItem) {
+        
+        $(insertedItem).find(".evaluate_stars").raty(
+        {
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            half: true,
+        });
+    })
+})
