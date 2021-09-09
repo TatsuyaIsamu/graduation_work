@@ -160,3 +160,19 @@ body {
   margin-top: 70px;
 }
 
+#magazine{
+	width:800px; //全体幅
+	height:400px; //全体の高さ
+  background-color: white;
+}
+#magazine .turn-page{
+	width:400px; //1ページ分の幅
+	height:400px;//1ページ分の高さ
+  background-color: bisque;
+}
+.odd {
+  background-color:white;/* 奇数ページを青色に */
+}
+.even {
+  background-color: white;/* 偶数ページを緑色に */
+}
