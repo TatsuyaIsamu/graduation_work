@@ -12,8 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
-// = require turbolinks
+
 //= require jquery
+// = require turbolinks
 //= require cocoon
 //= require moment 
 //= require popper
@@ -27,7 +28,6 @@
 //= require gmaps/google
 //= require chartkick
 //= require Chart.bundle
-
 //= require_tree .
 
 
@@ -42,9 +42,29 @@ $(document).on('turbolinks:load', function () {
         scoreName: 'worship[worship_params_attributes][0][points]',
         half: true,
     });
-    
+
 })
 
+$(function(){
+$('#magazine').turn({
+    // 自動でページをめくったときの高さ
+elevation: 50,
+
+// ページめくりのスピード(ms)
+duration: 1000,
+
+// ページをめくるときの影->有効
+
+acceleration: true,
+// 自動中央揃え->無効
+autoCenter: false,
+
+// 右開きか左開きかの設定->右開き
+direction: 'rtl',
+
+// gradients: true,
+});
+})
 $(document).on('turbolinks:load', function () {
     $("#worships")
     .on('cocoon:after-insert', function(e, insertedItem) {
