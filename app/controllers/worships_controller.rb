@@ -20,7 +20,12 @@ class WorshipsController < ApplicationController
   end
 
   def create
-    @worship = Worship.new(worship_params)
+    @worship = Worship.new(worship_params) 
+    worship_para = params[:worship][:worship_param]
+    worship_para[:title].values.length.to_i.times do |i|
+      hash = {title: worship_para[:title]["#{i}"], points: worship_para[:points]["#{i}"], memo: worship_para[:memo]["#{i}"]}
+      @worship.worship_params.build(hash)
+    end
     if @worship.save
       redirect_to @worship, notice: "Worship was successfully created." 
     else
@@ -55,10 +60,8 @@ class WorshipsController < ApplicationController
     @worships = current_user.worships
   end
 
-  def add_worship_param
-    @worship = current_user.worships.build(shinto_id: params[:shinto_id][1])
-    @worship.worship_params.build.save
-    redirect_to new_worship_path(params[:shinto_id][1])
+  def confirm
+    @worship = Worship.new(worship_params)
   end
 
   private
@@ -67,6 +70,6 @@ class WorshipsController < ApplicationController
   end
 
   def worship_params
-    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, worship_params_attributes: %i[title points memo _destroy]).merge(weather: params[:worship][:weather].to_i)
+    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
   end
 end
