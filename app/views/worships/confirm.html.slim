@@ -10,11 +10,9 @@
   = f.hidden_field :memo
   = f.hidden_field :user_id
   = f.hidden_field :shinto_id
-  - ( @worship.worship_params.length ).times do |i| 
-    = binding.irb
+  - ( @worship.worship_params.length).times do |i| 
     = f.fields_for @worship.worship_params[i] do |param|
-      / = binding.irb
-      = param.text_field :title, value: @worship.worship_params[i].title, name: "worship[worship_param][title][#{i}]"
-      = param.text_field :points, value: @worship.worship_params[i].points, name: "worship[worship_param][points][#{i}]"
-      = param.text_field :memo, value: @worship.worship_params[i].memo, name: "worship[worship_param][memo][#{i}]"
+      = param.hidden_field :title, value: @worship.worship_params[i].title, name: "worship[worship_param][title][#{i}]"
+      = param.hidden_field :points, value: @worship.worship_params[i].points, name: "worship[worship_param][points][#{i}]"
+      = param.hidden_field :memo, value: @worship.worship_params[i].memo, name: "worship[worship_param][memo][#{i}]"
   = f.submit

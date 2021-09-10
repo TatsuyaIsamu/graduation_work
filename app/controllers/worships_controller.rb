@@ -15,7 +15,7 @@ class WorshipsController < ApplicationController
     @worship.worship_params.build
     @shinto = Shinto.find_by(id: params[:shinto_id])
   end
-  
+
   def edit
   end
 
@@ -27,8 +27,8 @@ class WorshipsController < ApplicationController
       @worship.worship_params.build(hash)
     end
     if @worship.save
-      redirect_to @worship, notice: "Worship was successfully created." 
-    else
+      render :gosyuin
+    else 
       render :new 
     end
   end
