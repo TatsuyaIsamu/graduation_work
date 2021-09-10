@@ -1,0 +1,45 @@
+.gosyuin {
+  width: 500px;
+  margin: auto;
+  height: 800px;
+  display: flex;
+  gap: 0px 105px;
+  background-image: url("/gosyuin.png");
+  background-repeat: no-repeat;
+  background-size: 500px 800px;
+  font-size: 50px;
+  font-family: "STKaiti", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+}
+
+.gosyuin_shinto {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  gap: 105px 0px;
+  // display: flex;
+  // justify-content: space-between;
+  flex-direction: column;
+}
+
+.gosyuin_name {
+  margin: auto;
+}
+
+.gosyuin_day {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  // z-index: 2;
+  // float:left;
+  font-size: 40px;
+  // position: absolute;
+  // top: 0;
+  // right: 150px;
+  // bottom: 50px;
+  // left: 150px;
+  width: 100px;
+  height: 500px;
+  margin: auto;
+}
+
