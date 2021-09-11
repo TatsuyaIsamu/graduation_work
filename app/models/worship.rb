@@ -6,6 +6,8 @@ class Worship < ApplicationRecord
   accepts_nested_attributes_for :worship_params, allow_destroy: true, reject_if: :all_blank
   enum weather: {晴れ: 0, 曇り: 1, 雨: 2, 雪: 3}
 
+  validates :worship_day, presence: true
+  
   def start_time
     self.worship_day
   end

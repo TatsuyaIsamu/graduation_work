@@ -12,9 +12,9 @@
 //
 //= require rails-ujs
 //= require activestorage
-
-//= require jquery
 // = require turbolinks
+//= require jquery
+
 //= require cocoon
 //= require moment 
 //= require popper

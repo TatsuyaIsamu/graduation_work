@@ -9,30 +9,31 @@
   background-size: 500px 800px;
   font-size: 50px;
   font-family: "STKaiti", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+  .gosyuin_shinto {
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    display: flex;
+    gap: 105px 0px;
+    flex-direction: column;
+    .gosyuin_name {
+      margin: 0 auto;
+    }
+    .gosyuin_day {
+      -ms-writing-mode: tb-rl;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      font-size: 40px;
+      width: 100px;
+      height: 500px;
+      margin: auto;
+    }
+
+  }
+  
 }
 
-.gosyuin_shinto {
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  display: flex;
-  gap: 105px 0px;
-  flex-direction: column;
-}
 
-.gosyuin_name {
-  margin: 0 auto;
-}
-
-.gosyuin_day {
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  font-size: 40px;
-  width: 100px;
-  height: 500px;
-  margin: 0 auto;
-}
 
 #magazine{
 	width:700px; //全体幅
