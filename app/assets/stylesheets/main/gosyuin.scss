@@ -39,6 +39,9 @@
 	height:600px; //全体の高さ
   background-color: white;
   border-radius: 15%;
+  background-image: url(/gosyuin_hard.png);
+  background-repeat: no-repeat;
+  background-size: 500px 600px;
 }
 
 #magazine .turn-page{
@@ -49,6 +52,9 @@
 
 .a {
   background-color: bisque;
+  background-image: url(/gosyuin_hard.png);
+  background-repeat: no-repeat;
+  background-size: 500px 600px;
 }
 .gosyuin_book {
   display: flex;
