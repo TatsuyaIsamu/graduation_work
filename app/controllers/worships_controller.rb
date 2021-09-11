@@ -1,4 +1,5 @@
 class WorshipsController < ApplicationController
+  before_action :forbid_from_confirm_reload, only: :confirm
   before_action :set_worship, only: %i[ show edit update destroy ]
 
   def index
@@ -22,9 +23,11 @@ class WorshipsController < ApplicationController
   def create
     @worship = Worship.new(worship_params) 
     worship_para = params[:worship][:worship_param]
-    worship_para[:title].values.length.to_i.times do |i|
-      hash = {title: worship_para[:title]["#{i}"], points: worship_para[:points]["#{i}"], memo: worship_para[:memo]["#{i}"]}
-      @worship.worship_params.build(hash)
+    if worship_para
+      worship_para[:title].values.length.to_i.times do |i|
+        hash = {title: worship_para[:title]["#{i}"], points: worship_para[:points]["#{i}"], memo: worship_para[:memo]["#{i}"]}
+        @worship.worship_params.build(hash)
+      end
     end
     if @worship.save
       render :gosyuin
@@ -62,11 +65,20 @@ class WorshipsController < ApplicationController
 
   def confirm
     @worship = Worship.new(worship_params)
+    if @worship.invalid?
+      @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
+      render :new 
+    end
   end
 
   private
   def set_worship
     @worship = Worship.find(params[:id])
+  end
+  def forbid_from_confirm_reload
+    if request.get?
+      redirect_to search_worships_path and return
+    end
   end
 
   def worship_params
