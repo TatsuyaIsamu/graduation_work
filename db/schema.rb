@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_095828) do
+ActiveRecord::Schema.define(version: 2021_09_11_103054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,10 +104,19 @@ ActiveRecord::Schema.define(version: 2021_09_11_095828) do
     t.string "title"
     t.integer "points"
     t.text "memo"
-    t.bigint "favorite_shinto_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["favorite_shinto_id"], name: "index_shinto_params_on_favorite_shinto_id"
+    t.bigint "shinto_user_param_id"
+    t.index ["shinto_user_param_id"], name: "index_shinto_params_on_shinto_user_param_id"
+  end
+
+  create_table "shinto_user_params", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "shinto_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shinto_id"], name: "index_shinto_user_params_on_shinto_id"
+    t.index ["user_id"], name: "index_shinto_user_params_on_user_id"
   end
 
   create_table "shintos", force: :cascade do |t|
@@ -152,16 +161,6 @@ ActiveRecord::Schema.define(version: 2021_09_11_095828) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "worship_comments", force: :cascade do |t|
-    t.text "comment"
-    t.bigint "shinto_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shinto_id"], name: "index_worship_comments_on_shinto_id"
-    t.index ["user_id"], name: "index_worship_comments_on_user_id"
-  end
-
   create_table "worship_params", force: :cascade do |t|
     t.string "title"
     t.float "points"
@@ -196,10 +195,10 @@ ActiveRecord::Schema.define(version: 2021_09_11_095828) do
   add_foreign_key "ranking_items", "rankings"
   add_foreign_key "ranking_items", "shintos"
   add_foreign_key "rankings", "users"
-  add_foreign_key "shinto_params", "favorite_shintos"
+  add_foreign_key "shinto_params", "shinto_user_params"
+  add_foreign_key "shinto_user_params", "shintos"
+  add_foreign_key "shinto_user_params", "users"
   add_foreign_key "user_introductions", "users"
-  add_foreign_key "worship_comments", "shintos"
-  add_foreign_key "worship_comments", "users"
   add_foreign_key "worship_params", "worships"
   add_foreign_key "worships", "shintos"
   add_foreign_key "worships", "users"
