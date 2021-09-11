@@ -50,9 +50,14 @@
   background-color: bisque;
 }
 
-.a {
-  background-color: bisque;
+.gosyuin_hard {
   background-image: url(/gosyuin_hard.png);
+  background-repeat: no-repeat;
+  background-size: 500px 600px;
+}
+
+.gosyuin_hard_reverse {
+  background-image: url(/gosyuin_hard_reverse.png);
   background-repeat: no-repeat;
   background-size: 500px 600px;
 }
