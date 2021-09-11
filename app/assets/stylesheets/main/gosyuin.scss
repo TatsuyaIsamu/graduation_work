@@ -1,0 +1,101 @@
+.gosyuin {
+  width: 500px;
+  margin: auto;
+  height: 800px;
+  display: flex;
+  gap: 0px 105px;
+  background-image: url("/gosyuin.png");
+  background-repeat: no-repeat;
+  background-size: 500px 800px;
+  font-size: 50px;
+  font-family: "STKaiti", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+}
+
+.gosyuin_shinto {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  gap: 105px 0px;
+  flex-direction: column;
+}
+
+.gosyuin_name {
+  margin: 0 auto;
+}
+
+.gosyuin_day {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 40px;
+  width: 100px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+#magazine{
+	width:700px; //全体幅
+	height:600px; //全体の高さ
+  background-color: white;
+  border-radius: 15%;
+  background-image: url(/gosyuin_hard.png);
+  background-repeat: no-repeat;
+  background-size: 500px 600px;
+}
+
+#magazine .turn-page{
+	width:400px; //1ページ分の幅
+	height:400px;//1ページ分の高さ
+  background-color: bisque;
+}
+
+.a {
+  background-color: bisque;
+  background-image: url(/gosyuin_hard.png);
+  background-repeat: no-repeat;
+  background-size: 500px 600px;
+}
+.gosyuin_book {
+  display: flex;
+  margin: auto;
+  font-size: 50px;
+  font-family: "STKaiti", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+  width: 700px;
+  height: 600px;
+  border-radius: 15%;
+  .gosyuin_page {
+    background-image: url("/gosyuin.png");
+    background-repeat: no-repeat;
+    background-size: 350px 600px;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    display: flex;
+    flex-direction: column;
+    gap: 0px 125px;
+    // border-radius: 15%;
+    .dammy_div {
+      width: 140px;
+    }
+    .gosyuin_book_name {
+      margin: auto ;
+    }
+    .gosyuin_book_day {
+      -ms-writing-mode: tb-rl;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      font-size: 40px;
+      width: 100px;
+      height: 500px;
+      margin: auto ;
+    }
+
+  }
+}
+.even {
+  border-radius: 0 15% 15% 0;
+}
+.odd {
+  border-radius: 15% 0 0 15%;
+}

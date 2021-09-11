@@ -1,0 +1,18 @@
+= form_with(model: @worship, local: true) do |f|
+  - if @worship.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@worship.errors.count, 'error')} prohibited this worship from being saved:"
+      ul
+        - @worship.errors.full_messages.each do |message|
+          li = message
+  = f.hidden_field :worship_day
+  = f.hidden_field :weather
+  = f.hidden_field :memo
+  = f.hidden_field :user_id
+  = f.hidden_field :shinto_id
+  - ( @worship.worship_params.length).times do |i| 
+    = f.fields_for @worship.worship_params[i] do |param|
+      = param.hidden_field :title, value: @worship.worship_params[i].title, name: "worship[worship_param][title][#{i}]"
+      = param.hidden_field :points, value: @worship.worship_params[i].points, name: "worship[worship_param][points][#{i}]"
+      = param.hidden_field :memo, value: @worship.worship_params[i].memo, name: "worship[worship_param][memo][#{i}]"
+  = f.submit

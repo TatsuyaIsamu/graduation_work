@@ -9,5 +9,7 @@ class Worship < ApplicationRecord
   def start_time
     self.worship_day
   end
+
+
 end
 

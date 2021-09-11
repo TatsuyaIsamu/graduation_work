@@ -1,22 +1,9 @@
-てすと
-#magazine data-turbolinks="false"
-  .hard
-  div
-    
-    p 
-      | Page 1
-  div
-    p
-      | Page 2
-  div
-    p
-      | Page 3
-  div
-    p
-      | Page 4
-  div 
-    p
-      | Page 5
-  div 
-    p
-      | Page 6
+.gosyuin_book
+  #magazine
+    .hard.a
+    - @worships.each do |worship|
+      .gosyuin_page
+        .dammy_div
+        .gosyuin_book_day = worship.shinto.name
+        - if worship.worship_day
+          .gosyuin_book_day = convert_kansuji(worship.worship_day.strftime("%Y年%m月%d日"))
