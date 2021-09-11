@@ -67,6 +67,7 @@ class WorshipsController < ApplicationController
     @worship = Worship.new(worship_params)
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
+      @worship.worship_params.build
       render :new 
     end
   end
