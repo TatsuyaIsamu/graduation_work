@@ -1,0 +1,15 @@
+= form_for @favorite_worship do |f|
+  - if @favorite_worship.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@favorite_worship.errors.count, 'error')} prohibited this favorite_worship from being saved:"
+      ul
+        - @favorite_worship.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :shinto
+    = f.text_field :shinto
+  .actions = f.submit

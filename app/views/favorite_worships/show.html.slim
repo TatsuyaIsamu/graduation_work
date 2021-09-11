@@ -1,0 +1,13 @@
+p#notice = notice
+
+p
+  strong User:
+  = @favorite_worship.user
+
+p
+  strong Shinto:
+  = @favorite_worship.shinto
+
+=> link_to 'Edit', edit_favorite_worship_path(@favorite_worship)
+'|
+=< link_to 'Back', favorite_worships_path
