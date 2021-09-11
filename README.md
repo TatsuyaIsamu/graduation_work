@@ -39,8 +39,7 @@ https://docs.google.com/spreadsheets/d/1ah8qrtO9VEpVHyeTVtaDN26hBRPXxHx5YbApVA2a
 https://cacoo.com/diagrams/oPSurOI6rX0gZX5P/574D6
 
 ## ER図
-
-[![Image from Gyazo](https://i.gyazo.com/8534dbe7c3d064e56202343f2f9f381e.png)](https://gyazo.com/8534dbe7c3d064e56202343f2f9f381e)
+[![Image from Gyazo](https://i.gyazo.com/6172434e139dd19670de345ac5295035.png)](https://gyazo.com/6172434e139dd19670de345ac5295035)
 
 ## 画面遷移図
 
