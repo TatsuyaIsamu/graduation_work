@@ -1,0 +1,23 @@
+h1 Listing favorite_worships
+
+table
+  thead
+    tr
+      th User
+      th Shinto
+      th
+      th
+      th
+
+  tbody
+    - @favorite_worships.each do |favorite_worship|
+      tr
+        td = favorite_worship.user
+        td = favorite_worship.shinto
+        td = link_to 'Show', favorite_worship
+        td = link_to 'Edit', edit_favorite_worship_path(favorite_worship)
+        td = link_to 'Destroy', favorite_worship, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Favorite worship', new_favorite_worship_path
