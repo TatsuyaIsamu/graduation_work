@@ -1,4 +1,5 @@
 class WorshipsController < ApplicationController
+  before_action :forbid_from_confirm_reload, only: :confirm
   before_action :set_worship, only: %i[ show edit update destroy ]
 
   def index
@@ -73,6 +74,11 @@ class WorshipsController < ApplicationController
   private
   def set_worship
     @worship = Worship.find(params[:id])
+  end
+  def forbid_from_confirm_reload
+    if request.get?
+      redirect_to search_worships_path and return
+    end
   end
 
   def worship_params

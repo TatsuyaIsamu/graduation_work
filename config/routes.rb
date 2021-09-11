@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :calendar
+      get :confirm
       post :confirm
     end
   end
