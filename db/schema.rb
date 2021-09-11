@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_041219) do
+ActiveRecord::Schema.define(version: 2021_09_11_043019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 2021_09_11_041219) do
 
   create_table "favorite_worships", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "shinto_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shinto_id"], name: "index_favorite_worships_on_shinto_id"
+    t.bigint "worship_id"
     t.index ["user_id"], name: "index_favorite_worships_on_user_id"
+    t.index ["worship_id"], name: "index_favorite_worships_on_worship_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -167,8 +167,8 @@ ActiveRecord::Schema.define(version: 2021_09_11_041219) do
 
   add_foreign_key "favorite_shintos", "shintos"
   add_foreign_key "favorite_shintos", "users"
-  add_foreign_key "favorite_worships", "shintos"
   add_foreign_key "favorite_worships", "users"
+  add_foreign_key "favorite_worships", "worships"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "ranking_items", "rankings"
