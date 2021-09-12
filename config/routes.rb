@@ -33,8 +33,9 @@ Rails.application.routes.draw do
     end
   end
   resources :shintos, only: %i[index show]
-  resources :favorite_shintos, only: %i[index create destroy] do
-    resources :shinto_params, only: %i[new create destroy]
+  resources :favorite_shintos, only: %i[index create destroy] 
+  resources :shinto_user_params do
+    resources :shinto_param_items 
   end
   resources :relationships, only: %i[create destroy]
   resources :conversations do
