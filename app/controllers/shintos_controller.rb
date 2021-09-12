@@ -12,6 +12,8 @@ class ShintosController < ApplicationController
   end
 
   def show
+    @shinto_user_params = @shinto.shinto_user_params
+    @shinto_user_param = @shinto.shinto_user_params.build
     @shinto.kamisama.gsub!(/\\n/, "<br/>")
     @shinto.origin_shrine.gsub!(/\\n/, "<br/>")
     @hash = Gmaps4rails.build_markers(@shinto) do |place, marker|

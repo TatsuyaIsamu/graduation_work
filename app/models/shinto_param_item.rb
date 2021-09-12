@@ -1,3 +1,3 @@
 class ShintoParamItem < ApplicationRecord
-  belongs_to :shinto_user_parmas
+  belongs_to :shinto_params
 end

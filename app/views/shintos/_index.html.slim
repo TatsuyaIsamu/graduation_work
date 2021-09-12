@@ -1,0 +1,6 @@
+ul
+  - if shinto_user_params.present?
+    - shinto_user_params.each do |param|
+      - if param.shinto_params.present?
+        li
+          p= param.shinto_params[0].memo

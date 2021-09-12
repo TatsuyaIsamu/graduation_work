@@ -1,0 +1,9 @@
+= form_for @shinto_user_param do |f|
+  - if @shinto_user_param.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@shinto_user_param.errors.count, 'error')} prohibited this shinto_user_param from being saved:"
+      ul
+        - @shinto_user_param.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit
