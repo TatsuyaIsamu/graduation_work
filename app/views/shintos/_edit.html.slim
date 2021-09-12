@@ -8,7 +8,6 @@
         - shinto_user_param.errors.full_messages.each do |message|
           li= message
   .field
-    / = binding.irb
     = form.fields_for shinto_user_param.shinto_params.build do | param |
       = param.text_area :memo, id: "comment_content_#{shinto_user_param.id}"
   .actions

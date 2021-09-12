@@ -50,12 +50,13 @@ class ShintoUserParamsController < ApplicationController
         end
       end
   end
-  # DELETE /shinto_user_params/1 or /shinto_user_params/1.json
+
   def destroy
-    @shinto_user_param.destroy
+    @shinto_user_params = ShintoUserParam.find(params[:id])
+    @shinto_user_params.destroy
     respond_to do |format|
-      format.html { redirect_to shinto_user_params_url, notice: "Shinto user param was successfully destroyed." }
-      format.json { head :no_content }
+      flash.now[:notice] = 'コメントが削除されました'
+      format.js { render :index }
     end
   end
 
