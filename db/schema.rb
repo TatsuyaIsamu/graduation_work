@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_103054) do
+ActiveRecord::Schema.define(version: 2021_09_12_014414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,9 +100,16 @@ ActiveRecord::Schema.define(version: 2021_09_11_103054) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "shinto_params", force: :cascade do |t|
+  create_table "shinto_param_items", force: :cascade do |t|
     t.string "title"
-    t.integer "points"
+    t.float "points"
+    t.bigint "shinto_params_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shinto_params_id"], name: "index_shinto_param_items_on_shinto_params_id"
+  end
+
+  create_table "shinto_params", force: :cascade do |t|
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -195,6 +202,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_103054) do
   add_foreign_key "ranking_items", "rankings"
   add_foreign_key "ranking_items", "shintos"
   add_foreign_key "rankings", "users"
+  add_foreign_key "shinto_param_items", "shinto_params", column: "shinto_params_id"
   add_foreign_key "shinto_params", "shinto_user_params"
   add_foreign_key "shinto_user_params", "shintos"
   add_foreign_key "shinto_user_params", "users"
