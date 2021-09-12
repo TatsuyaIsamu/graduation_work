@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :shinto_param_item do
-    title { "" }
+    title { "MyString" }
     points { 1.5 }
-    shinto_params { nil }
+    shinto_param { nil }
   end
 end

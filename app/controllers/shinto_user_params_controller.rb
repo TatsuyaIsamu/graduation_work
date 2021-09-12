@@ -18,6 +18,7 @@ class ShintoUserParamsController < ApplicationController
   # GET /shinto_user_params/1/edit
   def edit
     @shinto_user_param = ShintoUserParam.find(params[:id])
+    binding.pry
     respond_to do |format|
       flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
