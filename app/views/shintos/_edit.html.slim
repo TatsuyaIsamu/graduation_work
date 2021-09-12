@@ -1,0 +1,15 @@
+= form_with(model: shinto_user_param) do |form|
+  - if shinto_user_param.errors.any?
+    #error_explanation
+      h2
+        = pluralize(shinto_user_param.errors.count, error)
+        | prohibited this comment from being saved:
+      ul
+        - shinto_user_param.errors.full_messages.each do |message|
+          li= message
+  .field
+    / = binding.irb
+    = form.fields_for shinto_user_param.shinto_params.build do | param |
+      = param.text_area :memo, id: "comment_content_#{shinto_user_param.id}"
+  .actions
+    = form.submit

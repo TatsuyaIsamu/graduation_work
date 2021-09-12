@@ -17,8 +17,12 @@ class ShintoUserParamsController < ApplicationController
 
   # GET /shinto_user_params/1/edit
   def edit
+    @shinto_user_param = ShintoUserParam.find(params[:id])
+    respond_to do |format|
+      flash.now[:notice] = 'コメントの編集中'
+      format.js { render :edit }
+    end
   end
-
   # POST /shinto_user_params or /shinto_user_params.json
   def create
     # Blogをパラメータの値から探し出し,Blogに紐づくcommentsとしてbuildします。
@@ -34,19 +38,18 @@ class ShintoUserParamsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shinto_user_params/1 or /shinto_user_params/1.json
   def update
-    respond_to do |format|
-      if @shinto_user_param.update(shinto_user_param_params)
-        format.html { redirect_to @shinto_user_param, notice: "Shinto user param was successfully updated." }
-        format.json { render :show, status: :ok, location: @shinto_user_param }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @shinto_user_param.errors, status: :unprocessable_entity }
+    @shinto_user_params = ShintoUserParam.find(params[:id])
+      respond_to do |format|
+        if @shinto_user_params.shinto_params.update(memo:  params[:shinto_user_param][:shinto_param][:memo])
+          flash.now[:notice] = 'コメントが編集されました'
+          format.js { render :index }
+        else
+          flash.now[:notice] = 'コメントの編集に失敗しました'
+          format.js { render :edit_error }
+        end
       end
-    end
   end
-
   # DELETE /shinto_user_params/1 or /shinto_user_params/1.json
   def destroy
     @shinto_user_param.destroy

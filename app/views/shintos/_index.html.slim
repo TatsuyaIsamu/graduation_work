@@ -3,4 +3,6 @@ ul
     - shinto_user_params.each do |param|
       - if param.shinto_params.present?
         li
-          p= param.shinto_params[0].memo
+          .comment-content id = "this_comment_#{param.shinto_params[0].id}"
+          p = param.shinto_params[0].memo
+          p = link_to "コメント編集", edit_shinto_user_param_path(param.shinto_params[0].id), remote: true 
