@@ -26,10 +26,13 @@ class ShintoUserParamsController < ApplicationController
   end
   # POST /shinto_user_params or /shinto_user_params.json
   def create
-    # Blogをパラメータの値から探し出し,Blogに紐づくcommentsとしてbuildします。
-    # binding.irb
-    @shinto_user_param = ShintoUserParam.new(shinto_user_param_params)
-    @shinto_user_param.shinto_params.build(memo: params[:shinto_user_param][:shinto_param][:memo])
+
+    @shinto_user_param = ShintoUserParam.new(user_id: params[:shinto_user_param][:user_id], shinto_id: params[:shinto_user_param][:shinto_id])
+    @a = @shinto_user_param.shinto_params.build(memo: params[:shinto_user_param][:shinto_params_attributes]["0"][:memo])
+    @b = params[:shinto_user_param][:shinto_params_attributes]["0"]
+    @b[:shinto_param_items_attributes].each do |key, value|
+      @a.shinto_param_items.build(title: value[:title], points: value[:points])
+    end
     respond_to do |format|
       if @shinto_user_param.save
         format.js { render :index }
@@ -69,6 +72,7 @@ class ShintoUserParamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shinto_user_param_params
-      params.require(:shinto_user_param).permit(:user_id, :shinto_id, shinto_params_attributes: %i[memo])
+      params.require(:shinto_user_param).permit(:user_id, :shinto_id, shinto_params_attributes: [:memo, shinto_param_items_attributes: [:title, :points]])
+      binding.irb
     end
 end
