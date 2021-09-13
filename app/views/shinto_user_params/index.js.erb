@@ -1,3 +1,4 @@
 $("#comments_area").html("<%= j(render 'shintos/index', { shinto_user_params: @shinto_user_param.shinto.shinto_user_params, shinto: @shinto}) %>");
 $("textarea").val('');
+$(".nested_fields").remove();
 $("#notice").html("<%= j flash[:notice] %>");
