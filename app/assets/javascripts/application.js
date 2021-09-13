@@ -75,16 +75,18 @@ $(document).on('turbolinks:load', function () {
             half: true,
         });
     })
+})
 
-$(document).on('turbolinks:load', function () {
-    $("#worships")
+$(window).load(function () {
+    debugger
+    $("#shinto_params")
     .on('cocoon:after-insert', function(e, insertedItem) {
-        $(insertedItem).find(".evaluat").raty(
+        $(insertedItem).find(".evaluate").raty(
         {
             starOn: "/raty/star-on.png" ,
             starOff: "/raty/star-off.png",
             starHalf: "/raty/star-half.png ",
-            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            scoreName: `shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
             half: true,
         });
     })
