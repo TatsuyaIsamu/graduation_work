@@ -18,7 +18,6 @@ class ShintoUserParamsController < ApplicationController
   # GET /shinto_user_params/1/edit
   def edit
     @shinto_user_param = ShintoUserParam.find(params[:id])
-    binding.pry
     respond_to do |format|
       flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
@@ -26,12 +25,11 @@ class ShintoUserParamsController < ApplicationController
   end
   # POST /shinto_user_params or /shinto_user_params.json
   def create
-
     @shinto_user_param = ShintoUserParam.new(user_id: params[:shinto_user_param][:user_id], shinto_id: params[:shinto_user_param][:shinto_id])
-    @a = @shinto_user_param.shinto_params.build(memo: params[:shinto_user_param][:shinto_params_attributes]["0"][:memo])
-    @b = params[:shinto_user_param][:shinto_params_attributes]["0"]
-    @b[:shinto_param_items_attributes].each do |key, value|
-      @a.shinto_param_items.build(title: value[:title], points: value[:points])
+    a = @shinto_user_param.shinto_params.build(memo: params[:shinto_user_param][:shinto_params_attributes]["0"][:memo])
+    b = params[:shinto_user_param][:shinto_params_attributes]["0"]
+    b[:shinto_param_items_attributes].each do |key, value|
+      a.shinto_param_items.build(title: value[:title], points: value[:points])
     end
     respond_to do |format|
       if @shinto_user_param.save

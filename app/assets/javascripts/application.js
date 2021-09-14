@@ -35,7 +35,6 @@ $(document).on('turbolinks:load', function () {
     $('.drawer').drawer();
     $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
     bsCustomFileInput.init();
-    // debugger
     $('.evaluate_stars').raty({
         starOn: "/raty/star-on.png" ,
         starOff: "/raty/star-off.png",
@@ -52,19 +51,19 @@ $(document).on('turbolinks:load', function () {
     });
 })
 
-    document.addEventListener("turbolinks:load", function(){
-        $("#worships")
-        .on('cocoon:after-insert', function(e, insertedItem) {
-            $(insertedItem).find(".evaluate_stars").raty(
-            {
-                starOn: "/raty/star-on.png" ,
-                starOff: "/raty/star-off.png",
-                starHalf: "/raty/star-half.png ",
-                scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
-                half: true,
-            });
-        })
+document.addEventListener("turbolinks:load", function(){
+    $("#worships")
+    .on('cocoon:after-insert', function(e, insertedItem) {
+        $(insertedItem).find(".evaluate_stars").raty(
+        {
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            half: true,
+        });
     })
+})
 
 document.addEventListener("turbolinks:load", function(){
     $('.evaluate').raty({
