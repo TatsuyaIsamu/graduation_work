@@ -78,13 +78,12 @@ document.addEventListener("turbolinks:load", function(){
 document.addEventListener("turbolinks:load", function(){
     $("#shinto_params")
     .on('cocoon:after-insert', function(e, insertedItem) {
-        debugger
         $(insertedItem).find(".evaluate").raty(
         {
             starOn: "/raty/star-on.png" ,
             starOff: "/raty/star-off.png",
             starHalf: "/raty/star-half.png ",
-            scoreName: `shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            scoreName: `shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][${insertedItem[0].children[0].children[1].lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
             half: true,
         });
     })

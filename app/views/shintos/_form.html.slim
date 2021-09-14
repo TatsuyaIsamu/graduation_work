@@ -7,7 +7,8 @@
       ul
         - comment.errors.full_messages.each do |message|
           li= message
-  .field
+  .field.shinto_review
+    h3 神社レビュー
     = form.hidden_field :user_id, value: current_user.id 
     = form.hidden_field :shinto_id, value: shinto.id
     #shinto_params
