@@ -26,6 +26,7 @@ class ShintoUserParamsController < ApplicationController
   # POST /shinto_user_params or /shinto_user_params.json
   def create
     @shinto_user_param = ShintoUserParam.new(user_id: params[:shinto_user_param][:user_id], shinto_id: params[:shinto_user_param][:shinto_id])
+    gon.star_array = []
     a = @shinto_user_param.shinto_params.build(memo: params[:shinto_user_param][:shinto_params_attributes]["0"][:memo])
     b = params[:shinto_user_param][:shinto_params_attributes]["0"]
     b[:shinto_param_items_attributes].each do |key, value|
@@ -33,7 +34,15 @@ class ShintoUserParamsController < ApplicationController
     end
     respond_to do |format|
       if @shinto_user_param.save
-        format.js { render :index }
+        @shinto_user_params = @shinto_user_param.shinto.shinto_user_params
+        @shinto_user_params.each do |user_param|
+          user_param.shinto_params.each do |param|
+            param.shinto_param_items.each do |item|
+              gon.star_array << {"star_count_#{item.id}": item.points}
+            end
+          end
+        end
+        format.js { render :index, status: :ok} 
       else
         format.html { redirect_to shintos_path, notice: '投稿できませんでした...' }
       end
@@ -54,11 +63,21 @@ class ShintoUserParamsController < ApplicationController
   end
 
   def destroy
-    @shinto_user_params = ShintoUserParam.find(params[:id])
-    @shinto_user_params.destroy
+    @shinto_user_param = ShintoUserParam.find(params[:id])
+    @shinto = Shinto.find_by(id: @shinto_user_param.shinto_id)
+    @shinto_user_param.destroy
+    @shinto_user_params = @shinto.shinto_user_params
+    gon.star_array = []
     respond_to do |format|
       flash.now[:notice] = 'コメントが削除されました'
-      format.js { render :index }
+      @shinto_user_params.each do |user_param|
+        user_param.shinto_params.each do |param|
+          param.shinto_param_items.each do |item|
+            gon.star_array << {"star_count_#{item.id}": item.points}
+          end
+        end
+      end
+      format.js { render :destroy ,status: :ok}
     end
   end
 

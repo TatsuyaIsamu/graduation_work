@@ -1,13 +1,11 @@
-$("#comments_area").html("<%= j(render 'shintos/index', { shinto_user_params: @shinto_user_param.shinto.shinto_user_params, shinto: @shinto}) %>");
-$("textarea").val('');
-$(".star_form").remove();
-$(".add_fields").trigger("click");
+$("#comments_area").html("<%= j(render 'shintos/index', { shinto_user_params: @shinto_user_params, shinto: @shinto}) %>");
 $(".dammy_raty").text("<%= j(render partial: 'gon_partial') %>")
 $("#notice").html("<%= j flash[:notice] %>");
 
-$("form").on('ajax:success', function(event) { 
-    var response = event.detail[0].response
+document.addEventListener("ajax:success", function(){
+    let response = event.detail[0].response
     let dammy = $(".dammy_raty")
+    debugger
     $('head').append(dammy[0].textContent)
     let item_id = gon.star_array
     item_id.forEach((item_id) => {

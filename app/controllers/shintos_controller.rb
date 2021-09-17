@@ -13,6 +13,14 @@ class ShintosController < ApplicationController
 
   def show
     @shinto_user_params = @shinto.shinto_user_params
+    gon.star_array = []
+    @shinto_user_params.each do |user_param|
+      user_param.shinto_params.each do |param|
+        param.shinto_param_items.each do |item|
+          gon.star_array << {"star_count_#{item.id}": item.points}
+        end
+      end
+    end
     @shinto_user_param = @shinto.shinto_user_params.build
     @shinto_params = @shinto_user_param.shinto_params.build
     @shinto_params_items = @shinto_params.shinto_param_items.build

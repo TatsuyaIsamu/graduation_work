@@ -2,18 +2,19 @@ ul
   - if shinto_user_params.present?
     - shinto_user_params.each do |param|
       - if param.shinto_params.present?
-        li
-          .comment-content id = "this_comment_#{param.shinto_params[0].id}"
-          / = binding.irb
-          p = param.shinto_params[0].memo
-          - if param.shinto_params[0].shinto_param_items.present?
-            - param.shinto_params[0].shinto_param_items.each do |item|
-              - if item.title
-                p = item.title
-              - if item.points
-                p = item.points
-          / - if param.id 
-          /   = link_to "コメント編集", edit_shinto_user_param_path(param.id), remote: true 
+        li.a
+          .shinto_review
+            - if param.shinto_params[0].shinto_param_items.present?
+              - param.shinto_params[0].shinto_param_items.each do |item|
+                .row
+                  - if item.title
+                    |評価項目
+                    = item.title
+                  - if item.points
+                    / - gon.item = item.id
+                    / = binding.irb
+                    div id = "star_count_#{item.id}"
+          = param.shinto_params[0].memo
           / = binding.irb
           - if param.id 
-            = link_to "コメント削除", shinto_user_param_path(param.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}
+            = link_to "コメント削除", shinto_user_param_path(param.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class: "shinto_params_destroy"
