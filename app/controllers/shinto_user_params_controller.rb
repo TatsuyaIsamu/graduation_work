@@ -65,6 +65,7 @@ class ShintoUserParamsController < ApplicationController
   def destroy
     @shinto_user_param = ShintoUserParam.find(params[:id])
     @shinto = Shinto.find_by(id: @shinto_user_param.shinto_id)
+    @shinto_user_param_id = @shinto_user_param.id
     @shinto_user_param.destroy
     @shinto_user_params = @shinto.shinto_user_params
     gon.star_array = []
