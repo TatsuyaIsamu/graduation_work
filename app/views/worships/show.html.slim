@@ -40,6 +40,11 @@ p#notice = notice
         - else 
           img.card-img src="/noimage.png"
     = render partial: "share/shinto_show", locals: {shinto: @worship.shinto}
-    => link_to 'Edit', edit_worship_path(@worship)
-    '|
-    =< link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)
+    - if current_user == @worship_user
+      => link_to 'Edit', edit_worship_path(@worship)
+      '|
+      =< link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)
+    - else 
+      = link_to "Back", other_looking_worships_path(@worship.user.id)
+
+      
