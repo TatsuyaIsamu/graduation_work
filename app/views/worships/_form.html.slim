@@ -30,7 +30,7 @@
               button.btn.btn-outline-secondary.input-group-text type="button"
                 |取消
 
-      #worships
+      #worship_params
         .links
           = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
         = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
