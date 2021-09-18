@@ -17,9 +17,9 @@
       h2 自己紹介
       p = @user_introduction.introduction
     .row 
-      = link_to edit_user_introduction_path(@user_introduction.id) do 
-        i.fas.fa-edit
-    / p.col-sm-4 = @user_introduction.name
+      - if current_user == @user_introduction.user
+        = link_to edit_user_introduction_path(@user_introduction.id) do 
+          i.fas.fa-edit
 
 br
 h2 神社ランキング
@@ -48,8 +48,9 @@ h2 神社ランキング
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
-              = link_to edit_ranking_ranking_item_path(@ranking1.id), class: "btn btn-sm btn-outline-secondary" do
-                i.fas.fa-edit
+              - if current_user == @user_introduction.user
+                = link_to edit_ranking_ranking_item_path(@ranking1.id), class: "btn btn-sm btn-outline-secondary" do
+                  i.fas.fa-edit
             small.text-muted 9 mins
 
   .col-md-4
@@ -75,8 +76,9 @@ h2 神社ランキング
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
-              = link_to edit_ranking_ranking_item_path(@ranking2.id), class: "btn btn-sm btn-outline-secondary" do
-                i.fas.fa-edit
+              - if current_user == @user_introduction.user
+                = link_to edit_ranking_ranking_item_path(@ranking2.id), class: "btn btn-sm btn-outline-secondary" do
+                  i.fas.fa-edit
             small.text-muted 9 mins
   .col-md-4
     h3 三位
@@ -101,13 +103,15 @@ h2 神社ランキング
           .d-flex.justify-content-between.align-items-center
             .btn-group
               button.btn.btn-sm.btn-outline-secondary type="button"  View
-              = link_to edit_ranking_ranking_item_path(@ranking3.id), class: "btn btn-sm btn-outline-secondary" do
-                i.fas.fa-edit
+              - if current_user == @user_introduction.user
+                = link_to edit_ranking_ranking_item_path(@ranking3.id), class: "btn btn-sm btn-outline-secondary" do
+                  i.fas.fa-edit
             small.text-muted 9 mins
 
 #region-div
 = pie_chart @chart, title: "総本山パラメーター"
-= link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
+- if current_user == @user_introduction.user
+  = link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
 
 
 
