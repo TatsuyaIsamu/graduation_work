@@ -1,0 +1,22 @@
+.worshipContainer
+  .card.mb-3 
+    .row.no-gutters
+      .col-md-4.my-auto
+        img.card-img src="#{shinto.image}.jpg"
+      .col-md-8
+        .card-body
+          h5.card-title 神社情報
+          strong.d-inline-block.mb-2.text-primary
+            | 神社名
+          p.mb-0
+            = shinto.name
+          strong.d-inline-block.mb-2.text-primary
+            | 住所
+          p.mb-0  = shinto.address
+          strong.d-inline-block.mb-2.text-primary
+            | 起源
+          p.mb-0 = shinto.origin_term
+          strong.d-inline-block.mb-2.text-primary
+            | 公式URL
+          p.mb-0 = shinto.original_url
+              a.btn.btn-primary href="#"  Details
