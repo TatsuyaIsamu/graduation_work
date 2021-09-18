@@ -5,7 +5,7 @@ class Worship < ApplicationRecord
   has_many :worship_params, dependent: :destroy, inverse_of: :worship
   accepts_nested_attributes_for :worship_params, allow_destroy: true, reject_if: :all_blank
   enum weather: {晴れ: 0, 曇り: 1, 雨: 2, 雪: 3}
-
+  has_many :favorite_worships
   validates :worship_day, presence: true
   
   def start_time
