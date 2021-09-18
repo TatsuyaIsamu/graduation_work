@@ -33,21 +33,30 @@ p
   strong 公式URL:
   = @shinto.original_url
 
-- if current_user.favorite_shinto_shintos[0] == @shinto
-  strong 神社パラメーターを追加する:
-  = link_to "追加する", new_favorite_shinto_shinto_param_path(current_user.favorite_shintos[0].id) 
-br
-- if @shinto.favorite_shintos[0].present?
-  - if @shinto.favorite_shintos[0].shinto_params.present?
-    - @shinto.favorite_shintos[0].shinto_params.each do |shinto_param|
-      = shinto_param.title 
-      = shinto_param.points 
-      = shinto_param.memo 
-      br
+/ - if current_user.favorite_shinto_shintos[0] == @shinto
+/   strong 神社パラメーターを追加する:
+/   = link_to "追加する", new_favorite_shinto_shinto_param_path(current_user.favorite_shintos[0].id) 
+/ br
+/ - if @shinto.favorite_shintos[0].present?
+/   - if @shinto.favorite_shintos[0].shinto_params.present?
+/     - @shinto.favorite_shintos[0].shinto_params.each do |shinto_param|
+/       = shinto_param.title 
+/       = shinto_param.points 
+/       = shinto_param.memo 
+/       br
   
-br
+/ br
 
+#comments_area
+  /! 投稿されたコメント一覧をブログの詳細ページに表示するためのrender
+  = render partial: 'index', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
+/! コメント入力欄をブログの詳細ページに表示するためのrender
+= render partial: 'form', locals: { shinto_user_param: @shinto_user_param, shinto: @shinto }
+/ = link_to '編集', edit_blog_path(@blog)
+/ | \
+/ | \#{link_to '戻る', blogs_path}
 = link_to 'Back', shintos_path
+.dammy_raty
 
 #map style="width: 800px; height: 400px;"
 

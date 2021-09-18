@@ -1,0 +1,26 @@
+$("#comments_area").html("<%= j(render 'shintos/index', { shinto_user_params: @shinto_user_param.shinto.shinto_user_params, shinto: @shinto}) %>");
+$("textarea").val('');
+$(".star_form").remove();
+$(".add_fields").trigger("click");
+$(".dammy_raty").text("<%= j(render partial: 'gon_partial') %>")
+$("#notice").html("<%= j flash[:notice] %>");
+
+$("form").on('ajax:success', function(event) { 
+    var response = event.detail[0].response
+    let dammy = $(".dammy_raty")
+    $('head').append(dammy[0].textContent)
+    let item_id = gon.star_array
+    item_id.forEach((item_id) => {
+        let key = Object.keys(item_id)[0]
+        $(`#${key}`).raty({
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            score: item_id[key],
+            readOnly: true,
+            half: true,
+        });
+    })
+    $("form").off("ajax:success")
+    dammy.text("")
+})

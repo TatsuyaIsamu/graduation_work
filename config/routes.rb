@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  resources :shinto_param_items
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -33,8 +31,9 @@ Rails.application.routes.draw do
     end
   end
   resources :shintos, only: %i[index show]
-  resources :favorite_shintos, only: %i[index create destroy] do
-    resources :shinto_params, only: %i[new create destroy]
+  resources :favorite_shintos, only: %i[index create destroy] 
+  resources :shinto_user_params do
+    resources :shinto_param_items 
   end
   resources :relationships, only: %i[create destroy]
   resources :conversations do

@@ -1,0 +1,19 @@
+h1 Listing shinto_user_params
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @shinto_user_params.each do |shinto_user_param|
+      tr
+        td = link_to 'Show', shinto_user_param
+        td = link_to 'Edit', edit_shinto_user_param_path(shinto_user_param)
+        td = link_to 'Destroy', shinto_user_param, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Shinto user param', new_shinto_user_param_path

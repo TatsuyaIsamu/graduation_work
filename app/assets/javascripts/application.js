@@ -42,6 +42,27 @@ $(document).on('turbolinks:load', function () {
         scoreName: 'worship[worship_params_attributes][0][points]',
         half: true,
     });
+    $('.evaluate').raty({
+        starOn: "/raty/star-on.png" ,
+        starOff: "/raty/star-off.png",
+        starHalf: "/raty/star-half.png ",
+        scoreName: 'shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][0][points]',
+        half: true,
+    });
+})
+
+document.addEventListener("turbolinks:load", function(){
+    $("#worships")
+    .on('cocoon:after-insert', function(e, insertedItem) {
+        $(insertedItem).find(".evaluate_stars").raty(
+        {
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            half: true,
+        });
+    })
     $('#magazine').turn({
         elevation: 50,
         duration: 1000,
@@ -51,15 +72,36 @@ $(document).on('turbolinks:load', function () {
     });
 })
 
-$(document).on('turbolinks:load', function () {
-    $("#worships")
+
+
+document.addEventListener("turbolinks:load", function(){
+    let item_id = gon.star_array
+    debugger
+    item_id.forEach((item_id) => {
+        let key = Object.keys(item_id)[0]
+        $(`#${key}`).raty({
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            score: item_id[key],
+            readOnly: true,
+            half: true,
+        });
+    })
+
+});
+
+
+
+document.addEventListener("turbolinks:load", function(){
+    $("#shinto_params")
     .on('cocoon:after-insert', function(e, insertedItem) {
-        $(insertedItem).find(".evaluate_stars").raty(
+        $(insertedItem).find(".evaluate").raty(
         {
             starOn: "/raty/star-on.png" ,
             starOff: "/raty/star-off.png",
             starHalf: "/raty/star-half.png ",
-            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            scoreName: `shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][${insertedItem[0].children[0].children[1].lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
             half: true,
         });
     })
