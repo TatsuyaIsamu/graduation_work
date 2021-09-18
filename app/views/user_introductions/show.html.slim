@@ -112,6 +112,6 @@ h2 神社ランキング
 = pie_chart @chart, title: "総本山パラメーター"
 - if current_user == @user_introduction.user
   = link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
-
+= link_to "投稿一覧を見る", other_looking_worships_path(@user_introduction.user.id)
 
 

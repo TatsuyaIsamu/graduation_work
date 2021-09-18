@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get :search
       get :calendar
       get :confirm
+      get :other_looking
       post :confirm
     end
   end
