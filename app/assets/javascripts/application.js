@@ -96,6 +96,7 @@ document.addEventListener("turbolinks:load", function(){
 // 神社詳細画面の星一覧
 document.addEventListener("turbolinks:load", function(){
     let item_id = gon.star_array
+    debugger
     item_id.forEach((item_id) => {
         let key = Object.keys(item_id)[0]
         $(`#${key}`).raty({

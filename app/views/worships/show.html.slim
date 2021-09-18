@@ -6,27 +6,23 @@ p#notice = notice
     = @worship.worship_day
     = @worship.weather
     = @worship.shinto.name
-  / strong Worship day:
-  / = @worship.worship_day
-
-  / p
-  / strong Weather:
-  / = @worship.weather
-  .card-body
-    
+  .card-body  
     .row
       .col-md-7 
         .card.worship_params_card
           .card-body
             ul.list-group 
-
               - if @worship.worship_params.present?
                 - @worship.worship_params.each do |param|
                   li.list-group-item 
                     = param.title
-                    = param.points
+                    ' |
+                    span id = "star_count_#{param.id}"
+                  li.list-group-item 
+                    = param.memo
                   
             .card-text 
+              p 一言メモ
               - if @worship.memo.present?
                 = @worship.memo
 
@@ -37,19 +33,6 @@ p#notice = notice
 
           img.card-img src="/noimage.png"
     = render partial: "share/shinto_show", locals: {shinto: @worship.shinto}
-
-
-    / p
-    /   strong title:
-    /   = @worship.worship_params[0].title
-    / / p
-    / /   strong points:
-    / /   = @worship.worship_params[0].points
-    / p
-    /   strong memo:
-    /   = @worship.worship_params[0].memo
-
-
     => link_to 'Edit', edit_worship_path(@worship)
     '|
     =< link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)
