@@ -5,30 +5,7 @@
         ul
           - @worship.errors.full_messages.each do |message|
             li = message
-    .worshipContainer
-      .card.mb-3 
-        .row.no-gutters
-          .col-md-4.my-auto
-            img.card-img src="#{@shinto.image}.jpg"
-          .col-md-8
-            .card-body
-              h5.card-title 神社情報
-              strong.d-inline-block.mb-2.text-primary
-                | 神社名
-              p.mb-0
-                = @shinto.name
-              strong.d-inline-block.mb-2.text-primary
-                | 住所
-              p.mb-0  = @shinto.address
-              strong.d-inline-block.mb-2.text-primary
-                | 起源
-              p.mb-0 = @shinto.origin_term
-              strong.d-inline-block.mb-2.text-primary
-                | 公式URL
-              p.mb-0 = @shinto.original_url
-                  a.btn.btn-primary href="#"  Details
-
-
+    = render partial: "share/shinto_show", locals: {shinto: @shinto}
     .form-group
       .row
         .col-md-7
@@ -53,7 +30,7 @@
               button.btn.btn-outline-secondary.input-group-text type="button"
                 |取消
 
-      #worships
+      #worship_params
         .links
           = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
         = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|

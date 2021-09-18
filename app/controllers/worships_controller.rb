@@ -9,6 +9,10 @@ class WorshipsController < ApplicationController
   end
 
   def show
+    gon.star_array = []
+    @worship.worship_params.each do |param|
+      gon.star_array << {"star_count_#{param.id}": param.points}
+    end
   end
 
   def new
