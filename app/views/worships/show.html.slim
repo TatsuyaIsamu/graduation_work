@@ -25,12 +25,10 @@ p#notice = notice
               p 一言メモ
               - if @worship.memo.present?
                 = @worship.memo
-
       .col-md-5.my-auto 
         - if @worship.image.present?
           = image_tag @worship.image.url
         - else 
-
           img.card-img src="/noimage.png"
     = render partial: "share/shinto_show", locals: {shinto: @worship.shinto}
     => link_to 'Edit', edit_worship_path(@worship)

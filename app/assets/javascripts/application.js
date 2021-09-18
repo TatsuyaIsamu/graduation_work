@@ -93,7 +93,7 @@ document.addEventListener("turbolinks:load", function(){
 })
 
 
-// 神社詳細画面の星一覧
+// 神社詳細画面と参拝詳細画面の星一覧表示
 document.addEventListener("turbolinks:load", function(){
     let item_id = gon.star_array
     debugger
