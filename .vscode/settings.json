@@ -1,8 +1,10 @@
 {
   "cSpell.words": [
     "activestorage",
+    "authenticatable",
     "bscustomfileinput",
     "chartkick",
+    "datetime",
     "fontawesome",
     "fortawesome",
     "fullcalendar",
@@ -10,6 +12,8 @@
     "javascripts",
     "raty",
     "strftime",
-    "turbolinks"
+    "turbolinks",
+    "unfollow",
+    "validatable"
   ]
 }

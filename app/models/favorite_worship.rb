@@ -1,4 +1,4 @@
 class FavoriteWorship < ApplicationRecord
   belongs_to :user
-  belongs_to :shinto
+  belongs_to :worship
 end

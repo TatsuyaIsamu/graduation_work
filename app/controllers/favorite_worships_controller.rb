@@ -1,26 +1,19 @@
 class FavoriteWorshipsController < ApplicationController
-  
+  before_action :authenticate_user!
+  respond_to? :js
   def create
-    @favorite_worship = FavoriteWorship.new(favorite_worship_params)
-
-    respond_to do |format|
-      if @favorite_worship.save
-        format.html { redirect_to @favorite_worship, notice: "Favorite worship was successfully created." }
-        format.json { render :show, status: :created, location: @favorite_worship }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @favorite_worship.errors, status: :unprocessable_entity }
-      end
+    @worship = Worship.find(params[:id])
+    favorite = current_user.favorite_worships.build(worship_id: params[:id])
+    if favorite.save
+      render :favorite_worship
     end
   end
 
   def destroy
-    @favorite_worship = FavoriteWorship.find(params[:id])
-    @favorite_worship.destroy
-    respond_to do |format|
-      format.html { redirect_to favorite_worships_url, notice: "Favorite worship was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @worship = Worship.find(params[:id])
+    favorite = current_user.favorite_worships.find_by(worship_id: params[:id])
+    favorite.destroy
+    render :favorite_worship
   end
 
   private

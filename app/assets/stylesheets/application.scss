@@ -24,7 +24,9 @@ body {
 
 .navbar {
   opacity: 0.9;
+  z-index: 10;
 }
+
 .navbar-nav li{
 	font-size:1rem;
   padding-top: 30px;
@@ -89,17 +91,19 @@ body {
   padding-top: 8px;
   margin-top: 12px;
   margin-left: 20px;
+  z-index: 10;
 }
+
 .dropdown {
   padding-top: 8px;
   margin-top: 12px;
   margin-left: 15px;
+  position: relative;
 }
 
 .drawer-hamburger{
   margin-top: 220px;
   margin-left:70px;
-  // background-color: #aaa;
 }
 
 .drawer-hamburger-icon,
@@ -110,6 +114,7 @@ body {
 
 .drawer-navbar-header {
   margin-left: 200px;
+  z-index: 2;
 }
 
 .worshipAdmin {

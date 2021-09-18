@@ -76,6 +76,10 @@ class WorshipsController < ApplicationController
     end
   end
 
+  def other_looking 
+    @worships = Worship.where(user_id: params[:format])
+  end
+
   private
   def set_worship
     @worship = Worship.find(params[:id])
