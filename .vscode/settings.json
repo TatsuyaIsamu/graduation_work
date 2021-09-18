@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "activestorage",
+    "authenticatable",
     "bscustomfileinput",
     "chartkick",
     "datetime",
@@ -11,6 +12,8 @@
     "javascripts",
     "raty",
     "strftime",
-    "turbolinks"
+    "turbolinks",
+    "unfollow",
+    "validatable"
   ]
 }

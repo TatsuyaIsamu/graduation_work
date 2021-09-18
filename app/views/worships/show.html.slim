@@ -25,6 +25,15 @@ p#notice = notice
               p 一言メモ
               - if @worship.memo.present?
                 = @worship.memo
+            .card-footer
+              - if current_user.id == @worship.user_id
+                p いいね
+                = binding.irb
+              - else
+                = binding.irb
+                = render partial: "like", locals: {worship: @worship}
+
+              
       .col-md-5.my-auto 
         - if @worship.image.present?
           = image_tag @worship.image.url
