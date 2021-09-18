@@ -76,6 +76,7 @@ document.addEventListener("turbolinks:load", function(){
 
 document.addEventListener("turbolinks:load", function(){
     let item_id = gon.star_array
+    debugger
     item_id.forEach((item_id) => {
         let key = Object.keys(item_id)[0]
         $(`#${key}`).raty({
