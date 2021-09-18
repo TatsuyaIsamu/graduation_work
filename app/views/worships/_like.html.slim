@@ -1,4 +1,5 @@
 div id = "favorite_worship_#{worship.id}"
+  = worship.favorite_worships.count
   - if current_user.favorite_worships.find_by(worship_id: worship.id).present?
     = link_to 'いいねを解除する', favorite_worship_path(id: worship.id), method: :delete, class: 'btn btn-primary', remote: true
   - else

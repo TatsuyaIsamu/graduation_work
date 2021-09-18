@@ -28,9 +28,8 @@ p#notice = notice
             .card-footer
               - if current_user.id == @worship.user_id
                 p いいね
-                = binding.irb
+                = @worship.favorite_worships.count
               - else
-                = binding.irb
                 = render partial: "like", locals: {worship: @worship}
 
               
