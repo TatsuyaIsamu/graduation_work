@@ -1,44 +1,28 @@
 class FavoriteShintosController < ApplicationController
-  before_action :set_favorite_shinto, only: %i[ destroy ]
+  before_action :authenticate_user!
 
-  # GET /favorite_shintos or /favorite_shintos.json
   def index
     @favorite_shintos = FavoriteShinto.page(params[:page]).per(7)
   end
 
-
-  # POST /favorite_shintos or /favorite_shintos.json
+  respond_to? :js
   def create
-    @favorite_shinto = current_user.favorite_shintos.build(shinto_id: params[:shinto_id])
-
-    respond_to do |format|
-      if @favorite_shinto.save
-        format.html { redirect_to shintos_path}
-        format.json { render :show, status: :created, location: @favorite_shinto }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @favorite_shinto.errors, status: :unprocessable_entity }
-      end
+    @shinto = Shinto.find(params[:id])
+    favorite = current_user.favorite_shintos.build(shinto_id: params[:id])
+    if favorite.save
+      render :favorite_shinto
     end
   end
 
-
-  def destroy  
-    @favorite_shinto.destroy
-    respond_to do |format|
-      format.html { redirect_to shintos_path}
-      format.json { head :no_content }
-    end
+  def destroy
+    @shinto = Shinto.find(params[:id])
+    favorite = current_user.favorite_shintos.find_by(shinto_id: params[:id])
+    favorite.destroy
+    render :favorite_shinto
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_favorite_shinto
-      @favorite_shinto = FavoriteShinto.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def favorite_shinto_params
-      params.fetch(:favorite_shinto, {})
-    end
+  def favorite_shinto_params
+    params.require(:favorite_shinto).permit(:user_id, :shinto_id)
+  end
 end
