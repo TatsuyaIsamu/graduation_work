@@ -1,28 +1,21 @@
 h1 参拝一覧
-p = link_to "カレンダー", calendar_worships_path
-table
-  thead
-    tr
-      th Worship day
-      th Weather
-      th Memo
-      th Image
-      th Shinto
-      th
-      th
-      th
-
-  tbody
-    - @worships.each do |worship|
+.table-responsive-md
+  table.table-hover
+    thead
       tr
-        td = worship.worship_day
-        td = worship.weather
-        td = worship.memo
-        td = worship.image
-        td = worship.shinto.name
-        td = link_to 'Show', worship
-        td = link_to 'Edit', edit_worship_path(worship)
-        td = link_to 'Destroy', worship, data: { confirm: 'Are you sure?' }, method: :delete
+        th.col-md-3 scope = "col" 神社名
+        th.col-md-3 scope = "col" 参拝日
+        th.col-md-2 scope = "col" 天気
+        th.col-md-4 scope = "col" メモ
+
+    tbody 
+      - @worships.each do |worship|
+        tr data-href="/worships/#{worship.id}"
+          th scope = "row" 
+            = worship.shinto.name
+          td = worship.worship_day
+          td = worship.weather
+          td = worship.memo
 
 br
 = paginate @worships

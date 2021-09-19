@@ -39,6 +39,17 @@ body {
   }
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 0px 35px;
+  margin: auto;
+}
+
+tr {
+  height: 65px;
+  background-color: snow;
+  opacity: 0.7;
+}
 
 .navbar-nav li> a:before{/*ナビゲーションメニュー共通の設定*/
 	display: block;
