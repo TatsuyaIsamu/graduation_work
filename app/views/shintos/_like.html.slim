@@ -1,0 +1,9 @@
+div id = "favorite_shinto_#{shinto.id}"
+  - if current_user.favorite_shintos.find_by(shinto_id: shinto.id).present?
+    = link_to  favorite_shinto_path(id: shinto.id), method: :delete, remote: true do
+      i.fas.fa-heart
+      span お気に入りを解除する
+  - else
+    = link_to favorite_shintos_path(id: shinto.id), method: :post, remote: true do
+      i.far.fa-heart
+      span お気に入りをする

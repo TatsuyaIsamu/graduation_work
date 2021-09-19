@@ -21,11 +21,11 @@ h1 神社一覧
           td = shinto.address
           td = link_to 'Show', shinto, class: "btn btn-primary"
           td
-            - if current_user.favorite_shintos.find_by(shinto_id: shinto.id).present?
-              = link_to "お気に入りを解除する", favorite_shinto_path(shinto.favorite_shintos[0].id), method: :delete, class: "btn btn-danger"
-            - else 
-              = link_to "お気に入りする", favorite_shintos_path(shinto_id: shinto.id), method: :post, class: "btn btn-danger"
-            br
+            / - if current_user.id == @shinto.user_id
+            /   p いいね
+            /   = @shinto.favorite_shintos.count
+            / - else
+            = render partial: "like", locals: {shinto: shinto}
   = paginate @shintos
 
 
