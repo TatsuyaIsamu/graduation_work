@@ -1,21 +1,5 @@
 h1 参拝一覧
-/ .table-responsive-md
-/   table.table-hover
-/     thead
-/       tr
-/         th.col-md-3 scope = "col" 神社名
-/         th.col-md-3 scope = "col" 参拝日
-/         th.col-md-2 scope = "col" 天気
-/         th.col-md-4 scope = "col" メモ
 
-/     tbody 
-/       - @worships.each do |worship|
-/         tr data-href="/worships/#{worship.id}"
-/           th scope = "row" 
-/             = worship.shinto.name
-/           td = worship.worship_day
-/           td = worship.weather
-/           td = worship.memo
 - @worships.each do |worship|
   .card.worship_card.mb-3 style=("max-width: 1000px;")
     = link_to worship_path(worship.id) do 

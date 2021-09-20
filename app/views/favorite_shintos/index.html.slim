@@ -1,18 +1,19 @@
-h1 Listing favorite_shintos
-
-table
-  thead
-    tr
-      th 神社名
-      th 住所
-      th 詳細
-
-  tbody
-    - @favorite_shintos.each do |favorite_shinto|
+h1 お気に入り神社一覧
+.table-responsive-md
+  table.table-hover
+    thead
       tr
-        td = favorite_shinto.shinto.name
-        td = favorite_shinto.shinto.address
-        td = link_to 'Show', shinto_path(favorite_shinto.shinto)
-        
-      
+        th.col-md-3 scope = "col" 神社名
+        th.col-md-4 scope = "col" 創建
+        th.col-md-5 scope = "col" 住所
+    tbody
+      - @favorite_shintos.each do |shintos|
+        tr data-href="/shintos/#{shintos.shinto.id}"
+          th.character_limit scope = "row" 
+            = shintos.shinto.name
+          td.character_limit 
+            = shintos.shinto.origin_term
+          td.character_limit 
+            = shintos.shinto.address
+
 = paginate @favorite_shintos
