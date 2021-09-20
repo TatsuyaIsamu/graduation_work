@@ -2,7 +2,7 @@ class FavoriteShintosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @favorite_shintos = FavoriteShinto.page(params[:page]).per(7)
+    @favorite_shintos = current_user.favorite_shintos.page(params[:page]).per(7)
   end
 
   respond_to? :js

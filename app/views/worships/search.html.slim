@@ -6,15 +6,29 @@ h1 参拝した神社を検索する
   = f.submit "検索"
 
 - unless @shintos == nil
-  table
+  table.table-hover
     thead
       tr
-        th 神社名
-        th アドレス
+        th.col-md-5 scope = "col" 神社名
+        th.col-md-7 scope = "col" 住所
     tbody
       - @shintos.each do |shinto|
-        tr
-          td = shinto.name
-          td = shinto.address
-          td = link_to "この神社", new_worship_path(shinto_id: shinto.id)
+        tr data-href="/worships/new?shinto_id=#{shinto.id})"
+          th.character_limit scope = "row" 
+            = shinto.name
+          td.character_limit 
+            = shinto.address
+
+
+  / table
+  /   thead
+  /     tr
+  /       th 神社名
+  /       th アドレス
+  /   tbody
+  /     - @shintos.each do |shinto|
+  /       tr
+  /         td = shinto.name
+  /         td = shinto.address
+  /         td = link_to "この神社", new_worship_path(shinto_id: shinto.id)
   = paginate @shintos
