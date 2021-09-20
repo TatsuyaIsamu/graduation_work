@@ -21,6 +21,12 @@ body {
   margin-right: 20px;
   color: black;
 }
+img {
+  max-width: 100%;
+  height: auto;
+  width /***/:auto;
+  }
+
 
 .navbar {
   opacity: 0.9;
@@ -39,6 +45,17 @@ body {
   }
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 0px 35px;
+  margin: auto;
+}
+
+tr {
+  height: 65px;
+  background-color: snow;
+  opacity: 0.7;
+}
 
 .navbar-nav li> a:before{/*ナビゲーションメニュー共通の設定*/
 	display: block;
@@ -165,4 +182,10 @@ body {
   margin-top: 70px;
 }
 
+.character_limit {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  // display: inline;
+}
 

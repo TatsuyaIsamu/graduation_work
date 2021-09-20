@@ -1,30 +1,53 @@
 h1 参拝一覧
-p = link_to "カレンダー", calendar_worships_path
-table
-  thead
-    tr
-      th Worship day
-      th Weather
-      th Memo
-      th Image
-      th Shinto
-      th
-      th
-      th
+/ .table-responsive-md
+/   table.table-hover
+/     thead
+/       tr
+/         th.col-md-3 scope = "col" 神社名
+/         th.col-md-3 scope = "col" 参拝日
+/         th.col-md-2 scope = "col" 天気
+/         th.col-md-4 scope = "col" メモ
 
-  tbody
-    - @worships.each do |worship|
-      tr
-        td = worship.worship_day
-        td = worship.weather
-        td = worship.memo
-        td = worship.image
-        td = worship.shinto.name
-        td = link_to 'Show', worship
-        td = link_to 'Edit', edit_worship_path(worship)
-        td = link_to 'Destroy', worship, data: { confirm: 'Are you sure?' }, method: :delete
+/     tbody 
+/       - @worships.each do |worship|
+/         tr data-href="/worships/#{worship.id}"
+/           th scope = "row" 
+/             = worship.shinto.name
+/           td = worship.worship_day
+/           td = worship.weather
+/           td = worship.memo
+- @worships.each do |worship|
+  .card.worship_card.mb-3 style=("max-width: 1000px;")
+    = link_to worship_path(worship.id) do 
+      .row.no-gutters.worship_index_row
+        .col-md-8
+          .card-body
+            h5.card-title
+              = worship.worship_day 
+              = worship.weather 
+              = worship.shinto.name
+            - if worship.worship_params.present?
+              - worship.worship_params.first(2).each_with_index do |param, i|
+                p.card-text.worship_star_row
+                  strong = param.title
+                  span &nbsp;
+                  span &nbsp;
+                  span &nbsp;
+                  span id = "star_count_#{param.id}"
+                  - if worship.worship_params.count >= 3
+                    - if i == 1
+                      span &nbsp;
+                      span &nbsp;
+                      span &nbsp;
+                      span &nbsp;
+                      span etc...
+            p.card-text.worship_memo_text
+              strong 一言メモ
+            .character_limit = worship.memo
+        .col-md-4
+          .worship_index_img 
+            = image_tag worship.image.url 
 
-br
 = paginate @worships
 
 
