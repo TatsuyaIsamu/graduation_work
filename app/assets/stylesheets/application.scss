@@ -22,6 +22,12 @@ body {
   color: black;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  width /***/:auto;
+  }
+  
 .navbar {
   opacity: 0.9;
   z-index: 10;
@@ -176,4 +182,10 @@ tr {
   margin-top: 70px;
 }
 
+.character_limit {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  // display: inline;
+}
 
