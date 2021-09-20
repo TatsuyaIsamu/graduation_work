@@ -96,10 +96,10 @@ document.addEventListener("turbolinks:load", function(){
 // 神社詳細画面と参拝詳細画面の星一覧表示
 document.addEventListener("turbolinks:load", function(){
     let item_id = gon.star_array
-    debugger
     item_id.forEach((item_id) => {
         let key = Object.keys(item_id)[0]
         $(`#${key}`).raty({
+            
             starOn: "/raty/star-on.png" ,
             starOff: "/raty/star-off.png",
             starHalf: "/raty/star-half.png ",
