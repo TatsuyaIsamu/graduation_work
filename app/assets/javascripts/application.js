@@ -112,7 +112,9 @@ document.addEventListener("turbolinks:load", function(){
 
 // table の列をクリックしたときに リンクを発火させる
 document.addEventListener("turbolinks:load", function(){
-    $('tbody tr[data-href]').addClass('clickable').click( function() {
+    
+    $('card[data-href]').addClass('clickable').click( function() {
+        debugger
         window.location = $(this).attr('data-href');
     }).find('a').hover( function() {
         $(this).parents('tr').unbind('click');
