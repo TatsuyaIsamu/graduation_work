@@ -1,10 +1,40 @@
-.gosyuin_book
-  #magazine
-    .hard.gosyuin_hard
-    .hard.gosyuin_hard_reverse
-    - @worships.each do |worship|
-      .gosyuin_page
-        .dammy_div
-        .gosyuin_book_day = worship.shinto.name
-        - if worship.worship_day
-          .gosyuin_book_day = convert_kansuji(worship.worship_day.strftime("%Y年%m月%d日"))
+
+.row
+  - @worships.each do |worship|
+    .col-md-4.worship_card
+      .card
+        .card-img-top alt=("Card image cap") 
+        - if worship.image.present? 
+          = image_tag worship.image.url
+        - else 
+          img src="/shrine_default.png"
+        .card-body
+          .card-title = worship.shinto.name
+          ul.list-group.list-group-flush.character_limit
+            - if worship.shinto.present?
+              li.list-group-item = worship.memo
+              li.list-group-item = worship.shinto.address
+            - else 
+              li.list-group-item ---------
+              li.list-group-item ---------
+                  small.text-muted 9 mins
+  / - else
+  /   .col-md-4.worship_card
+  /     .card
+  /       .card-img-top alt=("Card image cap") 
+  /       - if worship.image.present? 
+  /         = image_tag worship.image.url
+  /       - else 
+  /         img src="/shrine_default.png"
+  /       .card-body
+  /         .card-title = worship.shinto.name
+  /         ul.list-group.list-group-flush.character_limit
+  /           - if worship.shinto.present?
+  /             li.list-group-item = worship.memo
+  /             li.list-group-item = worship.shinto.address
+  /           - else 
+  /             li.list-group-item ---------
+  /             li.list-group-item ---------
+  /             small.text-muted 9 mins
+            
+
