@@ -1,16 +1,22 @@
-p#notice = notice
-
-p
-  strong Name:
-  = @contact.name
-
-p
-  strong Email:
-  = @contact.email
-
-p
-  strong Content:
-  = @contact.content
 
 
-=< link_to 'Back', root_path
+.row.contact_confirm
+  .offset-md-3
+  .col-md-2 
+    strong name:
+  .col-md-4 = @contact.name
+
+.row.contact_confirm
+  .offset-md-3
+  .col-md-2 
+    strong email:
+  .col-md-4 = @contact.email
+
+.row.contact_confirm
+  .offset-md-3
+  .col-md-2 
+    strong content:
+  .col-md-4 = @contact.content
+
+
+=< link_to 'Back', home_path
