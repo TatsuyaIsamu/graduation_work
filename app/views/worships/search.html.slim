@@ -18,17 +18,5 @@ h1 参拝した神社を検索する
             = shinto.name
           td.character_limit 
             = shinto.address
-
-
-  / table
-  /   thead
-  /     tr
-  /       th 神社名
-  /       th アドレス
-  /   tbody
-  /     - @shintos.each do |shinto|
-  /       tr
-  /         td = shinto.name
-  /         td = shinto.address
-  /         td = link_to "この神社", new_worship_path(shinto_id: shinto.id)
+            
   = paginate @shintos
