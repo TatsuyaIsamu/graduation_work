@@ -1,25 +1,26 @@
-
+h1 投稿一覧
 .row
   - @worships.each do |worship|
     .col-md-4.worship_card
       .card
-        .card-head
-          = worship.user.name 
-        .card-img-top alt=("Card image cap") 
-        - if worship.image.present? 
-          = image_tag worship.image.url
-        - else 
-          img src="/shrine_default.png"
-        .card-body
-          .card-title 
-            strong = worship.shinto.name
-          ul.list-group.list-group-flush.character_limit
-            - if worship.memo.blank?
-              li.list-group-item -----------
-            - else 
-              li.list-group-item = worship.memo
-            li.list-group-item = worship.shinto.address.match(/）/).post_match
-
-        .card-hooter 
-          = worship.worship_day
-          = worship.weather
+        = link_to worship_path(worship.id) do 
+          .card-head
+            = worship.user.name 
+          .card-img-top alt=("Card image cap") 
+          - if worship.image.present? 
+            = image_tag worship.image.url
+          - else 
+            img src="/noimage.png"
+          .card-body
+            .card-title 
+              strong = worship.shinto.name
+            ul.list-group.list-group-flush.character_limit
+              li.list-group-item = worship.shinto.address.match(/）/).post_match
+              - if worship.memo.blank?
+                li.list-group-item -----------
+              - else 
+                li.list-group-item = worship.memo
+          .card-hooter 
+            = worship.worship_day
+            = worship.weather
+= paginate @worships
