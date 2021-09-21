@@ -3,38 +3,23 @@
   - @worships.each do |worship|
     .col-md-4.worship_card
       .card
+        .card-head
+          = worship.user.name 
         .card-img-top alt=("Card image cap") 
         - if worship.image.present? 
           = image_tag worship.image.url
         - else 
           img src="/shrine_default.png"
         .card-body
-          .card-title = worship.shinto.name
+          .card-title 
+            strong = worship.shinto.name
           ul.list-group.list-group-flush.character_limit
-            - if worship.shinto.present?
-              li.list-group-item = worship.memo
-              li.list-group-item = worship.shinto.address
+            - if worship.memo.blank?
+              li.list-group-item -----------
             - else 
-              li.list-group-item ---------
-              li.list-group-item ---------
-                  small.text-muted 9 mins
-  / - else
-  /   .col-md-4.worship_card
-  /     .card
-  /       .card-img-top alt=("Card image cap") 
-  /       - if worship.image.present? 
-  /         = image_tag worship.image.url
-  /       - else 
-  /         img src="/shrine_default.png"
-  /       .card-body
-  /         .card-title = worship.shinto.name
-  /         ul.list-group.list-group-flush.character_limit
-  /           - if worship.shinto.present?
-  /             li.list-group-item = worship.memo
-  /             li.list-group-item = worship.shinto.address
-  /           - else 
-  /             li.list-group-item ---------
-  /             li.list-group-item ---------
-  /             small.text-muted 9 mins
-            
+              li.list-group-item = worship.memo
+            li.list-group-item = worship.shinto.address.match(/）/).post_match
 
+        .card-hooter 
+          = worship.worship_day
+          = worship.weather
