@@ -1,0 +1,10 @@
+.gosyuin_book
+  #magazine
+    .hard.gosyuin_hard
+    .hard.gosyuin_hard_reverse
+    - @worships.each do |worship|
+      .gosyuin_page
+        .dammy_div
+        .gosyuin_book_day = worship.shinto.name
+        - if worship.worship_day
+          .gosyuin_book_day = convert_kansuji(worship.worship_day.strftime("%Y年%m月%d日"))

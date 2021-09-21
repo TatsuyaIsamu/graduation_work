@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root  "tops#index"
   get "home", to: "homes#index"
+  get "gosyuin", to: "gosyuins#index"
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
