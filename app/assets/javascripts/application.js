@@ -54,7 +54,7 @@ document.addEventListener("turbolinks:load", function(){
         starOn: "/raty/star-on.png" ,
         starOff: "/raty/star-off.png",
         starHalf: "/raty/star-half.png ",
-        scoreName: 'shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][0][points]',
+        scoreName: 'worship[worship_params_attributes][0][points]',
         half: true,
     });
     $("#worship_params")
