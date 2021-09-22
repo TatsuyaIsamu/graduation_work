@@ -75,6 +75,10 @@ class WorshipsController < ApplicationController
 
   def confirm
     @worship = Worship.new(worship_params)
+    gon.star_array = []
+    @worship.worship_params.each_with_index do |param, index|
+      gon.star_array << {"confirm_star_count_#{index}": param.points}
+    end
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
       @worship.worship_params.build

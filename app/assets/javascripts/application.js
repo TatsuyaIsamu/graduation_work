@@ -54,7 +54,7 @@ document.addEventListener("turbolinks:load", function(){
         starOn: "/raty/star-on.png" ,
         starOff: "/raty/star-off.png",
         starHalf: "/raty/star-half.png ",
-        scoreName: 'shinto_user_param[shinto_params_attributes][0][shinto_param_items_attributes][0][points]',
+        scoreName: 'worship[worship_params_attributes][0][points]',
         half: true,
     });
     $("#worship_params")
@@ -93,6 +93,21 @@ document.addEventListener("turbolinks:load", function(){
 })
 
 
+// 参拝確認画面の星表示
+document.addEventListener("turbolinks:load", function(){
+    let item_id = gon.star_array
+    item_id.forEach((item_id) => {
+        let key = Object.keys(item_id)[0]
+        $(`.${key}`).raty({
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            score: item_id[key],
+            readOnly: true,
+            half: true,
+        });
+    })
+});
 // 神社詳細画面と参拝詳細画面の星一覧表示
 document.addEventListener("turbolinks:load", function(){
     let item_id = gon.star_array
