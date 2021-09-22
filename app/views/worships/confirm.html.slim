@@ -15,27 +15,32 @@
     .offset-md-3
     .col-md-2 
       strong 参拝日:
-    .col-md-4 = @worship.shinto.name
+    .col-md-4 = @worship.worship_day
 
   .row.worship_confirm
     .offset-md-3
     .col-md-2 
       strong 天気:
     .col-md-4 = @worship.weather
-
-  / - @worship.shinto_params.each do |param|
-  /   .row.worship_confirm
-  /     .offset-md-3
-  /     .col-md-2 
-  /       = param.title
-  /       |:
-  /       .col-md-4 = param.points
-
-  .row.worship_confirm
-    .offset-md-3
-    .col-md-2 
-      strong 一言メモ:
-    .col-md-4 = @worship.memo
+  .confirm_params
+    - @worship.worship_params.each_with_index do |param, index|
+      .row.worship_confirm
+        .offset-md-3
+        .col-md-2 
+          strong = param.title
+          |:
+        .col-md-4 class = "confirm_star_count_#{index}" 
+      .row.worship_confirm
+        .offset-md-3
+        .col-md-2 
+          strong 一言メモ:
+        .col-md-4 = param.memo
+  .confirm_memo
+    .row.worship_confirm
+      .offset-md-3
+      .col-md-2 
+        strong メモ:
+      .col-md-4 = @worship.memo
 
   = f.hidden_field :worship_day
   = f.hidden_field :weather

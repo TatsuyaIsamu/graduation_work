@@ -17,6 +17,10 @@ body {
   min-width: 80vw;
 }
 
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
 .nav-item {
   margin-right: 20px;
   color: black;
