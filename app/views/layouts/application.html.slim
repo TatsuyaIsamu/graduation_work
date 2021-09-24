@@ -80,11 +80,12 @@ html
             span.sr-only toggle navigation
             span.drawer-hamburger-icon
         nav.drawer-nav role="navigation" 
-          ul.drawer-menu
+          ul.drawer-menu.list_group
             li = link_to "カレンダー", calendar_worships_path
             - 12.times do |i|
-              li
-                = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month)
+              li.list-group-item.list-group-item-action
+                = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month), class: "worship_link"
+            li.dammy_worships 
       main role="main" 
     - if notice
       p.alert.alert-notice 
