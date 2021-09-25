@@ -1,8 +1,8 @@
 .says {
   float: left;
   position: relative;
-  width: 500px;
-  max-width: 500px;
+  width: 100%;
+  margin: auto;
   padding: 16px;
   background: #ffffff;
   border-radius: 15px;
@@ -21,18 +21,18 @@
   transform: rotate(35deg);
 }
 
-// 自分以外のメッセージの吹き出し
 .other-user-says {
   float: right;
   position: relative;
-  width: 500px;
-  max-width: 500px;
+  width: 100%;
+  margin: auto;
   padding: 16px;
   background: #ffffff;
   border-radius: 15px;
   line-height: 1.5;
   word-break: break-all;
 }
+
 .other-user-says:after {
   content: "";
   display: inline-block;
@@ -45,6 +45,16 @@
   transform: rotate(145deg);
 }
 
-.thumb_name:after {
-  content: attr(thumb_name);
+
+.messages {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.message_form {
+  margin-top: 60px;
+}
+
+.message_submit {
+  display: inline-block;
 }
