@@ -4,7 +4,7 @@ h1 投稿一覧
     .col-md-4.worship_card
       .card
         = link_to worship_path(worship.id) do 
-          .card-head
+          h5.card-header
               - if worship.user.user_introduction.image.present?
                 = image_tag(worship.user.image_url(:thumb))
               - else 
