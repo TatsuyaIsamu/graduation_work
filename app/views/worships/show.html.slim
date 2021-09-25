@@ -2,11 +2,24 @@ p#notice = notice
 
 .card 
   .card-header
-    = @worship.user.name
+    - if @worship.user.user_introduction.image.present?
+      = image_tag(@worship.user.image_url(:thumb))
+    - else 
+      img.default_thumb.thumb  src="/profile_default.png"
+    = @worship.user.name 
+    span &nbsp;
+    span &nbsp;
+    span &nbsp;
+    span &nbsp;
     = @worship.worship_day
+    span &nbsp;
+    span &nbsp;
+    span &nbsp;
+    span &nbsp;
     = @worship.weather
-    = @worship.shinto.name
   .card-body  
+    h4 
+      = @worship.shinto.name
     .row
       .col-md-7 
         .card.worship_params_card
