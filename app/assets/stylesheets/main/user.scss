@@ -20,7 +20,8 @@
 }
 
 .user_container {
-  max-width: 800px;
+
+  margin-top: 50px;
 }
 
 .follow_form {
@@ -30,4 +31,9 @@
 
 .user_card_footer {
   padding: 10px;
+}
+
+.user_card_row {
+  margin: auto;
+  max-width: 800px;
 }
