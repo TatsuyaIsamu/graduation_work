@@ -1,0 +1,21 @@
+.user_card {
+  margin: auto;
+  cursor: pointer;
+
+    .card-body {
+    font-size: 0.75rem;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+
+.user_index_image {
+  height: 180px;
+  width: 180px;
+  margin: 30px;
+}
