@@ -1,8 +1,12 @@
-div id = "follow_form_#{user.id}"
+span id = "follow_form_#{user.id}"
   - unless current_user.following?(user)
-    = form_with(model: current_user.active_relationships.build(followed_id: user.id)) do |f|
+    = form_with(model: current_user.active_relationships.build(followed_id: user.id), class: "follow_form") do |f|
       = f.hidden_field :followed_id
-      = f.submit "フォロー"
+      = f.button class: "btn btn-outline-primary" do 
+        i.far.fa-handshake
+        |フォローをする
   - else 
-    = form_with(model: current_user.active_relationships.find_by(followed_id: user.id), method: :delete) do |f|
-      = f.submit "繋がりを解除"
+    = form_with(model: current_user.active_relationships.find_by(followed_id: user.id), method: :delete, class: "follow_form") do |f|
+      = f.button class: "btn btn-outline-primary" do 
+        i.fas.fa-handshake-slash
+        |フォローを解除

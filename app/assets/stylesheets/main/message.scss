@@ -1,0 +1,60 @@
+.says {
+  float: left;
+  position: relative;
+  width: 100%;
+  margin: auto;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #ffffff;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.other-user-says {
+  float: right;
+  position: relative;
+  width: 100%;
+  margin: auto;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.other-user-says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #ffffff;
+  -webkit-transform: rotate(145deg);
+  transform: rotate(145deg);
+}
+
+
+.messages {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.message_form {
+  margin-top: 60px;
+}
+
+.message_submit {
+  display: inline-block;
+}

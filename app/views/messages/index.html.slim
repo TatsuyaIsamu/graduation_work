@@ -1,21 +1,40 @@
 - if @over_ten
   = link_to '以前のメッセージ', '?m=all'
-.ui.segment
-  - @messages.each do |message|
-    - if message.body.present?
-      .item
-        .content
-          .header
-            strong= message.user.name
-            = message.message_time
-          .list
-            .item
-              i.right.triangle.icon
-              = message.body
-              | 
+- @messages.each do |m|
+  .messages
+    - if m.user == current_user
+      .row.justify-content-center
+        .col-md-2
+          = link_to user_introduction_path(m.user.id) do 
+            - if m.user.user_introduction.image.present?
+              = image_tag(worship.user.image_url(:thumb))
+            - else 
+              img.default_thumb.thumb_name  src="/profile_default.png"
+              = m.user.name
+        .col-md-8
+          .says
+            p= safe_join(m.body.split("\n"),tag(:br))
+            span= m.created_at.to_s(:datetime_jp)
+        .offset-2
+    - else
+      .row.justify-content-center
+        .offset-2
+        .col-8
+          .other-user-says
+            p= safe_join(m.body.split("\n"),tag(:br))
+            span= m.created_at.to_s(:datetime_jp)
+        .col-2
+          = link_to user_introduction_path(m.user) do  
+            - if m.user.user_introduction.image.present?
+              = image_tag(worship.user.image_url(:thumb))
+            - else 
+              img.default_thumb.thumb  src="/profile_default.png"
+            = m.user.name 
+
 = form_with(model: [@conversation, @message]) do |f|
-  .field
-    = f.text_area :body, class: "form-control"
-  = f.text_field :user_id, value: current_user.id, type: "hidden"
-  div
-    = f.submit "メッセージを送る"
+  .row.message_form
+    .col-md-2
+    = f.text_area :body, class: "form-control col-md-7", placeholder: "メッセージを入力"
+    = f.text_field :user_id, value: current_user.id, type: "hidden"
+    = f.button class: "message_submit col-md-1" do 
+      i.fas.fa-paper-plane
