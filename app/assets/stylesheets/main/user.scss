@@ -13,9 +13,21 @@
   }
 }
 
-
 .user_index_image {
   height: 180px;
   width: 180px;
   margin: 30px;
+}
+
+.user_container {
+  max-width: 800px;
+}
+
+.follow_form {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.user_card_footer {
+  padding: 10px;
 }
