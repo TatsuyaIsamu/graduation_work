@@ -5,14 +5,18 @@ h1 投稿一覧
       .card
         = link_to worship_path(worship.id) do 
           .card-head
-            = worship.user.name 
+              - if worship.user.user_introduction.image.present?
+                = image_tag(worship.user.image_url(:thumb))
+              - else 
+                img.default_thumb.thumb  src="/profile_default.png"
+              = worship.user.name 
           .card-img-top alt=("Card image cap") 
           - if worship.image.present? 
             = image_tag worship.image.url
           - else 
             img src="/noimage.png"
           .card-body
-            .card-title 
+            .card-title
               strong = worship.shinto.name
             ul.list-group.list-group-flush.character_limit
               li.list-group-item = worship.shinto.address.match(/）/).post_match
