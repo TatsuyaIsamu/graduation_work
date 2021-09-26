@@ -95,6 +95,8 @@ td {
     }
   }
 }
+
+
 .worship_calendar_list {
   background-color: lavenderblush;
   display: inline-block;
@@ -272,6 +274,12 @@ td {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.overflow {
+  overflow: auto;
+  height: 160px;
+  word-break: break-all;
 }
 
 
