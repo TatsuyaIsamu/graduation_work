@@ -2,7 +2,10 @@
   .card.mb-3 
     .row.no-gutters
       .col-md-4.my-auto
-        img.card-img src="#{shinto.image}.jpg"
+        - if shinto.image.present?
+          img.card-img src="#{shinto.image}.jpg"
+        - else 
+          img src="/shrine_default.png"
       .col-md-8
         .card-body
           h5.card-title 神社情報
