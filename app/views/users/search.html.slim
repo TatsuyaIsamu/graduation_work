@@ -12,7 +12,7 @@ h2 ユーザー
       .user_container.col-md-6
         .user_card
           .card
-            = link_to users_path(user.id) do  
+            = link_to user_introduction_path(user.id) do  
               - if user.user_introduction.image.present? 
                 .user_index_image = image_tag user.user_introduction.image.url
               - else 

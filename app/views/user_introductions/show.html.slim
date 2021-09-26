@@ -1,117 +1,125 @@
 
-
+h2.mt-5.mb-3.font-weight-bold 基本プロフィール
 .jumbotron
   .container
-    h1 プロフィール
     .row
-      - if @user_introduction.image.present?
-        p.col-md-4 = image_tag @user_introduction.image.url
-      - else
-        img.col-md-4.profile_picture src="/profile_default.png"
-      .col-md-8 
-        h2 名前
+      .col-md-4
+        - if @user_introduction.image.present?
+          p = image_tag @user_introduction.image.url
+        - else
+          img.profile_picture src="/profile_default.png"
+        p.p_margin_zero.mt-2
+          strong 名前
         p = @user_introduction.user.name
-        h2 お住まい
-        p = @user_introduction.address
-    .row 
-      h2 自己紹介
-      p = @user_introduction.introduction
-    .row 
-      - if current_user == @user_introduction.user
-        = link_to edit_user_introduction_path(@user_introduction.id) do 
-          i.fas.fa-edit
+        p.p_margin_zero 
+          strong お住まい
+        - if @user_introduction.address.present?
+          p = @user_introduction.address
+        - else 
+          p
+            |未設定
+      .col-md-8.introduction_form
+        h4 
+          strong 自己紹介
+        .overflow
+          = @user_introduction.introduction
+  - if current_user == @user_introduction.user
+    .user_introduction_edit
+      = link_to edit_user_introduction_path(@user_introduction.id) do 
+        i.fas.fa-edit.fa-2x
+  - else 
+    .user_introduction_edit
+      = link_to other_looking_worships_path(@user_introduction.user.id) do 
+        i.fas.fa-history
+        span &nbsp;
+        span &nbsp;
+        |投稿一覧を見る
 
-br
-h2 神社ランキング
+h2.mt-5.mb-3.font-weight-bold 神社ランキング
 
-.row
-  .col-md-4
-    h3 一位
-    .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") 
-      - if @ranking1.ranking_items[0].image.present? 
-        = image_tag @ranking1.ranking_items[0].image.url
+.row.card-deck
+  .card.shadow-sm.col-md-4
+    .card-header.mb-2.mt-2
+      strong １位
+    p
+      - if @ranking1.ranking_items[0].shinto.present? 
+        img.card-img-top src="/shinto/shinto0#{@ranking1.ranking_items[0].shinto.id}.jpg"
       - else 
-        img src="/shrine_default.png"
-      .card-body
+        img.card-img-top src="/shrine_default.png"
+    .card-body
+      ul.list-group.list-group-flush
         - if @ranking1.ranking_items[0].shinto.present?
-          .card-title = @ranking1.ranking_items[0].shinto.name
+          li.list-group-item = @ranking1.ranking_items[0].shinto.name
+          li.list-group-item = @ranking1.ranking_items[0].shinto.address.match(/）/).post_match 
         - else 
-          .card-title ---------
-        ul.list-group.list-group-flush
-          - if @ranking1.ranking_items[0].shinto.present?
-            li.list-group-item = @ranking1.ranking_items[0].memo
-            li.list-group-item = @ranking1.ranking_items[0].shinto.address
-          - else 
+          - 2.times do
             li.list-group-item ---------
-            li.list-group-item ---------
-          .d-flex.justify-content-between.align-items-center
-            .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"  View
-              - if current_user == @user_introduction.user
-                = link_to edit_ranking_ranking_item_path(@ranking1.id), class: "btn btn-sm btn-outline-secondary" do
-                  i.fas.fa-edit
-            small.text-muted 9 mins
-
-  .col-md-4
-    h3 二位
-    .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") 
-      - if @ranking2.ranking_items[0].image.present? 
-        = image_tag @ranking2.ranking_items[0].image.url
+      .overflow_card 
+        - if @ranking1.ranking_items[0].memo
+          = @ranking1.ranking_items[0].memo
+        - else 
+          |--------
+    - if current_user == @user_introduction.user
+      .card-footer.mb-2
+        = link_to edit_ranking_ranking_item_path(@ranking1.id) do
+          i.fas.fa-edit
+  .card.shadow-sm.col-md-4
+    .card-header.mb-2.mt-2
+      strong ２位
+    p
+      - if @ranking2.ranking_items[0].shinto.present? 
+        img.card-img-top src="/shinto/shinto0#{@ranking2.ranking_items[0].shinto.id}.jpg"
       - else 
-        img src="/shrine_default.png"
-      .card-body
+        img.card-img-top src="/shrine_default.png"
+    .card-body
+      ul.list-group.list-group-flush
         - if @ranking2.ranking_items[0].shinto.present?
-          .card-title = @ranking2.ranking_items[0].shinto.name
+          li.list-group-item = @ranking2.ranking_items[0].shinto.name
+          li.list-group-item = @ranking2.ranking_items[0].shinto.address.match(/）/).post_match 
         - else 
-          .card-title ---------
-        ul.list-group.list-group-flush
-          - if @ranking2.ranking_items[0].shinto.present?
-            li.list-group-item = @ranking2.ranking_items[0].memo
-            li.list-group-item = @ranking2.ranking_items[0].shinto.address
-          - else 
+          - 2.times do
             li.list-group-item ---------
-            li.list-group-item ---------
-          .d-flex.justify-content-between.align-items-center
-            .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"  View
-              - if current_user == @user_introduction.user
-                = link_to edit_ranking_ranking_item_path(@ranking2.id), class: "btn btn-sm btn-outline-secondary" do
-                  i.fas.fa-edit
-            small.text-muted 9 mins
-  .col-md-4
-    h3 三位
-    .card.mb-4.shadow-sm
-      .card-img-top alt=("Card image cap") 
-      - if @ranking3.ranking_items[0].image.present? 
-        = image_tag @ranking3.ranking_items[0].image.url
+      .overflow_card 
+        - if @ranking2.ranking_items[0].memo
+          = @ranking2.ranking_items[0].memo
+        - else 
+          |--------
+    - if current_user == @user_introduction.user
+      .card-footer.mb-2
+        = link_to edit_ranking_ranking_item_path(@ranking2.id) do
+          i.fas.fa-edit
+  .card.shadow-sm.col-md-4
+    .card-header.mb-2.mt-2
+      strong ３位
+    p
+      - if @ranking3.ranking_items[0].shinto.present? 
+        img.card-img-top src="/shinto/shinto0#{@ranking3.ranking_items[0].shinto.id}.jpg"
       - else 
-        img src="/shrine_default.png"
-      .card-body
+        img.card-img-top src="/shrine_default.png"
+    .card-body
+      ul.list-group.list-group-flush
         - if @ranking3.ranking_items[0].shinto.present?
-          .card-title = @ranking3.ranking_items[0].shinto.name
+          li.list-group-item = @ranking3.ranking_items[0].shinto.name
+          li.list-group-item = @ranking3.ranking_items[0].shinto.address.match(/）/).post_match 
         - else 
-          .card-title ---------
-        ul.list-group.list-group-flush
-          - if @ranking3.ranking_items[0].shinto.present?
-            li.list-group-item = @ranking3.ranking_items[0].memo
-            li.list-group-item = @ranking3.ranking_items[0].shinto.address
-          - else 
+          - 2.times do
             li.list-group-item ---------
-            li.list-group-item ---------
-          .d-flex.justify-content-between.align-items-center
-            .btn-group
-              button.btn.btn-sm.btn-outline-secondary type="button"  View
-              - if current_user == @user_introduction.user
-                = link_to edit_ranking_ranking_item_path(@ranking3.id), class: "btn btn-sm btn-outline-secondary" do
-                  i.fas.fa-edit
-            small.text-muted 9 mins
-
-#region-div
-= pie_chart @chart, title: "総本山パラメーター"
-- if current_user == @user_introduction.user
-  = link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
-= link_to "投稿一覧を見る", other_looking_worships_path(@user_introduction.user.id)
+      .overflow_card 
+        - if @ranking3.ranking_items[0].memo
+          = @ranking3.ranking_items[0].memo
+        - else 
+          |---------
+    - if current_user == @user_introduction.user
+      .card-footer.mb-2
+        = link_to edit_ranking_ranking_item_path(@ranking3.id) do
+          i.fas.fa-edit
+h2.mt-5.mb-3.font-weight-bold 参拝情報
+.row.user_introduction_map_and_para
+  .col-md-5
+    = bar_chart @chart, title: "総本山パラメーター"
+  .col-md-7
+    h5 
+      strong 神社マッピング
+    #region-div
 
 

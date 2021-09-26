@@ -15,3 +15,45 @@
   height: 50px;
 }
 
+.user_introduction_map_and_para {
+  min-height: 350px;
+}
+
+#region-div {
+  height: 350px;
+  display: inline-block;
+  width: 450px;
+}
+
+.jumbotron {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  padding: 20px 15px 20px 15px;
+}
+
+.user_introduction_edit {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: inline-block;
+  width: auto;
+}
+
+.profile_profile {
+  margin-bottom: 20px;
+} 
+
+.p_margin_zero {
+  margin: 0;
+}
+
+.card-img-top {
+  height: 180px;
+}
+
+.overflow_card {
+  overflow: auto;
+  height: 100px;
+  word-break: break-all;
+}
