@@ -6,8 +6,11 @@ h1 神社一覧
   = f.submit "検索"
 
 - unless @shintos == nil
-  - @shintos.each do |shinto|
-    = render partial: "share/shinto_show", locals: {shinto: shinto}
+  .shinto_index_container
+    - @shintos.each do |shinto|
+      
+      = render partial: "share/shinto_show", locals: {shinto: shinto}
+  = paginate @shintos
   /   thead
   /     tr
   /       th = sort_link(@q, :name, "神社名", hide_indicator: true)
@@ -27,6 +30,6 @@ h1 神社一覧
   /           /   = @shinto.favorite_shintos.count
   /           / - else
   /           = render partial: "like", locals: {shinto: shinto}
-  / = paginate @shintos
+  /
 
 
