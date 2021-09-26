@@ -6,7 +6,7 @@
     .row
       .col-md-4
         - if @user_introduction.image.present?
-          p. = image_tag @user_introduction.image.url
+          p = image_tag @user_introduction.image.url
         - else
           img.profile_picture src="/profile_default.png"
         p.p_margin_zero
@@ -42,19 +42,16 @@ h2 神社ランキング
     h3 一位
     .card.mb-4.shadow-sm
       .card-img-top alt=("Card image cap") 
-      - if @ranking1.ranking_items[0].image.present? 
-        = image_tag @ranking1.ranking_items[0].image.url
+      - if @ranking1.ranking_items[0].shinto.present? 
+        img src="/shinto/shinto0#{@ranking1.ranking_items[0].shinto.id}.jpg"
       - else 
         img src="/shrine_default.png"
       .card-body
-        - if @ranking1.ranking_items[0].shinto.present?
-          .card-title = @ranking1.ranking_items[0].shinto.name
-        - else 
-          .card-title ---------
         ul.list-group.list-group-flush
           - if @ranking1.ranking_items[0].shinto.present?
+            li.list-group-item = @ranking1.ranking_items[0].shinto.name
+            li.list-group-item = @ranking1.ranking_items[0].shinto.address.match(/）/).post_match 
             li.list-group-item = @ranking1.ranking_items[0].memo
-            li.list-group-item = @ranking1.ranking_items[0].shinto.address
           - else 
             li.list-group-item ---------
             li.list-group-item ---------
@@ -82,7 +79,7 @@ h2 神社ランキング
         ul.list-group.list-group-flush
           - if @ranking2.ranking_items[0].shinto.present?
             li.list-group-item = @ranking2.ranking_items[0].memo
-            li.list-group-item = @ranking2.ranking_items[0].shinto.address
+            li.list-group-item = @ranking2.ranking_items[0].shinto.address.match(/）/).post_match 
           - else 
             li.list-group-item ---------
             li.list-group-item ---------

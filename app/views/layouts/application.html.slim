@@ -85,7 +85,7 @@ html
               / i.far.fa-calendar-alt.fa-2x
               = link_to "参拝カレンダー", calendar_worships_path, class: "worship_calendar"
             - 12.times do |i|
-              li.list-group-item.list-group-item-action
+              li.list-group-item.list-group-item-action.worship-list-group-item
                 = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month), class: "worship_link"
             li.dammy_worships 
       main role="main" 

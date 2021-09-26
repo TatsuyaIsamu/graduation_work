@@ -18,7 +18,7 @@
             .card-body
               strong.d-inline-block.text-primary
                 | 住所
-              p.mb-2  = shinto.address
+              p.mb-2  = shinto.address.match(/）/).post_match 
               strong.d-inline-block.text-primary
                 | 起源
               p.mb-2 = shinto.origin_term
