@@ -2,26 +2,39 @@
 
 .jumbotron
   .container
-    h1 プロフィール
+    h1.profile_profile プロフィール
     .row
-      - if @user_introduction.image.present?
-        p.col-md-4 = image_tag @user_introduction.image.url
-      - else
-        img.col-md-4.profile_picture src="/profile_default.png"
-      .col-md-8 
-        h2 名前
+      .col-md-4
+        - if @user_introduction.image.present?
+          p. = image_tag @user_introduction.image.url
+        - else
+          img.profile_picture src="/profile_default.png"
+        p.p_margin_zero
+          strong 名前
         p = @user_introduction.user.name
-        h2 お住まい
-        p = @user_introduction.address
-    .row 
-      h2 自己紹介
-      p = @user_introduction.introduction
-    .row 
-      - if current_user == @user_introduction.user
-        = link_to edit_user_introduction_path(@user_introduction.id) do 
-          i.fas.fa-edit
+        p.p_margin_zero 
+          strong お住まい
+        - if @user_introduction.address.present?
+          p = @user_introduction.address
+        - else 
+          p
+            |未設定
+      .col-md-8 
+        h2 自己紹介
+        .overflow_auto 
+          = @user_introduction.introduction
+  - if current_user == @user_introduction.user
+    .user_introduction_edit
+      = link_to edit_user_introduction_path(@user_introduction.id) do 
+        i.fas.fa-edit.fa-2x
+  - else 
+    .user_introduction_edit
+      = link_to other_looking_worships_path(@user_introduction.user.id) do 
+        i.fas.fa-history
+        span &nbsp;
+        span &nbsp;
+        |投稿一覧を見る
 
-br
 h2 神社ランキング
 
 .row
@@ -108,10 +121,19 @@ h2 神社ランキング
                   i.fas.fa-edit
             small.text-muted 9 mins
 
-#region-div
-= pie_chart @chart, title: "総本山パラメーター"
-- if current_user == @user_introduction.user
-  = link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
-= link_to "投稿一覧を見る", other_looking_worships_path(@user_introduction.user.id)
 
+br
+.row.user_introduction_map_and_para
+  .col-md-5
+    = bar_chart @chart, title: "総本山パラメーター"
+  .col-md-7
+    h5 
+      strong 神社マッピング
+    #region-div
+
+
+
+
+  - if current_user == @user_introduction.user
+    = link_to "編集する",  edit_ranking_ranking_item_path(@ranking3.id)
 
