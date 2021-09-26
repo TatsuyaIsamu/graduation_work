@@ -1,8 +1,8 @@
 h1 お気に入り神社一覧
-.table-responsive-md
+.table-responsive
   table.table-hover
     thead
-      tr
+      tr.table-success
         th.col-md-3 scope = "col" 神社名
         th.col-md-4 scope = "col" 創建
         th.col-md-5 scope = "col" 住所
@@ -15,5 +15,4 @@ h1 お気に入り神社一覧
             = shintos.shinto.origin_term
           td.character_limit 
             = shintos.shinto.address
-
 = paginate @favorite_shintos

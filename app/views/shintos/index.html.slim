@@ -6,26 +6,9 @@ h1 神社一覧
   = f.submit "検索"
 
 - unless @shintos == nil
-  table
-    thead
-      tr
-        th = sort_link(@q, :name, "神社名", hide_indicator: true)
-        th = sort_link(@q, :address, "住所", hide_indicator: true)
-        th 詳細
-        th お気に入り
-
-    tbody
-      - @shintos.each do |shinto|
-        tr
-          td = shinto.name 
-          td = shinto.address
-          td = link_to 'Show', shinto, class: "btn btn-primary"
-          td
-            / - if current_user.id == @shinto.user_id
-            /   p いいね
-            /   = @shinto.favorite_shintos.count
-            / - else
-            = render partial: "like", locals: {shinto: shinto}
+  .shinto_index_container
+    - @shintos.each do |shinto|
+      = render partial: "share/shinto_show", locals: {shinto: shinto}
   = paginate @shintos
 
 

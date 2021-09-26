@@ -1,7 +1,6 @@
 .user_card {
   margin: auto;
   cursor: pointer;
-
     .card-body {
     font-size: 0.75rem;
     &:hover {
@@ -14,8 +13,8 @@
 }
 
 .user_index_image {
-  height: 180px;
-  width: 180px;
+  height: 50%;
+  width: 70%;
   margin: 30px;
 }
 

@@ -38,7 +38,7 @@ h2 ユーザー
                   - else 
                     |未設定
             .card-hooter.user_card_footer
-              = link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post, class: "btn btn-outline-primary" do 
+              = link_to conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post, class: "btn btn-outline-primary mb-2" do 
                 i.fab.fa-facebook-messenger
                 | メッセージ
               = render 'follow_form', user: user 
