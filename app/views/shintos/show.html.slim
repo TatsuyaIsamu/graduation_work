@@ -30,7 +30,8 @@ h2.mb-4.font-weight-bold  神社詳細
       strong 公式URL
       br
       = @shinto.original_url
-
+    
+    = render partial: "like", locals: {shinto: @shinto}
 .row
   .col-md-7.shinto_show2
     p.mb-2.text-right
