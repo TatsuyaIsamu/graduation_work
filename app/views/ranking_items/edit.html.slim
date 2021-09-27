@@ -27,8 +27,10 @@ br
       = f.text_area :memo, class: "form-control", rows: "4"
     
     br
-    = f.button class: "bg-white text-black" do 
-      i.fas.fa-upload.fa-2x
-
+    / = f.button class: "bg-white text-black" do 
+    /   i.fas.fa-upload.fa-2x
+    .action.mb-4.mt-4
+      = f.submit "保存する", class: "btn btn-primary"
+    = link_to 'Back', user_introduction_path(@ranking.user.user_introduction.id) , class: "btn btn-outline-secondary"
 
 
