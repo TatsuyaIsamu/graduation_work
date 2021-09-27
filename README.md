@@ -39,10 +39,10 @@ https://docs.google.com/spreadsheets/d/1ah8qrtO9VEpVHyeTVtaDN26hBRPXxHx5YbApVA2a
 https://cacoo.com/diagrams/oPSurOI6rX0gZX5P/574D6
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/6172434e139dd19670de345ac5295035.png)](https://gyazo.com/6172434e139dd19670de345ac5295035)
+[![Image from Gyazo](https://i.gyazo.com/3b1619c2d128dcd2692b2135f1bcddde.png)](https://gyazo.com/3b1619c2d128dcd2692b2135f1bcddde)
 
 ## 画面遷移図
 
 https://cacoo.com/diagrams/rIiSjpS2bIJdmVHa/E8E2D
 
-[![Image from Gyazo](https://i.gyazo.com/3b1619c2d128dcd2692b2135f1bcddde.png)](https://gyazo.com/3b1619c2d128dcd2692b2135f1bcddde)
+[![Image from Gyazo](https://i.gyazo.com/1994fb296643a0a9271e0d3f74580f43.png)](https://gyazo.com/1994fb296643a0a9271e0d3f74580f43)
