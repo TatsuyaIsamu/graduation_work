@@ -44,7 +44,8 @@ h2.mb-4.font-weight-bold  神社詳細
         = @shinto.origin_history
   .col-md-5.mt-4.mb-4
     #map style="width: auto; height: 400px;"
-  
+
+h4.mb-4.mt-4.font-weight-bold 神社レビュー
 #comments_area
   /! 投稿されたコメント一覧をブログの詳細ページに表示するためのrender
   = render partial: 'index', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
@@ -53,7 +54,7 @@ h2.mb-4.font-weight-bold  神社詳細
 / = link_to '編集', edit_blog_path(@blog)
 / | \
 / | \#{link_to '戻る', blogs_path}
-= link_to 'Back', shintos_path
+= link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
 .dammy_raty
 
 

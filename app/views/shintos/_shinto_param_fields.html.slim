@@ -2,10 +2,10 @@
   #shinto_param_items
     = form.fields_for :shinto_param_items, local: true, id: 'js-log-field' do |worship|
       = render 'shinto_param_item_fields', f: worship
-    .links
+    .links.mb-3
       = link_to_add_association 'パラメーターを追加する', form, :shinto_param_items , data: {association_insertion_method: 'before'}
-  .form-group.row
-    .col-md-2
-      | memo
-    .col-md-9
+  .form-group.row.mb-3
+    .offset-md-3
+    
+    .col-md-6.mb-3
       = form.text_area :memo, rows: "5", class: "form-control"

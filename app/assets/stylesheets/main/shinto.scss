@@ -1,6 +1,8 @@
 .shinto_review {
   background-color: bisque;
   padding-top: 10px;
+  width: 80%;
+  margin: auto;
 }
 
 .shinto_param_memo {
@@ -41,4 +43,22 @@
 .float {
   float: right;
   position: relative;
+}
+
+.review_card {
+  margin: auto;
+}
+
+.review_card_param {
+  width: 600px;
+  margin: auto;
+}
+
+.review_flex {
+  display: flex;
+}
+
+.card_param_flex {
+  display: flex;
+  flex-direction: column;
 }

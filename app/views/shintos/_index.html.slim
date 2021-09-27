@@ -2,17 +2,27 @@ ul
   - if shinto_user_params.present?
     - shinto_user_params.each do |param|
       - if param.shinto_params.present?
-        li id = "shinto_params_destroy_#{param.id}"
-          .shinto_review
-            - if param.shinto_params[0].shinto_param_items.present?
-              - param.shinto_params[0].shinto_param_items.each do |item|
-                .row
-                  - if item.title
-                    |評価項目
-                    = item.title
-                  - if item.points
-                    div id = "star_count_#{item.id}"
-          = param.shinto_params[0].memo
-          / = binding.irb
+        li.comment_row id = "shinto_params_destroy_#{param.id}"
+          .card.w-75.review_card
+            .card-header
+              - if param.user.user_introduction.image?
+                = param.user.user_introduction.image
+              - else 
+                img.default_thumb src="/profile_default_img.png"
+              = param.user.name
+            .card-body.review_flex
+              - if param.shinto_params[0].shinto_param_items.present?
+                .col-md-5
+                  .card_param_flex
+                    - param.shinto_params[0].shinto_param_items.each do |item|
+                      
+                      
+                      - if item.title
+                        = item.title
+                      - if item.points
+                        div id = "star_count_#{item.id}"
+              .col-md-5
+                = param.shinto_params[0].memo
+            / = binding.irb
           - if param.id 
             = link_to "コメント削除", shinto_user_param_path(param.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}

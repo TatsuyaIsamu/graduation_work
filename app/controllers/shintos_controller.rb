@@ -13,7 +13,6 @@ class ShintosController < ApplicationController
 
   def show
     @shinto_user_params = @shinto.shinto_user_params.order(created_at: :desc).limit(5)
-    binding.irb
     gon.star_array = []
     @shinto_user_params.each do |user_param|
       user_param.shinto_params.each do |param|
