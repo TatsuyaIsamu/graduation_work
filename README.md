@@ -45,4 +45,4 @@ https://cacoo.com/diagrams/oPSurOI6rX0gZX5P/574D6
 
 https://cacoo.com/diagrams/rIiSjpS2bIJdmVHa/E8E2D
 
-[![Image from Gyazo](https://i.gyazo.com/1994fb296643a0a9271e0d3f74580f43.png)](https://gyazo.com/1994fb296643a0a9271e0d3f74580f43)
+[![Image from Gyazo](https://i.gyazo.com/3b1619c2d128dcd2692b2135f1bcddde.png)](https://gyazo.com/3b1619c2d128dcd2692b2135f1bcddde)

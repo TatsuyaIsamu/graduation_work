@@ -1,8 +1,2 @@
-h1 テスト
-
-
-- @shintos.each do |shinto|
-  = shinto.name 
-  = link_to "この神社",edit_ranking_ranking_item_path(@ranking_id, @ranking_item_id, shinto.id)
-  br
-
+h1  神社一覧
+= render partial: "share/simple_shinto_index", locals: {shintos: @shintos, ranking_id: @ranking_id, ranking_item_id: @ranking_item_id} 
