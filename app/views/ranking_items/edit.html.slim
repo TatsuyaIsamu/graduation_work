@@ -8,7 +8,8 @@ h2 神社を検索する
 
 br
 - unless @shinto == nil
-  h2 神社の詳細
+  h5.mb-4.mt-4
+    strong 神社の詳細
   = form_with(model: [@ranking,@ranking_item], local: true) do |f|
     - if @ranking_item.errors.any?
       #error_explanation
@@ -18,22 +19,16 @@ br
             li = message
     - if @shinto.present?
       .field
-        = f.label :shinto
-        br
-        = @shinto.name
+        = render partial: "share/shinto_show", locals: {shinto: @shinto}
         = f.hidden_field :shinto_id, value: @shinto.id
-    .field
-      = f.hidden_field :ranking_id, value: @ranking_id
+        = f.hidden_field :ranking_id, value: @ranking_id
+    .field.mt-4
+      strong = f.label :memo
+      = f.text_area :memo, class: "form-control", rows: "4"
     
-    .field 
-      = f.label :memo
-      = f.text_field :memo
-    
-    .field 
-      = f.label :image
-      = f.file_field :image
     br
-    .actions = f.submit
+    = f.button class: "bg-white text-black" do 
+      i.fas.fa-upload.fa-2x
 
 
 
