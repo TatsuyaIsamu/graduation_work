@@ -3,7 +3,7 @@ p#notice = notice
 .card 
   .card-header
     - if @worship.user.user_introduction.image.present?
-      = image_tag(@worship.user.image_url(:thumb))
+      = image_tag @worship.user.user_introduction.image.url, class: "default_thumb thumb "
     - else 
       img.default_thumb.thumb  src="/profile_default.png"
     = @worship.user.name 

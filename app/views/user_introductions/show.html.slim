@@ -115,8 +115,8 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
           i.fas.fa-edit.fa-2x
 h2.mt-5.mb-3.font-weight-bold 参拝情報
 .row.user_introduction_map_and_para
-  .col-md-5
-    = bar_chart @chart, title: "総本山パラメーター"
+  .col-md-5.bar_chart
+    = bar_chart @chart, title: "総本山パラメーター", height: "400px"
   .col-md-7
     h5.mb-4
       strong 参拝マッピング

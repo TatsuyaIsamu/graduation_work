@@ -6,7 +6,7 @@ ul
           .card.w-75.review_card.mb-2
             .card-header
               - if param.user.user_introduction.image?
-                = param.user.user_introduction.image
+                = image_tag param.user.user_introduction.image.url, class: "default_thumb "
               - else 
                 img.default_thumb src="/profile_default_img.png"
               span &nbsp;

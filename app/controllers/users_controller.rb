@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = current_user.followers.page(params[:page]).per(6)
+    @users = current_user.following.page(params[:page]).per(6)
   end
   def search
     unless params[:q].blank?

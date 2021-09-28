@@ -6,16 +6,15 @@ h1 投稿一覧
         = link_to worship_path(worship.id) do 
           h5.card-header
               - if worship.user.user_introduction.image.present?
-                = image_tag(worship.user.image_url(:thumb))
+                = image_tag worship.user.user_introduction.image.url, class: "default_thumb"
               - else 
                 img.default_thumb.thumb  src="/profile_default.png"
               = worship.user.name 
-          .card-img-top alt=("Card image cap") 
-          - if worship.image.present? 
-            = image_tag worship.image.url
+          - if worship.shinto.image.present? 
+            img.worship_img.mt-3 src="/shinto/shinto0#{worship.shinto.id}.jpg"
           - else 
-            img src="/noimage.png"
-          .card-body
+            img.worship_img src="/noimage.png"
+          .card-body.card_scroll
             .card-title
               strong = worship.shinto.name
             ul.list-group.list-group-flush.character_limit

@@ -13,9 +13,10 @@
 }
 
 .user_index_image {
-  height: 50%;
-  width: 70%;
-  margin: 30px;
+  height: 150px;
+  width: 150px;
+  margin: 20px;
+  display: inline-block;
 }
 
 .user_container {
@@ -35,4 +36,9 @@
 .user_card_row {
   margin: auto;
   max-width: 800px;
+}
+
+.card_scroll {
+  height: 180px;
+  overflow: hidden;
 }
