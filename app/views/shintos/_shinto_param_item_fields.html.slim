@@ -1,11 +1,9 @@
 .nested-fields
   .row.form-group.star_form
-    .col-md-2 
-      |評価項目
+    .offset-md-1 
     .col-md-6 
-      = f.text_field :title, class: "form-control"
-    .evaluate.col-md-3 
-    = link_to_remove_association "#{icon 'fas', 'trash-alt'}".html_safe , f, class: 'js-log-remove-btn col-md-1'
-    .form-group
-      / = f.text_field :points, class: "form-control"
+      = f.text_field :title, class: "form-control", placeholder: "運勢を入力"
+    .evaluate.col-md-3
+    = link_to_remove_association "#{icon 'fas', 'trash-alt'}".html_safe , f, class: 'js-log-remove-btn'
+
   

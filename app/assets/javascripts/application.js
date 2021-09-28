@@ -72,6 +72,7 @@ document.addEventListener("turbolinks:load", function(){
 
 // 神社詳細画面の星のフォーム
 document.addEventListener("turbolinks:load", function(){
+    $(".evaluate").empty();
     $('.evaluate').raty({
         starOn: "/raty/star-on.png" ,
         starOff: "/raty/star-off.png",
@@ -92,29 +93,30 @@ document.addEventListener("turbolinks:load", function(){
     })
 })
 
-
 // 参拝確認画面の星表示
-document.addEventListener("turbolinks:load", function(){
-    let item_id = gon.star_array
-    item_id.forEach((item_id) => {
-        let key = Object.keys(item_id)[0]
-        $(`.${key}`).raty({
-            starOn: "/raty/star-on.png" ,
-            starOff: "/raty/star-off.png",
-            starHalf: "/raty/star-half.png ",
-            score: item_id[key],
-            readOnly: true,
-            half: true,
-        });
-    })
-});
+// document.addEventListener("turbolinks:load", function(){
+//     let item_id = gon.star_array
+
+//     item_id.forEach((item_id) => {
+//         let key = Object.keys(item_id)[0]
+//         $(`.${key}`).raty({
+//             starOn: "/raty/star-on.png" ,
+//             starOff: "/raty/star-off.png",
+//             starHalf: "/raty/star-half.png ",
+//             score: item_id[key],
+//             readOnly: true,
+//             half: true,
+//         });
+//     })
+// });
 // 神社詳細画面と参拝詳細画面の星一覧表示
 document.addEventListener("turbolinks:load", function(){
     let item_id = gon.star_array
+    debugger
     item_id.forEach((item_id) => {
         let key = Object.keys(item_id)[0]
+        $(`#${key}`).empty()
         $(`#${key}`).raty({
-            
             starOn: "/raty/star-on.png" ,
             starOff: "/raty/star-off.png",
             starHalf: "/raty/star-half.png ",
@@ -124,6 +126,7 @@ document.addEventListener("turbolinks:load", function(){
         });
     })
 });
+
 
 // table の列をクリックしたときに リンクを発火させる
 document.addEventListener("turbolinks:load", function(){

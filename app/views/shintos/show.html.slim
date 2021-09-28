@@ -1,50 +1,59 @@
 p#notice = notice
 
-p
-  strong 神社名:
-  = @shinto.name
+h2.mb-4.font-weight-bold  神社詳細
+.row.shinto_show1
+  .offset-md-1
+  .col-md-5
+    p
+      img.shinto_picture src = "#{@shinto.image}.jpg"
 
-p
-  strong 画像:
-  img src = "#{@shinto.image}.jpg"
+  .col-md-6.text-left
+    p
+      strong 神社名
+      br
+      = @shinto.name
+    p
+      strong 住所
+      br
+      = @shinto.address
 
-p
-  strong 住所:
-  = @shinto.address
+    p
+      strong 総本山
+      br
+      = @shinto.origin_shrine.html_safe
 
-p
-  strong 総本山:
-  = @shinto.origin_shrine.html_safe
+    p
+      strong 起源
+      br
+      = @shinto.origin_term
+    p
+      strong 公式URL
+      br
+      = @shinto.original_url
+    
+    = render partial: "like", locals: {shinto: @shinto}
+.row
+  .col-md-7.shinto_show2
+    p.mb-2.text-right
+      strong 主祭神
+      br
+      = @shinto.kamisama.html_safe
+    p.mb-2.text-right
+      strong 由緒
+      p.text-left
+        = @shinto.origin_history
+  .col-md-5.mt-4.mb-4
+    #map style="width: auto; height: 400px;"
 
-p
-  strong 起源:
-  = @shinto.origin_term
-
-
-p
-  strong 由緒
-  = @shinto.origin_history
-
-p
-  strong 主祭神: 
-  = @shinto.kamisama.html_safe
-
-p
-  strong 公式URL:
-  = @shinto.original_url
-
+h4.review_form.font-weight-bold 神社レビュー
 #comments_area
-  /! 投稿されたコメント一覧をブログの詳細ページに表示するためのrender
-  = render partial: 'index', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
-/! コメント入力欄をブログの詳細ページに表示するためのrender
+  = render partial: 'share/shinto_comments', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
+= link_to "コメントを全て表示する", comment_shinto_path(@shinto.id)
 = render partial: 'form', locals: { shinto_user_param: @shinto_user_param, shinto: @shinto }
-/ = link_to '編集', edit_blog_path(@blog)
-/ | \
-/ | \#{link_to '戻る', blogs_path}
-= link_to 'Back', shintos_path
+
+= link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
 .dammy_raty
 
-#map style="width: 800px; height: 400px;"
 
 javascript:
   handler = Gmaps.build('Google');

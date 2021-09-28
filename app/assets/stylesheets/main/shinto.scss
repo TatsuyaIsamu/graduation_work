@@ -1,6 +1,10 @@
 .shinto_review {
   background-color: bisque;
   padding-top: 10px;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .shinto_param_memo {
@@ -23,3 +27,41 @@
   padding: 25px;
 }
   
+.shinto_picture {
+  margin-top: 30px;
+  height: 250px;
+  width: auto;
+}
+
+.shinto_show1 {
+  margin-bottom: 50px;
+}
+
+.shinto_show2 {
+  height: 400px;
+  overflow: auto;
+}
+
+.float {
+  float: right;
+  position: relative;
+}
+
+.review_card {
+  margin: auto;
+}
+
+.review_card_param {
+  width: 600px;
+  margin: auto;
+}
+
+.review_flex {
+  display: flex;
+}
+
+.card_param_flex {
+  display: flex;
+  flex-direction: column;
+}
+

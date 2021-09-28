@@ -34,7 +34,7 @@ class ShintoUserParamsController < ApplicationController
     end
     respond_to do |format|
       if @shinto_user_param.save
-        @shinto_user_params = @shinto_user_param.shinto.shinto_user_params
+        @shinto_user_params = @shinto_user_param.shinto.shinto_user_params.order(created_at: :desc).limit(5)
         @shinto_user_params.each do |user_param|
           user_param.shinto_params.each do |param|
             param.shinto_param_items.each do |item|
