@@ -2,27 +2,26 @@ ul
   - if shinto_user_params.present?
     - shinto_user_params.each do |param|
       - if param.shinto_params.present?
-        li.comment_row id = "shinto_params_destroy_#{param.id}"
-          .card.w-75.review_card
+        li.comment_row.mb-4 id = "shinto_params_destroy_#{param.id}"
+          .card.w-75.review_card.mb-2
             .card-header
               - if param.user.user_introduction.image?
                 = param.user.user_introduction.image
               - else 
                 img.default_thumb src="/profile_default_img.png"
+              span &nbsp;
+              span &nbsp;
               = param.user.name
             .card-body.review_flex
               - if param.shinto_params[0].shinto_param_items.present?
                 .col-md-5
                   .card_param_flex
                     - param.shinto_params[0].shinto_param_items.each do |item|
-                      
-                      
                       - if item.title
                         = item.title
                       - if item.points
-                        div id = "star_count_#{item.id}"
+                        div.mb-2 id = "star_count_#{item.id}"
               .col-md-5
                 = param.shinto_params[0].memo
-            / = binding.irb
-          - if param.id 
+          - if current_user.id == param.user.id 
             = link_to "コメント削除", shinto_user_param_path(param.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}

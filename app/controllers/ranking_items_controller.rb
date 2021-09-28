@@ -31,6 +31,6 @@ class RankingItemsController < ApplicationController
 
   private
   def ranking_item_params
-    params.require(:ranking_item).permit(:shinto_id, :ranking_id, :image, :memo)
+    params.require(:ranking_item).permit(:shinto_id, :ranking_id, :memo)
   end
 end
