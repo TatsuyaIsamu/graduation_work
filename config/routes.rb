@@ -33,7 +33,11 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  resources :shintos, only: %i[index show]
+  resources :shintos, only: %i[index show] do
+    member do
+      get :comment
+    end
+  end
   resources :favorite_shintos, only: %i[index create destroy] 
   resources :shinto_user_params do
     resources :shinto_param_items 

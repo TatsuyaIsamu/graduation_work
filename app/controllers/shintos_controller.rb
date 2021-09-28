@@ -33,6 +33,10 @@ class ShintosController < ApplicationController
     end
   end
 
+  def comment
+    
+  end
+
   private
   def set_shinto
     @shinto = Shinto.find(params[:id])
