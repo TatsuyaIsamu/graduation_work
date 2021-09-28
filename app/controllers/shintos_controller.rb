@@ -1,5 +1,5 @@
 class ShintosController < ApplicationController
-  before_action :set_shinto, only: %i[ show ]
+  before_action :set_shinto, only: %i[ show comment ]
 
   def index
     unless params[:q].blank?
@@ -34,7 +34,15 @@ class ShintosController < ApplicationController
   end
 
   def comment
-    
+    @shinto_user_params = @shinto.shinto_user_params.page(params[:page]).per(10).order(created_at: :desc)
+    gon.star_array = []
+    @shinto_user_params.each do |user_param|
+      user_param.shinto_params.each do |param|
+        param.shinto_param_items.each do |item|
+          gon.star_array << {"star_count_#{item.id}": item.points}
+        end
+      end
+    end
   end
 
   private

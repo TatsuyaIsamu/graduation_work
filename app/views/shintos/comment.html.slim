@@ -1,0 +1,3 @@
+h2.mb-4.font-weight-bold コメント一覧
+= render partial: 'share/shinto_comments', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
+= paginate @shinto_user_params 

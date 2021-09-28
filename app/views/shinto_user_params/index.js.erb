@@ -1,4 +1,4 @@
-$("#comments_area").html("<%= j(render 'shintos/index', { shinto_user_params: @shinto_user_param.shinto.shinto_user_params.order(created_at: :desc).limit(5), shinto: @shinto}) %>");
+$("#comments_area").html("<%= j(render 'share/shinto_comments', { shinto_user_params: @shinto_user_param.shinto.shinto_user_params.order(created_at: :desc).limit(5), shinto: @shinto}) %>");
 $("textarea").val('');
 $(".star_form").remove();
 $(".add_fields").trigger("click");

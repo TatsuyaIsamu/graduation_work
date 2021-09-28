@@ -72,6 +72,8 @@ document.addEventListener("turbolinks:load", function(){
 
 // 神社詳細画面の星のフォーム
 document.addEventListener("turbolinks:load", function(){
+    debugger
+    $(".evaluate").empty();
     $('.evaluate').raty({
         starOn: "/raty/star-on.png" ,
         starOff: "/raty/star-off.png",
@@ -90,6 +92,7 @@ document.addEventListener("turbolinks:load", function(){
             half: true,
         });
     })
+
 })
 
 
@@ -110,9 +113,11 @@ document.addEventListener("turbolinks:load", function(){
 });
 // 神社詳細画面と参拝詳細画面の星一覧表示
 document.addEventListener("turbolinks:load", function(){
+
     let item_id = gon.star_array
     item_id.forEach((item_id) => {
         let key = Object.keys(item_id)[0]
+        $(`#${key}`).empty()
         $(`#${key}`).raty({
             
             starOn: "/raty/star-on.png" ,
