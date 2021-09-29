@@ -110,6 +110,20 @@ document.addEventListener("turbolinks:load", function(){
     })
 });
 
+document.addEventListener("turbolinks:load", function(){
+    let stars = $(".edit_worship_stars")
+    stars.each(function(index, item) {
+        $(item).raty({
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            score: gon.star_array[index],
+            scoreName: `worship[worship_params_attributes][${index}][points]`,
+            half: true,
+        });
+    })
+});
+
 
 // table の列をクリックしたときに リンクを発火させる
 document.addEventListener("turbolinks:load", function(){

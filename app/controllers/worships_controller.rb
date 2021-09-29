@@ -30,6 +30,11 @@ class WorshipsController < ApplicationController
   def edit
     @shinto = @worship.shinto
     @shinto_params = @worship.worship_params
+    gon.star_array = []
+    @shinto_params.each do |param|
+      gon.star_array << param.points
+    end
+    binding.irb
   end
 
   def create
