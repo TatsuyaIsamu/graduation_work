@@ -28,6 +28,8 @@ class WorshipsController < ApplicationController
   end
 
   def edit
+    @shinto = @worship.shinto
+    @shinto_params = @worship.worship_params
   end
 
   def create
@@ -47,6 +49,7 @@ class WorshipsController < ApplicationController
   end
 
   def update
+    @worship.worship_params.destroy_all
     if @worship.update(worship_params)
       redirect_to @worship, notice: "Worship was successfully updated." 
     else

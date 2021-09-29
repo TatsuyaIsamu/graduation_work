@@ -46,7 +46,7 @@ p#notice = notice
                   span &nbsp;
                   = @worship.favorite_worships.count
                 .inline_block
-                  = link_to edit_worship_path(@worship) do 
+                  = link_to edit_worship_path(@worship.id) do 
                     i.fas.fa-edit.fa-2x
                   span &nbsp;
                   span &nbsp;
