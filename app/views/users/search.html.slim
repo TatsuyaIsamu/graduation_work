@@ -4,8 +4,6 @@ h2 ユーザー
   = f.label :name, "ユーザーを検索する"
   = f.search_field :name_cont
   = f.submit "検索"
-
-
 - unless @users == nil
   .row.user_card_row
     - @users.each do |user|

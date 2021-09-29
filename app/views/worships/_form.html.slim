@@ -1,4 +1,4 @@
-  = form_with(model: @worship, local: true, url: confirm_worships_path) do |f|
+  = form_with(model: @worship, local: true, url: worship_choose_new_or_edit) do |f|
     - if @worship.errors.any?
       #error_explanation
         h2 = "#{pluralize(@worship.errors.count, 'error')}"
@@ -26,13 +26,15 @@
             .custom-file 
               = f.label :image, class: "custom-file-label", value: "Drug & Drop Here"
               = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)'
+              = f.hidden_field :image_cache
             .input-group-append 
               button.btn.btn-outline-secondary.input-group-text type="button"
                 |取消
 
       #worship_params
         .links
-          = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
+          - if action_name == "new"
+            = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
         = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
           = render 'worship_param_fields', f: worship
     .actions = f.submit

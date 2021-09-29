@@ -35,12 +35,10 @@ html
                   li = link_to "御朱印を認定する", search_worships_path
                   li = link_to "ユーザー一覧", users_path
                   li = link_to "参拝一覧", worships_path
-                
                   li = link_to "神社を検索する", shintos_path
                 - else 
                   li = link_to "ログイン", new_user_session_path, class: "btn btn-info"
                   li = link_to "サインアップ", new_user_registration_path , class: "btn btn-info"
-        
             .col-sm-4.offset-md-1.py-4
               h3.text-white 
                 ul.list-unstyled
@@ -72,7 +70,7 @@ html
               li = link_to "ユーザーを検索する", search_users_path, class: "dropdown-item"
               li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
               - if signed_in?
-                = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item" 
+                = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: '本当に退会しますか？' }
     .drawer.drawer--left
       .drawer-container role="banner" 
         .drawer-navbar-header
@@ -82,7 +80,6 @@ html
         nav.drawer-nav role="navigation" 
           ul.drawer-menu.list_group
             li.worship_calendar_list
-              / i.far.fa-calendar-alt.fa-2x
               = link_to "参拝カレンダー", calendar_worships_path, class: "worship_calendar"
             - 12.times do |i|
               li.list-group-item.list-group-item-action.worship-list-group-item

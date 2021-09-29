@@ -1,5 +1,4 @@
 h1 参拝一覧
-
 - @worships.each do |worship|
   .card.worship_card.mb-3 style=("max-width: 1000px;")
     = link_to worship_path(worship.id) do 
@@ -8,12 +7,16 @@ h1 参拝一覧
           .card-body
             h5.card-title
               = worship.worship_day 
-              = worship.weather 
-              = worship.shinto.name
+              span &nbsp;
+              span &nbsp;
+              = worship.weather
+              span &nbsp;
+              span &nbsp; 
+              strong = worship.shinto.name
             - if worship.worship_params.present?
               - worship.worship_params.first(2).each_with_index do |param, i|
-                p.card-text.worship_star_row
-                  strong = param.title
+                p.card-text.worship_star_row.mt-4.mb-4.worship_param_shows
+                  strong = param.title.truncate(10)
                   span &nbsp;
                   span &nbsp;
                   span &nbsp;
@@ -25,13 +28,12 @@ h1 参拝一覧
                       span &nbsp;
                       span &nbsp;
                       span etc...
-            p.card-text.worship_memo_text
-              strong 一言メモ
+            p.card-text.worship_memo_text.mb-0
+              strong メモ
             .character_limit = worship.memo
         .col-md-4
           .worship_index_img 
-            = image_tag worship.image.url 
-
+            img src= "#{worship.shinto.image}.jpg" 
 = paginate @worships
 
 

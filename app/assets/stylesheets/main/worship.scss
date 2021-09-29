@@ -25,13 +25,13 @@
 
 
 .worship_card {
+  width: 80%;
   margin: auto;
   cursor: pointer;
   &:hover {
     opacity: 0.7;
   }
     .card-body {
-    height: 200px;
     font-size: 0.75rem;
   }
   a {
@@ -47,12 +47,15 @@
 
 .worship_index_img {
   width: 80%;
-  height: 200px;
+  height: 180px;
+
   img {
-    height: 200px;
+    height: 180px;
+    margin-top: 15px;
     width: auto;
     display: block;
   }
+
 }
 
 .worship_memo_text {
@@ -79,4 +82,37 @@
   height: 180px;
   width: 180px;
   display: inline-block;
+}
+
+.worship_show_card {
+  width: 85%;
+  margin: auto;
+}
+
+.worship_param_show {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.worship_param_shows {
+  font-size: x-small;
+}
+
+.worship_param_memo {
+  height: 180px;
+  overflow: auto;
+}
+
+.worship_footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inline_block {
+  display: inline-block;
+}
+
+.other_user_footer {
+  display: flex;
+  justify-content: center;
 }

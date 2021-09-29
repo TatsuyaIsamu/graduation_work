@@ -28,6 +28,12 @@ class WorshipsController < ApplicationController
   end
 
   def edit
+    @shinto = @worship.shinto
+    @shinto_params = @worship.worship_params
+    gon.star_array = []
+    @shinto_params.each do |param|
+      gon.star_array << param.points
+    end
   end
 
   def create
@@ -47,6 +53,7 @@ class WorshipsController < ApplicationController
   end
 
   def update
+    @worship.worship_params.destroy_all
     if @worship.update(worship_params)
       redirect_to @worship, notice: "Worship was successfully updated." 
     else
@@ -55,8 +62,9 @@ class WorshipsController < ApplicationController
   end
 
   def destroy
+    worship_day = @worship.worship_day
     @worship.destroy
-    redirect_to worships_url, notice: "Worship was successfully destroyed." 
+    redirect_to worships_url(worship_day.to_date.beginning_of_month), notice: "Worship was successfully destroyed."
   end
 
   def search
@@ -101,6 +109,6 @@ class WorshipsController < ApplicationController
   end
 
   def worship_params
-    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
+    params.require(:worship).permit(:worship_day, :memo, :image, :image_cache, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
   end
 end

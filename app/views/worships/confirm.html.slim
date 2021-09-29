@@ -47,6 +47,7 @@
   = f.hidden_field :memo
   = f.hidden_field :user_id
   = f.hidden_field :shinto_id
+  = f.hidden_field :image_cache
   - ( @worship.worship_params.length).times do |i| 
     = f.fields_for @worship.worship_params[i] do |param|
       = param.hidden_field :title, value: @worship.worship_params[i].title, name: "worship[worship_param][title][#{i}]"
