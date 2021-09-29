@@ -34,7 +34,6 @@ class WorshipsController < ApplicationController
     @shinto_params.each do |param|
       gon.star_array << param.points
     end
-    binding.irb
   end
 
   def create

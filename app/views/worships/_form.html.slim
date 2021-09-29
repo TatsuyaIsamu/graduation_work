@@ -33,7 +33,8 @@
 
       #worship_params
         .links
-          = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
+          - if action_name == "new"
+            = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
         = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
           = render 'worship_param_fields', f: worship
     .actions = f.submit
