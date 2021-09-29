@@ -25,6 +25,7 @@
 
 
 .worship_card {
+  width: 80%;
   margin: auto;
   cursor: pointer;
   &:hover {
@@ -47,12 +48,15 @@
 
 .worship_index_img {
   width: 80%;
-  height: 200px;
+  height: 180px;
+
   img {
-    height: 200px;
+    height: 180px;
+    margin-top: 15px;
     width: auto;
     display: block;
   }
+
 }
 
 .worship_memo_text {

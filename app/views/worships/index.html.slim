@@ -30,7 +30,7 @@ h1 参拝一覧
             .character_limit = worship.memo
         .col-md-4
           .worship_index_img 
-            = image_tag worship.image.url 
+            img src= "#{worship.shinto.image}.jpg" 
 
 = paginate @worships
 
