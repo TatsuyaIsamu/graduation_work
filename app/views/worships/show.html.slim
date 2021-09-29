@@ -18,11 +18,11 @@ p#notice = notice
     span &nbsp;
     = @worship.weather
   .card-body  
-    h4 
-      = @worship.shinto.name
+    h4.mb-3 
+      strong = @worship.shinto.name
     .row
       .col-md-7 
-        .card.worship_params_card
+        .card.worship_params_card.mb-4
           .card-body
             .worship_param_show
               ul.list-group.worship_param_shows 
@@ -40,24 +40,21 @@ p#notice = notice
                 = @worship.memo
             .card-footer
               - if current_user.id == @worship.user_id
-                p いいね
+                i.far.fa-thumbs-up.fa-2x
+                span &nbsp;
+                span &nbsp;
                 = @worship.favorite_worships.count
+                = link_to 'Edit', edit_worship_path(@worship)
+                = link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)
               - else
                 = render partial: "like", locals: {worship: @worship}
 
               
       .col-md-5.my-auto 
-        = binding.irb
         - if @worship.image.present?
           = image_tag @worship.image.url
         - else 
           img.card-img src="/noimage.png"
     = render partial: "share/shinto_show", locals: {shinto: @worship.shinto}
-    - if current_user == @worship_user
-      => link_to 'Edit', edit_worship_path(@worship)
-      '|
-      =< link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)
-    - else 
-      = link_to "Back", other_looking_worships_path(@worship.user.id)
 
-      
+    = link_to "Back", worships_path(@worship.worship_day.to_date.beginning_of_month), class: "btn btn-outline-secondary"
