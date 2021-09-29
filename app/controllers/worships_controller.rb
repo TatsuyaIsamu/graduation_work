@@ -101,6 +101,6 @@ class WorshipsController < ApplicationController
   end
 
   def worship_params
-    params.require(:worship).permit(:worship_day, :memo, :image, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
+    params.require(:worship).permit(:worship_day, :memo, :image, :image_cache, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
   end
 end

@@ -26,6 +26,7 @@
             .custom-file 
               = f.label :image, class: "custom-file-label", value: "Drug & Drop Here"
               = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)'
+              = f.hidden_field :image_cache
             .input-group-append 
               button.btn.btn-outline-secondary.input-group-text type="button"
                 |取消

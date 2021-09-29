@@ -1,6 +1,6 @@
 p#notice = notice
 
-.card 
+.card.worship_show_card 
   .card-header
     - if @worship.user.user_introduction.image.present?
       = image_tag @worship.user.user_introduction.image.url, class: "default_thumb thumb "
@@ -24,17 +24,17 @@ p#notice = notice
       .col-md-7 
         .card.worship_params_card
           .card-body
-            ul.list-group 
-              - if @worship.worship_params.present?
-                - @worship.worship_params.each do |param|
-                  li.list-group-item 
-                    = param.title
-                    ' |
-                    span id = "star_count_#{param.id}"
-                  li.list-group-item 
-                    = param.memo
+            .worship_param_show
+              ul.list-group.worship_param_shows 
+                - if @worship.worship_params.present?
+                  - @worship.worship_params.each do |param|
+                    li.list-group-item
+                      p.mb-0.mt-0 = param.title
+                      p.mb-0 id = "star_count_#{param.id}"
+                    li.list-group-item
+                      = param.memo
                   
-            .card-text 
+            .card-text.mt-4.worship_param_memo
               p 一言メモ
               - if @worship.memo.present?
                 = @worship.memo
@@ -47,6 +47,7 @@ p#notice = notice
 
               
       .col-md-5.my-auto 
+        = binding.irb
         - if @worship.image.present?
           = image_tag @worship.image.url
         - else 
