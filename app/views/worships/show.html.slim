@@ -38,14 +38,21 @@ p#notice = notice
               p 一言メモ
               - if @worship.memo.present?
                 = @worship.memo
-            .card-footer
+            .card-footer.worship_footer
               - if current_user.id == @worship.user_id
-                i.far.fa-thumbs-up.fa-2x
-                span &nbsp;
-                span &nbsp;
-                = @worship.favorite_worships.count
-                = link_to 'Edit', edit_worship_path(@worship)
-                = link_to 'Back', worships_path(@worship.worship_day.to_date.beginning_of_month)
+                .inline_block
+                  i.far.fa-thumbs-up.fa-2x
+                  span &nbsp;
+                  span &nbsp;
+                  = @worship.favorite_worships.count
+                .inline_block
+                  = link_to edit_worship_path(@worship) do 
+                    i.fas.fa-edit.fa-2x
+                  span &nbsp;
+                  span &nbsp;
+                  span &nbsp;
+                  = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
+                    i.fas.fa-trash.fa-2x
               - else
                 = render partial: "like", locals: {worship: @worship}
 

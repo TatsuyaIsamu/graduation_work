@@ -55,8 +55,9 @@ class WorshipsController < ApplicationController
   end
 
   def destroy
+    worship_day = @worship.worship_day
     @worship.destroy
-    redirect_to worships_url, notice: "Worship was successfully destroyed." 
+    redirect_to worships_url(worship_day.to_date.beginning_of_month), notice: "Worship was successfully destroyed."
   end
 
   def search
