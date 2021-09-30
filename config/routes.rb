@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
   resources :contacts, only: %i[new create show]
   resources :worships do
+    resources :comments, only: %i[index edit create update destroy]
     collection do
       get :search
       get :calendar

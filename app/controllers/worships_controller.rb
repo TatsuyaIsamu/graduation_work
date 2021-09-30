@@ -15,6 +15,8 @@ class WorshipsController < ApplicationController
   end
 
   def show
+    @comments = @worship.comments
+    @comment = @worship.comments.build
     gon.star_array = []
     @worship.worship_params.each do |param|
       gon.star_array << {"star_count_#{param.id}": param.points}

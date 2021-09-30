@@ -8,9 +8,8 @@
         - comment.errors.full_messages.each do |message|
           li= message
   .field
+    = form.text_area :comment, id: "comment_content_#{worship.id}"
     = form.label :comment
-    = form.text_area :comment
     = form.hidden_field :user_id, value: current_user.id
   .actions
     = form.submit
-

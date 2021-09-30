@@ -67,3 +67,11 @@ p#notice = notice
       = link_to "Back", worships_path(@worship.worship_day.to_date.beginning_of_month), class: "btn btn-outline-secondary"
     - else 
       = link_to "Back", home_path, class: "btn btn-outline-secondary"
+p 
+/! このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する
+#comments_area
+  /! 投稿されたコメント一覧をブログの詳細ページに表示するためのrender
+  = render partial: 'comments/index', locals: { comments: @comments, worship: @worship }
+/! コメント入力欄をブログの詳細ページに表示するためのrender
+= render partial: 'comments/form', locals: { comment: @comment, worship: @worship }
+/ = link_to '編集', edit_worship_comments_path(@worship.id, @comment.id)
