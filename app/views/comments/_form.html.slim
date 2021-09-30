@@ -7,10 +7,9 @@
       ul
         - comment.errors.full_messages.each do |message|
           li= message
-  .field
-    = form.label :comment
-    = form.text_area :comment
+  .field.form-group.comment_form
+    = form.text_area :comment, class: "form-control", placeholder: "コメントを入力"
     = form.hidden_field :user_id, value: current_user.id
   .actions
-    = form.submit
+    = form.submit value: "送信する"
 
