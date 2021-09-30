@@ -29,7 +29,10 @@ h2.mb-4.font-weight-bold  神社詳細
     p
       strong 公式URL
       br
-      = @shinto.original_url
+      - unless @shinto.original_url ==  "−−−−−"
+        = link_to @shinto.original_url, "#{@shinto.original_url}"
+      - else 
+        |-----
     
     = render partial: "like", locals: {shinto: @shinto}
 .row

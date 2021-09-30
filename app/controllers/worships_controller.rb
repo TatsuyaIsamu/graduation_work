@@ -95,7 +95,16 @@ class WorshipsController < ApplicationController
   end
 
   def other_looking 
-    @worships = Worship.where(user_id: params[:format])
+    a = params[:format].to_date
+    b = a.end_of_month
+    @worships = Worship.where(user_id: params[:format]).order(worship_day: :desc).page(params[:page]).per(10)
+    gon.star_array = []
+    @worships.each do |worship|
+      worship.worship_params.each do |param|
+        gon.star_array << {"star_count_#{param.id}": param.points}
+      end
+    end
+    
   end
 
   private
