@@ -1,9 +1,13 @@
 .inline_block id = "favorite_worship_#{worship.id}"
   - if current_user.favorite_worships.find_by(worship_id: worship.id).present?
     = link_to  favorite_worship_path(id: worship.id), class: "lead font-weight-bold", method: :delete, remote: true do
-      i.fas.fa-thumbs-up.fa-2x
+      i.fas.fa-thumbs-up.fa-2x                 
+      span &nbsp;
+      span &nbsp;
       = worship.favorite_worships.count
   - else
     = link_to favorite_worships_path(id: worship.id), class: "lead font-weight-bold", method: :post, remote: true do
       i.far.fa-thumbs-up.fa-2x
+      span &nbsp;
+      span &nbsp;
       = worship.favorite_worships.count
