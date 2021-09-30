@@ -40,26 +40,22 @@ p#notice = notice
                 = @worship.memo
             - if current_user.id == @worship.user_id
               .card-footer.worship_footer
+                .inline_block
+                  i.far.fa-thumbs-up.fa-2x
+                  span &nbsp;
+                  span &nbsp;
+                  = @worship.favorite_worships.count
+                .inline_block
+                  = link_to edit_worship_path(@worship.id), 'data-turbolinks': false do 
+                    i.fas.fa-edit.fa-2x
+                  span &nbsp;
+                  span &nbsp;
+                  span &nbsp;
+                  = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
+                    i.fas.fa-trash.fa-2x
             - else
               .card-footer.other_user_footer
-                - if current_user.id == @worship.user_id
-                  .inline_block
-                    i.far.fa-thumbs-up.fa-2x
-                    span &nbsp;
-                    span &nbsp;
-                    = @worship.favorite_worships.count
-                  .inline_block
-                    = link_to edit_worship_path(@worship.id), 'data-turbolinks': false do 
-                      i.fas.fa-edit.fa-2x
-                    span &nbsp;
-                    span &nbsp;
-                    span &nbsp;
-                    = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
-                      i.fas.fa-trash.fa-2x
-                - else
-                  = render partial: "like", locals: {worship: @worship}
-
-              
+                = render partial: "like", locals: {worship: @worship}
       .col-md-5.my-auto 
         - if @worship.image.present?
           = image_tag @worship.image.url
@@ -67,4 +63,7 @@ p#notice = notice
           img.card-img src="/noimage.png"
     = render partial: "share/shinto_show", locals: {shinto: @worship.shinto}
 
-    = link_to "Back", worships_path(@worship.worship_day.to_date.beginning_of_month), class: "btn btn-outline-secondary"
+    - if current_user.id == @worship.user_id
+      = link_to "Back", worships_path(@worship.worship_day.to_date.beginning_of_month), class: "btn btn-outline-secondary"
+    - else 
+      = link_to "Back", home_path, class: "btn btn-outline-secondary"
