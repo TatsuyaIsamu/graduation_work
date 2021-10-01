@@ -31,7 +31,7 @@
         - else 
           .inline_block
       .card-body.review_flex.comment_overflow
-        = form.text_area :comment, id: "comment_content_#{worship.id}", class: "form-control"
+        = form.text_area :comment, id: "comment_content_#{worship.id}", class: "form-control edit_worship_comment"
         = form.hidden_field :user_id, value: current_user.id
-    .actions
-      = form.submit
+        .actions
+          = form.button class: "btn btn-success"
