@@ -5,7 +5,7 @@
     = t('.sign_up')
   form.form-signin
     .form-row
-      = f.email_field :name, autofocus: true, autocomplete: "name", placeholder: "名前", class: "form-control"
+      = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "名前", class: "form-control"
     .form-row
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Eメールアドレス", class: "form-control"
     .form-row
