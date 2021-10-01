@@ -1,4 +1,4 @@
-= form_with(model: [worship, comment]) do |form|
+= form_with(model: [worship, comment], remote: true) do |form|
   - if comment.errors.any?
     #error_explanation
       h2
@@ -7,37 +7,31 @@
       ul
         - comment.errors.full_messages.each do |message|
           li= message
-  .field
-    = form.text_area :comment, id: "comment_content_#{worship.id}"
-    = form.label :comment
-    = form.hidden_field :user_id, value: current_user.id
-  .actions
-    = form.submit
-
-    
-li.comment-content id="this_comment_#{comment.id}" 
-  .card.w-75.review_card.mb-4
-    .card-header.card_header_flex
-      .inline_box
-        - if comment.user.user_introduction.image?
-          = image_tag comment.user.user_introduction.image.url, class: "default_thumb "
+  li.comment-content
+    .card.w-75.review_card.mb-4
+      .card-header.card_header_flex
+        .inline_box
+          - if comment.user.user_introduction.image?
+            = image_tag comment.user.user_introduction.image.url, class: "default_thumb "
+          - else 
+            img.default_thumb src="/profile_default_img.png"
+          span &nbsp;
+          span &nbsp;
+          = comment.user.name
+        - if current_user.id == comment.user.id 
+          .inlin_block
+            = link_to edit_worship_comment_path(worship, comment), remote: true do 
+              i.fas.fa-ellipsis-h
+            span &nbsp;
+            span &nbsp;
+            span &nbsp;
+            span &nbsp;
+            = link_to worship_comment_path(worship.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} do 
+              i.fas.fa-trash
         - else 
-          img.default_thumb src="/profile_default_img.png"
-        span &nbsp;
-        span &nbsp;
-        = comment.user.name
-      - if current_user.id == comment.user.id 
-        .inlin_block
-          = link_to edit_worship_comment_path(worship, comment), remote: true do 
-            i.fas.fa-ellipsis-h
-          span &nbsp;
-          span &nbsp;
-          span &nbsp;
-          span &nbsp;
-          = link_to worship_comment_path(worship.id,comment.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} do 
-            i.fas.fa-trash
-      - else 
-        .inline_block
-    .card-body.review_flex.comment_overflow
-      .card_param_flex
-        = comment.comment
+          .inline_block
+      .card-body.review_flex.comment_overflow
+        = form.text_area :comment, id: "comment_content_#{worship.id}", class: "form-control"
+        = form.hidden_field :user_id, value: current_user.id
+    .actions
+      = form.submit
