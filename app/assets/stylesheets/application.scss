@@ -282,4 +282,8 @@ td {
   word-break: break-all;
 }
 
-
+.card_header_flex {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 16px;
+}

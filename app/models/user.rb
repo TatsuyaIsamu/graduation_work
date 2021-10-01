@@ -17,7 +17,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :shinto_user_params, dependent: :destroy
   has_many :favorite_worships, dependent: :destroy
-
+  has_many :comments, dependent: :destroy
+  
   def follow!(other_user)
     active_relationships.create!(followed_id: other_user.id)
   end
