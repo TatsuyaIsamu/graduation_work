@@ -57,14 +57,14 @@ img {
 table {
   border-spacing: 0px 35px;
   margin: auto;
-  border: solid;
+  // border: solid;
 
 
 }
 
 tr {
   height: 65px;
-  border: solid;
+  // border: solid;
   background-color: floralwhite;
 }
 
@@ -137,41 +137,40 @@ td {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   text-align: center;
-  margin-right: 15px;
 }
 
 .nav-item1 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f2bd';
-  font-size: 2.5rem;
-  height: 50px;
+  font-size: 2.0rem;
+  height: 40px;
 }
 
 
 .nav-item2 > a:before{/*各項目ごとのアイコン設定*/
-  font-size: 2.5rem;
+  font-size: 2.0rem;
   font-weight:  900;
   content: "\f6a1";
-  height: 50px;
+  height: 40px;
 }
 
 
 
 .nav-item3 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f0c0';
-  font-size: 2.5rem;
-  height: 50px;
+  font-size: 2.0rem;
+  height: 40px;
 }
 
 .nav-item4 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f518';
-  font-size: 2.5rem;
-  height: 50px;
+  font-size: 2.0rem;
+  height: 40px;
 }
 
 .nav-item5 > a:before{/*各項目ごとのアイコン設定*/
 	content: '\f2f5';
-  font-size: 2.5rem;
-  height: 50px;
+  font-size: 2.0rem;
+  height: 40px;
 }
 
 .nav-item1 {
