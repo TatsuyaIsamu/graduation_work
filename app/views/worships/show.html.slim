@@ -67,8 +67,8 @@ h2.mb-4.font-weight-bold 参拝詳細
     - else 
       = link_to "Back", home_path, class: "btn btn-outline-secondary"
 - unless current_user == @worship.user
-  h4.review_form.font-weight-bold.mt-4 
+  h4.review_form.font-weight-bold.mt-4 メッセージを送る 
   = render partial: 'comments/form', locals: { comment: @comment, worship: @worship }
 #comments_area
   = render partial: 'share/worship_comments', locals: { comments: @comments, worship: @worship }
-
+= link_to "コメントを全て表示する", worship_comments_path(@worship.id)

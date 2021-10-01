@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
   before_action :set_worship, only: [:create, :edit, :update]
+  def index
+    @worship = Worship.find_by(id: params[:worship_id])
+    @comments = @worship.comments.order(created_at: :desc).page(params[:page]).per(10)
+  end
   def create
     @comment = @worship.comments.build(comment_params)
     respond_to do |format|

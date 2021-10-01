@@ -11,5 +11,5 @@
     = form.text_area :comment, class: "form-control", placeholder: "コメントを入力"
     = form.hidden_field :user_id, value: current_user.id
   .actions
-    = form.submit value: "送信する"
+    = form.button "送信する", class: "btn btn-primary"
 

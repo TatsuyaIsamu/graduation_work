@@ -15,7 +15,7 @@ class WorshipsController < ApplicationController
   end
 
   def show
-    @comments = @worship.comments
+    @comments = @worship.comments.order(created_at: :desc).limit(5)
     @comment = @worship.comments.build
     gon.star_array = []
     @worship.worship_params.each do |param|
