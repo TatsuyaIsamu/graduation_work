@@ -286,3 +286,17 @@ td {
   justify-content: space-around;
   padding-top: 16px;
 }
+
+.notice, .alert {
+  // display: inline-block;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.top_message {
+  z-index: 10;
+  // position: fixed;
+  top: 100px;
+
+}

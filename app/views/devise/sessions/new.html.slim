@@ -1,9 +1,10 @@
-
-
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   img src="/logo.png"
   h2
     = t('.sign_in')
+  - if alert 
+    p.alert.alert-danger
+      strong = alert
   form.form-signin
     .form-row
       = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Eメールアドレス", class: "form-control"

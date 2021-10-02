@@ -1,5 +1,9 @@
 .container
+  - if notice
+    p.alert.alert-primary.top_message 
+      strong = notice 
   img src="signin.png" class="topimg"
+
   h2 
     strong
       |オンライン上で御朱印を認定します

@@ -87,12 +87,11 @@ html
             li.dammy_worships 
       main role="main" 
     - if notice
-      p.alert.alert-notice 
-        = notice 
+      p.alert.alert-primary 
+        strong = notice 
     - if alert 
-      p.alert.alert-error 
-        = alert
-  
+      p.alert.alert-danger
+        strong = alert
   .worshipAdmin 
     = link_to image_tag("/worship_admin.png"), search_worships_path  
   = yield
