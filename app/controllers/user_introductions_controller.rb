@@ -47,6 +47,5 @@ class UserIntroductionsController < ApplicationController
 
   def user_introduction_params
     params.required(:user_introduction).permit(:image, :introduction).merge(address: params[:user_introduction][:address].to_i)
-    
   end
 end

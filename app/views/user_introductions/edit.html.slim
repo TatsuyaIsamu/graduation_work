@@ -1,11 +1,5 @@
 h2.mb-4.font-weight-bold プロフィールを編集する
 = form_with(model: @user_introduction, local: true) do |f|
-  - if @user_introduction.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user_introduction.errors.count, 'error')} prohibited this user_introduction from being saved:"
-      ul
-        - @user_introduction.errors.full_messages.each do |message|
-          li = message
   .row.mt-4.mb-5.profile_edit
     .field.worshipImage.col-md-5
     
@@ -29,7 +23,7 @@ h2.mb-4.font-weight-bold プロフィールを編集する
         br
         span &nbsp;
         span &nbsp;
-        = f.select :address, options_for_select(UserIntroduction.addresses), {prompt: "選択してください"}, class: "prefecture-select"
+        = f.select :address, options_for_select(UserIntroduction.addresses.map{|c|[c[0], c[1], {"value" => c[1]}]},  UserIntroduction.addresses[@user_introduction.address]), {prompt: "選択してください"}, class: "prefecture-select"
       .field.text-left.mt-3 
         span &nbsp;
         span &nbsp;
