@@ -36,15 +36,8 @@ class UserIntroductionsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user_introduction.update(user_introduction_params)
-        format.html { redirect_to @user_introduction, notice: "User introduction was successfully updated." }
-        format.json { render :show, status: :ok, location: @user_introduction }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user_introduction.errors, status: :unprocessable_entity }
-      end
-    end
+    @user_introduction.update(user_introduction_params)
+    redirect_to @user_introduction, notice: "プロフィールを更新しました"
   end
 
   private
