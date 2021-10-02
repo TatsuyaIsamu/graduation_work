@@ -92,6 +92,7 @@ class WorshipsController < ApplicationController
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
       @worship.worship_params.build
+      flash.now[:alert] = "参拝日を入力して下さい"
       render :new 
     end
   end
