@@ -48,11 +48,16 @@ h2.mb-4.font-weight-bold  神社詳細
   .col-md-5.mt-4.mb-4
     #map style="width: auto; height: 400px;"
 
+= render partial: 'form', locals: { shinto_user_param: @shinto_user_param, shinto: @shinto }
 h4.review_form.font-weight-bold 神社レビュー
+p.worship_notice id = "notice_shinto"
+  strong = notice
 #comments_area
   = render partial: 'share/shinto_comments', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
+p = link_to "コメントを全て表示する", comment_shinto_path(@shinto.id)
 
-= link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
+
+p = link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
 .dammy_raty
 
 
