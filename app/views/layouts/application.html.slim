@@ -84,12 +84,30 @@ html
                 = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month), class: "worship_link"
             li.dammy_worships 
       main role="main" 
-    - if notice
-      p.alert.alert-primary 
-        strong = notice 
-    - if alert 
-      p.alert.alert-danger
-        strong = alert
+
   .worshipAdmin 
     = link_to image_tag("/worship_admin.png"), search_worships_path  
   = yield
+  - flash.each do |type, msg|
+    - type = 'success' if type == 'notice'
+    - type = 'error' if type == 'alert'
+    javascript:
+      toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "500",
+      "hideDuration": "500",
+      "timeOut": "800",
+      "extendedTimeOut": "800",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+      }
+      toastr['#{type}']('#{msg}');
+

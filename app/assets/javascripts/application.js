@@ -27,6 +27,7 @@
 //= require underscore
 //= require gmaps/google
 //= require chartkick
+//= require toastr
 //= require Chart.bundle
 //= require_tree .
 
