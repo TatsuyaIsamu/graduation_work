@@ -3,7 +3,7 @@ $("textarea").val('');
 $(".star_form").remove();
 $(".add_fields").trigger("click");
 $(".dammy_raty").text("<%= j(render partial: 'gon_partial') %>")
-$("#notice").html("<%= j flash[:notice] %>");
+$("#notice_review").html("<%= j flash[:notice] %>");
 
 $("form").on('ajax:success', function(event) { 
     var response = event.detail[0].response

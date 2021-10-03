@@ -15,11 +15,8 @@ class RankingItemsController < ApplicationController
 
   def update
     @ranking_item = RankingItem.find(params[:id])
-      if @ranking_item.update(ranking_item_params)
-        redirect_to user_introduction_path(@ranking_item.ranking.user.user_introduction.id), notice: "Ranking item was successfully updated." 
-      else
-        render :edit
-      end
+    @ranking_item.update(ranking_item_params)
+    redirect_to user_introduction_path(@ranking_item.ranking.user.user_introduction.id), notice: "#{@ranking_item.ranking.rank}位の神社を更新しました" 
   end
 
   def search

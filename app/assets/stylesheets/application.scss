@@ -15,6 +15,7 @@ body {
   background-size: cover;
   min-height: 100vh;
   min-width: 80vw;
+  font-family: 'TsukuARdGothic-Regular','TsukuBRdGothic-Regular','klee',YuGothic,'Yu Gothic',sans-serif;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -286,3 +287,18 @@ td {
   justify-content: space-around;
   padding-top: 16px;
 }
+
+.notice, .alert {
+  // display: inline-block;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.top_message {
+  z-index: 10;
+  // position: fixed;
+  top: 100px;
+
+}
+

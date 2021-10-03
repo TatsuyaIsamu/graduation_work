@@ -55,10 +55,19 @@ class WorshipsController < ApplicationController
   end
 
   def update
-    @worship.worship_params.destroy_all
-    if @worship.update(worship_params)
-      redirect_to @worship, notice: "Worship was successfully updated." 
+    dammy = Worship.new(worship_params)
+    if dammy.valid?
+      @worship.worship_params.destroy_all
+      @worship.update(worship_params)
+      redirect_to @worship, notice: "参拝情報を変更しました" 
     else
+      @shinto = @worship.shinto
+      @shinto_params = @worship.worship_params
+      gon.star_array = []
+      @shinto_params.each do |param|
+        gon.star_array << param.points
+      end
+      flash.now[:alert] = "参拝日を入力して下さい"
       render :edit
     end
   end
@@ -66,7 +75,7 @@ class WorshipsController < ApplicationController
   def destroy
     worship_day = @worship.worship_day
     @worship.destroy
-    redirect_to worships_url(worship_day.to_date.beginning_of_month), notice: "Worship was successfully destroyed."
+    redirect_to worships_url(worship_day.to_date.beginning_of_month), notice: "参拝を削除しました"
   end
 
   def search
@@ -92,6 +101,7 @@ class WorshipsController < ApplicationController
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
       @worship.worship_params.build
+      flash.now[:alert] = "参拝日を入力して下さい"
       render :new 
     end
   end

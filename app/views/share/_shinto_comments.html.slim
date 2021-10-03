@@ -15,7 +15,7 @@ ul
                 = param.user.name
               - if current_user.id == param.user.id 
                 = link_to shinto_user_param_path(param.id), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} do 
-                  i.fas.fa-trash.fa-2x
+                  i.fas.fa-trash.fa-1x
               - else 
                 .inline_block
             .card-body.review_flex
@@ -23,10 +23,11 @@ ul
                 .col-md-5
                   .card_param_flex
                     - param.shinto_params[0].shinto_param_items.each do |item|
-                      - if item.title
-                        = item.title
-                      - if item.points
-                        div.mb-2 id = "star_count_#{item.id}"
+                      .worship_param_shows
+                        - if item.title
+                          = item.title
+                        - if item.points
+                          div.mb-2 id = "star_count_#{item.id}"
               .col-md-5
                 = param.shinto_params[0].memo
           

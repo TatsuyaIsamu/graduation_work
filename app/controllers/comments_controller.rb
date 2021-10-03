@@ -1,46 +1,43 @@
 class CommentsController < ApplicationController
   before_action :set_worship, only: [:create, :edit, :update]
+
   def index
     @worship = Worship.find_by(id: params[:worship_id])
     @comments = @worship.comments.order(created_at: :desc).page(params[:page]).per(10)
   end
+
+  respond_to? :js
   def create
     @comment = @worship.comments.build(comment_params)
-    respond_to do |format|
-      if @comment.save
-        format.js { render :index }
-      else
-        format.html { redirect_to worship_path(@worship), notice: '投稿できませんでした...' }
-      end
+    if @comment.save
+      flash.now[:notice] = 'コメントを送信しました' 
+    else
+      flash.now[:alert] = 'コメントを入力して下さい' 
     end
+    render :index
   end
+
   def edit
     @comment = @worship.comments.find(params[:id])
-    respond_to do |format|
-      flash.now[:notice] = 'コメントの編集中'
-      format.js { render :edit }
-    end
+    flash.now[:notice] = 'コメントの編集中'
+    render :edit 
   end
+
   def update
     @comment = @worship.comments.find(params[:id])
-      respond_to do |format|
-        if @comment.update(comment_params)
-          flash.now[:notice] = 'コメントが編集されました'
-          format.js { render :index }
-        else
-          flash.now[:notice] = 'コメントの編集に失敗しました'
-          format.js { render :edit_error }
-        end
-      end
+    if @comment.update(comment_params)
+      flash.now[:notice] = 'コメントが編集されました'
+    else
+      flash.now[:notice] = 'コメントを記入して下さい'
+    end
+    render :index 
   end  
   
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    respond_to do |format|
-      flash.now[:notice] = 'コメントが削除されました'
-      format.js { render :index }
-    end
+    flash.now[:notice] = 'コメントが削除されました'
+    render :index 
   end
 
 
