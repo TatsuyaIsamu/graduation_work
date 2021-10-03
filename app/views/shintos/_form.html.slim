@@ -1,9 +1,10 @@
 = form_with(model: shinto_user_param) do |form|
   .field.shinto_review
     h3.mt-2 レビュー投稿
+    p.mt-4.mb-0 id = "notice_review"
+      strong = notice
     = form.hidden_field :user_id, value: current_user.id 
     = form.hidden_field :shinto_id, value: shinto.id
-    p.mt-4 id = "alert"
       strong = alert
     #shinto_params
       = form.fields_for :shinto_params do | param |

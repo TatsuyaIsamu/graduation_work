@@ -1,12 +1,9 @@
-p#notice = notice
-
 h2.mb-4.font-weight-bold  神社詳細
 .row.shinto_show1
   .offset-md-1
   .col-md-5
     p
       img.shinto_picture src = "#{@shinto.image}.jpg"
-
   .col-md-6.text-left
     p
       strong 神社名
@@ -16,12 +13,10 @@ h2.mb-4.font-weight-bold  神社詳細
       strong 住所
       br
       = @shinto.address
-
     p
       strong 総本山
       br
       = @shinto.origin_shrine.html_safe
-
     p
       strong 起源
       br
@@ -33,7 +28,6 @@ h2.mb-4.font-weight-bold  神社詳細
         = link_to @shinto.original_url, "#{@shinto.original_url}"
       - else 
         |-----
-    
     = render partial: "like", locals: {shinto: @shinto}
 .row
   .col-md-7.shinto_show2
@@ -50,16 +44,11 @@ h2.mb-4.font-weight-bold  神社詳細
 
 = render partial: 'form', locals: { shinto_user_param: @shinto_user_param, shinto: @shinto }
 h4.review_form.font-weight-bold 神社レビュー
-p.worship_notice id = "notice_shinto"
-  strong = notice
 #comments_area
   = render partial: 'share/shinto_comments', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
 p = link_to "コメントを全て表示する", comment_shinto_path(@shinto.id)
-
-
 p = link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
 .dammy_raty
-
 
 javascript:
   handler = Gmaps.build('Google');

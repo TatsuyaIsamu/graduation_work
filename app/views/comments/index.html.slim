@@ -1,6 +1,4 @@
 #comments_area
   = render partial: 'share/worship_comments', locals: { comments: @comments, worship: @worship }
-
 = paginate @comments
-
 = link_to '参拝詳細に戻る', worship_path(@worship.id) , class: "btn btn-outline-secondary mt-4"

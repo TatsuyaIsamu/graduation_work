@@ -8,9 +8,11 @@
           = link_to user_introduction_path(m.user.id) do 
             - if m.user.user_introduction.image.present?
               = image_tag m.user.user_introduction.image_url, class: "default_thumb thumb_name"
+              br
               = m.user.name
             - else 
               img.default_thumb.thumb_name  src="/profile_default.png"
+              br
               = m.user.name
         .col-md-8
           .says
