@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
     @comment = @worship.comments.build(comment_params)
     respond_to do |format|
       if @comment.save
-        format.js { render :index }
+        flash.now[:notice] = 'コメントを送信しました' 
+        format.js { render :index}
       else
-        format.html { redirect_to worship_path(@worship), notice: '投稿できませんでした...' }
+        flash.now[:alert] = 'コメントを入力して下さい' 
+        format.js { render :index }
       end
     end
   end
@@ -28,7 +30,7 @@ class CommentsController < ApplicationController
           flash.now[:notice] = 'コメントが編集されました'
           format.js { render :index }
         else
-          flash.now[:notice] = 'コメントの編集に失敗しました'
+          flash.now[:notice] = 'コメントを記入して下さい'
           format.js { render :edit_error }
         end
       end

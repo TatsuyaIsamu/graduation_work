@@ -4,7 +4,7 @@ ul.mt-4
     - comments.each do |comment|
       - if comment.id.present?
         p.worship_notice id = "notice_#{comment.id}"
-          strong = notice 
+          strong = notice
         li.comment-content id="this_comment_#{comment.id}" 
           .card.w-75.review_card.mb-4
             .card-header.card_header_flex

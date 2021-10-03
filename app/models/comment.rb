@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
   belongs_to :worship
   belongs_to :user
-  validates :content, presence: true
+  validates :comment, presence: true
 end
