@@ -1,3 +1,4 @@
 $("#comments_area").html("<%= j(render 'share/worship_comments', { comments: @comment.worship.comments.order(created_at: :desc).limit(5), worship: @comment.worship }) %>");
 $("textarea").val('');
-$("#notice").html("<%= j flash[:notice] %>");
+$(".worship_notice").text('');
+$("#notice_<%= @comment.id%>").html("<%= j flash[:notice] %>");
