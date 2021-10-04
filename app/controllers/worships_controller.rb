@@ -75,7 +75,7 @@ class WorshipsController < ApplicationController
   def destroy
     worship_day = @worship.worship_day
     @worship.destroy
-    redirect_to worships_url(worship_day.to_date.beginning_of_month), notice: "参拝を削除しました"
+    redirect_to worships_url(worship_day.to_date.beginning_of_month)
   end
 
   def search
