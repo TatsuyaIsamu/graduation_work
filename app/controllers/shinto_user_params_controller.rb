@@ -42,6 +42,7 @@ class ShintoUserParamsController < ApplicationController
         end
       end
     end
+    flash.now[:notice] = "コメントを削除しました"
   end
 
 end

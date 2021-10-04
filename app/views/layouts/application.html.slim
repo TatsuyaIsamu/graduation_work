@@ -109,5 +109,7 @@ html
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
       }
+      
+      $(window).on("load", function() {
       toastr['#{type}']('#{msg}');
-
+      })
