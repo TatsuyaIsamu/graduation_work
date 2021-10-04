@@ -15,6 +15,12 @@ class UserIntroductionsController < ApplicationController
       arr[1] = shinto[1].count
       @chart << arr
     end
+    if @chart.count <= 5
+      dammy = 6 - @chart.count
+      dammy.times do |n|
+        @chart << ["\n"* n,0]
+      end
+    end
     mapping_worship = []
     @user_introduction.user.worship_shintos.map do |shinto|
       a = shinto.address.match(/東京都|北海道|(?:京都|大阪)府|.{3}県/).to_s
@@ -26,7 +32,6 @@ class UserIntroductionsController < ApplicationController
       end
       mapping_worship << a
     end
-
     mapping_count = mapping_worship.group_by(&:itself).map{|key,value| [key,value.count]}
     mapping_count.unshift(["都道府県","回数"])
     gon.usermapping = mapping_count
