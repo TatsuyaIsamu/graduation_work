@@ -27,6 +27,7 @@
 //= require underscore
 //= require gmaps/google
 //= require chartkick
+//= require toastr
 //= require Chart.bundle
 //= require_tree .
 
@@ -139,3 +140,8 @@ document.addEventListener("turbolinks:load", function(){
     });
 });
 
+
+document.addEventListener("turbolinks:load", function(){
+    $(".gosyuin_message").hide().fadeIn(1000);
+
+});

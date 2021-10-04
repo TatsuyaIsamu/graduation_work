@@ -4,6 +4,7 @@ $(".star_form").remove();
 $(".add_fields").trigger("click");
 $(".dammy_raty").text("<%= j(render partial: 'gon_partial') %>")
 $("#notice_review").html("<%= j flash[:notice] %>");
+$("#notice_review").addClass("alert-success alert")
 
 $("form").on('ajax:success', function(event) { 
     var response = event.detail[0].response
@@ -24,3 +25,4 @@ $("form").on('ajax:success', function(event) {
     $("form").off("ajax:success")
     dammy.text("")
 })
+

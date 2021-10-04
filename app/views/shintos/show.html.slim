@@ -50,6 +50,9 @@ p = link_to "コメントを全て表示する", comment_shinto_path(@shinto.id)
 p = link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
 .dammy_raty
 
+
+
+
 javascript:
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -58,3 +61,4 @@ javascript:
     handler.fitMapToBounds();
     handler.getMap().setZoom(14);
   });
+  

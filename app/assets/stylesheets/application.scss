@@ -6,6 +6,7 @@
 @import "jquery-ui/core";
 @import "jquery-ui/theme";
 @import "main/*";
+@import "toastr"; 
 
 body {
   margin: 60px;
@@ -301,4 +302,3 @@ td {
   top: 100px;
 
 }
-

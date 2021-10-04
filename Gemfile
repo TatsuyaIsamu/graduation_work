@@ -37,7 +37,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "cocoon"
 gem 'jquery-ui-rails'
-
+gem "toastr-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
