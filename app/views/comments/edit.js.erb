@@ -1,2 +1,3 @@
 $("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/edit', worship: @worship, comment: @comment %>");
 $("#notice_<%= @comment.id%>").html("<%= j flash[:notice] %>");
+$("#notice_<%= @comment.id%>").addClass("alert-success alert")
