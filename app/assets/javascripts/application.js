@@ -139,3 +139,9 @@ document.addEventListener("turbolinks:load", function(){
         });
     });
 });
+
+
+document.addEventListener("turbolinks:load", function(){
+    $(".gosyuin_message").hide().fadeIn(1000);
+
+});
