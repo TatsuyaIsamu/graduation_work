@@ -9,7 +9,8 @@
 @import "toastr"; 
 
 body {
-  margin: 60px;
+  margin-top: 70px;
+
   color: black;
   text-align: center;
   background-image: url("/名称未設定のデザイン.png");
@@ -17,6 +18,13 @@ body {
   min-height: 100vh;
   min-width: 80vw;
   font-family: 'TsukuARdGothic-Regular','TsukuBRdGothic-Regular','klee',YuGothic,'Yu Gothic',sans-serif;
+  
+}
+
+.header {
+  width: 80%;
+  margin: auto;
+  
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -24,8 +32,24 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
+.container {
+  position: relative;
+  min-height: 100%;
+  margin: 0 auto;
+
+}
+
+.container_body {
+  padding-bottom: 70px;
+  min-height: 100vh
+}
+
 a:hover {
   opacity: 0.7;
+}
+
+.navbar {
+  border-radius: 20px;
 }
 
 .nav-item {
@@ -67,6 +91,7 @@ table {
 tr {
   height: 65px;
   // border: solid;
+  border-radius: 20px;
   background-color: floralwhite;
 }
 
@@ -283,6 +308,10 @@ td {
   word-break: break-all;
 }
 
+.card {
+  border-radius: 20px;
+}
+
 .card_header_flex {
   display: flex;
   justify-content: space-around;
@@ -301,4 +330,17 @@ td {
   // position: fixed;
   top: 100px;
 
+}
+
+.footer{
+
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer p {
+  font-size: 1rem;
+  color:black;
 }

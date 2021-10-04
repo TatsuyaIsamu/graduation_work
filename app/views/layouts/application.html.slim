@@ -21,11 +21,12 @@ html
     script src="//maps.google.com/maps/api/js?v=3.23&key=#{ENV['GEOCODER']}"
     script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
-.container
-  body
+
+body
+  .header
     header
       #navbarHeader.collapse.bg-dark
-        .container
+        .div
           .row
             .col-sm-8.col-md-7.py-4
               h3.text-white
@@ -85,9 +86,13 @@ html
             li.dammy_worships 
       main role="main" 
 
-  .worshipAdmin 
-    = link_to image_tag("/worship_admin.png"), search_worships_path  
-  = yield
+    .worshipAdmin 
+      = link_to image_tag("/worship_admin.png"), search_worships_path  
+  .container.container_body
+    = yield
+    footer.footer 
+      p Copyright © 2021 Along With Your Kamisama .
+
   - flash.each do |type, msg|
     - type = 'success' if type == 'notice'
     - type = 'error' if type == 'alert'
