@@ -1,41 +1,41 @@
 - if controller.controller_name == "worships"
   table.table-hover.mt-3.mb-5
     thead
-      tr
-        th.col-md-5 scope = "col" 神社名
-        th.col-md-7 scope = "col" 住所
+      tr.table-light
+        th.font-weight-bold.h3.col-md-5 scope = "col" 神社名
+        td.font-weight-bold.h3.col-md-7 scope = "col" 住所
     tbody
       - shintos.each do |shinto|
         tr data-href="/worships/new?shinto_id=#{shinto.id})"
           th.character_limit scope = "row" 
             = shinto.name
-          th.character_limit 
+          td.character_limit 
             = shinto.address
 - elsif controller.controller_name == "favorite_shintos"
   .table-responsive
     table.table-hover.mt-3.mb-5
       thead
-        tr
-          th.col-md-5 scope = "col" 神社名
-          th.col-md-7 scope = "col" 住所
+        tr.table-light
+          th.font-weight-bold.h3.col-md-5 scope = "col" 神社名
+          td.font-weight-bold.h3.col-md-7 scope = "col" 住所
       tbody
         - shintos.each do |shinto|
           tr data-href="/shintos/#{shinto.shinto.id}"
             th.character_limit scope = "row" 
               = shinto.shinto.name
-            th.character_limit 
+            td.character_limit 
               = shinto.shinto.address
 - else
   .table-responsive
     table.table-hover.mt-3.mb-5
       thead
-        tr
-          th.col-md-5 scope = "col" 神社名
-          th.col-md-7 scope = "col" 住所
+        tr.table-light
+          th.font-weight-bold.h3.col-md-5 scope = "col" 神社名
+          td.font-weight-bold.h3.col-md-7 scope = "col" 住所
       tbody
         - shintos.each do |shinto|
           tr data-href=" /rankings/#{ranking_id}/ranking_items/#{ranking_item_id}/edit?format=#{shinto.id}"
             th.character_limit scope = "row" 
               = shinto.name
-            th.character_limit 
+            td.character_limit 
               = shinto.address

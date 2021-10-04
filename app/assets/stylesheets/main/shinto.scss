@@ -7,6 +7,28 @@
   margin-bottom: 50px;
 }
 
+.table-hover {
+  border-collapse: separate;
+  tr {
+    height: 65px;
+    border-radius: 20px;
+    background-color: floralwhite;
+  }
+  
+  th {
+    padding-left: 8px;
+    border-radius: 20px 0 0 20px;
+    padding-right: 15px;
+  }
+  
+  td {
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 0 20px 20px 0;
+  }
+  
+}
+
 .shinto_param_memo {
   width: 100%;
   padding: 0;
