@@ -3,6 +3,7 @@ class WorshipsController < ApplicationController
   before_action :set_worship, only: %i[ show edit update destroy ]
 
   def index
+    redirect_to home_path and return if params[:format] == nil
     a = params[:format].to_date
     b = a.end_of_month
     @worships = current_user.worships.where(worship_day: a..b).order(worship_day: :desc).page(params[:page]).per(10)
@@ -107,8 +108,6 @@ class WorshipsController < ApplicationController
   end
 
   def other_looking 
-    # a = params[:format].to_date
-    # b = a.end_of_month
     @worships = Worship.where(user_id: params[:format]).order(worship_day: :desc).page(params[:page]).per(10)
     gon.star_array = []
     @worships.each do |worship|
