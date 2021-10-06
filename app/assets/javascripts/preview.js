@@ -11,3 +11,12 @@ function previewImage(id) {
     preview.src = "";
   }
 }
+
+document.addEventListener("turbolinks:load", function(){
+  document.getElementById('inputFileReset').addEventListener('click', function() {
+    var elem = document.getElementById('inputFile');
+    elem.value = '';
+    elem.dispatchEvent(new Event('change'));
+    document.getElementById("preview").src = "/noimage.png"
+  })
+})

@@ -60,12 +60,14 @@ document.addEventListener("turbolinks:load", function(){
     });
     $("#worship_params")
     .on('cocoon:after-insert', function(e, insertedItem) {
+        debugger
         $(insertedItem).find(".worship_stars").raty(
         {
+            
             starOn: "/raty/star-on.png" ,
             starOff: "/raty/star-off.png",
             starHalf: "/raty/star-half.png ",
-            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].firstChild.lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
+            scoreName: `worship[worship_params_attributes][${insertedItem[0].children[0].children[1].lastElementChild.name.match(/[0-9]{12,}/)[0]}][points]`,
             half: true,
         });
     })
