@@ -1,5 +1,7 @@
 h1.gosyuin_message.mb-4.font-weight-bold  ようこそお参りいただきました
-.gosyuin
+.gosyuin.mb-4
   .gosyuin_shinto 
     .gosyuin_name = @worship.shinto.name
     .gosyuin_day = convert_kansuji(@worship.worship_day.strftime("%Y年%m月%d日"))
+= link_to 'ホームへ', home_path, class: "btn btn-outline-secondary mr-4"
+= link_to '御朱帳をみる', gosyuin_path , class: "btn btn-outline-secondary"
