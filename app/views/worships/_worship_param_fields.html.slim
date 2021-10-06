@@ -2,7 +2,7 @@
   .row.form-group
     .col-md-6 
       = f.text_field :title, class: "form-control"
-    - if action_name == "new"
+    - if action_name == "new" || action_name = "confirm"
       .worship_stars.col-md-3
     - else 
       .edit_worship_stars.col-md-3
