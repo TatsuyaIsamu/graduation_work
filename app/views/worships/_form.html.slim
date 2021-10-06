@@ -11,14 +11,14 @@
               = b.label(class: "badge") { b.radio_button + b.text }
         .field
           = f.label :memo
-          = f.text_area :memo, class: "form-control", rows: "8"
+          = f.text_area :memo, class: "form-control", rows: "8", placeholder: "メモを入力"
       .field.worshipImage.col-md-5
         = f.hidden_field :user_id, value: @worship.user_id
         = f.hidden_field :shinto_id, value: @worship.shinto_id
         = image_tag @worship.image.url, id: 'preview', class: "picture_size" 
         .input-group 
           .custom-file 
-            = f.label :image, class: "custom-file-label", value: "Drug & Drop Here"
+            = f.label :image, class: "custom-file-label", value: "Drag & Drop Here"
             = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)', id: "inputFile"
             = f.hidden_field :image_cache
           .input-group-append 
@@ -30,4 +30,4 @@
           = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
       = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
         = render 'worship_param_fields', f: worship
-  .actions = f.button "御朱印を申請する", class: "btn btn-primary" 
+  .actions = f.button "確認画面へ", class: "btn btn-primary" 
