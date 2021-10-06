@@ -31,13 +31,14 @@ class UserIntroductionsController < ApplicationController
   end
 
   def update
+    @user_introduction = UserIntroduction.find_by(id: params[:id])
     @user_introduction.update(user_introduction_params)
-    redirect_to @user_introduction, notice: "プロフィールを更新しました"
+    redirect_to user_introduction_path(@user_introduction.user.id), notice: "プロフィールを更新しました"
   end
 
   private
   def set_user_introduction
-    @user_introduction = UserIntroduction.find_by(id: params[:id])
+    @user_introduction = UserIntroduction.find_by(user_id: params[:id])
   end
 
   def user_introduction_params

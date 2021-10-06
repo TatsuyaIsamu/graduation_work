@@ -2,15 +2,13 @@ h2.mb-4.font-weight-bold プロフィールを編集する
 = form_with(model: @user_introduction, local: true) do |f|
   .row.mt-4.mb-5.profile_edit
     .field.worshipImage.col-md-5
-    
-      = image_tag @user_introduction.image.url, id: 'preview' 
+      = image_tag @user_introduction.image.url, id: 'preview', class: "picture_size" 
       .input-group 
         .custom-file 
-          = f.label :image, class: "custom-file-label", value: "Drag & Drop Here"
-          = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)'
-      
+          = f.label :image, class: "custom-file-label", value: "Drug & Drop Here"
+          = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)', id: "inputFile"
         .input-group-append 
-          button.btn.btn-outline-secondary.input-group-text type="button"
+          button.btn.btn-outline-secondary.input-group-text type="button" id="inputFileReset"
             |取消
     .offset-md-1
     .col-md-6

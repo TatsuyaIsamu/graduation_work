@@ -116,3 +116,21 @@
   display: flex;
   justify-content: center;
 }
+
+.picture_size {
+  height: 250px;
+  // max-width: 350px;
+}
+
+.custom-file-label {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.custom-file-input {
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -15,14 +15,14 @@
       .field.worshipImage.col-md-5
         = f.hidden_field :user_id, value: @worship.user_id
         = f.hidden_field :shinto_id, value: @worship.shinto_id
-        = image_tag @worship.image.url, id: 'preview' 
+        = image_tag @worship.image.url, id: 'preview', class: "picture_size" 
         .input-group 
           .custom-file 
             = f.label :image, class: "custom-file-label", value: "Drug & Drop Here"
-            = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)'
+            = f.file_field :image, class: "custom-file-input", onchange: 'previewImage(preview)', id: "inputFile"
             = f.hidden_field :image_cache
           .input-group-append 
-            button.btn.btn-outline-secondary.input-group-text type="button"
+            button.btn.btn-outline-secondary.input-group-text type="button" id="inputFileReset"
               |取消
     #worship_params
       .links

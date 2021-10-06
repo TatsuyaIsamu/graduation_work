@@ -6,7 +6,7 @@ class ShintosController < ApplicationController
     unless params[:q].blank?
       @shintos = @q.result(distinct: true).page(params[:page]).per(7)
       @shintos.map do |shinto|
-        trim_shintos(shinto)
+        trim_shinto(shinto)
       end
     else
       @shintos = nil

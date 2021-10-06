@@ -35,7 +35,7 @@ body
             - if user_signed_in?
               ul.navbar-nav.ml-auto.navbar-expand-sm
                 li.nav-item1  
-                  = link_to "Profile", user_introduction_path(current_user.user_introduction.id)
+                  = link_to "Profile", user_introduction_path(current_user.user_introduction.user.id)
                 li.nav-item2
                   = link_to "MyJinja", favorite_shintos_path
                 li.nav-item3

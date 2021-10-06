@@ -24,11 +24,11 @@ h2.mt-5.mb-3.font-weight-bold 基本プロフィール
           = @user_introduction.introduction
   - if current_user == @user_introduction.user
     .user_introduction_edit
-      = link_to edit_user_introduction_path(@user_introduction.id) do 
+      = link_to edit_user_introduction_path(@user_introduction.user_id) do 
         i.fas.fa-edit.fa-2x
   - else 
     .user_introduction_edit
-      = link_to other_looking_worships_path(@user_introduction.user.id) do 
+      = link_to other_looking_worships_path(@user_introduction.user_id) do 
         i.fas.fa-history
         span &nbsp;
         span &nbsp;
