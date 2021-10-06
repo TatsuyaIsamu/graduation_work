@@ -2,11 +2,13 @@ class ShintosController < ApplicationController
   before_action :set_shinto, only: %i[ show comment ]
 
   def index
+    @q = Shinto.ransack(params[:q])
     unless params[:q].blank?
-      @q = Shinto.ransack(params[:q])
       @shintos = @q.result(distinct: true).page(params[:page]).per(7)
+      @shintos.map do |shinto|
+        shinto.origin_shrine.gsub!(/\\n/, "\n")
+      end
     else
-      @q = Shinto.ransack(params[:q])
       @shintos = nil
     end
   end
