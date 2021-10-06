@@ -24,7 +24,9 @@
               p.mb-2 = shinto.origin_term
               strong.d-inline-block.text-primary
                 | 総本山
-              p.mb-2 = shinto.origin_shrine
+              p.mb-2
+                - trim_shinto(shinto)
+                = shinto.origin_shrine
     - else 
       .row.no-gutters
         .offset-md-1
@@ -47,4 +49,6 @@
             p.mb-2 = shinto.origin_term
             strong.d-inline-block.text-primary
               | 総本山
-            p.mb-2 = shinto.origin_shrine
+            p.mb-2
+              - trim_shinto(shinto)
+              = shinto.origin_shrine
