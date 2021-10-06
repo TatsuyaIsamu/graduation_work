@@ -6,12 +6,14 @@ class ShintosController < ApplicationController
     unless params[:q].blank?
       @shintos = @q.result(distinct: true).page(params[:page]).per(7)
       @shintos.map do |shinto|
-        shinto.origin_shrine.gsub!(/\\n/, "\n")
+        trim_shintos(shinto)
       end
     else
       @shintos = nil
     end
   end
+
+
 
   def show
     @shinto_user_params = @shinto.shinto_user_params.order(created_at: :desc).limit(5)
