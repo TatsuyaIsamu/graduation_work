@@ -1,20 +1,18 @@
 
 document.addEventListener("turbolinks:load", function(){
-
   google.charts.load('current', {
       'packages':['geochart']
   });
+  debugger
   google.charts.setOnLoadCallback(drawMap);
   
 })
 
-document.addEventListener("turbolinks:load", function(){
-  
-})
 
 
 function drawMap() {
   //都道府県単位のデータ
+  debugger
   let map = gon.usermapping
   var data = map;
   var dt = google.visualization.arrayToDataTable(data);
@@ -33,7 +31,7 @@ function drawMap() {
 }
 
 
-google.charts.load('current', {
-  'packages':['geochart']
-});
-google.charts.setOnLoadCallback(drawMap);
+// google.charts.load('current', {
+//   'packages':['geochart']
+// });
+// google.charts.setOnLoadCallback(drawMap);
