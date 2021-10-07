@@ -5,7 +5,6 @@ html
       | Along with your kamisama
     = csrf_meta_tags
     = csp_meta_tag
-    / = include_gon
     = Gon::Base.render_data
     /! drawer.css
     link href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css" rel="stylesheet" /
@@ -14,7 +13,6 @@ html
     = javascript_include_tag "https://www.gstatic.com/charts/loader.js" 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     /! jquery &amp; iScroll
-    / script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" 
     script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js" 
     /! drawer.js
     script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js" 
@@ -22,59 +20,59 @@ html
     script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
 
-body
-  
-  .header
-    - unless controller_name == "worships" && action_name ==  "create"
-      header
-        nav.navbar.navbar-light.bg-light.shadow-sm
-          .container.d-flex
-            ul.navbar-nav.navbar-expand-sm
-              li 
-                = link_to image_tag("/logo.png", class: "navbar-brand d-flex align-items-center"), home_path
-            - if user_signed_in?
-              ul.navbar-nav.ml-auto.navbar-expand-sm
-                li.nav-item1  
-                  = link_to "Profile", user_introduction_path(current_user.user_introduction.user.id), 'data-turbolinks': false
-                li.nav-item2
-                  = link_to "MyJinja", favorite_shintos_path
-                li.nav-item3
-                  = link_to "Friends", users_path
-                li.nav-item4
-                  = link_to "Gosyuin", gosyuin_path
-                li.nav-item5
-                  = link_to "Logout", destroy_user_session_path, method: :delete
-            .dropdown
-              button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
-                i.fas.fa-bars.fa-2x
-              ul.dropdown-menu aria-labelledby="dropdownMenuButton" 
-                li = link_to "神社を検索する", shintos_path, class: "dropdown-item" 
-                li = link_to "ユーザーを検索する", search_users_path, class: "dropdown-item"
-                li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
-                - if signed_in?
-                = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: '本当に退会しますか？' }
-      .drawer.drawer--left
-        .drawer-container role="banner" 
-          .drawer-navbar-header
-            button.drawer-toggle.drawer-hamburger type="button" 
-              span.sr-only toggle navigation
-              span.drawer-hamburger-icon
-          nav.drawer-nav role="navigation" 
-            ul.drawer-menu.list_group
-              li.worship_calendar_list
-                = link_to "参拝カレンダー", calendar_worships_path, class: "worship_calendar"
-              - 12.times do |i|
-                li.list-group-item.list-group-item-action.worship-list-group-item
-                  = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month), class: "worship_link"
-              li.dammy_worships 
-        main role="main" 
+  body
+    .header
+      - unless controller_name == "worships" && action_name ==  "create"
+        header
+          nav.navbar.navbar-light.bg-light.shadow-sm
+            .container.d-flex
+              ul.navbar-nav.navbar-expand-sm
+                li 
+                  = link_to image_tag("/logo.png", class: "navbar-brand d-flex align-items-center"), home_path
+              - if user_signed_in?
+                ul.navbar-nav.ml-auto.navbar-expand-sm
+                  li.nav-item1  
+                    = link_to "Profile", user_introduction_path(current_user.user_introduction.user.id), 'data-turbolinks': false
+                  li.nav-item2
+                    = link_to "MyJinja", favorite_shintos_path
+                  li.nav-item3
+                    = link_to "Friends", users_path
+                  li.nav-item4
+                    = link_to "Gosyuin", gosyuin_path
+                  li.nav-item5
+                    = link_to "Logout", destroy_user_session_path, method: :delete
+              .dropdown
+                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button" 
+                  i.fas.fa-bars.fa-2x
+                ul.dropdown-menu aria-labelledby="dropdownMenuButton" 
+                  li = link_to "神社を検索する", shintos_path, class: "dropdown-item" 
+                  li = link_to "ユーザーを検索する", search_users_path, class: "dropdown-item"
+                  li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
+                  - if signed_in?
+                  = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: '本当に退会しますか？' }
+        .drawer.drawer--left
+          .drawer-container role="banner" 
+            .drawer-navbar-header
+              button.drawer-toggle.drawer-hamburger type="button" 
+                span.sr-only toggle navigation
+                span.drawer-hamburger-icon
+            nav.drawer-nav role="navigation" 
+              ul.drawer-menu.list_group
+                li.worship_calendar_list
+                  = link_to "参拝カレンダー", calendar_worships_path, class: "worship_calendar"
+                - 12.times do |i|
+                  li.list-group-item.list-group-item-action.worship-list-group-item
+                    = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month), class: "worship_link"
+                li.dammy_worships 
+          main role="main" 
 
-    .worshipAdmin 
-      = link_to image_tag("/worship_admin.png"), search_worships_path  
-  .container.container_body
-    = yield
-    footer.footer 
-      p Copyright © 2021 Along With Your Kamisama .
+      .worshipAdmin 
+        = link_to image_tag("/worship_admin.png"), search_worships_path  
+    .container.container_body
+      = yield
+      footer.footer 
+        p Copyright © 2021 Along With Your Kamisama .
+
 
   - flash.each do |type, msg|
     - type = 'success' if type == 'notice'
@@ -101,3 +99,29 @@ body
       $(window).on("load", function() {
       toastr['#{type}']('#{msg}');
       })
+
+    - flash.each do |type, msg|
+      - type = 'success' if type == 'notice'
+      - type = 'error' if type == 'alert'
+      javascript:
+        toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "800",
+        "extendedTimeOut": "800",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        }
+        
+        $(window).on("load", function() {
+        toastr['#{type}']('#{msg}');
+        })
