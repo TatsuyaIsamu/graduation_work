@@ -1,10 +1,6 @@
-h2.mb-4.font-weight-bold 神社一覧
-
-= search_form_for @q do |f|
-  = f.label :name, "神社を検索する"
-  = f.search_field :name_or_address_or_kamisama_cont
-  = f.submit "検索"
-
+- if @shintos == nil
+  h2.mb-4.font-weight-bold 神社を検索する
+= render "share/search"
 - unless @shintos == nil
   .shinto_index_container
     - @shintos.each do |shinto|
