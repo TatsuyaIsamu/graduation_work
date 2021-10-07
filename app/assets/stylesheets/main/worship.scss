@@ -99,19 +99,13 @@
   overflow: auto;
 }
 
-.worship_footer {
-  display: flex;
-  justify-content: space-between;
-}
 
 .inline_block {
   display: inline-block;
 }
 
-.other_user_footer {
-  display: flex;
-  justify-content: center;
-}
+
+
 
 .picture_size {
   height: 250px;
@@ -150,8 +144,25 @@
   margin: auto;
 }
 
+
+.worship_header {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.worship_header_items {
+  padding-top: 10px;
+}
+
+.worship_jumbotron  {
+  margin-bottom: 20px;
+  max-width: 600px;
+  background-color: floralwhite;
+
 .worship_info {
   min-width: 500px;
   overflow: auto;
   padding-left: 30px;
+
 }

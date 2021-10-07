@@ -1,28 +1,34 @@
 h2.mb-4.font-weight-bold 参拝詳細
 .card.worship_show_card 
-  .card-header
-    - if @worship.user.user_introduction.image.present?
-      = image_tag @worship.user.user_introduction.image.url, class: "default_thumb thumb "
-    - else 
-      img.default_thumb.thumb  src="/profile_default.png"
-    = @worship.user.name 
-    span &nbsp;
-    span &nbsp;
-    span &nbsp;
-    span &nbsp;
-    = @worship.worship_day
-    span &nbsp;
-    span &nbsp;
-    span &nbsp;
-    span &nbsp;
-    = @worship.weather
+  .card-header.worship_header
+    .inline_block
+      - if @worship.user.user_introduction.image.present?
+        = image_tag @worship.user.user_introduction.image.url, class: "default_thumb thumb "
+      - else 
+        img.default_thumb.thumb  src="/profile_default.png"
+      strong = @worship.user.name 
+    .inline_block.worship_header_items
+      strong = @worship.worship_day
+      span &nbsp;
+      span &nbsp;
+      span &nbsp;
+      span &nbsp;
+      strong = @worship.weather
+    .inline_block.worship_header_items
+      = link_to edit_worship_path(@worship.id), 'data-turbolinks': false do 
+        i.fas.fa-edit.fa-2x
+      span &nbsp;
+      span &nbsp;
+      span &nbsp;
+      = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
+        i.fas.fa-trash.fa-2x
   .card-body  
     h4.mb-3 
       strong = @worship.shinto.name
-    .row
-      .col-md-7 
-        .card.worship_params_card.mb-4
-          .card-body
+    .jumbotron.worship_jumbotron  
+      .row
+        .col-md-7 
+          .worship_params_card.mb-4
             .worship_param_show
               ul.list-group.worship_param_shows 
                 - if @worship.worship_params.present?
@@ -32,34 +38,25 @@ h2.mb-4.font-weight-bold 参拝詳細
                       p.mb-0 id = "star_count_#{param.id}"
                     li.list-group-item
                       = param.memo
-                  
-            .card-text.mt-4.worship_param_memo
-              p 一言メモ
-              - if @worship.memo.present?
-                = @worship.memo
-            - if current_user.id == @worship.user_id
-              .card-footer.worship_footer
-                .inline_block
-                  i.far.fa-thumbs-up.fa-2x
-                  span &nbsp;
-                  span &nbsp;
-                  = @worship.favorite_worships.count
-                .inline_block
-                  = link_to edit_worship_path(@worship.id), 'data-turbolinks': false do 
-                    i.fas.fa-edit.fa-2x
-                  span &nbsp;
-                  span &nbsp;
-                  span &nbsp;
-                  = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
-                    i.fas.fa-trash.fa-2x
-            - else
-              .card-footer.other_user_footer
-                = render partial: "like", locals: {worship: @worship}
-      .col-md-5.my-auto 
-        - if @worship.image.present?
-          = image_tag @worship.image.url
-        - else 
-          img.card-img src="/noimage.png"
+                    
+              .card-text.mt-4.worship_param_memo
+                p 一言メモ
+                - if @worship.memo.present?
+                  = @worship.memo
+        .col-md-5.my-auto 
+          - if @worship.image.present?
+            = image_tag @worship.image.url
+          - else 
+            img.card-img src="/noimage.png"
+      - if current_user.id == @worship.user_id
+        .worship_footer
+          i.far.fa-thumbs-up.fa-2x
+          span &nbsp;
+          span &nbsp;
+          = @worship.favorite_worships.count
+      - else
+        .worship_footer
+          = render partial: "like", locals: {worship: @worship}
     = render partial: "share/shinto_show", locals: {shinto: @worship.shinto}
 
     - if current_user.id == @worship.user_id
