@@ -48,10 +48,12 @@ class WorshipsController < ApplicationController
         @worship.worship_params.build(hash)
       end
     end
-    if @worship.save
-      render :gosyuin
-    else 
-      render :new 
+    if params[:back]
+      @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
+      render :new
+    else
+      @worship.save
+      render :gosyuin 
     end
   end
 

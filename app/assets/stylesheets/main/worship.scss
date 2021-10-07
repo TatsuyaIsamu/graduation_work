@@ -120,6 +120,8 @@
 .picture_size {
   height: 250px;
   // max-width: 350px;
+  display: inline-block;
+  margin: auto;
 }
 
 .custom-file-label {
@@ -144,4 +146,11 @@
   tr {
     height: 10px;
   }
+}
+
+.confirm {
+  width: 600px;
+  height: 600px;
+  overflow-y: auto;
+  margin: auto;
 }

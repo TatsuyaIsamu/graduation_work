@@ -60,7 +60,6 @@ document.addEventListener("turbolinks:load", function(){
     });
     $("#worship_params")
     .on('cocoon:after-insert', function(e, insertedItem) {
-        debugger
         $(insertedItem).find(".worship_stars").raty(
         {
             
@@ -95,6 +94,22 @@ document.addEventListener("turbolinks:load", function(){
         });
     })
 })
+
+// 参拝確認画面の星表示
+document.addEventListener("turbolinks:load", function(){
+    let item_id = gon.star_array
+    item_id.forEach((item_id) => {
+        let key = Object.keys(item_id)[0]
+        $(`.${key}`).raty({
+            starOn: "/raty/star-on.png" ,
+            starOff: "/raty/star-off.png",
+            starHalf: "/raty/star-half.png ",
+            score: item_id[key],
+            readOnly: true,
+            half: true,
+        });
+    })
+});
 
 // 神社詳細画面と参拝詳細画面の星一覧表示
 document.addEventListener("turbolinks:load", function(){

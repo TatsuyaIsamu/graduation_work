@@ -1,6 +1,5 @@
 
 document.addEventListener("turbolinks:load", function(){
-
   google.charts.load('current', {
       'packages':['geochart']
   });
@@ -8,9 +7,6 @@ document.addEventListener("turbolinks:load", function(){
   
 })
 
-document.addEventListener("turbolinks:load", function(){
-  
-})
 
 
 function drawMap() {
@@ -33,7 +29,7 @@ function drawMap() {
 }
 
 
-google.charts.load('current', {
-  'packages':['geochart']
-});
-google.charts.setOnLoadCallback(drawMap);
+// google.charts.load('current', {
+//   'packages':['geochart']
+// });
+// google.charts.setOnLoadCallback(drawMap);
