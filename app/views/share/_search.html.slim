@@ -10,9 +10,19 @@
         = f.search_field :name_cont, placeholder: "ユーザー名を入力", id: "sbox4", class: "form-control"
         = f.button id: "sbtn4", type: "submit" do 
           i.fas.fa-search
+- elsif controller.controller_name == "ranking_items"
+  = search_form_for(@q, url: search_ranking_ranking_item_path(@ranking_id, @ranking_item.id), local: true, method: :get) do |f|
+    .form-group.search_form.mb-4
+      = f.search_field :name_cont, placeholder: "神社名、もしくは住所を入力", id: "sbox4", class: "form-control"
+      = f.button id: "sbtn4", type: "submit" do 
+        i.fas.fa-search
 - else 
   = search_form_for @q do |f|
     .form-group.search_form.mb-4
       = f.search_field :name_or_address_or_kamisama_cont, placeholder: "神社名、もしくは住所を入力", id: "sbox4", class: "form-control"
       = f.button id: "sbtn4", type: "submit" do 
         i.fas.fa-search
+/ 4.mb-4.font-weight-bold 神社を検索する
+/ = search_form_for(@q, url: search_ranking_ranking_item_path(@ranking_id, @ranking_item.id), local: true, method: :get) do |search|
+/   = search.search_field :name_cont
+/   = search.submit "検索"

@@ -1,12 +1,8 @@
 h2.mb-4.font-weight-bold 神社ランキングを設定する
+- if @shinto == nil
+  h4.mb-4.font-weight-bold 神社を検索する
+= render "share/search"
 
-br
-h4.mb-4.font-weight-bold 神社を検索する
-= search_form_for(@q, url: search_ranking_ranking_item_path(@ranking_id, @ranking_item.id), local: true, method: :get) do |search|
-  = search.search_field :name_cont
-  = search.submit "検索"
-
-br
 - unless @shinto == nil
   h5.mb-4.mt-4
     strong 神社の詳細
@@ -25,12 +21,8 @@ br
     .field.mt-4
       strong = f.label :memo
       = f.text_area :memo, class: "form-control", rows: "4"
-    
-    br
-    / = f.button class: "bg-white text-black" do 
-    /   i.fas.fa-upload.fa-2x
     .action.mb-4.mt-4
       = f.submit "保存する", class: "btn btn-primary"
-    = link_to 'Back', user_introduction_path(@ranking.user.user_introduction.id) , class: "btn btn-outline-secondary"
+    = link_to 'Back', user_introduction_path(@ranking.user.user_introduction.user_id) , class: "btn btn-outline-secondary"
 
 

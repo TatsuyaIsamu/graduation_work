@@ -32,4 +32,4 @@ h2.mb-4.font-weight-bold プロフィールを編集する
     
   .action.mb-4.mt-4
     = f.submit "保存する", class: "btn btn-primary"
-  = link_to 'Back', user_introduction_path(@user_introduction) , class: "btn btn-outline-secondary"
+  = link_to 'Back', user_introduction_path(@user_introduction.user_id) , class: "btn btn-outline-secondary"
