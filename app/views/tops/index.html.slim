@@ -1,9 +1,9 @@
 .container
   img src="signin.png" class="topimg"
 
-  h2 
+  h2.mt-4
     strong
-      |オンライン上で御朱印を認定します
+      |オンライン上で御朱印を勝手に認定します
   a href="users/sign_in" class="btn btn-primary btn-lg active topButton" role="button" aria-pressed="true"
     |ログイン
   a href="users/sign_up" class="btn btn-primary btn-lg active topButton" role="button" aria-pressed="true"
@@ -11,6 +11,6 @@
   p.mt-4.mb-4
     = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post,class: "btn btn-primary btn-lg active"
 
-  p 
+  h5 
     strong
       |本アプリでの御朱印は擬似的なものになります

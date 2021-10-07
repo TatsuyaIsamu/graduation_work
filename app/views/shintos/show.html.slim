@@ -1,46 +1,47 @@
 h2.mb-4.font-weight-bold  神社詳細
-.row.shinto_show1
-  .offset-md-1
-  .col-md-5
-    p
-      img.shinto_picture src = "#{@shinto.image}.jpg"
-  .col-md-6.text-left
-    p
-      strong 神社名
-      br
-      = @shinto.name
-    p
-      strong 住所
-      br
-      = @shinto.address
-    p
-      strong 総本山
-      br
-      = @shinto.origin_shrine.html_safe
-    p
-      strong 起源
-      br
-      = @shinto.origin_term
-    p
-      strong 公式URL
-      br
-      - unless @shinto.original_url ==  "−−−−−"
-        = link_to @shinto.original_url, "#{@shinto.original_url}"
-      - else 
-        |-----
-    = render partial: "like", locals: {shinto: @shinto}
-.row
-  .col-md-7.shinto_show2
-    p.mb-2.text-right
-      strong 主祭神
-      br
-      = @shinto.kamisama.html_safe
-    p.mb-2.text-right
-      strong 由緒
-      p.text-left
-        = @shinto.origin_history
-  .col-md-5.mt-4.mb-4
-    #map style="width: auto; height: 400px;"
+.jumbotron
+  .row.shinto_show1
+    .offset-md-1
+    .col-md-5
+      p
+        img.shinto_picture src = "#{@shinto.image}.jpg"
+    .col-md-6.text-left
+      p
+        strong 神社名
+        br
+        = @shinto.name
+      p
+        strong 住所
+        br
+        = @shinto.address
+      p
+        strong 総本山
+        br
+        = @shinto.origin_shrine.html_safe
+      p
+        strong 起源
+        br
+        = @shinto.origin_term
+      p
+        strong 公式URL
+        br
+        - unless @shinto.original_url ==  "−−−−−"
+          = link_to @shinto.original_url, "#{@shinto.original_url}"
+        - else 
+          |-----
+      = render partial: "like", locals: {shinto: @shinto}
+  .row
+    .col-md-7.shinto_show2
+      p.mb-2.text-right
+        strong 主祭神
+        br
+        = @shinto.kamisama.html_safe
+      p.mb-2.text-right
+        strong 由緒
+        p.text-left
+          = @shinto.origin_history
+    .col-md-5.mt-4.mb-4
+      #map style="width: auto; height: 400px;"
 
 = render partial: 'form', locals: { shinto_user_param: @shinto_user_param, shinto: @shinto }
 h4.review_form.font-weight-bold 神社レビュー
