@@ -1,5 +1,5 @@
 h2.mt-5.mb-3.font-weight-bold 基本プロフィール
-.jumbotron
+.card.user_jumbotron
   .container
     .row
       .col-md-4
@@ -113,14 +113,15 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
         = link_to edit_ranking_ranking_item_path(@ranking3.id) do
           i.fas.fa-edit.fa-2x
 h2.mt-5.mb-3.font-weight-bold 参拝情報
-.row.user_introduction_map_and_para
-  .col-md-5.bar_chart
-    h5.mb-4
-      strong 総本山パラメーター
-    = bar_chart @chart, height: "350px"
-  .col-md-7
-    h5.mb-4
-      strong 参拝マッピング
-    #region-div
+.card.worship_info.pt-4.pb-4
+  .row.user_introduction_map_and_para
+    .col-md-5.bar_chart
+      h5.mb-4
+        strong 総本山パラメーター
+      = bar_chart @chart, height: "350px"
+    .col-md-7
+      h5.mb-4
+        strong 参拝マッピング
+      #region-div
 
 

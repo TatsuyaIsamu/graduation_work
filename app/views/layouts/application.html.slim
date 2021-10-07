@@ -66,6 +66,7 @@ html
                 li.dammy_worships 
           main role="main" 
 
+
       .worshipAdmin 
         = link_to image_tag("/worship_admin.png"), search_worships_path  
     .container.container_body
@@ -100,6 +101,15 @@ html
       toastr['#{type}']('#{msg}');
       })
 
+
+
+      .worshipAdmin 
+        = link_to image_tag("/worship_admin.png"), search_worships_path  
+    .container.container_body
+      = yield
+      footer.footer 
+        p Copyright © 2021 Along With Your Kamisama .
+
     - flash.each do |type, msg|
       - type = 'success' if type == 'notice'
       - type = 'error' if type == 'alert'
@@ -124,4 +134,7 @@ html
         
         $(window).on("load", function() {
         toastr['#{type}']('#{msg}');
+
+        })
+
         })
