@@ -1,9 +1,6 @@
-h2.mb-4.font-weight-bold ユーザー
-
-= search_form_for @q, url: search_users_path do |f|
-  = f.label :name, "ユーザーを検索する"
-  = f.search_field :name_cont
-  = f.submit "検索"
+- if @users == nil
+  h2.mb-4.font-weight-bold ユーザを検索する
+= render "share/search"
 - unless @users == nil
   .row.user_card_row
     - @users.each do |user|
@@ -39,5 +36,4 @@ h2.mb-4.font-weight-bold ユーザー
                 i.fab.fa-facebook-messenger
                 | メッセージ
               = render 'follow_form', user: user 
-
   = paginate @users

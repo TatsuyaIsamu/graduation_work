@@ -1,9 +1,7 @@
-h2.mb-4.font-weight-bold 参拝した神社を検索する
+- if @shintos == nil
+  h2.mb-4.font-weight-bold 参拝した神社を検索する
 
-= search_form_for @q, url: search_worships_path do |f|
-  = f.label :name, "神社を検索する"
-  = f.search_field :name_or_address_cont
-  = f.submit "検索"
+= render "share/search"
 
 - unless @shintos == nil
   = render partial: "share/simple_shinto_index", locals: {shintos: @shintos}       
