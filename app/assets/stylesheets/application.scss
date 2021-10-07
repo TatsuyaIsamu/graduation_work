@@ -9,7 +9,7 @@
 @import "toastr"; 
 
 body {
-  margin-top: 70px;
+  margin-top: 50px;
   color: black;
   text-align: center;
   background-image: url("/background.png");
@@ -23,7 +23,6 @@ body {
 .header {
   width: 80%;
   margin: auto;
-  
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -64,7 +63,7 @@ img {
 
 .navbar {
   opacity: 0.9;
-  z-index: 10;
+  z-index: 50;
 }
 
 .navbar-nav li{
@@ -103,7 +102,9 @@ td {
   padding-left: 8px;
   padding-right: 8px;
 }
-
+.drawer{
+  z-index: 1000;
+}
 
 .worship-list-group-item {
   margin-top: 35px;
@@ -111,7 +112,7 @@ td {
   padding: 0;
   padding-top: 20px;
   margin-right: 25px;
-
+  border-radius: 10px;
   .worship_link {
     display: block;
     height: 40px;
@@ -128,6 +129,7 @@ td {
   display: inline-block;
   width: auto;
   margin: auto;
+  border-radius: 15px;
   margin-top: 50px;
   .worship_calendar {
     padding: 10px;
@@ -230,12 +232,14 @@ td {
 .drawer-hamburger{
   margin-top: 220px;
   margin-left:70px;
+  z-index: 100;
 }
 
 .drawer-hamburger-icon,
 .drawer-hamburger-icon:after,
 .drawer-hamburger-icon:before {
     height: 3px;
+    z-index: 100;
 }
 
 .drawer-navbar-header {
@@ -318,7 +322,6 @@ td {
 }
 
 .notice, .alert {
-  // display: inline-block;
   width: 60%;
   margin: auto;
   margin-bottom: 20px;
@@ -326,7 +329,6 @@ td {
 
 .top_message {
   z-index: 10;
-  // position: fixed;
   top: 100px;
 
 }
