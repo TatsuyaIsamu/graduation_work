@@ -30,17 +30,18 @@ h2.mb-4.font-weight-bold 参拝詳細
         .col-md-7 
           .worship_params_card.mb-4
             .worship_param_show
-              ul.list-group.worship_param_shows 
+              ul.list-group.worship_param_shows
                 - if @worship.worship_params.present?
                   - @worship.worship_params.each do |param|
                     li.list-group-item
                       p.mb-0.mt-0 = param.title
                       p.mb-0 id = "star_count_#{param.id}"
-                    li.list-group-item
+                    li.list-group-itema
                       = param.memo
                     
-              .card-text.mt-4.worship_param_memo
-                p 一言メモ
+              .card-text.mt-4
+                p 
+                  strong 一言メモ
                 - if @worship.memo.present?
                   = @worship.memo
         .col-md-5.my-auto 

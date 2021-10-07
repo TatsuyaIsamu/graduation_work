@@ -81,12 +81,12 @@
 }
 
 .worship_show_card {
-  width: 85%;
+  width: 75%;
   margin: auto;
 }
 
 .worship_param_show {
-  max-height: 250px;
+  height: 400px;
   overflow: auto;
 }
 
@@ -94,10 +94,6 @@
   font-size: x-small;
 }
 
-.worship_param_memo {
-  height: 180px;
-  overflow: auto;
-}
 
 
 .inline_block {
@@ -156,13 +152,15 @@
 }
 
 .worship_jumbotron  {
-  margin-bottom: 20px;
   max-width: 600px;
   background-color: floralwhite;
+  margin: auto;
+  margin-bottom: 25px;
+  
 }
+
 .worship_info {
   min-width: 500px;
   overflow: auto;
   padding-left: 30px;
-
 }
