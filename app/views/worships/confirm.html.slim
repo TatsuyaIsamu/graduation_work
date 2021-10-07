@@ -1,56 +1,61 @@
+h2.mb-4.font-weight-bold 確認画面
+
 = form_with(model: @worship, local: true) do |f|
-  - if @worship.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@worship.errors.count, 'error')} prohibited this worship from being saved:"
-      ul
-        - @worship.errors.full_messages.each do |message|
-          li = message
-  .row.worship_confirm
-    .offset-md-3
-    .col-md-2 
-      strong 神社名:
-    .col-md-4 = @worship.shinto.name
-
-  .row.worship_confirm
-    .offset-md-3
-    .col-md-2 
-      strong 参拝日:
-    .col-md-4 = @worship.worship_day
-
-  .row.worship_confirm
-    .offset-md-3
-    .col-md-2 
-      strong 天気:
-    .col-md-4 = @worship.weather
-  .confirm_params
-    - @worship.worship_params.each_with_index do |param, index|
+  .card.confirm
+    .card-body.confirm
+      .row
+        = image_tag @worship.image.url, class: "picture_size"
+        
       .row.worship_confirm
         .offset-md-3
         .col-md-2 
-          strong = param.title
-          |:
-        .col-md-4 class = "confirm_star_count_#{index}" 
+          strong 神社名:
+        .col-md-4 = @worship.shinto.name
+
       .row.worship_confirm
         .offset-md-3
         .col-md-2 
-          strong 一言メモ:
-        .col-md-4 = param.memo
-  .confirm_memo
-    .row.worship_confirm
-      .offset-md-3
-      .col-md-2 
-        strong メモ:
-      .col-md-4 = @worship.memo
+          strong 参拝日:
+        .col-md-4 = @worship.worship_day
 
-  = f.hidden_field :worship_day
-  = f.hidden_field :weather
-  = f.hidden_field :memo
-  = f.hidden_field :user_id
-  = f.hidden_field :shinto_id
-  = f.hidden_field :image_cache
-  - ( @worship.worship_params.length).times do |i| 
-    = f.fields_for @worship.worship_params[i] do |param|
-      = param.hidden_field :title, value: @worship.worship_params[i].title, name: "worship[worship_param][title][#{i}]"
-      = param.hidden_field :points, value: @worship.worship_params[i].points, name: "worship[worship_param][points][#{i}]"
-      = param.hidden_field :memo, value: @worship.worship_params[i].memo, name: "worship[worship_param][memo][#{i}]"
-  = f.submit
+      .row.worship_confirm
+        .offset-md-3
+        .col-md-2 
+          strong 天気:
+        .col-md-4
+          - if @worship.weather
+            = @worship.weather
+          - else 
+            | 未選択
+      .confirm_params
+        - @worship.worship_params.each_with_index do |param, index|
+          .row.worship_confirm
+            .offset-md-3
+            .col-md-2 
+              strong = param.title
+              |:
+            .col-md-4 class = "confirm_star_count_#{index}" 
+          .row.worship_confirm
+            .offset-md-3
+            .col-md-2 
+              strong 一言メモ:
+            .col-md-4 = param.memo
+      .confirm_memo
+        .row.worship_confirm
+          .offset-md-3
+          .col-md-2 
+            strong メモ:
+          .col-md-4 = @worship.memo
+
+      = f.hidden_field :worship_day
+      = f.hidden_field :weather
+      = f.hidden_field :memo
+      = f.hidden_field :user_id
+      = f.hidden_field :shinto_id
+      = f.hidden_field :image_cache
+      - ( @worship.worship_params.length).times do |i| 
+        = f.fields_for @worship.worship_params[i] do |param|
+          = param.hidden_field :title, value: @worship.worship_params[i].title, name: "worship[worship_param][title][#{i}]"
+          = param.hidden_field :points, value: @worship.worship_params[i].points, name: "worship[worship_param][points][#{i}]"
+          = param.hidden_field :memo, value: @worship.worship_params[i].memo, name: "worship[worship_param][memo][#{i}]"
+  = f.button "御朱印をもらう", class: "btn btn-primary mt-4"

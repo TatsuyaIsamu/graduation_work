@@ -60,7 +60,6 @@ document.addEventListener("turbolinks:load", function(){
     });
     $("#worship_params")
     .on('cocoon:after-insert', function(e, insertedItem) {
-        debugger
         $(insertedItem).find(".worship_stars").raty(
         {
             
