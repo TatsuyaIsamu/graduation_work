@@ -1,8 +1,6 @@
 FactoryBot.define do
   factory :shinto_param do
-    title { "MyString" }
-    points { 1 }
-    memo { "MyText" }
-    favorite_shinto { nil }
+    memo  {"testMemo"}
+    association :shinto_user_param
   end
 end

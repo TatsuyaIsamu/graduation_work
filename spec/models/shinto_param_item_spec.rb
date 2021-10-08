@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ShintoParamItem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'ShintoParamItem モデル' do
+    it 'インスタンスを作成できる' do
+      expect(FactoryBot.create(:shinto_param_item)).to be_valid
+    end
+  end
 end
