@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe FavoriteWorship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'FavoriteWorshipモデル' do
+    it 'インスタンスが作成できる' do
+      binding.irb
+      expect(FactoryBot.create(:favorite_worship)).to be_valid
+    end
+  end
 end

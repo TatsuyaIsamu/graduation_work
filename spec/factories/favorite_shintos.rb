@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :favorite_shinto do
-    user { nil }
-    shinto { nil }
+    association :user
+    association :shinto
   end
 end
