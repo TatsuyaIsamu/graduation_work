@@ -349,6 +349,10 @@ td {
 .jumbotron {
   border-radius: 15px;
   padding: 40px;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 40px;
   padding-bottom: 20px;
-  background-color: floralwhite;
+  background-color: ghostwhite;
+  opacity: 0.9;
 }
