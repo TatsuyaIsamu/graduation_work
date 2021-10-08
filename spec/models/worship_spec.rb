@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Worship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '参拝機能' do
+    it '参拝インスタンスを作成できる' do
+      expect(FactoryBot.create(:worship)).to be_valid
+    end
+  end
 end
