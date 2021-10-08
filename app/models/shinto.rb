@@ -6,5 +6,4 @@ class Shinto < ApplicationRecord
   after_validation :geocode
   has_many :ranking_items, dependent: :destroy
   has_many :shinto_user_params, dependent: :destroy
-
 end
