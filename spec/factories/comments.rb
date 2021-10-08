@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    comment { "MyText" }
-    worship { nil }
-    user { nil }
+    comment {'testComment'}
+    association :worship
+    user_id  {worship.user.id}
   end
 end
