@@ -13,8 +13,6 @@ class ShintosController < ApplicationController
     end
   end
 
-
-
   def show
     @shinto_user_params = @shinto.shinto_user_params.order(created_at: :desc).limit(5)
     gon.star_array = []
