@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe RankingItem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe  'RankingItemモデル' do
+    it  'RankingItem インスタンスが作成できる' do
+      expect(FactoryBot.create(:ranking_item)).to be_valid
+    end
+  end
 end
