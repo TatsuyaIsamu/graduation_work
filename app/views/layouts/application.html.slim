@@ -75,66 +75,30 @@ html
         p Copyright © 2021 Along With Your Kamisama .
 
 
-  - flash.each do |type, msg|
-    - type = 'success' if type == 'notice'
-    - type = 'error' if type == 'alert'
-    javascript:
-      toastr.options = {
-      "closeButton": false,
-      "debug": false,
-      "newestOnTop": false,
-      "progressBar": false,
-      "positionClass": "toast-top-right",
-      "preventDuplicates": false,
-      "onclick": null,
-      "showDuration": "500",
-      "hideDuration": "500",
-      "timeOut": "800",
-      "extendedTimeOut": "800",
-      "showEasing": "swing",
-      "hideEasing": "linear",
-      "showMethod": "fadeIn",
-      "hideMethod": "fadeOut"
-      }
-      
-      $(window).on("load", function() {
-      toastr['#{type}']('#{msg}');
-      })
+      - flash.each do |type, msg|
+        - type = 'success' if type == 'notice'
+        - type = 'error' if type == 'alert'
+        javascript:
+          toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "400",
+          "hideDuration": "1300",
+          "timeOut": "800",
+          "extendedTimeOut": "800",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+          }
+          
+          $(window).on("load", function() {
+          toastr['#{type}']('#{msg}');
+          })
 
 
-
-      .worshipAdmin 
-        = link_to image_tag("/worship_admin.png"), search_worships_path  
-    .container.container_body
-      = yield
-      footer.footer 
-        p Copyright © 2021 Along With Your Kamisama .
-
-    - flash.each do |type, msg|
-      - type = 'success' if type == 'notice'
-      - type = 'error' if type == 'alert'
-      javascript:
-        toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "400",
-        "hideDuration": "1000",
-        "timeOut": "800",
-        "extendedTimeOut": "800",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-        }
-        
-        $(window).on("load", function() {
-        toastr['#{type}']('#{msg}');
-
-        })
-
-        })
