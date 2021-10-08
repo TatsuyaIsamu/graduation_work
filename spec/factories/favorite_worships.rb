@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :favorite_worship do
-    user { nil }
-    shinto { nil }
+    association :worship
+    user_id {worship.user.id}
   end
 end
