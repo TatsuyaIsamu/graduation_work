@@ -1,9 +1,7 @@
-require 'rails_helper'
-
 RSpec.describe FavoriteShinto, type: :model do
   describe 'FavoriteShintoモデル' do
     it 'インスタンスが作成できる' do
-      expect(FactoryBot.create(:favorite_shinto)).to be_valid
+      expect(create(:favorite_shinto)).to be_valid
     end
   end
 end

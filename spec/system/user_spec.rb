@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe User, type: :system do
   describe '認証機能' do
     context "ユーザー登録したときに" do
@@ -20,9 +18,8 @@ RSpec.describe User, type: :system do
     end
     context "登録しているユーザーが" do
       it "ログインしたらログインができる" do
-        FactoryBot.create(:user_introduction)
+        create(:user_introduction)
         visit new_user_session_path
-        binding.irb
         fill_in "user[email]", with: "test@gmail"
         fill_in "user[password]", with: "111111"
         click_on "commit"
@@ -31,7 +28,7 @@ RSpec.describe User, type: :system do
     end
     context "ログインしているユーザーが" do
       it "ログアウトしたらログアウトできる" do
-        FactoryBot.create(:user_introduction)
+        create(:user_introduction)
         visit new_user_session_path
         fill_in "user[email]", with: "test@gmail"
         fill_in "user[password]", with: "111111"
@@ -42,7 +39,7 @@ RSpec.describe User, type: :system do
     end
     context "ログインしているユーザーが" do
       it "退会ボタンを押すことで退会される" do
-        FactoryBot.create(:user_introduction)
+        create(:user_introduction)
         visit new_user_session_path
         fill_in "user[email]", with: "test@gmail"
         fill_in "user[password]", with: "111111"
