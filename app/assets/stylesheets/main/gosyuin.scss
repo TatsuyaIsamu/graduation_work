@@ -21,7 +21,7 @@
   height: 800px;
   display: flex;
   gap: 0px 105px;
-  background-image: url("/gosyuin.png");
+  background-image: image-url("/gosyuin.png");
   background-repeat: no-repeat;
   background-size: 500px 800px;
   font-size: 50px;
@@ -62,7 +62,7 @@
 	height:600px; //全体の高さ
   background-color: white;
   border-radius: 15%;
-  background-image: url(/gosyuin_hard.png);
+  background-image: image-url("/gosyuin_hard.png");
   background-repeat: no-repeat;
   background-size: 500px 600px;
 }
@@ -74,13 +74,13 @@
 }
 
 .gosyuin_hard {
-  background-image: url(/gosyuin_hard.png);
+  background-image: image-url("/gosyuin_hard.png");
   background-repeat: no-repeat;
   background-size: 500px 600px;
 }
 
 .gosyuin_hard_reverse {
-  background-image: url(/gosyuin_hard_reverse.png);
+  background-image: image-url("/gosyuin_hard_reverse.png");
   background-repeat: no-repeat;
   background-size: 500px 600px;
 }
@@ -93,7 +93,7 @@
   height: 600px;
   border-radius: 15%;
   .gosyuin_page {
-    background-image: url("/gosyuin.png");
+    background-image: image-url("/gosyuin.png");
     background-repeat: no-repeat;
     background-size: 350px 600px;
     -ms-writing-mode: tb-rl;
