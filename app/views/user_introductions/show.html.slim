@@ -23,7 +23,7 @@ h2.mt-5.mb-3.font-weight-bold 基本プロフィール
         .overflow
           = @user_introduction.introduction
   - if current_user == @user_introduction.user
-    .user_introduction_edit
+    .user_introduction_edit.self_edit
       = link_to edit_user_introduction_path(@user_introduction.user_id) do 
         i.fas.fa-edit.fa-2x
   - else 

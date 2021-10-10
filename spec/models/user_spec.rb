@@ -1,8 +1,6 @@
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
-  let(:user) {FactoryBot.create(:user)}
-  let(:other) {FactoryBot.create(:other_user)}
+  let(:user) {create(:user)}
+  let(:other) {create(:other_user)}
 
   describe 'ユーザー登録' do
     it 'email、passwordとpassword_confirmationが存在すれば登録できること' do
@@ -41,7 +39,7 @@ RSpec.describe User, type: :model do
 
   describe 'ゲストログイン用メソッド' do
     it 'self.guest メソッドを使ったときゲストユーザーが返ってくる' do
-      user = FactoryBot.create(:user, email: "guest@gmail.com", password: "aaaaaa", password_confirmation: "aaaaaa")
+      user = create(:user, email: "guest@gmail.com", password: "aaaaaa", password_confirmation: "aaaaaa")
       expect(User.guest).to eq user
     end
   end

@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  skip_before_action :authenticate_user!
   def guest_sign_in
     user = User.guest
     sign_in user

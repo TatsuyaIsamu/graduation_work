@@ -1,6 +1,6 @@
 class UserIntroductionsController < ApplicationController
-  before_action :set_user_introduction, only: %i[ show edit update ]
-
+  before_action :set_user_introduction
+  before_action :forbid_other_user_access, only: %i[ edit update ]
   def show
     3.times do |n|
       ranking = Ranking.find_by(user_id: @user_introduction.user.id, rank: n + 1)
@@ -43,5 +43,13 @@ class UserIntroductionsController < ApplicationController
 
   def user_introduction_params
     params.required(:user_introduction).permit(:image, :introduction).merge(address: params[:user_introduction][:address].to_i)
+  end
+
+  def forbid_other_user_access
+    unless @user_introduction == nil
+      if current_user.user_introduction != @user_introduction
+        redirect_to home_path, alert: "アクセスできません" 
+      end
+    end
   end
 end

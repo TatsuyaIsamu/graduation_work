@@ -1,7 +1,5 @@
-require 'rails_helper'
-
 RSpec.describe Message, type: :model do
-  let(:message) {FactoryBot.create(:message)}
+  let(:message) {create(:message)}
   describe 'Message モデル' do
     it  ' インスタンスが作成できる' do
       expect(message).to be_valid

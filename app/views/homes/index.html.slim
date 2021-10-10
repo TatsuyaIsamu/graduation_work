@@ -8,7 +8,7 @@ h2.mb-4.font-weight-bold 新しい投稿
               - if worship.user.user_introduction.image.present?
                 = image_tag worship.user.user_introduction.image.url, class: "default_thumb"
               - else 
-                img.default_thumb.thumb  src="/profile_default.png"
+                img.default_thumb.thumb src="/profile_default.png"
               br
               = worship.user.name 
           - if worship.shinto.image.present? 
@@ -27,4 +27,4 @@ h2.mb-4.font-weight-bold 新しい投稿
           .card-hooter 
             = worship.worship_day
             = worship.weather
-= paginate @worships
+  = paginate @worships
