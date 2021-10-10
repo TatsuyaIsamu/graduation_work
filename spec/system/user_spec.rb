@@ -7,7 +7,7 @@ RSpec.describe User, type: :system do
         fill_in "user[email]", with: "test@com"
         fill_in "user[password]", with: "password"
         click_on "アカウント登録"
-        expect(page).to have_content "新しい投稿"
+        expect(page).to have_content "アカウント登録が完了しました"
       end
     end
     context "ログインしていないユーザーがトップ画面にアクセスしたとき" do
@@ -23,27 +23,21 @@ RSpec.describe User, type: :system do
         fill_in "user[email]", with: "test@gmail"
         fill_in "user[password]", with: "111111"
         click_on "commit"
-        expect(page).to have_content "新しい投稿"
+        expect(page).to have_content "ログインしました"
       end
     end
     context "ログインしているユーザーが" do
       it "ログアウトしたらログアウトできる" do
         create(:user_introduction)
-        visit new_user_session_path
-        fill_in "user[email]", with: "test@gmail"
-        fill_in "user[password]", with: "111111"
-        click_on "commit"
+        user_login
         click_on find(".nav-item5").text
-        expect(page).to have_content "オンライン上で御朱印を勝手に認定します"
+        expect(page).to have_content "ログアウトしました"
       end
     end
     context "ログインしているユーザーが" do
       it "退会ボタンを押すことで退会される" do
         create(:user_introduction)
-        visit new_user_session_path
-        fill_in "user[email]", with: "test@gmail"
-        fill_in "user[password]", with: "111111"
-        click_on "commit"
+        user_login
         find("#dropdownMenuButton").click
         page.accept_confirm do
           click_on page.all(".dropdown-item")[3].text 
