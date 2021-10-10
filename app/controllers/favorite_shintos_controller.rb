@@ -1,6 +1,4 @@
 class FavoriteShintosController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     @favorite_shintos = current_user.favorite_shintos.page(params[:page]).per(7)
   end

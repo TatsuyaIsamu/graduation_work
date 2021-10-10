@@ -1,5 +1,4 @@
 class FavoriteWorshipsController < ApplicationController
-  before_action :authenticate_user!
   respond_to? :js
   def create
     @worship = Worship.find(params[:id])
