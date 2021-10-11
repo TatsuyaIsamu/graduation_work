@@ -49,7 +49,16 @@ RSpec.describe RankingItem, type: :system do
     describe 'アクセス制限' do
       context '他のユーザーがユーザープロフィールにアクセスしたとき' do
         it  'ランキングの編集ボタンが表示されない' do
-          
+          logout_and_other_user_login
+          visit user_introduction_path(user_introduction.user_id)
+          expect(page).to have_no_css('.rspec_edit_ranking1')
+        end
+      end
+      context '他のユーザーがユーザーランキングにアクセスしようとしたとき' do
+        it 'ホーム画面にリダイレクトされる' do
+          logout_and_other_user_login
+          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
+          expect(page).to have_content("アクセスできません")
         end
       end
     end

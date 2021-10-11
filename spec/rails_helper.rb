@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'devise'
 require File.expand_path("spec/support/login_module.rb")
 require File.expand_path("spec/support/build_user_ranking_module.rb")
+require File.expand_path("spec/support/logout_and_other_user_login_module.rb")
 require_relative 'support/controller_macros'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -47,4 +48,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include LoginModule
   config.include BuildUserRankingModule
+  config.include LogoutAndOtherUserLoginModule
 end

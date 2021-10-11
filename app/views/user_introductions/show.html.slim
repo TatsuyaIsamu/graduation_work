@@ -60,7 +60,7 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
           |--------
     - if current_user == @user_introduction.user
       .card-footer.mb-2
-        = link_to edit_ranking_ranking_item_path(@ranking1.id), class: "rspec_edit_ranking1" do
+        = link_to edit_ranking_ranking_item_path(@ranking1.id, @ranking3.ranking_items[0].id), class: "rspec_edit_ranking1" do
           i.fas.fa-edit.fa-2x
   .card.shadow-sm.col-md-4
     .card-header.mb-2.mt-2
@@ -85,7 +85,7 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
           |--------
     - if current_user == @user_introduction.user
       .card-footer.mb-2
-        = link_to edit_ranking_ranking_item_path(@ranking2.id), class: "rspec_edit_ranking2" do
+        = link_to edit_ranking_ranking_item_path(@ranking2.id, @ranking2.ranking_items[0].id), class: "rspec_edit_ranking2" do
           i.fas.fa-edit.fa-2x
   .card.shadow-sm.col-md-4
     .card-header.mb-2.mt-2
@@ -110,7 +110,7 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
           |---------
     - if current_user == @user_introduction.user
       .card-footer.mb-2
-        = link_to edit_ranking_ranking_item_path(@ranking3.id), class: "rspec_edit_ranking3" do
+        = link_to edit_ranking_ranking_item_path(@ranking3.id, @ranking3.ranking_items[0].id), class: "rspec_edit_ranking3" do
           i.fas.fa-edit.fa-2x
 h2.mt-5.mb-3.font-weight-bold 参拝情報
 .card.worship_info.pt-4.pb-4
