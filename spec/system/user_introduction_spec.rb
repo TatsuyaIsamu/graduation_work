@@ -4,12 +4,7 @@ RSpec.describe UserIntroduction, type: :system do
     before do
       user_introduction
       login(user_introduction.user)
-      ranking1 = create(:ranking, user_id: user_introduction.user_id, rank: 1)
-      create(:ranking_item, ranking_id: ranking1.id)
-      ranking2 = create(:ranking, user_id: user_introduction.user_id, rank: 2)
-      create(:ranking_item, ranking_id: ranking2.id)
-      ranking3 = create(:ranking, user_id: user_introduction.user_id, rank: 3)
-      create(:ranking_item, ranking_id: ranking3.id)
+      build_user_ranking(user_introduction.user)
     end
     context "ユーザーが住所を青森県に変更したとき" do
       it "変更できる" do
@@ -52,22 +47,14 @@ RSpec.describe UserIntroduction, type: :system do
     end
     context '違うユーザーがユーザープロフィール画面を見たとき' do
       it  '編集ボタンが表示されない' do
-        visit home_path
-        click_on find(".nav-item5").text
-        other = create(:other_user)
-        create(:user_introduction, user_id: other.id)
-        login(other)
+        logout_and_other_user_login
         visit user_introduction_path(user_introduction.user_id)
         expect(page).to have_no_css('.self_edit')
       end
     end
     context '違うユーザーがユーザープロフィールを編集しようとしたとき' do
       it  'ホーム画面にリダイレクトされる' do
-        visit home_path
-        click_on find(".nav-item5").text
-        other = create(:other_user)
-        create(:user_introduction, user_id: other.id)
-        login(other)
+        logout_and_other_user_login
         visit edit_user_introduction_path(user_introduction.user_id)
         expect(page).to have_content("アクセスできません")
       end

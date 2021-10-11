@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
-
+  def forbid_login_user
+    redirect_to home_path if signed_in?
+  end
   def trim_shinto(shinto)
     shinto.origin_shrine.gsub!(/\\n/, "\n")
     shinto.origin_term.gsub!(/\\n/, "\n")
