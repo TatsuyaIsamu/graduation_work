@@ -5,6 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
   before_action :ensure_normal_user, only: :destroy
   skip_before_action :authenticate_user!
+  before_action :forbid_login_user
   # GET /resource/sign_up
   def new
     super
