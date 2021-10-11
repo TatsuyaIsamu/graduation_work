@@ -5,13 +5,13 @@ RSpec.describe RankingItem, type: :system do
       user_introduction
       login(user_introduction.user)
       build_user_ranking(user_introduction.user)
-      create(:shinto)
+      create(:test_shinto)
     end
     context '１位の神社を更新したとき' do
       it  '１位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
         find('.rspec_edit_ranking1').click
-        fill_in 'q[name_cont]', with: '王子神社'
+        fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
         fill_in "ranking_item[memo]", with: "テストOK"
@@ -24,7 +24,7 @@ RSpec.describe RankingItem, type: :system do
       it  '２位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
         find('.rspec_edit_ranking2').click
-        fill_in 'q[name_cont]', with: '王子神社'
+        fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
         fill_in "ranking_item[memo]", with: "テストOK"
@@ -37,7 +37,7 @@ RSpec.describe RankingItem, type: :system do
       it  '３位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
         find('.rspec_edit_ranking3').click
-        fill_in 'q[name_cont]', with: '王子神社'
+        fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
         fill_in "ranking_item[memo]", with: "テストOK"
@@ -59,6 +59,24 @@ RSpec.describe RankingItem, type: :system do
           logout_and_other_user_login
           visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
           expect(page).to have_content("アクセスできません")
+        end
+      end
+    end
+    describe '神社の検索テスト' do
+      context 'ランキングの設定画面で test 神社を検索したとき' do
+        it  'test 神社が画面に表示される' do
+          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
+          fill_in "q[name_cont]", with: "test神社"
+          click_on 'button'
+          expect(page).to have_content("test神社")
+        end
+      end
+      context 'ランキングの設定画面で test 神社を検索したとき' do
+        it  '王子神社は画面に表示されない' do
+          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
+          fill_in "q[name_cont]", with: "test神社"
+          click_on 'button'
+          expect(page).not_to have_content("王子神社")
         end
       end
     end
