@@ -28,7 +28,6 @@ RSpec.describe User, type: :system do
     end
     context "ログインしているユーザーが" do
       it "ログアウトしたらログアウトできる" do
-        
         login(create(:user_introduction).user)
         click_on find(".nav-item5").text
         expect(page).to have_content "ログアウトしました"
@@ -36,7 +35,6 @@ RSpec.describe User, type: :system do
     end
     context "ログインしているユーザーが" do
       it "退会ボタンを押すことで退会される" do
-        
         login(create(:user_introduction).user)
         find("#dropdownMenuButton").click
         page.accept_confirm do
@@ -69,6 +67,25 @@ RSpec.describe User, type: :system do
         end
       end
     end
-    
+    describe  'ゲストログイン機能' do
+      context 'ゲストログインボタンをおしたとき' do
+        it  'ログインできる' do
+          visit root_path
+          click_on "ゲストログイン"
+          expect(page).to have_content("ゲストユーザーとしてログインしました。")
+        end
+      end
+      context 'ゲストユーザーが退会しようしとしたとき' do
+        it  '退会できない' do
+          visit root_path
+          click_on "ゲストログイン"
+          find("#dropdownMenuButton").click
+          page.accept_confirm do
+            click_on page.all(".dropdown-item")[3].text 
+          end
+          expect(page).to have_content("ゲストユーザーは削除できません。")
+        end
+      end
+    end
   end
 end

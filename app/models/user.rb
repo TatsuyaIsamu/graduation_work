@@ -31,6 +31,15 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@gmail.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+      a = user.rankings.build(rank: 1)
+      a.ranking_items.build.save
+      b = user.rankings.build(rank: 2)
+      b.ranking_items.build.save
+      c = user.rankings.build(rank: 3)
+      c.ranking_items.build.save
+      user.build_user_introduction
+      user.save
     end
   end
 end
