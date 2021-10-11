@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: :destroy
   skip_before_action :authenticate_user!
   before_action :forbid_login_user
+  skip_before_action :forbid_login_user, only: %i[destroy]
   # GET /resource/sign_up
   def new
     super

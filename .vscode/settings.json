@@ -17,6 +17,8 @@
     "javascripts",
     "kamisama",
     "raty",
+    "signin",
+    "signup",
     "strftime",
     "turbolinks",
     "unfollow",
