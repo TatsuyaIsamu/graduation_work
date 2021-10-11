@@ -6,7 +6,7 @@
         td.font-weight-bold.h3.col-md-7 scope = "col" 住所
     tbody
       - shintos.each do |shinto|
-        tr data-href="/worships/new?shinto_id=#{shinto.id})"
+        tr data-href="/worships/new?shinto_id=#{shinto.id}"
           th.character_limit scope = "row" 
             = shinto.name
           td.character_limit 

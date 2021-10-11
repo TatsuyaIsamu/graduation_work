@@ -3,7 +3,7 @@
     .offset-md-2
     .col-md-4
       = f.text_field :title, class: "form-control", placeholder: "評価項目を入力"
-    - if action_name == "new" || action_name = "confirm"
+    - if action_name == "new" || action_name == "confirm" || action_name == "create"
       .worship_stars.col-md-3
     - else 
       .edit_worship_stars.col-md-3
