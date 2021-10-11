@@ -8,6 +8,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'devise'
 require File.expand_path("spec/support/login_module.rb")
+require File.expand_path("spec/support/build_user_ranking_module.rb")
 require_relative 'support/controller_macros'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -45,4 +46,5 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include LoginModule
+  config.include BuildUserRankingModule
 end

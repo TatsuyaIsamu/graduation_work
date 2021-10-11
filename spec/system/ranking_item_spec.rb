@@ -4,12 +4,7 @@ RSpec.describe RankingItem, type: :system do
     before do
       user_introduction
       login(user_introduction.user)
-      ranking1 = create(:ranking, user_id: user_introduction.user_id, rank: 1)
-      create(:ranking_item, ranking_id: ranking1.id)
-      ranking2 = create(:ranking, user_id: user_introduction.user_id, rank: 2)
-      create(:ranking_item, ranking_id: ranking2.id)
-      ranking3 = create(:ranking, user_id: user_introduction.user_id, rank: 3)
-      create(:ranking_item, ranking_id: ranking3.id)
+      build_user_ranking(user_introduction.user)
       create(:shinto)
     end
     context '１位の神社を更新したとき' do
@@ -49,6 +44,13 @@ RSpec.describe RankingItem, type: :system do
         click_on "保存する"
         expect(page).to have_content("3位の神社を更新しました")
         expect(page).to have_content("テストOK")
+      end
+    end
+    describe 'アクセス制限' do
+      context '他のユーザーがユーザープロフィールにアクセスしたとき' do
+        it  'ランキングの編集ボタンが表示されない' do
+          
+        end
       end
     end
   end
