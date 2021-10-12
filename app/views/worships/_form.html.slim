@@ -31,4 +31,7 @@
           = link_to_add_association 'パラメーターを追加する', f, :worship_params, data: {association_insertion_method: 'after'}
       = f.fields_for :worship_params, local: true, id: 'js-log-field' do |worship|
         = render 'worship_param_fields', f: worship
-  .actions = f.button "確認画面へ", class: "btn btn-primary" 
+  - if action_name == 'edit'
+    .actions = f.button "参拝情報を変更する", class: "btn btn-primary" 
+  - else
+    .actions = f.button "確認画面へ", class: "btn btn-primary" 

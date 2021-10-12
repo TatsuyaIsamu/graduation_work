@@ -31,6 +31,7 @@ class WorshipsController < ApplicationController
   end
 
   def edit
+    forbid_other_user_access
     @shinto = @worship.shinto
     @shinto_params = @worship.worship_params
     gon.star_array = []
@@ -80,6 +81,7 @@ class WorshipsController < ApplicationController
   def destroy
     worship_day = @worship.worship_day
     @worship.destroy
+    flash[:notice] = "参拝記録を削除しました"
     redirect_to worships_url(worship_day.to_date.beginning_of_month)
   end
 
@@ -135,5 +137,9 @@ class WorshipsController < ApplicationController
 
   def worship_params
     params.require(:worship).permit(:worship_day, :memo, :image, :image_cache, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
+  end
+  
+  def forbid_other_user_access
+    redirect_to home_path, alert: "アクセスできません" if current_user != @worship.user
   end
 end
