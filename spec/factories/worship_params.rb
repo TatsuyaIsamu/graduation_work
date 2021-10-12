@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :worship_param do
-    title { "testTitle" }
+    title { "testParamTitle" }
     points { 1 }
-    memo { "testMemo" }
+    memo { "testParamMemo" }
     association  :worship
   end
 end

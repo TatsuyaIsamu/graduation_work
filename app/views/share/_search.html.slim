@@ -18,7 +18,7 @@
         i.fas.fa-search
 - else 
   = search_form_for @q do |f|
-    .form-group.search_form.mb-4
+    .form-group.search_form
       = f.search_field :name_or_address_or_kamisama_cont, placeholder: "神社名、もしくは住所を入力", id: "sbox4", class: "form-control"
       = f.button id: "sbtn4", type: "submit" do 
         i.fas.fa-search

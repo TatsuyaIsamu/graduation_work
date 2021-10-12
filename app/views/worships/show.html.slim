@@ -14,14 +14,18 @@ h2.mb-4.font-weight-bold 参拝詳細
       span &nbsp;
       span &nbsp;
       strong = @worship.weather
-    .inline_block.worship_header_items
-      = link_to edit_worship_path(@worship.id), 'data-turbolinks': false do 
-        i.fas.fa-edit.fa-2x
-      span &nbsp;
-      span &nbsp;
-      span &nbsp;
-      = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
-        i.fas.fa-trash.fa-2x
+    - if current_user == @worship.user
+      .inline_block.worship_header_items
+        = link_to edit_worship_path(@worship.id), 'data-turbolinks': false do 
+          i.fas.fa-edit.fa-2x
+        span &nbsp;
+        span &nbsp;
+        span &nbsp;
+        = link_to worship_path(@worship.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do 
+          i.fas.fa-trash.fa-2x
+    - else
+      .inline_block.worship_header_items
+        |
   .card-body  
     h4.mb-3 
       strong = @worship.shinto.name

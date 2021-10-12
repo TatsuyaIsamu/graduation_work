@@ -31,6 +31,7 @@ class WorshipsController < ApplicationController
   end
 
   def edit
+    forbid_other_user_access
     @shinto = @worship.shinto
     @shinto_params = @worship.worship_params
     gon.star_array = []
@@ -50,10 +51,12 @@ class WorshipsController < ApplicationController
     end
     if params[:back]
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
+      @worship.worship_params.destroy_all
+      @worship.worship_params.build
       render :new
     else
       @worship.save
-      render :gosyuin 
+      render :gosyuin, layout: "index" 
     end
   end
 
@@ -78,6 +81,7 @@ class WorshipsController < ApplicationController
   def destroy
     worship_day = @worship.worship_day
     @worship.destroy
+    flash[:notice] = "参拝記録を削除しました"
     redirect_to worships_url(worship_day.to_date.beginning_of_month)
   end
 
@@ -97,15 +101,16 @@ class WorshipsController < ApplicationController
 
   def confirm
     @worship = Worship.new(worship_params)
-    gon.star_array = []
-    @worship.worship_params.each_with_index do |param, index|
-      gon.star_array << {"confirm_star_count_#{index}": param.points}
-    end
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
+      @worship.worship_params.destroy_all
       @worship.worship_params.build
       flash.now[:alert] = "参拝日を入力して下さい"
       render :new 
+    end
+    gon.star_array = []
+    @worship.worship_params.each_with_index do |param, index|
+      gon.star_array << {"confirm_star_count_#{index}": param.points}
     end
   end
 
@@ -132,5 +137,9 @@ class WorshipsController < ApplicationController
 
   def worship_params
     params.require(:worship).permit(:worship_day, :memo, :image, :image_cache, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
+  end
+  
+  def forbid_other_user_access
+    redirect_to home_path, alert: "アクセスできません" if current_user != @worship.user
   end
 end

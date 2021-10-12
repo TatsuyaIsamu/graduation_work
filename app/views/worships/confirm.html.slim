@@ -2,25 +2,24 @@ h2.mb-4.font-weight-bold 確認画面
 
 = form_with(model: @worship, local: true) do |f|
   .card.confirm
-    .card-body.confirm
+    .card-body
       .row
         = image_tag @worship.image.url, class: "picture_size"
-        
-      .row.worship_confirm
+      .row.worship_confirm.mt-4
         .offset-md-3
-        .col-md-2 
+        .col-md-2.small  
           strong 神社名:
         .col-md-4 = @worship.shinto.name
 
       .row.worship_confirm
         .offset-md-3
-        .col-md-2 
+        .col-md-2.small 
           strong 参拝日:
         .col-md-4 = @worship.worship_day
 
       .row.worship_confirm
         .offset-md-3
-        .col-md-2 
+        .col-md-2.small
           strong 天気:
         .col-md-4
           - if @worship.weather
@@ -31,19 +30,18 @@ h2.mb-4.font-weight-bold 確認画面
         - @worship.worship_params.each_with_index do |param, index|
           .row.worship_confirm
             .offset-md-3
-            .col-md-2 
+            .col-md-2.small
               strong = param.title
-              |:
             .col-md-4 class = "confirm_star_count_#{index}" 
           .row.worship_confirm
             .offset-md-3
-            .col-md-2 
+            .col-md-2.small
               strong 一言メモ:
             .col-md-4 = param.memo
       .confirm_memo
         .row.worship_confirm
           .offset-md-3
-          .col-md-2 
+          .col-md-2.small 
             strong メモ:
           .col-md-4 = @worship.memo
 
