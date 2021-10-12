@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :worship do
-    worship_day {"2021-08-21"}
+    worship_day {Date.today}
     weather  {2}
     image  {"/noimage.png"}
     memo  {"testMemo"}
