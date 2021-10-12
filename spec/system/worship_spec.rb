@@ -18,7 +18,7 @@ RSpec.describe Worship, type: :system do
         end
       end
     end
-    describe '神社の参拝画面から確認画面の遷移' do
+    describe '神社の参拝画面から確認画面のデータの受け渡し' do
       before do
         visit new_worship_path(shinto_id: test_shinto.id)
       end
@@ -76,8 +76,21 @@ RSpec.describe Worship, type: :system do
           expect(page).to have_content("testMemo")
           expect(page).to have_content("雨")
           expect(page).to have_selector("img[src$='test.jpg']")
-
-          
+        end
+      end
+      describe '画像のプレビュー機能' do
+        context '画像をセットしたとき' do
+          it '画像が非同期で画面に反映される' do
+            attach_file 'inputFile', "#{Rails.root}/spec/factories/test.jpg", make_visible: true
+            expect(find(".custom-file-label").text).to eq("test.jpg")
+          end
+        end
+        context '画像の取消ボタンを押したとき' do
+          it '画像が削除される' do
+            attach_file 'inputFile', "#{Rails.root}/spec/factories/test.jpg", make_visible: true
+            click_on "inputFileReset"
+            expect(find(".custom-file-label").text).not_to eq("test.jpg")
+          end
         end
       end
     end
