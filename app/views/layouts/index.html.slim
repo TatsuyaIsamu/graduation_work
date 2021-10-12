@@ -16,28 +16,32 @@ html
     script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
   body
-  .text-center
-    = yield
-    - flash.each do |type, msg|
-      - type = 'success' if type == 'notice'
-      javascript:
-        toastr.options = {
-        "closeButton": false,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "400",
-        "hideDuration": "1300",
-        "timeOut": "800",
-        "extendedTimeOut": "800",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-        }
-        $(window).on("load", function() {
-        toastr['#{type}']('#{msg}');
-        })
+    - if controller_name == "worships" 
+      .container
+        = yield 
+    - else
+      .text-center
+        = yield
+        - flash.each do |type, msg|
+          - type = 'success' if type == 'notice'
+          javascript:
+            toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "400",
+            "hideDuration": "1300",
+            "timeOut": "800",
+            "extendedTimeOut": "800",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+            }
+            $(window).on("load", function() {
+            toastr['#{type}']('#{msg}');
+            })

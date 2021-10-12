@@ -10,4 +10,8 @@ module ApplicationHelper
       worship_path
     end
   end
+
+  def action_new_create_confirm
+    
+  end
 end

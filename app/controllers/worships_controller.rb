@@ -55,7 +55,7 @@ class WorshipsController < ApplicationController
       render :new
     else
       @worship.save
-      render :gosyuin 
+      render :gosyuin, layout: "index" 
     end
   end
 
