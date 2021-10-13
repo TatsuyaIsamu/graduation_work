@@ -1,44 +1,58 @@
 RSpec.describe Relationship, type: :system do
-  describe  '神社のお気に入り機能' do
+  describe  'フォロー機能' do
     let(:user_introduction) {create(:user_introduction)}
-    let(:shinto){create(:test_shinto)}
+    let(:other_user) {create(:other_user)}
     before do
       user_introduction
+      other_user
+      create(:user_introduction, user_id: other_user.id)
       login(user_introduction.user)
-      shinto
     end
-    context '神社のお気に入りをしたとき' do
-      it  '神社がお気に入りされてお気に入りを解除するボタンが表示される' do
-        visit shinto_path(shinto.id)
-        find('.fa-star').click
-        expect(page).to have_content('解除する')
-      end
-    end
-    context '解除するボタンをおしたとき' do
-      it  'お気にいりが解除される' do
-        visit shinto_path(shinto.id)
-        find('.fa-star').click
-        find('.fa-star').click
-        expect(page).to have_content('お気に入りをする')
-      end
-    end
-    context 'お気に入りした神社が' do
-      it 'Myjinja の画面に表示される' do
-        visit shinto_path(shinto.id)
-        find('.fa-star').click
+    context 'ユーザーをフォローするボタンをおしたとき' do
+      it  'フォローを解除するボタンが表示される' do
+        visit search_users_path
+        fill_in "q[name_cont]", with: "otheruser"
+        click_on 'button'
+        page.all('.btn-outline-primary')[1].click
         sleep 0.5
-        visit favorite_shintos_path
-        expect(page).to have_content('test神社')
+        expect(page.all('.btn-outline-primary')[1].text).to have_content("フォローを解除")
       end
     end
-    context 'お気に入りを解除した神社は' do
-      it 'Myjinja の画面に表示されない' do
-        visit shinto_path(shinto.id)
-        find('.fa-star').click
-        find('.fa-star').click
+    context 'ユーザーをフォローを解除するボタンをおしたとき' do
+      it  'フォローをするボタンが表示される' do
+        visit search_users_path
+        fill_in "q[name_cont]", with: "otheruser"
+        click_on 'button'
+        page.all('.btn-outline-primary')[1].click
         sleep 0.5
-        visit favorite_shintos_path
-        expect(page).not_to have_content('test神社')
+        page.all('.btn-outline-primary')[1].click
+        sleep 0.5
+        expect(page.all('.btn-outline-primary')[1].text).to have_content("フォローをする")
+      end
+    end
+    context '他のユーザーをフォローしたとき' do
+      it  '友達一覧のページに表示される' do
+        visit search_users_path
+        fill_in "q[name_cont]", with: "otheruser"
+        click_on 'button'
+        page.all('.btn-outline-primary')[1].click
+        sleep 0.5
+        visit users_path
+        expect(page).to have_content("otheruser")
+      end
+    end
+    context 'フォローを解除したとき' do
+      it  '友達一覧のページから消える' do
+        visit search_users_path
+        fill_in "q[name_cont]", with: "otheruser"
+        click_on 'button'
+        page.all('.btn-outline-primary')[1].click
+        sleep 0.5
+        visit users_path
+        page.all('.btn-outline-primary')[1].click
+        sleep 0.5
+        visit users_path
+        expect(page).not_to have_content("otheruser")
       end
     end
   end

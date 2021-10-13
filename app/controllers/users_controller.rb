@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def search
     @q = User.ransack(params[:q])
     unless params[:q].blank?
-      @users = @q.result(distinct: true).page(params[:page]).per(6)
+      @users = @q.result(distinct: true)
+      @users = User.where(id: @users.reject{|user| user == current_user}.pluck(:id)).page(params[:page]).per(6)
     else
       @users = nil
     end

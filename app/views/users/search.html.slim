@@ -4,6 +4,8 @@
 - unless @users == nil
   .row.user_card_row
     - @users.each do |user|
+      - if user == current_user 
+        -  next
       .user_container.col-md-6
         .user_card
           .card
