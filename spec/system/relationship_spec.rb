@@ -1,4 +1,4 @@
-RSpec.describe FavoriteWorship, type: :system do
+RSpec.describe Relationship, type: :system do
   describe  '神社のお気に入り機能' do
     let(:user_introduction) {create(:user_introduction)}
     let(:shinto){create(:test_shinto)}
