@@ -10,11 +10,12 @@ class CommentsController < ApplicationController
   def create
     @comment = @worship.comments.build(comment_params)
     if @comment.save
-      flash.now[:notice] = 'コメントを送信しました' 
+      flash.now[:notice] = 'コメントを送信しました'
+      render :index
     else
       flash.now[:alert] = 'コメントを入力して下さい' 
+      render :failure
     end
-    render :index
   end
 
   def edit

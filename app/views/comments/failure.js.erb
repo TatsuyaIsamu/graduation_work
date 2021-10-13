@@ -1,7 +1,4 @@
 $("#comments_area").html("<%= j(render 'share/worship_comments', { comments: @comment.worship.comments.order(created_at: :desc).limit(5), worship: @comment.worship }) %>");
-$("textarea").val('');
 $(".worship_notice").text('');
-$("#alert").removeClass()
-$("#alert").text('')
-$("#notice_<%= @comment.id%>").html("<%= j flash[:notice] %>");
-$("#notice_<%= @comment.id%>").addClass("alert-success alert")
+$("#alert").html("<%= j flash[:alert] %>");
+$("#alert").addClass("alert alert-danger")
