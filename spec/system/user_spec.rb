@@ -88,4 +88,29 @@ RSpec.describe User, type: :system do
       end
     end
   end
+  describe  'ユーザーの検索機能' do
+    let(:user){create(:user)}
+    let(:other_user){create(:other_user)}
+    before do
+      create(:user_introduction, user_id: user.id)
+      create(:user_introduction, user_id: other_user.id)
+      login(user)
+    end
+    context 'ユーザーの検索をしたとき' do
+      it  'ユーザーの検索結果に表示される' do
+        visit search_users_path
+        fill_in "q[name_cont]", with: "otheruser"
+        click_on 'button'
+        expect(page).to have_content("otheruser")
+      end
+    end
+    context '存在しないユーザーの検索をしたとき' do
+      it  'ユーザーの検索結果に何も表示されない' do
+        visit search_users_path
+        fill_in "q[name_cont]", with: "noname"
+        click_on 'button'
+        expect(page).not_to have_content("noname")
+      end
+    end
+  end
 end
