@@ -10,7 +10,7 @@ RSpec.describe RankingItem, type: :system do
     context '１位の神社を更新したとき' do
       it  '１位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
-        find('.rspec_edit_ranking1').click
+        page.all('.fa-edit')[1].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
@@ -23,7 +23,7 @@ RSpec.describe RankingItem, type: :system do
     context '２位の神社を更新したとき' do
       it  '２位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
-        find('.rspec_edit_ranking2').click
+        page.all('.fa-edit')[2].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
@@ -36,7 +36,7 @@ RSpec.describe RankingItem, type: :system do
     context '３位の神社を更新したとき' do
       it  '３位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
-        find('.rspec_edit_ranking3').click
+        page.all('.fa-edit')[3].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
