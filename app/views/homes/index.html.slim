@@ -1,4 +1,4 @@
-h2.mb-4.font-weight-bold 新しい投稿あ
+h2.mb-4.font-weight-bold 新しい投稿
 .row
   - @worships.each do |worship|
     .col-md-4.worship_card
@@ -12,7 +12,7 @@ h2.mb-4.font-weight-bold 新しい投稿あ
               br
               = worship.user.name 
           - if worship.shinto.image.present? 
-            img.worship_img.mt-3 src="/shinto/shinto0#{worship.shinto.id}.jpg"
+            img.worship_img.mt-3 src="#{worship.shinto.image}.jpg"
           - else 
             img.worship_img src="/noimage.png"
           .card-body.card_scroll

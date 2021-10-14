@@ -42,7 +42,7 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
       strong １位
     p
       - if @ranking1.ranking_items[0].shinto.present? 
-        img.card-img-top src="/shinto/shinto0#{@ranking1.ranking_items[0].shinto.id}.jpg"
+        img.card-img-top src="#{@ranking1.ranking_items[0].shinto.image}.jpg"
       - else 
         img.card-img-top src="/shrine_default.png"
     .card-body
@@ -67,7 +67,7 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
       strong ２位
     p
       - if @ranking2.ranking_items[0].shinto.present? 
-        img.card-img-top src="/shinto/shinto0#{@ranking2.ranking_items[0].shinto.id}.jpg"
+        img.card-img-top src="#{@ranking2.ranking_items[0].shinto.image}.jpg"
       - else 
         img.card-img-top src="/shrine_default.png"
     .card-body
@@ -92,7 +92,7 @@ h2.mt-5.mb-3.font-weight-bold 神社ランキング
       strong ３位
     p
       - if @ranking3.ranking_items[0].shinto.present? 
-        img.card-img-top src="/shinto/shinto0#{@ranking3.ranking_items[0].shinto.id}.jpg"
+        img.card-img-top src="#{@ranking3.ranking_items[0].shinto.image}.jpg"
       - else 
         img.card-img-top src="/shrine_default.png"
     .card-body

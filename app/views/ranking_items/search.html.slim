@@ -1,2 +1,3 @@
 h2.mb-4.font-weight-bold  神社一覧
 = render partial: "share/simple_shinto_index", locals: {shintos: @shintos, ranking_id: @ranking_id, ranking_item_id: @ranking_item_id} 
+= paginate @shintos

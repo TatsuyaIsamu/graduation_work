@@ -24,6 +24,7 @@
       :id , {
         id: n+1,
         ranking_id: n+1,
+        shinto_id: shinto_rand
       }
     )
   end
