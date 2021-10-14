@@ -24,8 +24,10 @@ $ git clone https://github.com/TatsuyaIsamu/graduation_work.git
 $ cd graduation_work  
 $ bundle install  
 $ rails db:create && rails db:migrate  
+$ rails db:seed_fu  
 $ rails s  
 ```
+
 ## カタログ設計
 
 https://docs.google.com/spreadsheets/d/1NJ2Dy1KI2wu31FM1h7kYqJw95OD9Y467HX9-wZsO_gQ/edit?usp=sharing

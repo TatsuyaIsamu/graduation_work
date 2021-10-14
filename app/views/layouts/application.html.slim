@@ -48,7 +48,9 @@ html
                 li = link_to "ユーザーを検索する", search_users_path, class: "dropdown-item"
                 li = link_to "お問い合わせ", new_contact_path, class: "dropdown-item" 
                 - if signed_in?
-                = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: '本当に退会しますか？' }
+                  = link_to "退会する", user_registration_path, method: :delete, class: "dropdown-item", data: { confirm: '本当に退会しますか？' }
+                  - if current_user.admin 
+                    = link_to "管理者画面へ", rails_admin_path, class: "dropdown-item" 
       .drawer.drawer--left
         .drawer-container role="banner" 
           .drawer-navbar-header
