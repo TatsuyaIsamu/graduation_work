@@ -40,6 +40,7 @@ gem 'jquery-ui-rails'
 gem "toastr-rails"
 gem 'rmagick'
 gem 'fog-aws'
+gem 'letter_opener_web'
 
 
 group :development, :test do
@@ -58,7 +59,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'html2slim'
-  gem 'letter_opener_web'
 end
 
 group :test do
