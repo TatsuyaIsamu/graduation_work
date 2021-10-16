@@ -36,7 +36,8 @@ UserIntroduction.seed(
   {
     id: 1,
     user_id: 1,
-    address: 0,  
+    address: 0, 
+    introduction: Faker::JapaneseMedia::StudioGhibli.quote, 
   }
 )
 3.times do |n|
