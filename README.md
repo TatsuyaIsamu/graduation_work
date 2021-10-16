@@ -29,7 +29,7 @@ $ git clone https://github.com/TatsuyaIsamu/graduation_work.git
 $ cd graduation_work  
 $ bundle install  
 $ rails db:create && rails db:migrate  
-$ rails db:seed_fu  
+$ rails db:seed_fu FIXTURE_PATH=db/fixtures/production 
 $ rails s  
 ```
 

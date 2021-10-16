@@ -43,9 +43,9 @@ class User < ApplicationRecord
     end
   end
   def self.admin_guest
-    find_or_create_by!(email: 'admin_guest@gmail.com') do |user|
+    find_or_create_by!(email: 'admin@gmail.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "管理者ゲストユーザー"
+      user.name = "admin_user"
       user.admin = true
       a = user.rankings.build(rank: 1)
       a.ranking_items.build.save

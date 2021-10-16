@@ -49,7 +49,7 @@ RSpec.describe User, type: :system do
         it  'ホーム画面にリダイレクトされる' do
           login(create(:user_introduction).user)
           visit root_path
-          expect(page).to have_content("新しい投稿")
+          expect(page).to have_content("みんなの投稿一覧")
         end
       end
       context 'ログインしているユーザーが signup ページにアクセスしたとき' do
