@@ -75,7 +75,7 @@ end
   3.times do |n|
     Ranking.seed(
       :id,{
-        id: i*3+n+1+1,
+        id: i*3+n+1+3,
         rank: n+1,
         user_id: i+2
       }
@@ -118,7 +118,7 @@ shinto_id = [*1..90]
 
 
 50.times do |i|
-  rand = rand(1..99-i) + 1
+  rand = rand(1..90-i) + 1
   if rand <= 0
       rand = rand + i + 1
   end
