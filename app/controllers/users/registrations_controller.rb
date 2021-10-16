@@ -14,15 +14,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    if  params[:user][:email].blank? ||  params[:user][:password].blank?
+      flash.now[:alert] = "Email と パスワードを入力して下さい"
+    end
     super
-    a = resource.rankings.build(rank: 1)
-    a.ranking_items.build.save
-    b = resource.rankings.build(rank: 2)
-    b.ranking_items.build.save
-    c = resource.rankings.build(rank: 3)
-    c.ranking_items.build.save
-    resource.build_user_introduction
-    resource.save
+    unless resource.id == nil
+      a = resource.rankings.build(rank: 1)
+      a.ranking_items.build.save
+      b = resource.rankings.build(rank: 2)
+      b.ranking_items.build.save
+      c = resource.rankings.build(rank: 3)
+      c.ranking_items.build.save
+      resource.build_user_introduction
+      resource.save
+    end
   end
 
   # GET /resource/edit

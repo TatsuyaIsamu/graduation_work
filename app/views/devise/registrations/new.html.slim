@@ -3,6 +3,9 @@
   img src="/logo.png"
   h2
     = t('.sign_up')
+  - if alert 
+    p.alert.alert-danger
+      strong = alert
   form.form-signin
     .form-row
       = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "名前", class: "form-control"
