@@ -22,10 +22,10 @@ default: &default
   password: password
 
 
-  host: <%= Rails.application.credentials.rds[:host] %>
-  database: <%= Rails.application.credentials.rds[:database] %>
-  username: <%= Rails.application.credentials.rds[:username] %>
-  password: <%= Rails.application.credentials.rds[:password] %>
+  # host: <%= Rails.application.credentials.rds[:host] %>
+  # database: <%= Rails.application.credentials.rds[:database] %>
+  # username: <%= Rails.application.credentials.rds[:username] %>
+  # password: <%= Rails.application.credentials.rds[:password] %>
 
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -97,6 +97,6 @@ production:
 
   # RDS
   host: <%= Rails.application.credentials.rds[:host] %>
-  database: <%= Rails.application.credentials.rds[:database] %>
+  database: graduation_work_production
   username: <%= Rails.application.credentials.rds[:username] %>
   password: <%= Rails.application.credentials.rds[:password] %>
