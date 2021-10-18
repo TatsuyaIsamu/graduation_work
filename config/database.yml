@@ -19,7 +19,7 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password: 
+  password: password
 
 
   # host: <%= Rails.application.credentials.rds[:host] %>
@@ -97,6 +97,6 @@ production:
 
   # RDS
   host: <%= Rails.application.credentials.rds[:host] %>
-  database: graduation_work_production
+  database: <%= Rails.application.credentials.rds[:database] %>
   username: <%= Rails.application.credentials.rds[:username] %>
   password: <%= Rails.application.credentials.rds[:password] %>
