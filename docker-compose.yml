@@ -10,8 +10,8 @@ services:
       - public-data:/graduation_work/public
       - tmp-data:/graduation_work/tmp
       - log-data:/graduation_work/log
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
   # db:
   #   image: postgres
   #   ports:
