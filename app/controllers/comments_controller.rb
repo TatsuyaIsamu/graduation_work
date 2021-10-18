@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       flash.now[:notice] = 'コメントを送信しました'
       render :index
     else
-      flash.now[:alert] = ' コメントを入力して下さい' 
+      flash.now[:alert] = 'コメントを入力して下さい' 
       render :failure
     end
   end
