@@ -10,15 +10,16 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    respond_to do |format|
-      if @contact.save
-        ContactMailer.contact_mail(@contact).deliver 
-        format.html { redirect_to @contact, notice: "Contact was successfully created." }
-        format.json { render :show, status: :created, location: @contact }
+    if @contact.save
+      ContactMailer.contact_mail(@contact).deliver 
+      redirect_to @contact, notice: "送信しました"
+    else
+      if @contact.email.blank?
+        flash.now[:alert] = "Emailアドレスを入力して下さい"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        flash.now[:alert] = "Emailアドレスが不正です"
       end
+      render :new
     end
   end
   private
