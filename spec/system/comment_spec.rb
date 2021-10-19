@@ -32,9 +32,10 @@ RSpec.describe Comment, type: :system do
           visit worship_path(worship.id)
           6.times do |i|
             fill_in "comment[comment]", with: "message#{i}"
+            sleep 0.5
             click_on "送信する"
           end
-          sleep 1.0
+          sleep 3.0
           expect(page).not_to have_content("message0")
         end
       end
