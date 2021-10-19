@@ -9,17 +9,21 @@ threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+
 
 # Specifies the `environment` that Puma will run in.
 
-# environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
-# 本番環境時に以下をアクティブにする
-environment ENV.fetch("RAILS_ENV") { "production" }
+
+# 開発環境
+environment ENV.fetch("RAILS_ENV") { "development" }
+port        ENV.fetch("PORT") { 3000 }
+
+# 本番環境時
+# environment ENV.fetch("RAILS_ENV") { "production" }
 
 
 # Specifies the number of `workers` to boot in clustered mode.
@@ -39,7 +43,9 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
-app_root = File.expand_path("../..", __FILE__)
-bind "unix://#{app_root}/tmp/sockets/puma.sock"
 
-stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
+# Docker環境
+# app_root = File.expand_path("../..", __FILE__)
+# bind "unix://#{app_root}/tmp/sockets/puma.sock"
+
+# stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
