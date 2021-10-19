@@ -18,9 +18,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   # ローカル使用の際は以下をコメントアウト
-  host: db
-  username: postgres
-  password: password
+  # host: db
+  # username: postgres
+  # password: password
 
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
