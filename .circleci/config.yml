@@ -8,11 +8,9 @@ jobs:
           - RAILS_ENV: 'test'
       - image: circleci/postgres:9.6
         environment:
-          DATABASE_NAME: graduation_work_test
-          DATABASE_USER: postgres
-          DATABASE_PASSWORD: ""
-          DATABASE_HOST: 127.0.0.1
-          DATABASE_PORT: 5432
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: test
     working_directory: ~/repo
     steps:
       - checkout
