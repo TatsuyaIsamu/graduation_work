@@ -63,7 +63,7 @@ development:
 test:
   <<: *default
   database: graduation_work_test
-  host: test # 追加
+  host: postgres # 追加
   username: postgres # 追加
   password: password # 追加
 

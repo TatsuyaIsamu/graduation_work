@@ -10,7 +10,8 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-          POSTGRES_DB: test
+          POSTGRES_DB: graduation_work_test
+          POSTGRES_HOST: postgres
     working_directory: ~/repo
     steps:
       - checkout
