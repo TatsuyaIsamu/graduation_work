@@ -19,11 +19,11 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 
 # 開発環境
-environment ENV.fetch("RAILS_ENV") { "development" }
-port        ENV.fetch("PORT") { 3000 }
+# environment ENV.fetch("RAILS_ENV") { "development" }
+# port        ENV.fetch("PORT") { 3000 }
 
 # 本番環境時
-# environment ENV.fetch("RAILS_ENV") { "production" }
+environment ENV.fetch("RAILS_ENV") { "production" }
 
 
 # Specifies the number of `workers` to boot in clustered mode.

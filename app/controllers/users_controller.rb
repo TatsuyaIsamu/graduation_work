@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @q = User.ransack(params[:q])
     unless params[:q].blank?
       @users = @q.result(distinct: true)
-      @users = User.where(id: @users.reject{|user| user == current_user}.pluck(:id)).page(params[:page]).per(6)
+      @users = Kaminari.paginate_array(@users.reject{|user| user == current_user}).page(params[:page]).per(6)
     else
       @users = nil
     end
