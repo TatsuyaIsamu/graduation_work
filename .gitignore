@@ -30,4 +30,4 @@
 .env
 /.env
 /public/uploads
-/public/shinto
+# /public/shinto
