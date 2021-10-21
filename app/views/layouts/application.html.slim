@@ -74,8 +74,6 @@ html
       = yield
       footer.footer 
         p Copyright © 2021 Along With Your Kamisama .
-
-
       - flash.each do |type, msg|
         - type = 'success' if type == 'notice'
         - type = 'error' if type == 'alert'
