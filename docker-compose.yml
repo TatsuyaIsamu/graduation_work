@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/graduation_work:cached
       - public-data:/graduation_work/public:delegated
-      - tmp-data:/graduation_work/tmp:cached
+      - tmp-data:/graduation_work/tmp
       - log-data:/graduation_work/log:cached
 
       # 本番環境の際は以下をコメントアウト
