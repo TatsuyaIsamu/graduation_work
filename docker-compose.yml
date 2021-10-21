@@ -5,10 +5,10 @@ services:
       context: .
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/graduation_work
-      - public-data:/graduation_work/public
-      - tmp-data:/graduation_work/tmp
-      - log-data:/graduation_work/log
+      - .:/graduation_work:cached
+      - public-data:/graduation_work/public:delegated
+      - tmp-data:/graduation_work/tmp:cached
+      - log-data:/graduation_work/log:cached
 
       # 本番環境の際は以下をコメントアウト
   #   depends_on:
@@ -25,8 +25,8 @@ services:
     build:
       context: containers/nginx
     volumes:
-      - public-data:/graduation_work/public
-      - tmp-data:/graduation_work/tmp
+      - public-data:/graduation_work/public:delegated
+      - tmp-data:/graduation_work/tmp:cached
     ports:
       - 80:80
     depends_on:

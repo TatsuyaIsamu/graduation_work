@@ -20,7 +20,7 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # 開発環境
 # environment ENV.fetch("RAILS_ENV") { "development" }
-# port        ENV.fetch("PORT") { 3000 }
+port        ENV.fetch("PORT") { 3000 }
 
 # 本番環境時
 environment ENV.fetch("RAILS_ENV") { "production" }
@@ -45,7 +45,7 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 plugin :tmp_restart
 
 # Docker環境
-# app_root = File.expand_path("../..", __FILE__)
-# bind "unix://#{app_root}/tmp/sockets/puma.sock"
+app_root = File.expand_path("../..", __FILE__)
+bind "unix://#{app_root}/tmp/sockets/puma.sock"
 
-# stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
+stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
