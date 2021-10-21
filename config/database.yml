@@ -33,7 +33,6 @@ development:
   # The specified database role being used to connect to postgr
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: graduation_work
 
   # The password associated with the postgres role (username).
   #password:
