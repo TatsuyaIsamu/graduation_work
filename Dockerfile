@@ -15,7 +15,7 @@ COPY Gemfile /graduation_work/Gemfile
 COPY Gemfile.lock /graduation_work/Gemfile.lock
 
 RUN gem install bundler
-RUN bundle update
+RUN bundle install
 
 COPY . /graduation_work
 
