@@ -113,6 +113,13 @@
   }
 }
 
+.dammy_gosyuin_page {
+  background-size: 400px 600px;
+  background-image: image-url("/dammy_gosyuin.png");
+  background-color: bisque;
+  z-index: 1000;
+}
+
 .gosyuin_hard {
   background-image: image-url("/gosyuin_hard.png");
   background-repeat: no-repeat;

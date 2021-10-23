@@ -8,5 +8,8 @@
         .gosyuin_book_day = worship.shinto.name
         - if worship.worship_day
           .gosyuin_book_day = convert_kansuji(worship.worship_day.strftime("%Y年%m月%d日"))
+    - if @worships.count % 2 != 0
+      .dammy_gosyuin_page
+    .hard.gosyuin_hard_reverse
 .mt-4 
   strong 端をクリックするとページがめくれます
