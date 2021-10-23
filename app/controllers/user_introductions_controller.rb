@@ -46,10 +46,10 @@ class UserIntroductionsController < ApplicationController
   end
 
   def forbid_other_user_access
-    unless @user_introduction == nil
+    # unless @user_introduction == nil
       if current_user.user_introduction != @user_introduction
         redirect_to home_path, alert: "アクセスできません" 
       end
-    end
+    # end
   end
 end
