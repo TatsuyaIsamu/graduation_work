@@ -76,26 +76,34 @@
   background-size: 400px 600px;
   background-image: image-url("/gosyuin_hard_reverse.png");
 }
+
+.gosyuin_pages {
+  display: flex;
+  // flex-direction: column;
+  flex-wrap: wrap;
+}
 .gosyuin_book {
   display: flex;
   margin: auto;
   font-size: 50px;
   font-family: "STKaiti", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
   width: 800px;
-  height: 600px;
+  height: 0px;
   border-radius: 15%;
   .gosyuin_page {
     background-image: image-url("/gosyuin.png");
     background-repeat: no-repeat;
     background-size: 400px 600px;
+    width: 570px;
     -ms-writing-mode: tb-rl;
     writing-mode: vertical-rl;
     text-orientation: upright;
+    padding-top: 15px;
     display: flex;
     flex-direction: column;
     gap: 0px 125px;
     .dammy_div {
-      width: 155px;
+      width: 165px;
     }
     .gosyuin_book_name {
       margin: auto ;
@@ -104,7 +112,7 @@
       -ms-writing-mode: tb-rl;
       writing-mode: vertical-rl;
       text-orientation: upright;
-      font-size: 37px;
+      font-size: 33px;
       width: 100px;
       height: 500px;
       margin: auto ;
@@ -113,9 +121,21 @@
   }
 }
 
+.dammy_gosyuin_page {
+  background-size: 400px 600px;
+  background-image: image-url("/dammy_gosyuin.png");
+  background-color: bisque;
+  z-index: 1000;
+}
+
 .gosyuin_hard {
   background-image: image-url("/gosyuin_hard.png");
   background-repeat: no-repeat;
   background-size: 400px 600px;
   border-radius: 0;
+}
+
+.page_index {
+  width: 400px;
+  background-color: white;
 }
