@@ -142,7 +142,7 @@ td {
   }
 }
 
-.worship_calendar:before{/*各項目ごとのアイコン設定*/
+.worship_calendar:before{
   content: '\f073';
   font-size: 2rem;
   height: 50px;
@@ -160,21 +160,21 @@ td {
   height: 50px;
 }
 
-.navbar-nav li> a:before{/*ナビゲーションメニュー共通の設定*/
+.navbar-nav li> a:before{
 	display: block;
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   text-align: center;
 }
 
-.nav-item1 > a:before{/*各項目ごとのアイコン設定*/
+.nav-item1 > a:before{
 	content: '\f2bd';
   font-size: 2.0rem;
   height: 40px;
 }
 
 
-.nav-item2 > a:before{/*各項目ごとのアイコン設定*/
+.nav-item2 > a:before{
   font-size: 2.0rem;
   font-weight:  900;
   content: "\f6a1";
@@ -183,19 +183,19 @@ td {
 
 
 
-.nav-item3 > a:before{/*各項目ごとのアイコン設定*/
+.nav-item3 > a:before{
 	content: '\f0c0';
   font-size: 2.0rem;
   height: 40px;
 }
 
-.nav-item4 > a:before{/*各項目ごとのアイコン設定*/
+.nav-item4 > a:before{
 	content: '\f518';
   font-size: 2.0rem;
   height: 40px;
 }
 
-.nav-item5 > a:before{/*各項目ごとのアイコン設定*/
+.nav-item5 > a:before{
 	content: '\f2f5';
   font-size: 2.0rem;
   height: 40px;

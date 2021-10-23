@@ -58,18 +58,15 @@
 
 
 #magazine{
-	width:800px; //全体幅
-	height:600px; //全体の高さ
-  // background-color: white;
-  // border-radius: 15%;
-  // background-image: image-url("/gosyuin_hard.png");
+	width:800px; 
+	height:600px; 
   background-repeat: no-repeat;
   background-size: 800px 600px;
 }
 
 #magazine .turn-page{
-	width:400px; //1ページ分の幅
-	height:400px;//1ページ分の高さ
+	width:400px; 
+	height:400px;
   background-color: bisque;
 }
 
@@ -97,7 +94,6 @@
     display: flex;
     flex-direction: column;
     gap: 0px 125px;
-    // border-radius: 15%;
     .dammy_div {
       width: 155px;
     }
@@ -116,12 +112,6 @@
 
   }
 }
-// .even {
-//   border-radius: 0 15% 15% 0;
-// }
-// .odd {
-//   border-radius: 15% 0 0 15%;
-// }
 
 .gosyuin_hard {
   background-image: image-url("/gosyuin_hard.png");

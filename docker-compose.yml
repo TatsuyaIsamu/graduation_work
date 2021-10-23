@@ -5,26 +5,26 @@ services:
       context: .
     command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/graduation_work
-      - public-data:/graduation_work/public
+      - .:/graduation_work:cached
+      - public-data:/graduation_work/public:cached
       - tmp-data:/graduation_work/tmp
-      - log-data:/graduation_work/log
+      - log-data:/graduation_work/log:cached
       # 本番環境の際は以下をコメントアウト
-  #   depends_on:
-  #     - db
-  # db:
-  #   image: postgres
-  #   ports:
-  #     - '5432:5432'
-  #   volumes:
-  #     - postgresql-data:/var/lib/postgresql/data
-  #   environment:
-  #     - POSTGRES_PASSWORD=password
+    depends_on:
+      - db
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
   web:
     build:
       context: containers/nginx
     volumes:
-      - public-data:/graduation_work/public
+      - public-data:/graduation_work/public:cached
       - tmp-data:/graduation_work/tmp
     ports:
       - 80:80
