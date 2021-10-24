@@ -78,6 +78,21 @@ RSpec.describe Worship, type: :system do
           expect(page).to have_selector("img[src$='test.jpg']")
         end
       end
+      context '明日以降の参拝日を記載し確認画面に遷移しようとしたとき' do
+        it  'バリデーションに引っかかり、値はフォームに初期値がはいる' do
+          fill_in 'worship[worship_day]', with: Date.today + 2
+          fill_in 'worship[memo]', with: "testMemo"
+          choose '雨'
+          attach_file 'inputFile', "#{Rails.root}/spec/factories/test.jpg", make_visible: true
+          fill_in 'worship[worship_params_attributes][0][title]', with: 'paramsTitle'
+          fill_in 'worship[worship_params_attributes][0][memo]', with: 'paramsMemo'
+          click_on "確認画面へ"
+          expect(page).to have_content("明日以降の日付で申請はできません")
+          expect(page).to have_content("testMemo")
+          expect(page).to have_content("雨")
+          expect(page).to have_selector("img[src$='test.jpg']")
+        end
+      end
       context '情報を記載して確認画面に遷移したあと' do
         it '再び入力画面に戻ったときデータが保持されている' do
           fill_in 'worship[worship_day]', with: "2021-10-09"
