@@ -31,5 +31,14 @@ RSpec.describe Shinto, type: :system do
         expect(page).to have_content("test神社")
       end
     end
+    context '神社詳細画面から参拝画面への遷移' do
+      context '神社詳細画面のこの神社のご朱印をもらうボタンをおしたとき' do
+        it  'その神社が表示される' do
+          visit shinto_path(shinto.id)
+          click_on "この神社の御朱印を申請する"
+          expect(page).to have_content "test神社"
+        end
+      end
+    end
   end
 end
