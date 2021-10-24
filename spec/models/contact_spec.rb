@@ -18,6 +18,16 @@ RSpec.describe Contact, type: :model do
         expect(Contact.new(email: "test")).to be_invalid
       end
     end
+    context "title が空のとき" do
+      it  'バリデーションに引っかかる' do
+        expect(Contact.new(name: "")).to be_invalid
+      end
+    end
+    context "content が空のとき" do
+      it  'バリデーションに引っかかる' do
+        expect(Contact.new(content: "")).to be_invalid
+      end
+    end
   end
 end
 

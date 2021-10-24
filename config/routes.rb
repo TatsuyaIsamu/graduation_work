@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :contacts, only: %i[new create show]
+  resources :contacts, only: %i[index new create show]
   resources :worships do
     resources :comments, only: %i[index edit create update destroy]
     collection do
