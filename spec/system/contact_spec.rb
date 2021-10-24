@@ -20,16 +20,35 @@ RSpec.describe Contact, type: :system do
     describe  'バリデーション機能' do
       context 'emailを空で送信しようとしたとき' do
         it  'エラーメッセージが表示される' do
-          fill_in "contact[email]", with: ""
+          fill_in "contact[name]", with: "test"
+          fill_in "contact[content]", with: "test"
           click_on "送信する"
           expect(page).to have_content("Emailアドレスを入力して下さい")
         end
       end
       context '不正なemailアドレスで送信しようとしたとき' do
         it  'エラーメッセージが表示される' do
+          fill_in "contact[name]", with: "test"
+          fill_in "contact[content]", with: "test"
           fill_in "contact[email]", with: "test"
           click_on "送信する"
           expect(page).to have_content("Emailアドレスが不正です")
+        end
+      end
+      context '名前を空で送信しようとしたとき' do
+        it  'エラーメッセージが表示される' do
+          fill_in "contact[email]", with: "test"
+          fill_in "contact[content]", with: "test"
+          click_on "送信する"
+          expect(page).to have_content("名前を入力して下さい")
+        end
+      end
+      context '内容を空で送信しようとしたとき' do
+        it  'エラーメッセージが表示される' do
+          fill_in "contact[name]", with: "test"
+          fill_in "contact[email]", with: "test"
+          click_on "送信する"
+          expect(page).to have_content("内容を入力して下さい")
         end
       end
     end

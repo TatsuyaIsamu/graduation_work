@@ -25,7 +25,6 @@ class ContactsController < ApplicationController
           flash.now[:alert] << "Emailアドレスが不正です。"
         end
       end
-
       if @contact.name.blank?
         flash[:alert] << "名前を入力して下さい。"
       end
