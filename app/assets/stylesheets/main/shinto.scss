@@ -1,11 +1,11 @@
 .shinto_review {
   padding-top: 10px;
-  width: 80%;
+  width: 70%;
   border-radius: 15px;
   background-color: floralwhite;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 }
 
 .table-hover {
@@ -91,4 +91,16 @@
 .review_form {
   margin-top: 50px;
   margin-bottom: 30px;
+}
+
+.worshipContainer {
+  transition: all .1s;
+  &:hover {
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+  }
+}
+
+.shinto_jumbotron {
+  max-width: 1000px !important;
 }
