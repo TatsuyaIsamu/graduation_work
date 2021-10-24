@@ -1,0 +1,56 @@
+.btnripple2{
+position: relative;
+display:inline-block;
+transition-duration: 3s;
+color:#ccc;
+  outline: none;
+  transition: all .3s;
+}
+
+.btnripple2:hover{
+  background: powderblue;
+  border-radius: 50%;
+  transform: scale(1.1);
+  transition-duration: 0.1s;
+  opacity: 1.0;
+}
+
+/*波形を2つ設定*/
+.btnripple2::after,
+.btnripple2::before {
+  content: '';
+  position: absolute;
+  left: -25%;
+  top: -25%;
+  border: 1px solid white;
+  width: 150%;
+  height: 150%;
+  border-radius: 50%;
+  opacity: 1;
+  animation:3s circleanime linear infinite;
+}
+
+.btnripple2::before {
+  animation-delay:1.0s; 
+}
+
+@keyframes circleanime{
+0%{
+  transform: scale(0.68);
+}
+100%{
+  transform: scale(1.2);
+  opacity: 0;
+}
+}
+
+.btnripple2 span::after {
+  content: '';
+  position: absolute;
+  top: 38%;
+  left: 45%;
+  border: 14px solid transparent;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-left-color: #fff;
+}
