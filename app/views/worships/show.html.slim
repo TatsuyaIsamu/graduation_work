@@ -27,8 +27,9 @@ h2.mb-4.font-weight-bold 参拝詳細
       .inline_block.worship_header_items
         |
   .card-body  
-    h4.mb-3 
-      strong = @worship.shinto.name
+    h4.mb-3
+      = link_to shinto_path(@worship.shinto.id) do
+        strong = @worship.shinto.name
     .jumbotron.worship_jumbotron  
       .row
         .col-md-7 

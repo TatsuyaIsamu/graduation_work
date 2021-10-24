@@ -32,7 +32,7 @@ html
             - if user_signed_in?
               ul.navbar-nav.ml-auto.navbar-expand-sm
                 li.nav-item1  
-                  = link_to "Profile", user_introduction_path(current_user.user_introduction.user.id), 'data-turbolinks': false
+                  = link_to "Profile", user_introduction_path(current_user.user_introduction.user.id), class: "btnripple", 'data-turbolinks': false
                 li.nav-item2
                   = link_to "MyJinja", favorite_shintos_path
                 li.nav-item3
@@ -67,10 +67,8 @@ html
                   = link_to "#{Date.today.months_ago(i).year}年#{Date.today.months_ago(i).month}月の参拝一覧", worships_path(Date.today.months_ago(i).to_date.beginning_of_month), class: "worship_link"
               li.dammy_worships 
         main role="main" 
-
-
       .worshipAdmin 
-        = link_to image_tag("/worship_admin.png"), search_worships_path  
+        = link_to image_tag("/worship_admin.png"), search_worships_path, class: "btnripple2"  
     .container.container_body
       = yield
       footer.footer 
