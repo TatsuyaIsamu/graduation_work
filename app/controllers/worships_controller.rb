@@ -73,7 +73,8 @@ class WorshipsController < ApplicationController
       @shinto_params.each do |param|
         gon.star_array << param.points
       end
-      flash.now[:alert] = "参拝日を入力して下さい"
+      flash.now[:alert] = "参拝日を入力して下さい" if @worship.worship_day.blank?
+      flash.now[:alert] = "明日以降の日付で申請はできません" if @worship.worship_day
       render :edit
     end
   end
@@ -105,7 +106,8 @@ class WorshipsController < ApplicationController
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
       @worship.worship_params.destroy_all
       @worship.worship_params.build
-      flash.now[:alert] = "参拝日を入力して下さい"
+      flash.now[:alert] = "参拝日を入力して下さい" if @worship.worship_day.blank?
+      flash.now[:alert] = "明日以降の日付で申請はできません" if @worship.worship_day
       render :new 
     end
     gon.star_array = []
