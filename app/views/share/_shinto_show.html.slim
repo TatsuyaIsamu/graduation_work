@@ -1,33 +1,6 @@
 .worshipContainer
   .card.mb-3 
-    - if action_name == "index"
-      = link_to shinto_path(shinto.id) do  
-        .row.no-gutters
-          .offset-md-1
-          .col-md-4.my-auto.shinto_img
-            - if shinto.image.present?
-              img.card-img src="#{shinto.image}.jpg"
-            - else 
-              img src="/shrine_default.png"
-            .mb-2 
-            strong.d-inline-block.text-primary
-              | 神社名
-            p.mb-0
-              strong = shinto.name
-          .col-md-7
-            .card-body
-              strong.d-inline-block.text-primary
-                | 住所
-              p.mb-2  = shinto.address.match(/）/)&.post_match 
-              strong.d-inline-block.text-primary
-                | 起源
-              p.mb-2 = shinto.origin_term
-              strong.d-inline-block.text-primary
-                | 総本山
-              p.mb-2
-                - trim_shinto(shinto)
-                = shinto.origin_shrine
-    - else 
+    = link_to shinto_path(shinto.id) do  
       .row.no-gutters
         .offset-md-1
         .col-md-4.my-auto.shinto_img
@@ -35,6 +8,7 @@
             img.card-img src="#{shinto.image}.jpg"
           - else 
             img src="/shrine_default.png"
+          .mb-2 
           strong.d-inline-block.text-primary
             | 神社名
           p.mb-0
@@ -43,7 +17,7 @@
           .card-body
             strong.d-inline-block.text-primary
               | 住所
-            p.mb-2  = shinto.address
+            p.mb-2  = shinto.address.match(/）/)&.post_match 
             strong.d-inline-block.text-primary
               | 起源
             p.mb-2 = shinto.origin_term
