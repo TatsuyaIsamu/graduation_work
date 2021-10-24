@@ -29,7 +29,14 @@ h2.mb-4.font-weight-bold  神社詳細
           = link_to @shinto.original_url, "#{@shinto.original_url}"
         - else 
           |-----
-      = render partial: "like", locals: {shinto: @shinto}
+      .text-right
+        br
+        = render partial: "like", locals: {shinto: @shinto}
+        br
+        br
+        = link_to controller: "worships", action: "new", shinto_id: @shinto.id do
+          i.fas.fa-praying-hands
+          |この神社の御朱印を申請する
   .row
     .col-md-7.shinto_show2
       p.mb-2.text-right
@@ -50,9 +57,6 @@ h4.review_form.font-weight-bold 神社レビュー
 p = link_to "コメントを全て表示する", comment_shinto_path(@shinto.id)
 p = link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
 .dammy_raty
-
-
-
 
 javascript:
   handler = Gmaps.build('Google');
