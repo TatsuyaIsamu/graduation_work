@@ -1,6 +1,7 @@
 .btnripple2{
 position: relative;
 display:inline-block;
+border-radius: 50%;
 transition-duration: 3s;
 color:#ccc;
   outline: none;
@@ -9,9 +10,9 @@ color:#ccc;
 
 .btnripple2:hover{
   background: powderblue;
-  border-radius: 50%;
-  transform: scale(1.1);
-  transition-duration: 0.1s;
+  border-radius: 75%;
+  transform: scale(1.2);
+  transition-duration: 0.5s;
   opacity: 1.0;
 }
 

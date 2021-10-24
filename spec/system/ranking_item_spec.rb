@@ -46,6 +46,38 @@ RSpec.describe RankingItem, type: :system do
         expect(page).to have_content("テストOK")
       end
     end
+    context '神社ランキングの１位に登録された神社が' do
+      it  '神社ランキングの２位に設定しようと検索しても表示されない' do
+        visit user_introduction_path(user_introduction.user_id)
+        page.all('.fa-edit')[1].click
+        fill_in 'q[name_cont]', with: 'test神社'
+        click_on 'button'
+        first('tbody tr').click
+        fill_in "ranking_item[memo]", with: "テストOK"
+        click_on "保存する"
+        visit user_introduction_path(user_introduction.user_id)
+        page.all('.fa-edit')[2].click
+        fill_in 'q[name_cont]', with: 'test神社'
+        click_on 'button'
+        expect(page).not_to have_content('test神社')
+      end
+    end
+    context '神社ランキングの１位に登録された神社が' do
+      it  '神社ランキングの3位に設定しようと検索しても表示されない' do
+        visit user_introduction_path(user_introduction.user_id)
+        page.all('.fa-edit')[1].click
+        fill_in 'q[name_cont]', with: 'test神社'
+        click_on 'button'
+        first('tbody tr').click
+        fill_in "ranking_item[memo]", with: "テストOK"
+        click_on "保存する"
+        visit user_introduction_path(user_introduction.user_id)
+        page.all('.fa-edit')[3].click
+        fill_in 'q[name_cont]', with: 'test神社'
+        click_on 'button'
+        expect(page).not_to have_content('test神社')
+      end
+    end
     describe 'アクセス制限' do
       context '他のユーザーがユーザープロフィールにアクセスしたとき' do
         it  'ランキングの編集ボタンが表示されない' do
