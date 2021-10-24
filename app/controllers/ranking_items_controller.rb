@@ -22,10 +22,11 @@ class RankingItemsController < ApplicationController
   end
 
   def search
+    shintos = current_user.rankings.map{|ranking| ranking.ranking_items[0].shinto_id}
     @ranking_id = params[:ranking_id]
     @ranking_item_id = params[:id]
-    @q = Shinto.ransack(params[:q])
-    @shintos = @q.result(distinct: true).page(params[:page]).per(6)
+    @shintos = Shinto.ransack(params[:q]).result(distinct: true)
+    @shintos = Kaminari.paginate_array( @shintos.reject{|shinto| shintos.include?(shinto.id)}).page(params[:page]).per(6)
   end
 
   private
