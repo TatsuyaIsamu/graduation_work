@@ -55,7 +55,7 @@ h4.review_form.font-weight-bold 神社レビュー
 #comments_area
   = render partial: 'share/shinto_comments', locals: { shinto_user_params: @shinto_user_params, shinto: @shinto }
 p = link_to "コメントを全て表示する", comment_shinto_path(@shinto.id)
-p = link_to 'Back', shintos_path, class: "btn btn-outline-secondary"
+p = link_to 'Back', shintos_path, class: "btn btn-secondary"
 .dammy_raty
 
 javascript:

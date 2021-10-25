@@ -1,7 +1,7 @@
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   img src="/logo.png"
-  h2
+  h3
     = t('.sign_up')
   - if alert 
     p.alert.alert-danger
@@ -17,4 +17,4 @@
       = f.submit t('.sign_up'), class: "btn btn-primary loginOrSigninButton"
     = render "devise/shared/links"
     br
-    = link_to 'TOPへ戻る', root_path, class: "btn btn-outline-secondary"
+    = link_to 'TOPへ戻る', root_path, class: "btn btn-secondary"

@@ -1,6 +1,4 @@
 h2.mb-4.font-weight-bold 神社ランキングを設定する
-- if @shinto == nil
-  h4.mb-4.font-weight-bold 神社を検索する
 = render "share/search"
 
 - unless @shinto == nil
@@ -23,6 +21,6 @@ h2.mb-4.font-weight-bold 神社ランキングを設定する
       = f.text_area :memo, class: "form-control", rows: "4"
     .action.mb-4.mt-4
       = f.submit "保存する", class: "btn btn-primary"
-    = link_to 'Back', user_introduction_path(@ranking.user.user_introduction.user_id) , class: "btn btn-outline-secondary"
+    = link_to 'Back', user_introduction_path(@ranking.user.user_introduction.user_id) , class: "btn btn-secondary"
 
 
