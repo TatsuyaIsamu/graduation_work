@@ -8,20 +8,28 @@
   margin-bottom: 40px;
 }
 
-.table-hover {
+.table_hover {
   border-collapse: separate;
   tr {
     height: 65px;
     border-radius: 20px;
     background-color: floralwhite;
   }
-  
-  th {
-    padding-left: 8px;
-    border-radius: 20px 0 0 20px;
-    padding-right: 15px;
+  thead {
+    .table-light tr td th {
+      &:hover {
+        background-color: white !important;
+      }
+    }
   }
-  
+  tbody {
+    tr {
+      cursor: pointer;
+      &:hover{
+        background-color: burlywood;
+      }
+    }
+  }
   td {
     padding-left: 8px;
     padding-right: 8px;

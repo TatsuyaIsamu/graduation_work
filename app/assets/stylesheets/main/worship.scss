@@ -126,7 +126,6 @@
 }
 
 .worship_info {
-  margin-top: 50px;
   margin-bottom: 30px;
 }
 
@@ -157,7 +156,6 @@
 
 .worship_jumbotron  {
   max-width: 600px;
-  background-color: floralwhite;
   margin: auto;
   margin-bottom: 25px;
   
@@ -166,5 +164,9 @@
 .worship_info {
   min-width: 500px;
   padding-left: 30px;
+  overflow: auto;
 }
 
+.worship_stars_item{
+  border-radius: 30px !important;
+}
