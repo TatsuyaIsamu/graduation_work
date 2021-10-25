@@ -416,16 +416,22 @@ h2 {
   padding: 0.5em;
   display: inline-block;
   line-height: 1.1;
-  background: rgba(193, 188, 189, 0.8);
+  background: rgba(199, 191, 193, 0.7);
   vertical-align: middle;
   border-radius: 25px 0px 0px 25px;
   min-width: 300px;
   padding-right: 50px;
 }
 
+
 h2:before {
-  content: '●';
-  color: rgba(236, 241, 214, 0.85);
+  font-family: "Font Awesome 5 Free";
+  content: '\f1b0';
+  color: rgba(199, 104, 50, 0.692);
   opacity: 0.81;
   margin-right: 8px;
+}
+
+.home_title {
+  margin-bottom: 40px;
 }
