@@ -281,6 +281,45 @@ td {
   }
 }
 
+
+.sample {
+	position: relative;
+	z-index: auto;
+}
+
+.sample .box {
+	position: absolute;
+	width: 350px; /* 吹き出しの幅 */
+	height: 40px; /* 吹き出しの高さ */
+	top: 120px; /* 画像と三角形の高さをプラスした値 */
+	left: 0;
+  font-style: bold;
+  padding-top: 10px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: white;
+	display: none;
+}
+.sample .box:after { /* 三角形を作成 */
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	top: -32px; /* 三角形の高さを２倍した値 */
+	left: 32px;
+	border: 16px solid transparent;
+	border-bottom: 16px solid white;
+}
+.sample .text {
+	position: absolute;
+	font-size: 16px;
+	top: 8px;
+	left: 4px;
+	color: #000;
+}
+.sample:hover .box {
+	z-index: 2;
+	display: block;
+}
 .dropdown {
   padding-top: 8px;
   margin-top: 12px;
