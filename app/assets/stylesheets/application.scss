@@ -22,6 +22,7 @@ body {
 
 .header {
   width: 80%;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -70,10 +71,10 @@ img {
   padding-top: 30px;
   text-align: center;
   margin-right: 20px;
+  padding: 0;
   & a {
     text-decoration: none;
     color: black;
-    height: 30px;
   }
 }
 
@@ -259,6 +260,11 @@ td {
     transition-duration: 0.5s;
   }
 }
+
+.head_container {
+  height: 100px;
+  padding-top: 5px;
+}
 #dropdownMenuButton {
   padding-top: 8px;
   margin-top: 12px;
@@ -440,7 +446,7 @@ h2:before {
 
 .kamisama {
 
-  padding: 18px 30px;
+  padding: 0;
   border-radius: 6px;
   position: relative;
   z-index: 500;
@@ -452,14 +458,15 @@ h2:before {
   width: 50%;
   height: 10px;
   position: absolute;
-  top: 100%;
-  left: 5%;
-  z-index: 499;
+  top: 90%;
+  left: 25%;
+  bottom: 70%;
+  margin-bottom: 35px;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
-  // z-index: -;
   opacity: 0;
   transition: .3s;
 }
+
 .kamisama:hover {
   transform: translateY(-9px);
 }
