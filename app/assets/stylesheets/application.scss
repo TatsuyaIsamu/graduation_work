@@ -299,7 +299,9 @@ td {
 
 .drawer-navbar-header {
   margin-left: 200px;
-  z-index: 2;
+  z-index: 99999;
+  width: 100px;
+  
 }
 
 .drawer-nav {
@@ -434,4 +436,34 @@ h2:before {
 
 .home_title {
   margin-bottom: 40px;
+}
+
+.kamisama {
+
+  padding: 18px 30px;
+  border-radius: 6px;
+  position: relative;
+  z-index: 500;
+  display: inline-block;
+  transition: .5s;
+}
+.kamisama::before {
+  content: "";
+  width: 50%;
+  height: 10px;
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  z-index: 499;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  // z-index: -;
+  opacity: 0;
+  transition: .3s;
+}
+.kamisama:hover {
+  transform: translateY(-9px);
+}
+.kamisama:hover::before {
+  transform: translateY(9px);
+  opacity: 1;
 }
