@@ -22,6 +22,7 @@ body {
 
 .header {
   width: 80%;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -70,10 +71,10 @@ img {
   padding-top: 30px;
   text-align: center;
   margin-right: 20px;
+  padding: 0;
   & a {
     text-decoration: none;
     color: black;
-    height: 30px;
   }
 }
 
@@ -259,6 +260,11 @@ td {
     transition-duration: 0.5s;
   }
 }
+
+.head_container {
+  height: 100px;
+  padding-top: 5px;
+}
 #dropdownMenuButton {
   padding-top: 8px;
   margin-top: 12px;
@@ -299,7 +305,9 @@ td {
 
 .drawer-navbar-header {
   margin-left: 200px;
-  z-index: 2;
+  z-index: 99999;
+  width: 100px;
+  
 }
 
 .drawer-nav {
@@ -315,7 +323,8 @@ td {
   margin-bottom: 60px;
   z-index: 3;
   border-radius: 50%;
-  background-color: powderblue;
+  background: rgba(236, 204, 202, 0.95);
+  opacity: 0.9;
 }
 
 
@@ -323,7 +332,7 @@ td {
   min-width: 350px;
   margin: 25px;
 }
-
+.head_container
 .text-center {
   display: flex;
   justify-content: center;
@@ -416,7 +425,7 @@ h2 {
   padding: 0.5em;
   display: inline-block;
   line-height: 1.1;
-  background: rgba(199, 191, 193, 0.7);
+  background: rgba(236, 228, 202, 0.9);
   vertical-align: middle;
   border-radius: 25px 0px 0px 25px;
   min-width: 300px;
@@ -427,11 +436,43 @@ h2 {
 h2:before {
   font-family: "Font Awesome 5 Free";
   content: '\f1b0';
-  color: rgba(199, 104, 50, 0.692);
+  color: rgba(94, 67, 21, 0.884);
   opacity: 0.81;
-  margin-right: 8px;
+  margin-right: 15px;
+  margin-left: 8px;
 }
 
 .home_title {
   margin-bottom: 40px;
+}
+
+.kamisama {
+
+  padding: 0;
+  border-radius: 6px;
+  position: relative;
+  z-index: 500;
+  display: inline-block;
+  transition: .5s;
+}
+.kamisama::before {
+  content: "";
+  width: 50%;
+  height: 10px;
+  position: absolute;
+  top: 90%;
+  left: 25%;
+  bottom: 70%;
+  margin-bottom: 35px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  opacity: 0;
+  transition: .3s;
+}
+
+.kamisama:hover {
+  transform: translateY(-9px);
+}
+.kamisama:hover::before {
+  transform: translateY(9px);
+  opacity: 1;
 }
