@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
   end
   def index
-    @messages = @conversation.messages
+    @messages = @conversation.messages.order(:created_at)
     if @messages.length > 10
       @over_ten = true
       @messages = Message.where(id: @messages[-10..-1].pluck(:id))
@@ -12,20 +12,29 @@ class MessagesController < ApplicationController
       @over_ten = false
       @messages = @conversation.messages
     end
-    if @messages.last
-      @messages.where.not(user_id: current_user.id)
-    end
     @messages = @messages.order(:created_at)
     @message = @conversation.messages.build
   end
 
+  respond_to? :js
   def create
     @message = @conversation.messages.build(message_params)
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      flash.now[:notice] = 'メッセージを送信しました'
     else
-      render 'index'
+      flash.now[:notice] = '空で送信はできません'
     end
+    @messages = @conversation.messages.order(:created_at)
+    if @messages.length > 10
+      @over_ten = true
+      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+    end
+    if params[:m]
+      @over_ten = false
+      @messages = @conversation.messages
+    end
+    @messages = @messages.order(:created_at)
+    @message = @conversation.messages.build
   end
 
   private

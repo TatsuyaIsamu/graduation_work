@@ -290,11 +290,12 @@ td {
 .sample .box {
 	position: absolute;
 	width: 350px; /* 吹き出しの幅 */
-	height: 40px; /* 吹き出しの高さ */
+	height: 60px; /* 吹き出しの高さ */
 	top: 120px; /* 画像と三角形の高さをプラスした値 */
 	left: 0;
+  margin-bottom: 8px;
   font-style: bold;
-  padding-top: 10px;
+  padding-top: 17px;
 	border-radius: 10px 10px 10px 10px;
 	background-color: white;
 	display: none;
@@ -371,7 +372,6 @@ td {
   min-width: 350px;
   margin: 25px;
 }
-.head_container
 .text-center {
   display: flex;
   justify-content: center;
@@ -415,6 +415,10 @@ td {
 
 .card {
   border-radius: 20px;
+}
+.btn-secondary {
+  color: white !important;
+  min-width: 100px !important;
 }
 
 .card_header_flex {
@@ -475,7 +479,7 @@ h2 {
 h2:before {
   font-family: "Font Awesome 5 Free";
   content: '\f1b0';
-  color: rgba(94, 67, 21, 0.884);
+  color: rgba(147, 211, 173, 0.9);
   opacity: 0.81;
   margin-right: 15px;
   margin-left: 8px;
