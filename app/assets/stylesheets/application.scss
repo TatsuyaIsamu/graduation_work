@@ -366,7 +366,7 @@ td {
   margin-bottom: 60px;
   z-index: 3;
   border-radius: 50%;
-  background: rgba(202, 229, 236, 0.95);
+  background: rgba(202, 210, 236, 0.95);
   opacity: 0.9;
 }
 
@@ -471,20 +471,21 @@ h2 {
   padding: 0.5em;
   display: inline-block;
   line-height: 1.1;
-  background: rgba(236, 228, 202, 0.9);
+  background: rgba(235, 207, 170, 0.986);
   vertical-align: middle;
-  border-radius: 25px 0px 0px 25px;
-  min-width: 300px;
+  border-radius: 20px;
+  min-width: 420px;
   padding-right: 50px;
 }
 
 
 h2:before {
   font-family: "Font Awesome 5 Free";
-  content: '\f1b0';
-  color: rgba(147, 211, 173, 0.9);
+  content: "●";
+  color: rgba(235, 231, 170, 0.986);
   opacity: 0.81;
   margin-right: 15px;
+  
   margin-left: 8px;
 }
 

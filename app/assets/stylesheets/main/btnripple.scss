@@ -9,9 +9,9 @@ color:#ccc;
 }
 
 .btnripple2:hover{
-  background: rgb(202, 226, 236);
+  background: rgba(202, 210, 236, 1.0);
   border-radius: 75%;
-  transform: scale(0.9);
+  transform: scale(0.8);
   transition-duration: 0.5s;
   opacity: 1.0;
 }
