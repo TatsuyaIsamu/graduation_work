@@ -269,6 +269,8 @@ td {
   padding-top: 8px;
   margin-top: 12px;
   margin-left: 20px;
+  margin-right: 40px;
+  margin-bottom: 20px;
   z-index: 10;
 }
 
@@ -325,6 +327,7 @@ td {
   padding-top: 8px;
   margin-top: 12px;
   margin-left: 15px;
+
   position: relative;
 }
 
@@ -363,7 +366,7 @@ td {
   margin-bottom: 60px;
   z-index: 3;
   border-radius: 50%;
-  background: rgba(236, 204, 202, 0.95);
+  background: rgba(202, 229, 236, 0.95);
   opacity: 0.9;
 }
 
@@ -418,7 +421,7 @@ td {
 }
 .btn-secondary {
   color: white !important;
-  min-width: 100px !important;
+  // min-width: 100px !important;
 }
 
 .card_header_flex {
