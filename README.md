@@ -31,6 +31,7 @@ https://www.along-with-your-kamisama.com/
 <br>
 全国約１万件の神社情報がDB上にあり、神社の詳細な情報を確認できます。
 <br>
+<br>
 ④SNS機能
 <br>
 他のユーザーの参拝記録をみることができ、
