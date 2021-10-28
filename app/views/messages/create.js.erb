@@ -1,0 +1,6 @@
+$("#messages").html("<%= j(render 'message', { messages: @messages}) %>");
+$("textarea").val('');
+$("#over_ten").html("<%= j(render 'overten', { over_ten: @over_ten}) %>");
+$("#notice_message").html("<%= j flash[:notice] %>");
+
+$("#notice_message").addClass("alert-success alert")
