@@ -1,22 +1,25 @@
 ## README
 
+<br>
 
 御朱印認定アプリ
 <br>
-Along With Your Kamisama
+## Along With Your Kamisama
 <br>
 https://www.along-with-your-kamisama.com/
+<br>
 御朱印をオンライン上で認定します
 
 <br>
 主な機能は以下の４つです
-
+<br>
 ①御朱印の発行機能
 <br>
 神社の参拝情報を入力いただくことで擬似的な御朱印を発行します
 <br>
 また、発行された御朱印を御朱印帳というかたちで確認ができます
 <br>
+
 ②神社の参拝分析機能
 <br>
 ユーザーの参拝情報を自動で分析し、参拝している神社の傾向を知れます。
