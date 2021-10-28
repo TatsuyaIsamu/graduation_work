@@ -21,8 +21,9 @@ document.addEventListener("turbolinks:load", function(){
           '私にだって苦手なことくらいある',
           '頭が高いぞ',
           '人間ばかりにかまってられないのさ。許されよ',
-          'たまには次郎も良いんじゃないか？',
           '信じる道を、行かれよ。私がついている',
+          'たまには次郎も良いんじゃないか？',
+          '人間のこと、チョットワカル',
           ];
       let rNo = Math.floor(Math.random() * lists.length);
       let rSt = lists[rNo]
