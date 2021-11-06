@@ -1,11 +1,12 @@
 require 'csv'
 # # インポートファイルを読み込む
-def import_read( file_name )
+def import_read(file_name)
   lines = CSV.read("db/#{file_name}")
-  lines.unshift([])  # index 0番目は空行を入れてスキップさせる
+  lines.unshift([]) # index 0番目は空行を入れてスキップさせる
 
   lines.each_with_index do |line, idx|
     next unless line.length > 0
+
     yield(line, idx) if block_given?
   end
 end
@@ -13,7 +14,7 @@ end
 # CSVファイルの取込
 import_read('test_shinto.csv') do |line, idx|
   Shinto.create do |s|
-    s.id      = idx
+    s.id = idx
     s.name = line[1]
     s.image = line[2]
     s.address = line[3]
@@ -25,10 +26,9 @@ import_read('test_shinto.csv') do |line, idx|
   end
 end
 
-
 User.seed(
   :id,
-  { id: 1, name: "admin_user", email: "admin@gmail.com", admin: true, password: 'password' },
+  { id: 1, name: 'admin_user', email: 'admin@gmail.com', admin: true, password: 'password' }
 )
 
 UserIntroduction.seed(
@@ -36,23 +36,23 @@ UserIntroduction.seed(
   {
     id: 1,
     user_id: 1,
-    address: 0, 
-    introduction: Faker::JapaneseMedia::StudioGhibli.quote, 
+    address: 0,
+    introduction: Faker::JapaneseMedia::StudioGhibli.quote
   }
 )
 3.times do |n|
   Ranking.seed(
-    :id,{
-      id: n+1,
-      rank: n+1,
+    :id, {
+      id: n + 1,
+      rank: n + 1,
       user_id: 1
     }
   )
   RankingItem.seed(
-    :id , {
-      id: n+1,
-      ranking_id: n+1,
-      shinto_id: n+1
+    :id, {
+      id: n + 1,
+      ranking_id: n + 1,
+      shinto_id: n + 1
     }
   )
 end
@@ -60,31 +60,31 @@ end
 20.times do |i|
   User.seed(
     :id,
-    { id: i+2, name: Faker::Name.name, email: Faker::Internet.email, password: 'password' },
+    { id: i + 2, name: Faker::Name.name, email: Faker::Internet.email, password: 'password' }
   )
   rand = rand(1..47)
   UserIntroduction.seed(
     :id,
     {
-      id: i+2,
-      user_id: i+2,
+      id: i + 2,
+      user_id: i + 2,
       address: rand,
-      introduction: Faker::JapaneseMedia::StudioGhibli.quote,  
+      introduction: Faker::JapaneseMedia::StudioGhibli.quote
     }
   )
   3.times do |n|
     Ranking.seed(
-      :id,{
-        id: i*3+n+1+3,
-        rank: n+1,
-        user_id: i+2
+      :id, {
+        id: i * 3 + n + 1 + 3,
+        rank: n + 1,
+        user_id: i + 2
       }
     )
     shinto_rand = rand(1..90)
     RankingItem.seed(
-      :id , {
-        id: i*3+n+1+3,
-        ranking_id: i*3+n+1,
+      :id, {
+        id: i * 3 + n + 1 + 3,
+        ranking_id: i * 3 + n + 1,
         memo: Faker::JapaneseMedia::StudioGhibli.quote,
         shinto_id: shinto_rand
       }
@@ -97,18 +97,16 @@ end
 user_id = [*1..19]
 
 10.times do |i|
-  rand = rand(1..18-i) + 1
-  if rand <= 0
-      rand = rand + i + 1
-  end
+  rand = rand(1..18 - i) + 1
+  rand = rand + i + 1 if rand <= 0
   rand_id = user_id.slice!(rand)
 
   Relationship.seed(
-    :id,{
-      id: i+1,
+    :id, {
+      id: i + 1,
       follower_id: rand_id,
       followed_id: 1
-    },
+    }
   )
 end
 
@@ -116,20 +114,17 @@ end
 
 shinto_id = [*1..90]
 
-
 50.times do |i|
-  rand = rand(1..90-i) + 1
-  if rand <= 0
-      rand = rand + i + 1
-  end
+  rand = rand(1..90 - i) + 1
+  rand = rand + i + 1 if rand <= 0
   rand_id = shinto_id.slice!(rand)
 
   FavoriteShinto.seed(
-    :id,{
-      id: i+1,
+    :id, {
+      id: i + 1,
       shinto_id: rand_id,
       user_id: 1
-    },
+    }
   )
 
   ShintoUserParam.seed(
@@ -140,8 +135,8 @@ shinto_id = [*1..90]
     }
   )
   ShintoParam.seed(
-    :id,{
-      id: i+1,
+    :id, {
+      id: i + 1,
       shinto_user_param_id: i + 1,
       memo: Faker::JapaneseMedia::StudioGhibli.quote
     }
@@ -169,7 +164,7 @@ end
       shinto_id: shinto_rand,
       worship_day: Date.today - worshipday_rand,
       weather: weather_rand,
-      image: "",
+      image: '',
       memo: Faker::JapaneseMedia::StudioGhibli.quote
     }
   )
@@ -187,7 +182,7 @@ end
       id: n + 1,
       user_id: rand(1..18),
       worship_id: n + 1
-    } 
+    }
   )
   Comment.seed(
     :id, {
@@ -199,32 +194,29 @@ end
   )
 end
 
-
 # # # 会話
 
 user_id = [*1..18]
 
 5.times do |n|
   user_rand = rand(1..18 - n) + 1
-  if rand <= 0
-    rand = user_rand + n + 1
-  end
+  rand = user_rand + n + 1 if rand <= 0
   rand_id = user_id.slice!(user_rand)
   conversation_user = [1, rand_id]
   Conversation.seed(
     :id, {
-      id: n+1,
+      id: n + 1,
       sender_id: 1,
-      recipient_id: rand_id,
+      recipient_id: rand_id
     }
   )
   40.times do |s|
     Message.seed(
       :id, {
-        id: n*10+s+1,
+        id: n * 10 + s + 1,
         body: Faker::JapaneseMedia::StudioGhibli.quote,
         user_id: conversation_user[rand(2)],
-        conversation_id: n+1
+        conversation_id: n + 1
       }
     )
   end
@@ -235,12 +227,10 @@ end
 5.times do |n|
   Contact.seed(
     :id, {
-      id: n+1,
+      id: n + 1,
       name: "#{n}user",
       email: "#{n}email",
       content: "#{n}content"
     }
   )
 end
-
-

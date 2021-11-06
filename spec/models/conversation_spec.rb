@@ -1,18 +1,19 @@
 RSpec.describe Conversation, type: :model do
-  let(:conversation) {create(:conversation)}
-  describe  'Conversation モデル' do
-    it  'インスタンスが作成できる' do
+  let(:conversation) { create(:conversation) }
+  describe 'Conversation モデル' do
+    it 'インスタンスが作成できる' do
       expect(create(:conversation)).to be_valid
     end
     context 'sender_id と recipient_id が２つ以上作られようとすると' do
-      it  'バリデーションエラーになる' do
+      it 'バリデーションエラーになる' do
         conversation
-        invalid_conversation = Conversation.new(sender_id: conversation.sender.id, recipient_id: conversation.recipient.id)
+        invalid_conversation = Conversation.new(sender_id: conversation.sender.id,
+                                                recipient_id: conversation.recipient.id)
         expect(invalid_conversation).to be_invalid
       end
     end
-    let(:user) {create(:user)}
-    let(:other_user) {create(:other_user)}
+    let(:user) { create(:user) }
+    let(:other_user) { create(:other_user) }
     describe  'between メソッド' do
       context 'sender_id recipient_id の順番で user と other_user が格納されていたとき' do
         it 'conversation インスタンスを取り出せる' do
@@ -41,4 +42,3 @@ RSpec.describe Conversation, type: :model do
     end
   end
 end
-

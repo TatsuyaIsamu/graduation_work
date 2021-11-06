@@ -15,6 +15,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [50, 50]
   end
   def default_url
-    "/noimage.png"
+    '/noimage.png'
   end
 end

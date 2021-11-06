@@ -7,9 +7,7 @@ class FavoriteShintosController < ApplicationController
   def create
     @shinto = Shinto.find(params[:id])
     favorite = current_user.favorite_shintos.build(shinto_id: params[:id])
-    if favorite.save
-      render :favorite_shinto
-    end
+    render :favorite_shinto if favorite.save
   end
 
   def destroy
@@ -20,6 +18,7 @@ class FavoriteShintosController < ApplicationController
   end
 
   private
+
   def favorite_shinto_params
     params.require(:favorite_shinto).permit(:user_id, :shinto_id)
   end

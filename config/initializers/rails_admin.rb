@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
@@ -7,8 +6,6 @@ RailsAdmin.config do |config|
 
   ## == CancanCan ==
   config.authorize_with :cancancan
-
-  
 
   config.actions do
     dashboard                     # mandatory

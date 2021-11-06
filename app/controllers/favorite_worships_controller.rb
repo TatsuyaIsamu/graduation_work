@@ -3,9 +3,7 @@ class FavoriteWorshipsController < ApplicationController
   def create
     @worship = Worship.find(params[:id])
     favorite = current_user.favorite_worships.build(worship_id: params[:id])
-    if favorite.save
-      render :favorite_worship
-    end
+    render :favorite_worship if favorite.save
   end
 
   def destroy
@@ -16,7 +14,8 @@ class FavoriteWorshipsController < ApplicationController
   end
 
   private
-    def favorite_worship_params
-      params.require(:favorite_worship).permit(:user_id, :shinto_id)
-    end
+
+  def favorite_worship_params
+    params.require(:favorite_worship).permit(:user_id, :shinto_id)
+  end
 end

@@ -1,10 +1,10 @@
 RSpec.describe User, type: :model do
-  let(:user) {create(:user)}
-  let(:other) {create(:other_user)}
+  let(:user) { create(:user) }
+  let(:other) { create(:other_user) }
 
   describe 'ユーザー登録' do
     it 'email、passwordとpassword_confirmationが存在すれば登録できること' do
-      expect(user).to be_valid  
+      expect(user).to be_valid
     end
     it 'emailがないと登録できないこと' do
       user.email = nil
@@ -19,16 +19,20 @@ RSpec.describe User, type: :model do
   describe 'フォロー機能' do
     context '違うユーザーをフォローしたとき' do
       it 'フォローができること' do
-        expect{user.follow!(other)}.to change{user.active_relationships.find_by(followed_id: other.id)}.from(be_falsey).to(be_truthy)
+        expect { user.follow!(other) }.to change {
+                                            user.active_relationships.find_by(followed_id: other.id)
+                                          }.from(be_falsey).to(be_truthy)
       end
     end
     context 'フォローしているユーザーをフォローを解除したとき' do
       it 'フォローが解除できる' do
         user.follow!(other)
-        expect{user.unfollow!(other)}.to change{user.active_relationships.find_by(followed_id: other.id)}.from(be_truthy).to(be_falsey)
+        expect { user.unfollow!(other) }.to change {
+                                              user.active_relationships.find_by(followed_id: other.id)
+                                            }.from(be_truthy).to(be_falsey)
       end
     end
-    context "フォローしていないユーザーに対して following? メソッドをつかったとき" do
+    context 'フォローしていないユーザーに対して following? メソッドをつかったとき' do
       it 'false が返ってくる' do
         user.follow!(other)
         user.unfollow!(other)
@@ -39,9 +43,8 @@ RSpec.describe User, type: :model do
 
   describe 'ゲストログイン用メソッド' do
     it 'self.guest メソッドを使ったときゲストユーザーが返ってくる' do
-      user = create(:user, email: "guest@gmail.com", password: "aaaaaa", password_confirmation: "aaaaaa")
+      user = create(:user, email: 'guest@gmail.com', password: 'aaaaaa', password_confirmation: 'aaaaaa')
       expect(User.guest).to eq user
     end
   end
-
 end

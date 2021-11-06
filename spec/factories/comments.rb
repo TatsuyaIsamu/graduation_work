@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    comment {'testComment'}
+    comment { 'testComment' }
     association :worship
-    user_id  {worship.user.id}
+    user_id { worship.user.id }
   end
 end

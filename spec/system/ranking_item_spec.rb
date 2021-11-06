@@ -1,6 +1,6 @@
 RSpec.describe RankingItem, type: :system do
-  describe  '神社ランキング機能' do
-    let(:user_introduction) {create(:user_introduction)}
+  describe '神社ランキング機能' do
+    let(:user_introduction) { create(:user_introduction) }
     before do
       user_introduction
       login(user_introduction.user)
@@ -8,53 +8,53 @@ RSpec.describe RankingItem, type: :system do
       create(:test_shinto)
     end
     context '１位の神社を更新したとき' do
-      it  '１位の神社が更新される' do
+      it '１位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[1].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
-        fill_in "ranking_item[memo]", with: "テストOK"
-        click_on "保存する"
-        expect(page).to have_content("1位の神社を更新しました")
-        expect(page).to have_content("テストOK")
+        fill_in 'ranking_item[memo]', with: 'テストOK'
+        click_on '保存する'
+        expect(page).to have_content('1位の神社を更新しました')
+        expect(page).to have_content('テストOK')
       end
     end
     context '２位の神社を更新したとき' do
-      it  '２位の神社が更新される' do
+      it '２位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[2].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
-        fill_in "ranking_item[memo]", with: "テストOK"
-        click_on "保存する"
-        expect(page).to have_content("2位の神社を更新しました")
-        expect(page).to have_content("テストOK")
+        fill_in 'ranking_item[memo]', with: 'テストOK'
+        click_on '保存する'
+        expect(page).to have_content('2位の神社を更新しました')
+        expect(page).to have_content('テストOK')
       end
     end
     context '３位の神社を更新したとき' do
-      it  '３位の神社が更新される' do
+      it '３位の神社が更新される' do
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[3].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
-        fill_in "ranking_item[memo]", with: "テストOK"
-        click_on "保存する"
-        expect(page).to have_content("3位の神社を更新しました")
-        expect(page).to have_content("テストOK")
+        fill_in 'ranking_item[memo]', with: 'テストOK'
+        click_on '保存する'
+        expect(page).to have_content('3位の神社を更新しました')
+        expect(page).to have_content('テストOK')
       end
     end
     context '神社ランキングの１位に登録された神社が' do
-      it  '神社ランキングの２位に設定しようと検索しても表示されない' do
+      it '神社ランキングの２位に設定しようと検索しても表示されない' do
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[1].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
-        fill_in "ranking_item[memo]", with: "テストOK"
-        click_on "保存する"
+        fill_in 'ranking_item[memo]', with: 'テストOK'
+        click_on '保存する'
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[2].click
         fill_in 'q[name_cont]', with: 'test神社'
@@ -63,14 +63,14 @@ RSpec.describe RankingItem, type: :system do
       end
     end
     context '神社ランキングの１位に登録された神社が' do
-      it  '神社ランキングの3位に設定しようと検索しても表示されない' do
+      it '神社ランキングの3位に設定しようと検索しても表示されない' do
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[1].click
         fill_in 'q[name_cont]', with: 'test神社'
         click_on 'button'
         first('tbody tr').click
-        fill_in "ranking_item[memo]", with: "テストOK"
-        click_on "保存する"
+        fill_in 'ranking_item[memo]', with: 'テストOK'
+        click_on '保存する'
         visit user_introduction_path(user_introduction.user_id)
         page.all('.fa-edit')[3].click
         fill_in 'q[name_cont]', with: 'test神社'
@@ -80,7 +80,7 @@ RSpec.describe RankingItem, type: :system do
     end
     describe 'アクセス制限' do
       context '他のユーザーがユーザープロフィールにアクセスしたとき' do
-        it  'ランキングの編集ボタンが表示されない' do
+        it 'ランキングの編集ボタンが表示されない' do
           logout_and_other_user_login
           visit user_introduction_path(user_introduction.user_id)
           expect(page).to have_no_css('.rspec_edit_ranking1')
@@ -89,26 +89,29 @@ RSpec.describe RankingItem, type: :system do
       context '他のユーザーがユーザーランキングにアクセスしようとしたとき' do
         it 'ホーム画面にリダイレクトされる' do
           logout_and_other_user_login
-          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
-          expect(page).to have_content("アクセスできません")
+          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id,
+                                               user_introduction.user.rankings[0].ranking_items[0].id)
+          expect(page).to have_content('アクセスできません')
         end
       end
     end
     describe '神社の検索テスト' do
       context 'ランキングの設定画面で test 神社を検索したとき' do
-        it  'test 神社が画面に表示される' do
-          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
-          fill_in "q[name_cont]", with: "test神社"
+        it 'test 神社が画面に表示される' do
+          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id,
+                                               user_introduction.user.rankings[0].ranking_items[0].id)
+          fill_in 'q[name_cont]', with: 'test神社'
           click_on 'button'
-          expect(page).to have_content("test神社")
+          expect(page).to have_content('test神社')
         end
       end
       context 'ランキングの設定画面で test 神社を検索したとき' do
-        it  '王子神社は画面に表示されない' do
-          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id, user_introduction.user.rankings[0].ranking_items[0].id)
-          fill_in "q[name_cont]", with: "test神社"
+        it '王子神社は画面に表示されない' do
+          visit edit_ranking_ranking_item_path(user_introduction.user.rankings[0].id,
+                                               user_introduction.user.rankings[0].ranking_items[0].id)
+          fill_in 'q[name_cont]', with: 'test神社'
           click_on 'button'
-          expect(page).not_to have_content("王子神社")
+          expect(page).not_to have_content('王子神社')
         end
       end
     end

@@ -1,21 +1,21 @@
 RSpec.describe FavoriteShinto, type: :system do
-  describe  '神社のお気に入り機能' do
-    let(:user_introduction) {create(:user_introduction)}
-    let(:shinto){create(:test_shinto)}
+  describe '神社のお気に入り機能' do
+    let(:user_introduction) { create(:user_introduction) }
+    let(:shinto) { create(:test_shinto) }
     before do
       user_introduction
       login(user_introduction.user)
       shinto
     end
     context '神社のお気に入りをしたとき' do
-      it  '神社がお気に入りされてお気に入りを解除するボタンが表示される' do
+      it '神社がお気に入りされてお気に入りを解除するボタンが表示される' do
         visit shinto_path(shinto.id)
         find('.fa-star').click
         expect(page).to have_content('解除する')
       end
     end
     context '解除するボタンをおしたとき' do
-      it  'お気にいりが解除される' do
+      it 'お気にいりが解除される' do
         visit shinto_path(shinto.id)
         find('.fa-star').click
         find('.fa-star').click

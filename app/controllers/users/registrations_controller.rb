@@ -14,11 +14,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if  params[:user][:email].blank? ||  params[:user][:password].blank?
-      flash.now[:alert] = "Email と パスワードを入力して下さい"
-    end
+    flash.now[:alert] = 'Email と パスワードを入力して下さい' if params[:user][:email].blank? || params[:user][:password].blank?
     super
-    unless resource.id == nil
+    unless resource.id.nil?
       a = resource.rankings.build(rank: 1)
       a.ranking_items.build.save
       b = resource.rankings.build(rank: 2)
@@ -78,8 +76,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def ensure_normal_user
-    if resource.email == 'guest@gmail.com'
-      redirect_to home_path, alert: 'ゲストユーザーは削除できません。'
-    end
+    redirect_to home_path, alert: 'ゲストユーザーは削除できません。' if resource.email == 'guest@gmail.com'
   end
 end

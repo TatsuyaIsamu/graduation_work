@@ -1,8 +1,8 @@
 # require 'csv'
 # # インポートファイルを読み込む
-def import_read( file_name )
+def import_read(file_name)
   lines = CSV.read("db/#{file_name}")
-  lines.unshift([])  # index 0番目は空行を入れてスキップさせる
+  lines.unshift([]) # index 0番目は空行を入れてスキップさせる
 
   lines.each_with_index do |line, idx|
     next unless line.length > 0
@@ -14,7 +14,7 @@ end
 # CSVファイルの取込
 import_read('test_shinto.csv') do |line, idx|
   Shinto.create do |s|
-    s.id      = idx
+    s.id = idx
     s.name = line[1]
     s.image = line[2]
     s.address = line[3]

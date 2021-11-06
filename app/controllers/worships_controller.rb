@@ -1,16 +1,17 @@
 class WorshipsController < ApplicationController
   before_action :forbid_from_confirm_reload, only: :confirm
-  before_action :set_worship, only: %i[ show edit update destroy ]
+  before_action :set_worship, only: %i[show edit update destroy]
 
   def index
-    redirect_to home_path and return if params[:format] == nil
+    redirect_to home_path and return if params[:format].nil?
+
     a = params[:format].to_date
     b = a.end_of_month
     @worships = current_user.worships.where(worship_day: a..b).order(worship_day: :desc).page(params[:page]).per(10)
     gon.star_array = []
     @worships.each do |worship|
       worship.worship_params.each do |param|
-        gon.star_array << {"star_count_#{param.id}": param.points}
+        gon.star_array << { "star_count_#{param.id}": param.points }
       end
     end
   end
@@ -20,7 +21,7 @@ class WorshipsController < ApplicationController
     @comment = @worship.comments.build
     gon.star_array = []
     @worship.worship_params.each do |param|
-      gon.star_array << {"star_count_#{param.id}": param.points}
+      gon.star_array << { "star_count_#{param.id}": param.points }
     end
   end
 
@@ -41,11 +42,12 @@ class WorshipsController < ApplicationController
   end
 
   def create
-    @worship = Worship.new(worship_params) 
+    @worship = Worship.new(worship_params)
     worship_para = params[:worship][:worship_param]
     if worship_para
       worship_para[:title].values.length.to_i.times do |i|
-        hash = {title: worship_para[:title]["#{i}"], points: worship_para[:points]["#{i}"], memo: worship_para[:memo]["#{i}"]}
+        hash = { title: worship_para[:title][i.to_s], points: worship_para[:points][i.to_s],
+                 memo: worship_para[:memo][i.to_s] }
         @worship.worship_params.build(hash)
       end
     end
@@ -56,7 +58,7 @@ class WorshipsController < ApplicationController
       render :new
     else
       @worship.save
-      render :gosyuin, layout: "index" 
+      render :gosyuin, layout: 'index'
     end
   end
 
@@ -65,7 +67,7 @@ class WorshipsController < ApplicationController
     if dammy.valid?
       @worship.worship_params.destroy_all
       @worship.update(worship_params)
-      redirect_to @worship, notice: "参拝情報を変更しました" 
+      redirect_to @worship, notice: '参拝情報を変更しました'
     else
       @shinto = @worship.shinto
       @shinto_params = @worship.worship_params
@@ -73,8 +75,8 @@ class WorshipsController < ApplicationController
       @shinto_params.each do |param|
         gon.star_array << param.points
       end
-      flash.now[:alert] = "参拝日を入力して下さい" if @worship.worship_day.blank?
-      flash.now[:alert] = "明日以降の日付で申請はできません" if @worship.worship_day
+      flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
+      flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
       render :edit
     end
   end
@@ -82,17 +84,17 @@ class WorshipsController < ApplicationController
   def destroy
     worship_day = @worship.worship_day
     @worship.destroy
-    flash[:notice] = "参拝記録を削除しました"
+    flash[:notice] = '参拝記録を削除しました'
     redirect_to worships_url(worship_day.to_date.beginning_of_month)
   end
 
   def search
-    unless params[:q].blank?
-      @q = Shinto.ransack(params[:q])
-      @shintos = @q.result(distinct: true).page(params[:page]).per(7)
-    else
+    if params[:q].blank?
       @q = Shinto.ransack(params[:q])
       @shintos = nil
+    else
+      @q = Shinto.ransack(params[:q])
+      @shintos = @q.result(distinct: true).page(params[:page]).per(7)
     end
   end
 
@@ -106,42 +108,42 @@ class WorshipsController < ApplicationController
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
       @worship.worship_params.destroy_all
       @worship.worship_params.build
-      flash.now[:alert] = "参拝日を入力して下さい" if @worship.worship_day.blank?
-      flash.now[:alert] = "明日以降の日付で申請はできません" if @worship.worship_day
-      render :new 
+      flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
+      flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
+      render :new
     end
     gon.star_array = []
     @worship.worship_params.each_with_index do |param, index|
-      gon.star_array << {"confirm_star_count_#{index}": param.points}
+      gon.star_array << { "confirm_star_count_#{index}": param.points }
     end
   end
 
-  def other_looking 
+  def other_looking
     @worships = Worship.where(user_id: params[:format]).order(worship_day: :desc).page(params[:page]).per(10)
     gon.star_array = []
     @worships.each do |worship|
       worship.worship_params.each do |param|
-        gon.star_array << {"star_count_#{param.id}": param.points}
+        gon.star_array << { "star_count_#{param.id}": param.points }
       end
     end
-    
   end
 
   private
+
   def set_worship
     @worship = Worship.find(params[:id])
   end
+
   def forbid_from_confirm_reload
-    if request.get?
-      redirect_to search_worships_path and return
-    end
+    redirect_to search_worships_path and return if request.get?
   end
 
   def worship_params
-    params.require(:worship).permit(:worship_day, :memo, :image, :image_cache, :user_id, :shinto_id, :weather, worship_params_attributes: %i[title points memo _destroy])
+    params.require(:worship).permit(:worship_day, :memo, :image, :image_cache, :user_id, :shinto_id, :weather,
+                                    worship_params_attributes: %i[title points memo _destroy])
   end
-  
+
   def forbid_other_user_access
-    redirect_to home_path, alert: "アクセスできません" if current_user != @worship.user
+    redirect_to home_path, alert: 'アクセスできません' if current_user != @worship.user
   end
 end

@@ -4,7 +4,7 @@ class CreateUserIntroductions < ActiveRecord::Migration[5.2]
       t.integer :address
       t.string :image
       t.text :introduction
-      
+
       t.timestamps
     end
   end

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-
-  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  root  "tops#index"
-  get "home", to: "homes#index"
-  get "gosyuin", to: "gosyuins#index"
+  root  'tops#index'
+  get 'home', to: 'homes#index'
+  get 'gosyuin', to: 'gosyuins#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
   resources :rankings, only: %i[] do
     resources :ranking_items, only: %i[edit update] do
       member do
-          get :search
+        get :search
       end
     end
   end
@@ -43,9 +42,9 @@ Rails.application.routes.draw do
       get :comment
     end
   end
-  resources :favorite_shintos, only: %i[index create destroy] 
+  resources :favorite_shintos, only: %i[index create destroy]
   resources :shinto_user_params do
-    resources :shinto_param_items 
+    resources :shinto_param_items
   end
   resources :relationships, only: %i[create destroy]
   resources :conversations do

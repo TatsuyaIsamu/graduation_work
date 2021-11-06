@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
   has_one :user_introduction, dependent: :destroy
   accepts_nested_attributes_for :user_introduction
   has_many :worships, dependent: :destroy
@@ -18,20 +18,23 @@ class User < ApplicationRecord
   has_many :shinto_user_params, dependent: :destroy
   has_many :favorite_worships, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+
   def follow!(other_user)
     active_relationships.create!(followed_id: other_user.id)
   end
+
   def following?(other_user)
     active_relationships.find_by(followed_id: other_user.id)
   end
+
   def unfollow!(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
+
   def self.guest
     find_or_create_by!(email: 'guest@gmail.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "ゲストユーザー"
+      user.name = 'ゲストユーザー'
       a = user.rankings.build(rank: 1)
       a.ranking_items.build.save
       b = user.rankings.build(rank: 2)
