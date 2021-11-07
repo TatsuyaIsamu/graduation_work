@@ -13,10 +13,12 @@ function previewImage(id) {
 }
 
 document.addEventListener("turbolinks:load", function(){
-  document.getElementById('inputFileReset').addEventListener('click', function() {
-    var elem = document.getElementById('inputFile');
-    elem.value = '';
-    elem.dispatchEvent(new Event('change'));
-    document.getElementById("preview").src = "/noimage.png"
-  })
+  if($('inputFileReset').length){
+    document.getElementById('inputFileReset').addEventListener('click', function() {
+      var elem = document.getElementById('inputFile');
+      elem.value = '';
+      elem.dispatchEvent(new Event('change'));
+      document.getElementById("preview").src = "/noimage.png"
+    })
+  }
 })
