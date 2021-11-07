@@ -27,10 +27,10 @@ class CommentsController < ApplicationController
   def update
     @comment = @worship.comments.find(params[:id])
     flash.now[:notice] = if @comment.update(comment_params)
-                          'コメントが編集されました'
-                        else
-                          'コメントを記入して下さい'
-                        end
+                           'コメントが編集されました'
+                         else
+                           'コメントを記入して下さい'
+                         end
     render :index
   end
 
