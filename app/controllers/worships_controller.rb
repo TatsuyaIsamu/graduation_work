@@ -1,14 +1,13 @@
 class WorshipsController < ApplicationController
   before_action :forbid_from_confirm_reload, only: :confirm
   before_action :set_worship, only: %i[show edit update destroy]
+  before_action :gon_star_array_define, only: %i[index show edit update confirm other_looking]
 
   def index
     redirect_to home_path and return if params[:format].nil?
-
-    a = params[:format].to_date
-    b = a.end_of_month
-    @worships = current_user.worships.where(worship_day: a..b).order(worship_day: :desc).page(params[:page]).per(10)
-    gon.star_array = []
+    month_head = params[:format].to_date
+    month_tail  = month_head.end_of_month
+    @worships = current_user.worships.where(worship_day: month_head..month_tail).order(worship_day: :desc).page(params[:page]).per(10)
     @worships.each do |worship|
       worship.worship_stars_params_show(gon.star_array)
     end
@@ -17,9 +16,9 @@ class WorshipsController < ApplicationController
   def show
     @comments = @worship.comments.order(created_at: :desc).limit(5)
     @comment = @worship.comments.build
-    gon.star_array = []
     @worship.worship_stars_params_show(gon.star_array)
   end
+
 
   def new
     @worship = current_user.worships.build(shinto_id: params[:shinto_id])
@@ -29,12 +28,8 @@ class WorshipsController < ApplicationController
 
   def edit
     forbid_other_user_access
-    @shinto = @worship.shinto
-    @shinto_params = @worship.worship_params
-    gon.star_array = []
-    @shinto_params.each do |param|
-      gon.star_array << param.points
-    end
+    shinto_information_from_worship
+    worship_stars_params_for_edit
   end
 
   def create
@@ -49,14 +44,14 @@ class WorshipsController < ApplicationController
     end
     if params[:back]
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
-      @worship.worship_params.destroy_all
-      @worship.worship_params.build
+      @worship.worship_params_destroy_build
       render :new
     else
       @worship.save
       render :gosyuin, layout: 'index'
     end
   end
+
 
   def update
     dammy = Worship.new(worship_params)
@@ -65,12 +60,8 @@ class WorshipsController < ApplicationController
       @worship.update(worship_params)
       redirect_to @worship, notice: '参拝情報を変更しました'
     else
-      @shinto = @worship.shinto
-      @shinto_params = @worship.worship_params
-      gon.star_array = []
-      @shinto_params.each do |param|
-        gon.star_array << param.points
-      end
+      shinto_information_from_worship
+      worship_stars_params_for_edit
       flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
       flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
       render :edit
@@ -85,11 +76,10 @@ class WorshipsController < ApplicationController
   end
 
   def search
+    @q = Shinto.ransack(params[:q])
     if params[:q].blank?
-      @q = Shinto.ransack(params[:q])
       @shintos = nil
     else
-      @q = Shinto.ransack(params[:q])
       @shintos = @q.result(distinct: true).page(params[:page]).per(7)
     end
   end
@@ -102,13 +92,11 @@ class WorshipsController < ApplicationController
     @worship = Worship.new(worship_params)
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
-      @worship.worship_params.destroy_all
-      @worship.worship_params.build
+      @worship.worship_params_destroy_build
       flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
       flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
       render :new
     end
-    gon.star_array = []
     @worship.worship_params.each_with_index do |param, index|
       gon.star_array << { "confirm_star_count_#{index}": param.points }
     end
@@ -116,12 +104,8 @@ class WorshipsController < ApplicationController
 
   def other_looking
     @worships = Worship.where(user_id: params[:format]).order(worship_day: :desc).page(params[:page]).per(10)
-    gon.star_array = []
     @worships.each do |worship|
       worship_stars_params_show(worship)
-      # worship.worship_params.each do |param|
-      #   gon.star_array << { "star_count_#{param.id}": param.points }
-      # end
     end
   end
 
@@ -142,5 +126,20 @@ class WorshipsController < ApplicationController
 
   def forbid_other_user_access
     redirect_to home_path, alert: 'アクセスできません' if current_user != @worship.user
+  end
+
+  def shinto_information_from_worship
+    @shinto = @worship.shinto
+    @shinto_params = @worship.worship_params
+  end
+
+  def worship_stars_params_for_edit
+    @shinto_params.each do |param|
+      gon.star_array << param.points
+    end
+  end
+
+  def gon_star_array_define
+    gon.star_array = []
   end
 end

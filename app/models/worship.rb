@@ -23,4 +23,10 @@ class Worship < ApplicationRecord
       star_array << { "star_count_#{param.id}": param.points }
     end
   end
+
+  def worship_params_destroy_build
+    self.worship_params.destroy_all
+    self.worship_params.build
+  end
+
 end
