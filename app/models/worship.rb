@@ -17,4 +17,10 @@ class Worship < ApplicationRecord
   def start_time
     worship_day
   end
+
+  def worship_stars_params_show(star_array)
+    self.worship_params.each do |param|
+      star_array << { "star_count_#{param.id}": param.points }
+    end
+  end
 end

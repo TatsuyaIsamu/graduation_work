@@ -10,9 +10,7 @@ class WorshipsController < ApplicationController
     @worships = current_user.worships.where(worship_day: a..b).order(worship_day: :desc).page(params[:page]).per(10)
     gon.star_array = []
     @worships.each do |worship|
-      worship.worship_params.each do |param|
-        gon.star_array << { "star_count_#{param.id}": param.points }
-      end
+      worship.worship_stars_params_show(gon.star_array)
     end
   end
 
@@ -20,9 +18,7 @@ class WorshipsController < ApplicationController
     @comments = @worship.comments.order(created_at: :desc).limit(5)
     @comment = @worship.comments.build
     gon.star_array = []
-    @worship.worship_params.each do |param|
-      gon.star_array << { "star_count_#{param.id}": param.points }
-    end
+    @worship.worship_stars_params_show(gon.star_array)
   end
 
   def new
@@ -122,9 +118,10 @@ class WorshipsController < ApplicationController
     @worships = Worship.where(user_id: params[:format]).order(worship_day: :desc).page(params[:page]).per(10)
     gon.star_array = []
     @worships.each do |worship|
-      worship.worship_params.each do |param|
-        gon.star_array << { "star_count_#{param.id}": param.points }
-      end
+      worship_stars_params_show(worship)
+      # worship.worship_params.each do |param|
+      #   gon.star_array << { "star_count_#{param.id}": param.points }
+      # end
     end
   end
 
