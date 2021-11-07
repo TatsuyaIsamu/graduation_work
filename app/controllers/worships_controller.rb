@@ -102,7 +102,7 @@ class WorshipsController < ApplicationController
   def other_looking
     @worships = Worship.where(user_id: params[:format]).order(worship_day: :desc).page(params[:page]).per(10)
     @worships.each do |worship|
-      worship_stars_params_show(worship)
+      worship.worship_stars_params_show(gon.star_array)
     end
   end
 
