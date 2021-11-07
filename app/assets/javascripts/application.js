@@ -23,7 +23,9 @@
 $(document).on('turbolinks:load', function () {
     $('.drawer').drawer();
     $('.datepicker').datepicker({ dateFormat: 'yy-mm-dd' })
-    bsCustomFileInput.init();
+    if (typeof beCustomFileInput !== "undefined") {
+        bsCustomFileInput.init();
+    }
 })
 
 
