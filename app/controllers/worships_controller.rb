@@ -5,9 +5,10 @@ class WorshipsController < ApplicationController
 
   def index
     redirect_to home_path and return if params[:format].nil?
+
     month_head = params[:format].to_date
-    month_tail  = month_head.end_of_month
-    @worships = current_user.worships.where(worship_day: month_head..month_tail).order(worship_day: :desc).page(params[:page]).per(10)
+    month_tail = month_head.end_of_month
+    @worships = current_user.worships.month_worships(month_head, month_tail, params[:page])
     @worships.each do |worship|
       worship.worship_stars_params_show(gon.star_array)
     end
@@ -18,7 +19,6 @@ class WorshipsController < ApplicationController
     @comment = @worship.comments.build
     @worship.worship_stars_params_show(gon.star_array)
   end
-
 
   def new
     @worship = current_user.worships.build(shinto_id: params[:shinto_id])
@@ -38,7 +38,7 @@ class WorshipsController < ApplicationController
     if worship_para
       worship_para[:title].values.length.to_i.times do |i|
         hash = { title: worship_para[:title][i.to_s], points: worship_para[:points][i.to_s],
-                memo: worship_para[:memo][i.to_s] }
+                  memo: worship_para[:memo][i.to_s] }
         @worship.worship_params.build(hash)
       end
     end
@@ -51,7 +51,6 @@ class WorshipsController < ApplicationController
       render :gosyuin, layout: 'index'
     end
   end
-
 
   def update
     dammy = Worship.new(worship_params)
@@ -76,11 +75,11 @@ class WorshipsController < ApplicationController
 
   def search
     @q = Shinto.ransack(params[:q])
-    if params[:q].blank?
-      @shintos = nil
-    else
-      @shintos = @q.result(distinct: true).page(params[:page]).per(7)
-    end
+    @shintos = if params[:q].blank?
+                  nil
+                else
+                  @q.result(distinct: true).page(params[:page]).per(7)
+                end
   end
 
   def calendar
