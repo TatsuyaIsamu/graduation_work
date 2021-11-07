@@ -38,7 +38,7 @@ class WorshipsController < ApplicationController
     if worship_para
       worship_para[:title].values.length.to_i.times do |i|
         hash = { title: worship_para[:title][i.to_s], points: worship_para[:points][i.to_s],
-                 memo: worship_para[:memo][i.to_s] }
+                memo: worship_para[:memo][i.to_s] }
         @worship.worship_params.build(hash)
       end
     end
@@ -62,8 +62,7 @@ class WorshipsController < ApplicationController
     else
       shinto_information_from_worship
       worship_stars_params_for_edit
-      flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
-      flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
+      @worship.worship_day_validate_messages
       render :edit
     end
   end
@@ -93,8 +92,7 @@ class WorshipsController < ApplicationController
     if @worship.invalid?
       @shinto = Shinto.find_by(id: params[:worship][:shinto_id])
       @worship.worship_params_destroy_build
-      flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
-      flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
+      worship_day_validate_messages
       render :new
     end
     @worship.worship_params.each_with_index do |param, index|
@@ -141,5 +139,10 @@ class WorshipsController < ApplicationController
 
   def gon_star_array_define
     gon.star_array = []
+  end
+
+  def worship_day_validate_messages
+    flash.now[:alert] = '参拝日を入力して下さい' if @worship.worship_day.blank?
+    flash.now[:alert] = '明日以降の日付で申請はできません' if @worship.worship_day
   end
 end
