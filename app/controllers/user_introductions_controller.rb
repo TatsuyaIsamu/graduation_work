@@ -6,24 +6,8 @@ class UserIntroductionsController < ApplicationController
       ranking = Ranking.find_by(user_id: @user_introduction.user.id, rank: n + 1)
       instance_variable_set("@ranking#{n + 1}", ranking)
     end
-    @chart_shintos = @user_introduction.user.worship_shintos.reject { |shinto| shinto.origin_shrine == '−−−−−' }
-    @chart_shintos = @chart_shintos.map do |chart_shinto|
-      chart_shinto.origin_shrine.match(/（/)&.pre_match
-    end
-    @chart = @chart_shintos.group_by(&:itself).map { |k, v| [k, v.count] }
-    if @chart.count <= 5
-      dammy = 6 - @chart.count
-      dammy.times do |n|
-        @chart << ["\n" * n, 0]
-      end
-    end
-    mapping_worship = []
-    @user_introduction.user.worship_shintos.map do |shinto|
-      a = shinto.address.match(/東京都|北海道|(?:京都|大阪)府|.{3}県/).to_s
-      a.chop! unless a == '北海道'
-      a.slice!(0, 1) if a[0] == '）'
-      mapping_worship << a
-    end
+    @chart = @user_introduction.origin_chart
+    mapping_worship = @user_introduction.worship_mapping
     gon.usermapping = mapping_worship.group_by(&:itself).map { |key, value| [key, value.count] }.unshift(%w[都道府県 回数])
   end
 

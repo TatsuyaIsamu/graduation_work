@@ -1,5 +1,6 @@
 class ShintosController < ApplicationController
   before_action :set_shinto, only: %i[show comment]
+  before_action :gon_star_array_define, only: %i[show comment]
 
   def index
     @q = Shinto.ransack(params[:q])
@@ -15,14 +16,7 @@ class ShintosController < ApplicationController
 
   def show
     @shinto_user_params = @shinto.shinto_user_params.order(created_at: :desc).limit(5)
-    gon.star_array = []
-    @shinto_user_params.each do |user_param|
-      user_param.shinto_params.each do |param|
-        param.shinto_param_items.each do |item|
-          gon.star_array << { "star_count_#{item.id}": item.points }
-        end
-      end
-    end
+    shinto_stars
     @shinto_user_param = @shinto.shinto_user_params.build
     @shinto_params = @shinto_user_param.shinto_params.build
     @shinto_params_items = @shinto_params.shinto_param_items.build
@@ -37,14 +31,7 @@ class ShintosController < ApplicationController
 
   def comment
     @shinto_user_params = @shinto.shinto_user_params.page(params[:page]).per(10).order(created_at: :desc)
-    gon.star_array = []
-    @shinto_user_params.each do |user_param|
-      user_param.shinto_params.each do |param|
-        param.shinto_param_items.each do |item|
-          gon.star_array << { "star_count_#{item.id}": item.points }
-        end
-      end
-    end
+    shinto_stars
   end
 
   private
@@ -55,5 +42,19 @@ class ShintosController < ApplicationController
 
   def shinto_params
     params.fetch(:shinto, {})
+  end
+
+  def gon_star_array_define
+    gon.star_array = []
+  end
+
+  def shinto_stars
+    @shinto_user_params.each do |user_param|
+      user_param.shinto_params.each do |param|
+        param.shinto_param_items.each do |item|
+          gon.star_array << { "star_count_#{item.id}": item.points }
+        end
+      end
+    end
   end
 end

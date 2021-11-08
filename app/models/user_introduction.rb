@@ -9,4 +9,29 @@ class UserIntroduction < ApplicationRecord
                   奈良県: 29, 和歌山県: 30, 鳥取県: 31, 島根県: 32, 岡山県: 33, 広島県: 34, 山口県: 35,
                   徳島県: 36, 香川県: 37, 愛媛県: 38, 高知県: 39, 福岡県: 40, 佐賀県: 41, 長崎県: 42,
                   熊本県: 43, 大分県: 44, 宮崎県: 45, 鹿児島県: 46, 沖縄県: 47 }
+    def worship_mapping
+      mapping_worship = []
+      self.user.worship_shintos.map do |shinto|
+        a = shinto.address.match(/東京都|北海道|(?:京都|大阪)府|.{3}県/).to_s
+        a.chop! unless a == '北海道'
+        a.slice!(0, 1) if a[0] == '）'
+        mapping_worship << a
+      end
+      mapping_worship
+    end
+
+    def origin_chart
+      chart_shintos = self.user.worship_shintos.reject { |shinto| shinto.origin_shrine == '−−−−−' }
+      chart_shintos = chart_shintos.map do |chart_shinto|
+        chart_shinto.origin_shrine.match(/（/)&.pre_match
+      end
+      chart = chart_shintos.group_by(&:itself).map { |k, v| [k, v.count] }
+      if chart.count <= 5
+        dammy = 6 - chart.count
+        dammy.times do |n|
+          chart << ["\n" * n, 0]
+        end
+      end
+      chart
+    end
 end
