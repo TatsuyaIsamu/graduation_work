@@ -2,9 +2,10 @@ class UserIntroductionsController < ApplicationController
   before_action :set_user_introduction
   before_action :forbid_other_user_access, only: %i[edit update]
   def show
+    @user_rankings = []
     3.times do |n|
       ranking = Ranking.find_by(user_id: @user_introduction.user.id, rank: n + 1)
-      instance_variable_set("@ranking#{n + 1}", ranking)
+      @user_rankings << ranking
     end
     @chart = @user_introduction.origin_chart
     mapping_worship = @user_introduction.worship_mapping
