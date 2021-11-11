@@ -35,83 +35,33 @@ h2.mt-3.mb-4.font-weight-bold 基本プロフィール
         |投稿一覧を見る
 
 h2.mt-5.mb-4.font-weight-bold 神社ランキング
-
 .row.card-deck
-  .card.shadow-sm.col-md-4
-    .card-header.mb-2.mt-2
-      strong １位
-    p
-      - if @ranking1.ranking_items[0].shinto.present? 
-        img.card-img-top src="#{@ranking1.ranking_items[0].shinto.image}.jpg"
-      - else 
-        img.card-img-top src="/shrine_default.png"
-    .card-body
-      ul.list-group.list-group-flush
-        - if @ranking1.ranking_items[0].shinto.present?
-          li.list-group-item = @ranking1.ranking_items[0].shinto.name
-          li.list-group-item = @ranking1.ranking_items[0].shinto.address.match(/）/).post_match 
+  - @user_rankings.each.with_index do |user_ranking, index|
+    .card.shadow-sm.col-md-4
+      .card-header.mb-2.mt-2
+        strong #{index+1}位
+      p
+        - if user_ranking.ranking_items[0].shinto.present? 
+          img.card-img-top src="#{user_ranking.ranking_items[0].shinto.image}.jpg"
         - else 
-          - 2.times do
-            li.list-group-item ---------
-      .overflow_card 
-        - if @ranking1.ranking_items[0].memo
-          = @ranking1.ranking_items[0].memo
-        - else 
-          |--------
-    - if current_user == @user_introduction.user
-      .card-footer.mb-2
-        = link_to edit_ranking_ranking_item_path(@ranking1.id) do
-          i.fas.fa-edit.fa-2x
-  .card.shadow-sm.col-md-4
-    .card-header.mb-2.mt-2
-      strong ２位
-    p
-      - if @ranking2.ranking_items[0].shinto.present? 
-        img.card-img-top src="#{@ranking2.ranking_items[0].shinto.image}.jpg"
-      - else 
-        img.card-img-top src="/shrine_default.png"
-    .card-body
-      ul.list-group.list-group-flush
-        - if @ranking2.ranking_items[0].shinto.present?
-          li.list-group-item = @ranking2.ranking_items[0].shinto.name
-          li.list-group-item = @ranking2.ranking_items[0].shinto.address.match(/）/).post_match 
-        - else 
-          - 2.times do
-            li.list-group-item ---------
-      .overflow_card 
-        - if @ranking2.ranking_items[0].memo
-          = @ranking2.ranking_items[0].memo
-        - else 
-          |--------
-    - if current_user == @user_introduction.user
-      .card-footer.mb-2
-        = link_to edit_ranking_ranking_item_path(@ranking2.id) do
-          i.fas.fa-edit.fa-2x
-  .card.shadow-sm.col-md-4
-    .card-header.mb-2.mt-2
-      strong ３位
-    p
-      - if @ranking3.ranking_items[0].shinto.present? 
-        img.card-img-top src="#{@ranking3.ranking_items[0].shinto.image}.jpg"
-      - else 
-        img.card-img-top src="/shrine_default.png"
-    .card-body
-      ul.list-group.list-group-flush
-        - if @ranking3.ranking_items[0].shinto.present?
-          li.list-group-item = @ranking3.ranking_items[0].shinto.name
-          li.list-group-item = @ranking3.ranking_items[0].shinto.address.match(/）/).post_match 
-        - else 
-          - 2.times do
-            li.list-group-item ---------
-      .overflow_card 
-        - if @ranking3.ranking_items[0].memo
-          = @ranking3.ranking_items[0].memo
-        - else 
-          |---------
-    - if current_user == @user_introduction.user
-      .card-footer.mb-2
-        = link_to edit_ranking_ranking_item_path(@ranking3.id) do
-          i.fas.fa-edit.fa-2x
+          img.card-img-top src="/shrine_default.png"
+      .card-body
+        ul.list-group.list-group-flush
+          - if user_ranking.ranking_items[0].shinto.present?
+            li.list-group-item = user_ranking.ranking_items[0].shinto.name
+            li.list-group-item = user_ranking.ranking_items[0].shinto.address.match(/）/).post_match 
+          - else 
+            - 2.times do
+              li.list-group-item ---------
+        .overflow_card 
+          - if user_ranking.ranking_items[0].memo
+            = user_ranking.ranking_items[0].memo
+          - else 
+            |--------
+      - if current_user == @user_introduction.user
+        .card-footer.mb-2
+          = link_to edit_ranking_ranking_item_path(user_ranking.id) do
+            i.fas.fa-edit.fa-2x
 h2.mt-5.mb-4.font-weight-bold 参拝情報
 .card.worship_info.pt-4.pb-4
   .row.user_introduction_map_and_para
