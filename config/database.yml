@@ -16,9 +16,9 @@ test:
   <<: *default
   database: graduation_work_test
   # ローカル使用の際は以下をコメントアウト
-  # host: db
-  # username: postgres
-  # password: password
+  host: db
+  username: postgres
+  password: password
 
 production:
   <<: *default
