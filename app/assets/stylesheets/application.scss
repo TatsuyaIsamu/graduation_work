@@ -480,15 +480,6 @@ h2 {
 }
 
 
-// h2:before {
-//   font-family: "Font Awesome 5 Free";
-//   content: "●";
-//   color: rgba(218, 202, 202, 0.918);
-//   opacity: 0.81;
-//   margin-right: 15px;
-  
-//   margin-left: 8px;
-// }
 
 .home_title {
   margin-bottom: 40px;
@@ -523,4 +514,7 @@ h2 {
 .kamisama:hover::before {
   transform: translateY(9px);
   opacity: 1;
+
+
 }
+
